@@ -1,0 +1,95 @@
+https://www.javatpoint.com/spy-number-in-java
+Spy Number in Java - Javatpoint
+Spy Number in Java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Spy Number in Java In this section, we will learn what is a spy number and also create Java programs to check if the given number is Spy or not. The spy number program is frequently asked in Java coding test. Spy Number A positive integer is called a spy number if the sum and product of its digits are equal. In other words, a number whose sum and product of all digits are equal is called a spy number. Example of Spy Number Let's take the number 1124 and check whether the number is a spy or not. First, we will split it into digits (1, 1, 2, 4). After that find the sum and product of all the digits. Sum=1+1+2+4=8 Product=1*1*2*4=8 We observe that the sum and product of the digits both are equal. Hence, 1124 is a spy number. Similarly, we can check other numbers also. Some other spy numbers are 22, 123, 132, etc. Steps to Find Spy Number Read or initialize a number (n) that you want to check. Declare two variables sum and product to store sum and product of digits. Initialize sum with 0 and product with 1. Find the last digit (n%10) of the given number by using the modulo operator. Add the last digit to the variable sum. Multiply the last digit with the product variable. Divide the given number (n) by 10. It removes the last digit. Repeat steps 3 to 6 until the given number (n) becomes 0. If the variable sum and product have the same value, then the given number (n) is a spy number, else not a spy number. Let's implement the above steps in a Java program. Spy Number Java Program SpyNumberExample1.java 
+import java.util.Scanner;
+public class SpyNumberExample1 
+{
+public static void main(String args[])
+{ 
+int num, product=1, sum=0, lastdigit;
+// create object of scanner
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter the number to check: " );
+//reads an integer from the user and stores it in the variable num
+num=sc.nextInt();
+//executes untill the condition becomes false
+while(num>0)
+{
+//finds the last digit of the number    
+lastdigit=num%10;
+//adds last digit to the variable sum
+sum=sum+lastdigit;
+//calculates the product
+product=product*lastdigit;
+//removes the last digit from the given number
+num=num/10;
+}
+//compares the sum and product
+if(sum==product)
+//prints if the above condition returns true
+System.out.println("The given number is a spy number.");
+else
+//prints if the above condition returns false
+System.out.println("The given number is not a spy number.");
+}
+}
+ Output 1: 
+Enter the number to check: 123
+The given number is a spy number.
+ Output 2: 
+Enter the number to check: 456
+The given number is a not spy number.
+ SpyNumberExample2.java 
+import java.util.Scanner;
+public class SpyNumberExample2
+{
+//method to check the Spy number
+private static boolean isSpyNumber(int number) 
+{
+int lastDigit = 0;
+int sum = 0;
+int product = 1;
+//executes until the condition returns true
+while(number != 0) 
+{
+//determines the last digit of the given number
+lastDigit = number % 10;
+//adds the last digit to the variable sum
+sum = sum + lastDigit;
+//multiply last digit with product
+product = product * lastDigit;
+//removes the last digit of the given number
+number = number / 10;
+}
+//compares the variable sum with product and returns the result accordingly
+if(sum == product)
+return true;
+return false;
+}
+//driver code
+public static void main(String args[]) 
+{
+int lowerRange = 0, upperRange = 0;
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter the lower range: ");
+//reads lower range
+lowerRange = sc.nextInt();
+System.out.print("Enter upper range: ");
+//reads the upper range 
+upperRange = sc.nextInt();
+System.out.println("The Spy numbers between "+ lowerRange + " to "+ upperRange+" are: ");
+for(int i=lowerRange; i<=upperRange; i++) 
+{
+//calling user-defined function that checks if the given number is spy or not
+if(isSpyNumber(i))
+//prints all the spy numbers
+System.out.print(i +" ");
+}
+}
+}
+ Output: 
+Enter the lower range: 1
+Enter upper range: 10000
+The Spy numbers between 1 to 10000 are: 
+1 2 3 4 5 6 7 8 9 22 123 132 213 231 312 321 1124 1142 1214 1241 1412 1421 2114 2141 2411 4112 4121 4211
+ Next TopicTypes of Applets in Java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

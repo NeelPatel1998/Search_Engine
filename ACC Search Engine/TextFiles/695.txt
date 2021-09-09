@@ -1,0 +1,106 @@
+https://www.javatpoint.com/laravel-vuejs-file-upload-using-vue-dropzone-example
+Laravel VueJS File Upload Using Vue-dropzone Example - Javatpoint
+Laravel VueJS File Upload Using Vue-dropzone Example - Javatpoint ? Home PHP Laravel Magento 2 HTML CSS Java MySQL Bootstrap JavaScript jQuery C XML Quiz Interview Q Comment Forum Training Laravel Tutorial Laravel Tutorial Features of Laravel History of Laravel Installation on Windows XAMPP Installation Composer Installation Git Installation Creating First Laravel Project Laravel Application Structure Laravel Routing Laravel Basic Routing Routing Parameters Laravel Named Routes Laravel Middleware Laravel Route Groups Laravel Controllers Laravel Controllers Routing Controllers Resource Controllers Controller Middleware Laravel Views Laravel Views Passing data to views Laravel Blade Template Blade Template Template Inheritance Laravel Forms Laravel Migration Laravel Migration Migration Structure Generating Migrations Migration Commands Laravel Database Laravel Database Laravel Eloquent Laravel Relationship Laravel Tinker Laravel Crud Misc. Laravel Validation Laravel File Upload Laravel Sessions Laravel vs CodeIgniter Laravel vs Django Laravel vs Symfony Laravel vs WordPress Install and Use Font Awesome Icons in Laravel Delete Multiple Records using Checkbox in Laravel Import and Export CSV file in Laravel 5.8 Generate PDF from html view file and download using dompdf in Laravel Implement Flash Message with Laravel 5.7 Laravel VueJS File Upload Using Vue-dropzone Example Interview Questions Laravel Interview Questions next ? ? prev Laravel VueJS File Upload Using Vue-dropzone Example n this step, we are going to learn Vue-dropzone so that we can upload the VueJS file in Laravel. If we try to upload the file by adding the drag and drop option, there is an awesome way to do this is to choose dropzone js. In our example, we will use the Vue dropzone component to upload the VueJS file. For this, we can use laravel 6, Laravel 7, and Laravel 8. So in our VueJS script, dropzone js can also be used. In order to file or image upload of Vue.js dropzone, we should follow a steps by step process. Firstly, the Laravel 5.6 will be downloaded. After that, VueJS will be initialized. Then we will install the package of Vue-dropzone. Now, one controller and one post route will be created by using the one method. We will use controller and create a POST method on it. After that, we will save the image by writing the following code. If we want to add more details, we can also write it. The step by step processes for file or image upload by using the components of Vue-dropzone is as follows: Step 1: This is the first step, and in this step, we are going to Install Laravel 5.6 project. For this, we will open the command prompt or terminal on our system and then run the following command. 
+composer create-project --prefer-dist laravel/laravel blog
+ Step 2: In the second step, we are going to Create Route. For this, one post route will be created, and we will write code of file upload or image on it. So let's take that file and then put a new route like this: routes/web.php 
+Route::post('formSubmit','ImageController@formSubmit');
+ Step 3: In the third step, we are going to Create Controller. Now we will create the formSubmit method and ImageController. We will use this method to store files or images on the server. So we will write code for that inside this method. For this, we will create a controller like this: app/Http/Controllers/ImageController.php 
+<?php
+  
+namespace App\Http\Controllers;
+  
+use Illuminate\Http\Request;
+  
+class ImageController extends Controller
+{
+    /**
+     * success response method.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function formSubmit(Request $request)
+    {
+    	$imageName = time().'.'.$request->file->getClientOriginalExtension();
+        $request->file->move(public_path('images'), $imageName);
+         
+    	return response()->json(['success'=>'You have successfully upload file.']);
+    }
+}
+ Step 4: In this step, we will do npm Configuration. For this, we will first add a VueJS setup. After that, we will install nmp and then also install the package of Vue-dropzone. We will use our project, and after that, we will use the following commands: Install Vue: 
+php artisan preset Vue
+ Install npm: 
+npm install
+ Install Vue-dropzone: 
+npm install Vue2-dropzone
+ Step 5: In the fifth step, we are going to Write on components and app.js. For this, we will set the app.js path and then write code. After that, we are going to create components of VueJS. So we are going to create both the files and add the following code: resources/assets/js/app.js: 
+require('./bootstrap');
+ 
+window.Vue = require('Vue');
+ 
+Vue.component('example-component', require('./components/ExampleComponent.Vue'));
+ 
+const app = new Vue({
+    el: '#app'
+});
+ resources/assets/js/components/ExampleComponent.Vue: 
+<template>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Example Component</div>
+                    <div class="card-body">
+                        I'm an example component.
+                        <Vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions"></Vue-dropzone>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+ 
+<script>
+ 
+import Vue2Dropzone from 'Vue2-dropzone'
+import 'Vue2-dropzone/dist/Vue2Dropzone.min.css'
+  
+    export default {
+     components: {
+        VueDropzone: Vue2Dropzone
+      },
+      data: function () {
+        return {
+          dropzoneOptions: {
+              url: '/formSubmit',
+              headers: {
+                "X-CSRF-TOKEN": document.head.querySelector("[name=csrf-token]").content
+               }
+          }
+        }
+      },
+        mounted() {
+            console.log('Component mounted.')
+        }
+    }
+</script>
+ Step 6: In the sixth step, we are going or Update welcome.blade.php file. For this, app/js file will be used. So we will update this file by writing the following code: resources/views/welcome.blade.php: 
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Example of Vue JS File Upload Using vue-dropzone in Laravel </title>
+        <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div id="app">
+            <example-component></example-component>
+        </div>
+        <script src="{{asset('js/app.js')}}" ></script>
+    </body>
+</html>
+ The app.js file will be updated when we run the below command: 
+npm run dev
+ When we run the above example, we will get the following output: Next TopicLaravel Interview Questions ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

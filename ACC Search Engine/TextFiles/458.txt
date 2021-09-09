@@ -1,0 +1,184 @@
+https://www.javatpoint.com/dhtml
+DHTML Tutorial - Javatpoint
+DHTML Tutorial - Javatpoint ? Home Java DHTML HTML XHTML CSS JavaScript Bootstrap jQuery XML JSON C Comment Forum Training DHTML Tutorial DHTML Tutorial DHTML Tutorial DHTML stands for Dynamic Hypertext Markup language i.e., Dynamic HTML. Dynamic HTML is not a markup or programming language but it is a term that combines the features of various web development technologies for creating the web pages dynamic and interactive. The DHTML application was introduced by Microsoft with the release of the 4th version of IE (Internet Explorer) in 1997. Components of Dynamic HTML DHTML consists of the following four components or languages: HTML 4.0 CSS JavaScript DOM. HTML 4.0 HTML is a client-side markup language, which is a core component of the DHTML. It defines the structure of a web page with various defined basic elements or tags. CSS CSS stands for Cascading Style Sheet, which allows the web users or developers for controlling the style and layout of the HTML elements on the web pages. JavaScript JavaScript is a scripting language which is done on a client-side. The various browser supports JavaScript technology. DHTML uses the JavaScript technology for accessing, controlling, and manipulating the HTML elements. The statements in JavaScript are the commands which tell the browser for performing an action. DOM DOM is the document object model. It is a w3c standard, which is a standard interface of programming for HTML. It is mainly used for defining the objects and properties of all elements in HTML. Uses of DHTML Following are the uses of DHTML (Dynamic HTML): It is used for designing the animated and interactive web pages that are developed in real-time. DHTML helps users by animating the text and images in their documents. It allows the authors for adding the effects on their pages. It also allows the page authors for including the drop-down menus or rollover buttons. This term is also used to create various browser-based action games. It is also used to add the ticker on various websites, which needs to refresh their content automatically. Features of DHTML Following are the various characteristics or features of DHTML (Dynamic HTML): Its simplest and main feature is that we can create the web page dynamically. Dynamic Style is a feature, that allows the users to alter the font, size, color, and content of a web page. It provides the facility for using the events, methods, and properties. And, also provides the feature of code reusability. It also provides the feature in browsers for data binding. Using DHTML, users can easily create dynamic fonts for their web sites or web pages. With the help of DHTML, users can easily change the tags and their properties. The web page functionality is enhanced because the DHTML uses low-bandwidth effect. Difference between HTML and DHTML Following table describes the differences between HTML and DHTML: HTML (Hypertext Markup language) DHTML (Dynamic Hypertext Markup language) 1. HTML is simply a markup language. 1. DHTML is not a language, but it is a set of technologies of web development. 2. It is used for developing and creating web pages. 2. It is used for creating and designing the animated and interactive web sites or pages. 3. This markup language creates static web pages. 3. This concept creates dynamic web pages. 4. It does not contain any server-side scripting code. 4. It may contain the code of server-side scripting. 5. The files of HTML are stored with the .html or .htm extension in a system. 5. The files of DHTML are stored with the .dhtm extension in a system. 6. A simple page which is created by a user without using the scripts or styles called as an HTML page. 6. A page which is created by a user using the HTML, CSS, DOM, and JavaScript technologies called a DHTML page. 7. This markup language does not need database connectivity. 7. This concept needs database connectivity because it interacts with users. DHTML JavaScript JavaScript can be included in HTML pages, which creates the content of the page as dynamic. We can easily type the JavaScript code within the <head> or <body> tag of a HTML page. If we want to add the external source file of JavaScript, we can easily add using the <src> attribute. Following are the various examples, which describes how to use the JavaScript technology with the DHTML: Document.write() Method The document.write() method of JavaScript, writes the output to a web page. Example 1: The following example simply uses the document.write() method of JavaScript in the DHTML. In this example, we type the JavaScript code in the <body> tag. 
+<HTML>
+<head>
+<title>
+Method of a JavaScript
+</title>
+</head>
+<body>
+<script type="text/javascript">
+document.write("JavaTpoint");
+</script>
+</body>
+</html>
+ Test it Now Output: JavaScript and HTML event A JavaScript code can also be executed when some event occurs. Suppose, a user clicks an HTML element on a webpage, and after clicking, the JavaScript function associated with that HTML element is automatically invoked. And, then the statements in the function are performed. Example 1: The following example shows the current date and time with the JavaScript and HTML event (Onclick). In this example, we type the JavaScript code in the <head> tag. 
+<html>
+<head>
+<title>
+DHTML with JavaScript
+</title>
+<script type="text/javascript">
+function dateandtime()
+{
+alert(Date());
+}
+</script>
+</head>
+<body bgcolor="orange">
+<font size="4" color="blue">
+<center> <p>
+Click here # <a href="#" onClick="dateandtime();"> Date and Time </a>
+# to check the today's date and time. 
+</p> </center>
+</font>
+</body>
+</html>
+ Test it Now Output: Explanation: In the above code, we displayed the current date and time with the help of JavaScript in DHTML. In the body tag, we used the anchor tag, which refers to the page itself. When you click on the link, then the function of JavaScript is called. In the JavaScript function, we use the alert() method in which we type the date() function. The date function shows the date and time in the alert dialog box on the web page. JavaScript and HTML DOM With version 4 of HTML, JavaScript code can also change the inner content and attributes of the HTML event. Example 1: This example checks the Grade of a student according to the percentage criteria with the JavaScript and HTML DOM. In this example, we type the code of a JavaScript in the <body> tag. 
+<html> 
+    <head> 
+        <title> Check Student Grade
+</title> 
+    </head> 
+      
+    <body> 
+<p>Enter the percentage of a Student:</p> 
+<input type="text" id="percentage">
+<button type="button" onclick="checkGrade()">
+Find Grade
+</button> 
+<p id="demo"></p>
+<script type="text/javascript">  
+            function checkGrade() { 
+                var x,p, text; 
+                p = document.getElementById("percentage").value; 
+		
+		x=parseInt(p);
+		
+		
+               if (x>90 && x <= 100) { 
+                    document.getElementById("demo").innerHTML = "A1";
+                } else if (x>80 && x <= 90) { 
+                   document.getElementById("demo").innerHTML = "A2";
+		 } else if (x>70 && x <= 80) { 
+                   document.getElementById("demo").innerHTML = "A3";
+		}	
+            } 
+        </script> 
+    </body> 
+</html> 
+ Test it Now Output: Explanation: In the above code, we check the student’s Grade with the help of JavaScript in DHTML. In the JavaScript code, we used the checkGrade() method, which is invoked when we click on the button. In this function, we stored the value in variable p. The value is taken in the input field. When the value is stored, then we convert the value of p into integer and store the conversion value in x, because the value in p is text. After that, we used the if-else-if statement for finding the grade according to the percentage. CSS with JavaScript in DHTML With version 4 of HTML, JavaScript code can also change the style such as size, color, and face of an HTML element. Example 1: The following example changes the color of a text. 
+<html>
+<head>
+  <title>
+getElementById.style.property example
+</title>
+</head>
+<body>
+  <p id="demo"> This text changes color when click on the following different buttons. </p>
+  <button onclick="change_Color('green');"> Green </button>
+  <button onclick="change_Color('blue');"> Blue </button>
+<script type="text/javascript">
+
+function change_Color(newColor) {
+  var element = document.getElementById('demo').style.color = newColor;
+}
+</script>
+</body>
+</html>
+ Test it Now Output: Explanation: In the above code, we changed the color of a text by using the following syntax: 
+document.getElementById('demo').style.property=new_value;. 
+ The above syntax is used in the JavaScript function, which is performed or called when we clicked on the HTML buttons. The different HTML buttons specify the color of a text. DHTML CSS We can easily use the CSS with the DHTML page with the help of JavaScript and HTML DOM. With the help of this.style.property=new style statement, we can change the style of the currently used HTML element. Or, we can also update the style of any particular HTML element by document.getElementById(id).style.property = new_style statement. Example 1: The following example uses the DHTML CSS for changing the style of current element: 
+<html>
+<head>
+<title>
+Changes current HTML element
+</title>
+</head>
+<body>
+<center>
+<h1 onclick="this.style.color='blue'"> This is a JavaTpoint Site </h1>
+<center>
+</body>
+</html>
+ Test it Now Output: Explanation: In the above code, we used the this.style.color='blue' statement, which shows the color of a text as blue. Example 2: The following example uses the DHTML CSS for changing the style of the HTML element: 
+<html>
+<head>
+  <title>
+changes the particular HTML element example
+</title>
+</head>
+<body>
+  <p id="demo"> This text changes color when click on the following different buttons. </p>
+  <button onclick="change_Color('green');"> Green </button>
+  <button onclick="change_Color('blue');"> Blue </button>
+<script type="text/javascript">
+
+function change_Color(newColor) {
+  var element = document.getElementById('demo').style.color = newColor;
+}
+</script>
+</body>
+</html>
+ Test it Now Output: Explanation: In the above code, we used the var element = document.getElementById('demo').style.color = newColor; statement, which changes the color of a text as green and blue according to the buttons. DHTML Events An event is defined as changing the occurrence of an object. It is compulsory to add the events in the DHTML page. Without events, there will be no dynamic content on the HTML page. The event is a term in the HTML, which triggers the actions in the web browsers. Suppose, any user clicks an HTML element, then the JavaScript code associated with that element is executed. Actually, the event handlers catch the events performed by the user and then execute the code. Example of events: Click a button. Submitting a form. An image loading or a web page loading, etc. Following table describes the Event Handlers used in the DHTML: S.No. Event When it occurs 1. onabort It occurs when the user aborts the page or media file loading. 2. onblur It occurs when the user leaves an HTML object. 3. onchange It occurs when the user changes or updates the value of an object. 4. onclick It occurs or triggers when any user clicks on an HTML element. 5. ondblclick It occurs when the user clicks on an HTML element two times together. 6. onfocus It occurs when the user focuses on an HTML element. This event handler works opposite to onblur. 7. onkeydown It triggers when a user is pressing a key on a keyboard device. This event handler works for all the keys. 8. onkeypress It triggers when the users press a key on a keyboard. This event handler is not triggered for all the keys. 9. onkeyup It occurs when a user released a key from a keyboard after pressing on an object or element. 10. onload It occurs when an object is completely loaded. 11. onmousedown It occurs when a user presses the button of a mouse over an HTML element. 12. onmousemove It occurs when a user moves the cursor on an HTML object. 13. onmouseover It occurs when a user moves the cursor over an HTML object. 14. onmouseout It occurs or triggers when the mouse pointer is moved out of an HTML element. 15. onmouseup It occurs or triggers when the mouse button is released over an HTML element. 16. onreset It is used by the user to reset the form. 17. onselect It occurs after selecting the content or text on a web page. 18. onsubmit It is triggered when the user clicks a button after the submission of a form. 19. onunload It is triggered when the user closes a web page. Following are the different examples using the different event handlers, which helps us to understand the concept of DHTML events: Example 1: This example uses the onclick event handler, which is used to change the text after clicking. 
+<html>
+<head>
+<title>
+Example of onclick event
+</title>
+<script type="text/javascript">
+function ChangeText(ctext)
+{
+ctext.innerHTML=" Hi JavaTpoint! ";
+}
+</script>
+</head>
+<body>
+<font color="red"> Click on the Given text for changing it: <br>
+</font>
+<font color="blue"> 
+<h1 onclick="ChangeText(this)"> Hello World! </h1>
+</font>
+</body>
+</html>
+ Test it Now Output: Example 2: This example uses the onsubmit event handler, which gives an alert after clicking on a submit button. 
+<html>
+<head>
+<title>
+Example of onsubmit event
+</title>
+</head>
+<body>
+<form onsubmit="Submit_Form()">
+<label> Enter your name: </label>
+<input type="text">
+<label> Enter your Roll no: </label>
+<input type="Number">
+<input type="submit" value="submit">
+</form>
+<script type="text/javascript">
+function Submit_Form()
+{
+alert(" Your form is submitted");
+}
+</script>
+</body>
+</html>
+ Test it Now Output: DHTML DOM DHTML DOM stands for Dynamic HTML Document Object Model. It is a w3c standard, which is a standard interface of programming for HTML. It is mainly used for defining the objects and properties of all elements in HTML. It also defines the methods for accessing the HTML elements. Example: The following program helps in understanding the concept of DHTML DOM. This example changes the color of text and displays the text in red colour automatically. 
+<html>
+<head>
+  <title>
+Example of DHTML DOM
+</title>
+</head>
+<body>
+<font color = "blue">
+  <p id="demo"> This text changes color when the page loaded. </p>
+</font> 
+<script type="text/javascript">
+document.getElementById('demo').style.color = "red";
+</script>
+</body>
+</html>
+ Test it Now Output: Advantages of DHTML Following are the various benefits or the advantages of DHTML (Dynamic HTML): Those web sites and web pages which are created using this concept are fast. There is no plug-in required for creating the web page dynamically. Due to the low-bandwidth effect by the dynamic HTML, the web page functionality is enhanced. This concept provides advanced functionalities than the static HTML. It is highly flexible, and the user can make changes easily in the web pages. Disadvantages of DHTML Following are the various disadvantages or limitations of DHTML (Dynamic HTML): The scripts of DHTML does not run properly in various web browsers. Or in simple words, we can say that various web browsers do not support the DHTML. It is only supported by the latest browsers. The coding of those websites that are created using DHTML is long and complex. For understanding the DHTML, users must know about HTML, CSS, and JavaScript. If any user does not know these languages, then it is a time-consuming and long process in itself. For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

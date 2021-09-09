@@ -1,0 +1,195 @@
+https://www.javatpoint.com/bootstrap-4-text
+Bootstrap 4 Text - Javatpoint
+Bootstrap 4 Text - Javatpoint ? Home Bootstrap 4 Bootstrap HTML JavaScript jQuery jQuery UI CSS XML JSON C Java PHP Ajax Quiz Projects Interview Q Bootstrap 4 Tutorial Bootstrap 4 Tutorial Environment setup Bootstrap 4 Layout Bootstrap 4 Buttons Bootstrap 4 Dropdown Bootstrap 4 Spinners Bootstrap 4 Badges Bootstrap 4 Progress Bars Bootstrap 4 Jumbotron Bootstrap 4 Text Bootstrap 4 Pagination Bootstrap 4 Carousel Bootstrap 4 Scrollspy next ? ? prev Bootstrap 4 - Text Default Settings of Text or Typography in Bootstrap 4: By default, the font-size that Bootstrap 4 is of 16px, and the line - height is 1.5. By default, the font-family is "Helvetica Neue", Helvetica, Arial, sans-serif. In addition to that, all the <p> elements have margin-top of 0 and the margin-bottom is around 1 rem that is 16px by default. Headings in Bootstrap 4: Bootstrap 4 provides six styles of headings. All the headings have different border font -weight and font-size. The headings are given below: <h1> - 2.5 rem or 40 px <h2> - 2 rem or 32 px <h3> - 1.75 rem or 28 px <h4> - 1.5 rem or 24 px <h5> - 1.25 rem or 20 px <h6> - 1 rem or 16 px Sample Code to explain headings in Bootstrap 4: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h1>h1 Bootstrap Heading Size - 2.5 rem or 40 px</h1>
+<h2>h2 Bootstrap Heading Size - 2 rem or 32 px</h2>
+<h3>h3 Bootstrap Heading Size - 1.75 rem or 28 px</h3>
+<h4>h4 Bootstrap Heading Size - 1.5 rem or 24 px</h4>
+<h5>h5 Bootstrap Heading Size - 1.25 rem or 20 px</h5>
+<h6>h6 Bootstrap Heading Size - 1 rem or 16 px</h6>
+</div>
+</body>
+</html>
+ Test it Now The Output for this will be: Display Headings in Bootstrap 4: The Display headings in Bootstrap 4 can be used to create more noticeable headings than the normal ones i.e., the larger font-size and lighter font-weight, and there are four classes to select from which are: .display-1, .display-2, .display-3, .display-4 Sample Code for Display Heading in Bootstrap 4: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h1>Display Headings in Bootstrap 4</h1>
+<h1 class="display-1">First Display Heading (.display-1)</h1>
+<h1 class="display-2">Second Display Heading (.display-2)</h1>
+<h1 class="display-3">Third Display Heading (.display-3)</h1>
+<h1 class="display-4">Fourth Display Heading (.display-4)</h1>
+</div>
+</body>
+</html>
+ Test it Now The Output for the above code will be: <small> Element in Bootstrap 4: The <small> Element in Bootstrap 4 can be used to create lighter and secondary text in any heading. Sample Code for <small> Element in Bootstrap 4: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h1> Small Element that has Lighter and Secondary Text </h1>
+<h1> Heading in h1 <small>secondary text </small></h1>
+<h2> Heading in h2 <small>secondary text </small></h2>
+<h3> Heading in h3 <small>secondary text </small></h3>
+<h4> Heading in h4 <small>secondary text </small></h4>
+<h5> Heading in h5 <small>secondary text </small></h5>
+<h6> Heading in h6 <small>secondary text </small></h6>
+</div>
+</body>
+</html>
+ Test it Now The Output for the above code will be: <abbr> Element in Bootstrap 4: The <abbr> Element in Bootstrap 4 helps in creating a dotted border bottom. Sample Code for <abbr> Element in Bootstrap 4: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h1>Abbreviations in Bootstrap 4</h1>
+<p>The <abbr title="Hypertext Markup Language">HTML</abbr> is a markup language which is used for creating and editing those text, images, and other contents that are to be displayed on a web page</p>
+</div>
+</body>
+</html>
+ Test it Now The Output for the above code will be: <blockquote> Element in Bootstrap 4: The .blockquote class is to be added to <blockquote> in order to quote the blocks of content from another source. Sample Code for <blockquote> Element in given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h1>Blockquotes in Bootstrap 4</h1>
+<blockquote class="blockquote">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+<footer class="blockquote-footer">Unknown</footer>
+</blockquote>
+</div>
+</body>
+</html>
+ Test it Now The Output for the above code will be: <mark> Element in Bootstrap 4: In Bootstrap 4, the HTML <mark> element contains a yellow background color and some padding. The <mark> element can be used to highlight the text in a web page. Sample code for <mark> Element is given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h1>Highlight Text</h1>    
+<p>Lorem ipsum dolor sit amet, consectetur <mark> adipiscing </mark> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+</div>
+</body>
+</html>
+ Test it Now The Output for the following code will be: <kbd> Element in Bootstrap 4: The <kbd> element in Bootstrap 4 can be used to show the input that is typically entered via the keyboard. Sample Code for <kbd> Element in Bootstrap 4: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h1>Keyboard Inputs</h1>
+<p>Lorem <kbd> ctrl + t</kbd> ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+</div>
+</body>
+</html>
+ Test it Now The Output for the above code is given below: <code> Element in Bootstrap 4: <code> Element in Bootstrap 4 can be used to embed the inline snippets of code in the code element. Sample Code for <code> Element in Bootstrap 4: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h1>Code Snippets in Bootstrap 4</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <code>Excepteur</code>, <code>sint occaecat</code>, and <code>cupidatat.</code></p>
+</div>
+</body>
+</html>
+ Test it Now The Output for the above code will be: <dl> Element in Bootstrap 4: The <dl> Element in Bootstrap 4 can be used to create a description list. The description list is very useful because it can be used to list items in a web page. Sample Code for <dl> Element in Bootstrap 4: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h1>Description Lists in Bootstrap 4</h1> 
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+<dl>
+<dt>Excepteur sint</dt>
+<dd>- occaecat</dd>
+<dt>Cupidatat non proident</dt>
+<dd>- sunt in culpa qui</dd>
+</dl>     
+</div>
+</body>
+</html>
+ Test it Now The Output of the above code will be: Next TopicBootstrap 4 Pagination ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

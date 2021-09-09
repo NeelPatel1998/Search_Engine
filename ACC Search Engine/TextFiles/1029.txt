@@ -1,0 +1,56 @@
+https://www.javatpoint.com/dynamic-autocomplete-search-using-bootstrap-typeahead-js-example
+Dynamic Autocomplete Search using Bootstrap Typeahead JS Example - JavaTpoint
+Dynamic Autocomplete Search using Bootstrap Typeahead JS Example - JavaTpoint ? Home C Java PHP HTML CSS Bootstrap JavaScript jQuery jQuery UI XML JSON Ajax Quiz Projects Interview Q Comment Forum Training Bootstrap Training Bootstrap Tutorial Bootstrap Introduction What is Bootstrap Bootstrap Example Bootstrap Container Bootstrap Examples Bootstrap Jumbotron Bootstrap Button Bootstrap Grid Bootstrap Table Bootstrap Form Bootstrap Alert Bootstrap Wells Bootstrap Badge & Label Bootstrap Panels Bootstrap Pagination Bootstrap Pager Bootstrap Image Bootstrap Glyphicon Bootstrap Carousel Bootstrap Progress Bar Bootstrap List Group Bootstrap Dropdown Bootstrap Collapse Bootstrap Advance Bootstrap Tabs/Pills Bootstrap Navbar Bootstrap Input Types Bootstrap Modals Bootstrap Popover Bootstrap Scrollspy Bootstrap Utilities Bootstrap Border Bootstrap Clearfix Bootstrap Close Icons Bootstrap Colors Bootstrap Flexbox Display property Image Replacement Invisible Content Bootstrap Position Responsive helpers Screen readers Bootstrap Sizing Bootstrap Spacing Bootstrap Typography Bootstrap CDN Bootstrap Spinners Bootstrap star rating Bootstrap Tooltip Bootstrap Alternatives Bootstrap picker Add to cart button in Bootstrap Change Bootstrap datepicker with specific date format Use of Bootstrap Datepicker in Angular Setting of Datepicker in Bootstrap Bootstrap Datepicker get date on change event Use of Bootstrap datepicker in Laravel Setting of bootstrap timepicker using datetimepicker library Load more feature in Bootstrap Dynamic Autocomplete Search using Bootstrap Typeahead JS Example MCQ Bootstrap MCQ Interview Questions HTML Interview CSS Interview jQuery Interview JavaScript Interview AJAX Interview next ? ? prev Dynamic Autocomplete Search using Bootstrap Typeahead JS Example In this section, we are going to use Bootstrap Typeahead JS so that we can perform a dynamic autocomplete search. Typeahead can also be called autosuggest or autocomplete. It is a kind of tool which is used for language prediction. This tool is used by many search interfaces. When the customers type something in the search bar, they will get some suggestions. Typeahead provides the prediction when the user types in the search bar. The modern web forms have very popular tools for searching, i.e., typeahead input fields. Typeahead is commonly used to improve the experience of users. This tool looks at the text entered by the user while they search for something or fill a form. On the basis of these things, Typeahead provides hints and lists of possible choices to the users. The search can be of any type. When we use the Typeahead, we are going to decrease the potential errors, and we can also save time because while using this, users will have fewer spelling mistakes. Firstly, we are going to create html layout by using the ajax.html file. We will add the code of JQuery and Bootstrap typeahead in the ajax.html file. If we try to write something on input box, we are able to get Dynamic Autocomplete search. It is possible by using the Ajax request. So, ajax.html file will be firstly created by using the following code: ajax.html: 
+<html lang="en">
+<head>
+    <title> Example of Bootstrap Typeahead with Ajax </title>  
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>  
+</head>
+<body>
+
+<div class="row">
+	<div class="col-md-12 text-center">
+		<br/>
+		<h1> Example of Dynamic Autocomplete search using Bootstrap Typeahead JS</h1>	
+			<input class="typeahead form-control" style="margin:0px auto;width:300px;" type="text">
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	$('input.typeahead').typeahead({
+	    source:  function (query, process) {
+        return $.get('/ajaxpro.php', { query: query }, function (data) {
+        		console.log(data);
+        		data = $.parseJSON(data);
+	            return process(data);
+	        });
+	    }
+	});
+
+</script>
+</body>
+</html>
+ Now our example requires the JSON data. We will get this by creating a new page and by Ajax request. So in our following example, we will create one more page ajaxpro.php file. After that, we will add the following code: ajaxpro.php: 
+<?php
+	
+	define (DB_USER, "root");
+	define (DB_PASSWORD, "root");
+	define (DB_DATABASE, "learn");
+	define (DB_HOST, "localhost");
+	$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
+
+	$sql = "SELECT items.title FROM items 
+			WHERE title LIKE '%".$_GET['query']."%'
+			LIMIT 10"; 
+	$result = $mysqli->query($sql);
+	
+	s$json = [];
+	while($row = $result->fetch_assoc()){
+	     $json[] = $row['title'];
+	}
+
+	echo json_encode($json);
+ Our above code is ready to run. When we run this code, we are going to get the following output: Next Topic# ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

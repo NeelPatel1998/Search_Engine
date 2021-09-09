@@ -1,0 +1,268 @@
+https://www.javatpoint.com/password-hide-in-html
+Password hide in HTML - javatpoint
+Password hide in HTML - javatpoint ? Home C Java PHP HTML XHTML CSS Bootstrap JavaScript jQuery XML JSON Ajax Node.js SQL Quiz Projects Interview Q Training Web Designing Training HTML Tutorial Introduction to HTML What is HTML HTML Text Editors HTML Building Blocks HTML tags HTML Attributes HTML Elements HTML Formatting HTML Heading HTML Paragraph HTML Phrase Tags HTML Anchor HTML Image HTML Table HTML Lists HTML Ordered List HTML Unordered List HTML Description List HTML Form HTML Form Input HTML Form Attribute HTML with CSS HTML Classes HTML Id HTML Iframes HTML JavaScript HTML Comments HTML File Path HTML Head HTML Layout HTML Layout Techniques HTML Responsive HTML Computercode HTML Entities HTML Symbols HTML Charset HTML URL Encode HTML Attributes HTML Global Attributes HTML Event Attributes HTML Tags List HTML Tags List HTML 5 Tags HTML <!DOCTYPE> Tag HTML <a> Tag HTML <abbr> Tag HTML <acronym> Tag HTML <address> Tag HTML <applet> Tag HTML <area> Tag HTML <article> Tag HTML <aside> Tag HTML <audio> Tag HTML <b> Tag HTML <base> Tag HTML <basefont> Tag HTML <bdi> Tag HTML <bdo> Tag HTML <big> Tag HTML <blockquote> Tag HTML <body> Tag HTML <br> Tag HTML <button> Tag HTML <canvas> Tag HTML <caption> Tag HTML <center> Tag HTML <cite> Tag HTML <code> Tag HTML <col> Tag HTML <colgroup> Tag HTML <data> Tag HTML <datalist> Tag HTML <dd> Tag HTML <del> Tag HTML <details> Tag HTML <dfn> Tag HTML <dialog> Tag HTML <dir> Tag HTML <div> Tag HTML <dl> Tag HTML <dt> Tag HTML <em> Tag HTML <embed> Tag HTML <fieldset> Tag HTML <figcaption> Tag HTML <figure> Tag HTML <font> Tag HTML <footer> Tag HTML <form> Tag HTML <frame> Tag HTML <frameset> Tag HTML <h1> to <h6> Tag HTML <head> Tag HTML <header> Tag HTML <hr> Tag HTML <html> Tag HTML <i> Tag HTML <iframe> Tag HTML <img> Tag HTML <input> Tag HTML <ins> Tag HTML <isindex> Tag HTML <kbd> Tag HTML <label> Tag HTML <legend> Tag HTML <li> Tag HTML <link> Tag HTML <main> Tag HTML <map> Tag HTML <mark> Tag HTML <marquee> Tag HTML <menu> Tag HTML <meta> Tag HTML <meter> Tag HTML <nav> Tag HTML <noframes> Tag HTML <noscript> Tag HTML <object> Tag HTML <ol> Tag HTML <optgroup> Tag HTML <option> Tag HTML <output> Tag HTML <p> Tag HTML <param> Tag HTML <picture> Tag HTML <pre> Tag HTML <progress> Tag HTML <q> Tag HTML <rp> Tag HTML <rt> Tag HTML <ruby> Tag HTML <s> Tag HTML <samp> Tag HTML <script> Tag HTML <section> Tag HTML <select> Tag HTML <small> Tag HTML <source> Tag HTML <span> Tag HTML <strike> Tag HTML <strong> Tag HTML <style> Tag HTML <sub> Tag HTML <summary> Tag HTML <sup> Tag HTML <svg> Tag HTML <table> Tag HTML <tbody> Tag HTML <td> Tag HTML <template> Tag HTML <textarea> Tag HTML <tfoot> Tag HTML <th> Tag HTML <thead> Tag HTML <time> Tag HTML <title> Tag HTML <tr> Tag HTML <track> Tag HTML <tt> Tag HTML <u> Tag HTML <ul> Tag HTML <var> Tag HTML <video> Tag HTML <wbr> Tag HTML5 Advance HTML5 tutorial HTML5 User Manual HTML 5 Tags HTML5 New Elements HTML Event Attributes HTML Google Maps HTML5 Semantics HTML5 Migration HTML Audio HTML Video HTML SVG HTML Canvas HTML API HTML Drag & Drop HTML Geolocation HTML Web Storage HTML Web Workers HTML SS Event HTML Color Names HTML Color Names HTML Misc HTML Button onClick HTML Checkbox Tag HTML code Tag HTML favicon HTML Login Form HTML Radio Tag HTML Registration Form HTML Required Attribute HTML Space Code HTML Text Tag HTML Background-color HTML Date HTML Form Action HTML Id Attribute HTML List Box Add JavaScript to HTML HTML Background Image HTML Button Type HTML Hide Element HTML Reset Button HTML Search Box HTML Selected Attribute Simple HTML Pages Create HTML Page HTML Button Disabled HTML Font Color HTML Font Size HTML Image Button HTML Nested Table What Does HTML Stand For How to Insert Image in HTML How to Change Font in HTML How to Change Text Color in Html How to Change Background Color in Html How to Comment in Html How to Link CSS to Html How to add Background Image in Html How to Convert Html to PDF How to add Link in Html How to Make a Table in Html How to Change Font Size in Html How to make a Button in Html How to Add a Favicon in Html How to Change Image Size in Html How to align text in Html How to align image in Html How to add Video in Html How to Change Link color in Html How to make an Image a Link in Html How to add Space in Html How to Embed Youtube Video in Html How to add a Line in Html How to Make a Dropdown Menu in Html How to call a JavaScript Function in Html How to Create a Form in Html How to make a List in Html How to Rotate Image in Html How to add jQuery to Html How to Move Image in Html How to Create Text Box in Html How to move a Text in Html What does br mean in html How to add border in Html What does Div mean in Html How to Wrap text in Html What does span do in Html How to make a Navigation Bar in Html How to use PHP in Html How to Highlight text in Html What does p mean in Html How to add Padding in Html What does ul mean in Html How to add Social Media Icons in Html How to make a Footer in Html How to make a Search bar in Html How to Wrap Text around an image in Html HTML vs HTML5 HTML Counter Intermediate Excel Test Download pdf file using HTML Password hide in HTML MCQ HTML MCQ Interview Questions HTML Interview Questions next ? ? prev Password hide in HTML In this article, we will learn how to hide the password field in a form using HTML. At the beginning of this article, we will learn some HTML basics, <form> tag and password element. After that, we can understand this concept with some examples. What do you mean by HTML? HTML stands for Hypertext Markup language. The latest HTML version is HTML5. HTML is the standard markup language for building and designing web pages. In HTML, we can use various commands called tags. Tags are instructions that are embedded directly into the text of an HTML document. Each HTML tag specifies some action that the browser displays on a web page. <form> tag in HTML It is one of the important elements of HTML. The <form> tag consists of two mandatory attributes and some optional attributes. <Input> element The input element is used to insert various controls in the form, such as text boxes, files, passwords, emails, etc. The input element is applied in the form using <input> tag. <input type = "password" > Password can also be the part of the data entered in HTML forms. Instead of displaying original characters, either asterisk (*) or dots (.) are shown when a password is entered. Thus the entered characters are masked or hidden. To make a textbox that can hide the entered characters, the type attribute of <input> element should be set to "password." Syntax: 
+<input type ="password" name ="name_of_password_box">
+ All the attributes used with textbox are also supported by password input element. The various attributes used with <input type = "password" > are given below: Size: It specifies the size or width of the <input type = "password" > box. If the user enters more characters than the specified size, the characters are automatically scrolled to the left. For Example: <input type="password" size ="20" > Placeholder: It specifies a short hint that describes an input field's expected value (e.g., a sample value or a short description of the expected format). This hint is displayed in the input field before the user enters a value. For Example: <input type="password" size ="20" placeholder=" Enter the value of Password"> Maxlength: It specifies the maximum number of characters that can be entered in the <input type = "password" > box by the user. For Example: <input type="password" size ="20" maxlength ="20" placeholder="Password"> Min length: It specifies the minimum number of characters that can be entered in the <input type = "password" > box by the user. For Example: <input type="password" size ="20" Minlength ="20" placeholder="Password"> Value: It specifies the default text that will appear in the <input type = "password" > box when the form is initially loaded in the browser. For Example: <input type="password" size ="20" Minlength ="20" placeholder="Password" value =" Enter Password" > Let's explain the <input> element with the help of various examples: Example 1: 
+<! DOCTYPE html>
+<html>
+<head>
+<title>
+Password hide in HTML
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<style>
+body {
+  background: #191828;
+  color: #efedef;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.6em;
+  margin: 0;
+  padding: 100px; 
+  }
+
+h4 {
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+ color: #3494e6;
+  align: center;
+}
+.form-wrapper {
+  background: #fff;
+  border-radius: 5px;
+  padding: 50px;
+}
+.form-control,
+.custom-select {
+  border-radius: 0px;
+  color: #495057;
+  background-color: #f1f1f1;
+  border-color: none;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #ffffff;
+  border: 1px solid #b5b6b3;
+  outline: 0;
+  box-shadow: none;
+}
+
+.btn {
+  background: #3494e6;
+  border: #3494e6;
+  padding: 0.6rem 3rem;
+  font-weight: bold;
+}
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+  background: #3494e6;
+  border: #3494e6;
+  outline: 0;
+}
+button {
+	display: inline-block;
+	padding: 0.35em 1.2em;
+	border: 0.1em solid #3494e6;
+	margin: 0 0.3em 0.3em 0;
+	border-radius: 0.12em;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: 'Roboto',sans-serif;
+	font-weight: 700;
+	color: #3494e6;
+	text-align: center;
+	transition: all 0.2s;
+	}
+	button:hover {
+	color: #FFFFFF;
+	background-color: #3494e6;
+	}
+</style>
+</head>
+<body>
+<section class="contact-from pt-4">
+  <div class="container">
+  <div class="row mt-5">
+      <div class="col-md-7 mx-auto">
+        <div class="form-wrapper">
+          <div class="row">
+            <div class="col-md-12">
+              <h4> <b> Example:  Password Hide in HTML </b> </h4>
+            </div>
+          </div>
+          <form _lpchecked="1">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+         <input type="text" class="form-control" placeholder="First name" required >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Last name" required >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+               <input type="email" class="form-control" placeholder="Email" required >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1"> Male </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">
+                    <label class="form-check-label" for="inlineRadio1"> Female </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Phone number" required >
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="date" class="form-control">
+                </div>
+              </div>
+	<div class="col-md-6">
+                <div class="form-group">
+                  <input type="password" class="form-control" placeholder="Password" required >
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="password" class="form-control" placeholder="Confirm Password" >
+                </div>
+              </div>
+              <div class="col-md-12">
+                <select name="countries" class="custom-select" id="exampleFormControlSelect1">
+                  <option> Select country </option>
+                  <option> India </option>
+                  <option> USA </option>
+                  <option> France </option>
+                  <option> China </option>
+                  <option> Japan </option>
+                </select>
+              </div>
+
+            </div>
+            <div class="mt-3" align="center">
+              <button> Register </button>           
+	 </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+</section>
+</body>
+</html>
+ Output: The output of this example is given below: Example 2: 
+<html>
+<head>
+<title>
+Password hide in HTML
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+body {
+  background: #191828;
+  color: #efedef;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.6em;
+  margin: 0;
+  padding: 100px; 
+  }
+h4 {
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+ color: #3494e6;
+  align: center;
+}
+.form-container {
+  display: block;
+  width: 500px;
+  margin: 60px auto;
+  text-align: left;
+}
+lable {
+  display: block;
+  position: relative;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+input[type='password'] {
+  width: 100%;
+  box-sizing: border-box;
+  height: 55px;
+  display: inline-block;
+  border: 3px solid #2F96EF;
+  border-radius: 5px;
+  padding: 0 15px;
+  margin: 10px 0;
+  transition: .2s;
+}
+input[type='password']:focus {
+  outline: none;
+   -moz-outline: none;
+   -webkit-outline: none;
+}
+lable:before {
+  content: "\f070";
+  color: #aaa;
+  font-size: 22px;
+  font-family: FontAwesome;
+  position: absolute;
+  right: 25px;
+  top: 44px;
+}
+h4 {
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+ color: #3494e6;
+  align: center;
+}
+</style>
+<body>
+<div class="form-container">
+ <h4> Example 2: Password hide in HTML </h4>
+  <form class="form-2" action="">
+    <lable> Enter password
+      <input class="input-2" type="password" placeholder="??????">
+      </lable>
+   </form>
+</div>
+</body>
+</html>
+ Output: The output of this example is given below: Next TopicHTML MCQ ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,97 @@
+https://www.javatpoint.com/dynamic-drag-and-drop-table-rows-using-jquery-ajax
+Dynamic Drag and Drop table rows using JQuery Ajax - javatpoint
+Dynamic Drag and Drop table rows using JQuery Ajax - javatpoint ? Home jQuery jQuery UI JavaScript C Java PHP HTML CSS XML JSON Node.js SQL Interview Q Training jQuery Tutorial jQuery Introduction What is jQuery jQuery History jQuery Example jQuery Selectors jQuery Effects jQuery Effects jQuery hide() jQuery show() jQuery toggle() jQuery fadeIn() jQuery fadeOut() jQuery fadeToggle() jQuery fadeTo() jQuery slideDown() jQuery slideUp() jQuery slideToggle() jQuery animate() jQuery delay() jQuery HTML/CSS jQuery html() jQuery text() jQuery val() jQuery css() jQuery before() jQuery prepend() jQuery after() jQuery insertAfter() jQuery append() jQuery appendTo() jQuery clone() jQuery remove() jQuery empty() jQuery detach() jQuery scrollTop() jQuery attr() jQuery prop() jQuery offset() jQuery position() jQuery addClass() jQuery hasClass() jQuery toggleClass() jQuery width() jQuery height() jQuery innerWidth() jQuery innerHeight() jQuery outerWidth() jQuery outerHeight() jQuery wrap() jQuery wrapInner() jQuery wrapAll() jQuery unwrap() jQuery Form jQuery serialize() jQuery serializeArray() jQuery Events jQuery Events jQuery click() jQuery bind() jQuery unbind() method jQuery blur() jQuery focus() jQuery select() jQuery change() jQuery submit() jQuery keydown() jQuery keypress() jQuery keyup() jQuery mouseenter() jQuery mouseleave() jQuery hover() jQuery mousedown() jQuery mouseup() jQuery mouseover() jQuery mouseout() jQuery load() jQuery unload() jQuery delegate() jQuery Misc jQuery ajax() method jQuery children() method jQuery data() method jQuery each() method jQuery eq() method jQuery extend() method jQuery filter() method jQuery find() method jQuery get() method jQuery grep() method jQuery length property jQuery is() method jQuery not() method jQuery param() method jQuery radio button jQuery read more/read less jQuery star rating :enabled selector :disabled selector noConflict() method :nth-child selector parent() method post() method ready() function removeAttr() method replaceWith() method resize() method siblings() method stop() method trigger() method trim() method jQuery getJSON() method jQuery replaceAll() method jQuery on() method jQuery off() method jQuery first() method jQuery last() method jQuery isNumeric() method jQuery :reset selector jQuery size() method jQuery contains() method jQuery ajaxSend() method jQuery ajaxError() method jQuery :lang() selector jQuery :lt() selector jQuery :gt() selector jQuery map() function jQuery next() method jQuery nextUntil() method jQuery error() method jQuery now() method jQuery parseJSON() method jQuery inArray() method jQuery dblclick() method jQuery $.proxy() method jQuery has() method jQuery index() method jQuery insertBefore() method jQuery merge() method jQuery nth-of-type() selector jQuery prev() method jQuery prevAll() method jQuery scroll() method jQuery scrollLeft() method jQuery slice() method jQuery contents() method jQuery nextAll() method jQuery offsetParent() method jQuery parents() method jQuery parentsUntil() method globalEval() method undelegate() method triggerHandler() method toArray() method removeProp() method removeData() method queue() method prependTo() method noop() method makeArray() method keypress() method isPlainObject() method isFunction() method isEmptyObject() method isArray() method focusout() method focusin() method event.preventDefault() method clearQueue() method andSelf() method andBack() method jQuery dequeue() method jQuery end() method jQuery even() method jQuery :file selector jQuery :hidden selector jQuery isWindow() method jQuery odd() method jQuery parseXML() method jQuery :password selector jQuery.unique() method jQuery.uniqueSort() method jQuery :visible selector jQuery.isXMLDoc() method jQuery add() method jQuery closest() method jQuery Questions How to change the background image using jQuery How to Detect a Mobile Device offset vs position in jQuery Checkbox validation in jQuery Use of moment JS to change date format in jquery jQuery Redirect to Another Page After 5 Seconds JQuery Validation jQuery get Difference between two Dates in days Dynamic Drag and Drop table rows using JQuery Ajax Miscellaneous jQuery vs AngularJS jQuery MCQ jQuery MCQ jQuery UI 50+ jQuery UI Interview Questions jQuery Questions next ? ? prev Dynamic Drag and Drop table rows using JQuery Ajax We are going to use JQuery Ajax so that we can drag and drop rows of a table dynamically. If any user or client want to understand the flow of drag and drop list items, table rows, div, or dynamic sorting, it will be a very interacting thing for them to understand. In our example, we will use JQuery UI so that we can create drag and drop rows of a table. We will also use PHP so that we can make it dynamic. Basically, we are going to use JQuery Ajax to save our data into the database. If we want to make an attractive and better layout, it is possible by using the Bootstrap. We can also develop a sortable table row by using the JQuery UI. In our example, we don't have to download and save on our computer because we are going to CSS or cdn js for both. After that, we will create a table named "sorting_items", which will contain the title, id, position_order, and description columns. We can use Ajax to put all these things on one page. For this, we will follow the step by step process, which is described as follows: Step 1: This is the first step, and in this step, we are going to Create Database table. In our example, we require a table and database both that's why we will create both. We will create a table named "sorting_items" and a database named "laravel_test", which will contain the columns id and name. We are going to use the below sql query to create the "sorting_items" table. SQL Query: 
+CREATE TABLE IF NOT EXISTS `sorting_items` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `title` varchar(120) NOT NULL,
+  `description` text NOT NULL,
+  `position_order` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+ Step 2: In this step, we will Create index.php file. Here all the data will be display and we will perform sorting by writing the following code. We will sort the table row by using the drag and drop. So we are going to create index.php file and then we will add the following code: index.php 
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Example of Dynamic Drag and Drop table rows in PHP Mysql </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h3 class="text-center"> Example of Dynamic Drag and Drop table rows in PHP Mysql </h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Defination</th>
+            </tr>
+            <tbody class="row_position">
+            <?php
+
+            require('db_config.php');
+
+            $sql = "SELECT * FROM sorting_items ORDER BY position_order";
+            $users = $mysqli->query($sql);
+            while($user = $users->fetch_assoc()){
+
+            ?>
+                <tr  id="<?php echo $user['id'] ?>">
+                    <td><?php echo $user['id'] ?></td>
+                    <td><?php echo $user['title'] ?></td>
+                    <td><?php echo $user['description'] ?></td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div> <!-- container / end -->
+</body>
+
+<script type="text/javascript">
+    $( ".row_position" ).sortable({
+        delay: 150,
+        stop: function() {
+            var selectedData = new Array();
+            $('.row_position>tr').each(function() {
+                selectedData.push($(this).attr("id"));
+            });
+            updateOrder(selectedData);
+        }
+    });
+
+    function updateOrder(data) {
+        $.ajax({
+            url:"ajaxPro.php",
+            type:'post',
+            data:{position:data},
+            success:function(){
+                alert('your change successfully saved');
+            }
+        })
+    }
+</script>
+</html>
+ Step 3: Now, we will Create Database Configuration file. For this, the name, username, and password of the database will be set. We will use our root directory to create the file "db_config.php". For this creation, we will put the following code: db_config.php 
+<?php
+
+$mysqli = new mysqli("localhost", "root", "root", "laravel_test");
+
+?>
+ Step 4: This is the last step, in this step, we are going to Create ajaxPro.pho file. We will save our data by creating the Ajax file. So we are going to create an ajaxPro.php file, and then we will add the following code: ajaxPro.php 
+<?php 
+
+require('db_config.php');
+
+$position = $_POST['position'];
+
+$i=1;
+foreach($position as $k=>$v){
+    $sql = "Update sorting_items SET position_order=".$i." WHERE id=".$v;
+    $mysqli->query($sql);
+
+	$i++;
+}
+
+?>
+ Now the above code is ready to run. The output of the above code is as follows: Next TopicjQuery v/s AngularJS ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

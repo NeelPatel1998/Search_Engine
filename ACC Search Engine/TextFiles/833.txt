@@ -1,0 +1,60 @@
+https://www.javatpoint.com/graphql
+GraphQL Tutorial - javatpoint
+GraphQL Tutorial - javatpoint ? Home Java GraphQL RESTful Web Services Spring Spring Boot Servlet JSP Struts2 Mail API Hibernate Android Design Pattern GraphQL Tutorial GraphQL Tutorial GraphQL Installation GraphQL Architecture GraphQL First Example Application Components GraphQL vs REST Advantage & Disadvantage GraphQL Schema GraphQL Type System GraphQL Resolvers Apollo Framework Apollo: The GraphQL Toolkit Apollo Client Installation Apollo Server Installation Interview Questions GraphQL Interview next ? GraphQL Tutorial GraphQL is a new API standard invented and developed by Facebook. It is an open-source server-side technology, now maintained by a large community of companies and individuals of all over the world. It is also an execution engine that works as a data query language and used to fetch declarative data. It was developed to optimize RESTful API calls and provides a flexible, robust, and more efficient alternative to REST. GraphQL is data query and manipulation language for your API and a server-side runtime for executing queries when you define a type system for your data. Unlike the REST APIs, a GraphQL server provides only a single endpoint and responds with the precise data that a client asked for. History of GraphQL GraphQL was an internal project of Facebook. It was developed by Facebook in 2012 and was used in their native mobile apps. After that, it was publicly released in 2015 at the React.js conference. Later in 2018, Facebook moved this GraphQL project to a newly-established foundation named GraphQL Foundation, which was hosted by the non-profit Linux Foundation. GraphQL was created by Facebook's team, where the leading creator was Lee Byron, who wants to make GraphQL omnipresent across web platforms. Operating System Compatibility GraphQL is a cross-platform, open-source, data query, and manipulation language for APIs. GraphQL servers are available for multiple languages such as Java, Python, C#, PHP, R, Haskell, JavaScript, Perl, Ruby, Scala, Go, Elixir, Erlang, and Clojure, etc. So, it can be used with any programming language and framework. GraphQL: A rapidly growing community GraphQL is constantly and rapidly growing its community because a large number of companies like Netflix and Coursera are interested and working on similar ideas to make this API more efficient. After GraphQL became open-sourced, Netflix open-sourced its solution Falcor and Coursera canceled its initiatives and completely switched to using GraphQL. Now, GraphQL is used by a lot of companies such as Facebook, Github, Twitter, Coursera, yelp, Pinterest, Serverless, ProductHunt, Shopify, etc. Why use GraphQL? We already had an API named REST for data communication, which follows a clear and well-structured resource-oriented approach. It also provides some great ideas such as stateless servers, structured access to resources, etc. But, REST is not so flexible to cope up with the rapidly changing requirements of the clients that access them. In this case, when the data gets more complex, the routes get longer. Sometimes, it is challenging to fetch the data with a single request. That's why we use GraphQL. Let's see the advantages of using GraphQL: 1. GraphQL is more precise, accurate, and efficient. GraphQL is precise, accurate, and efficient. Just send a GraphQL query to your API and get the exact result that you need. The results of GraphQL are always predictable. Applications using GraphQL are fast and stable because they fetch the data for required fields only, unlike the REST APIs, where REST APIs fetch data for all the fields for a specific object. You can understand it by an example. Suppose there is an object named employee with the attributes id, firstName, and lastName. Now, we have to create a mobile application to fetch only the firstName and id. If we design a REST endpoint like /api/v1/employee, it will fetch data for all the fields for the employee object. This is called data over fetching because here, data is over fetched by the REST service. We can solve this problem by using GraphQL. See the following GraphQL query: 
+{
+   employee {
+      id
+      firstName
+   }
+}
+ Here, the GraphQL query fetches values only for the id and firstName fields and not fetch the values for other attributes of the employee object. 
+{
+   "data": {
+      "employee": [
+         {
+            "id": "101",
+            "firstName": "Albert"
+         },
+         {
+            "id": "102",
+            "firstName": "Freda"
+         }
+      ]
+   }
+}
+ 2. Retrieve many resources from a single request By using GraphQL, you can fetch all the data required for your application from a single request while REST APIs require loading from multiple URLs. That's why applications using GraphQL are fast even on slow mobile network connections. See this example: We have an object Employee. Suppose we have another object named Company which has the attributes: name and location. The Employee object has an association relationship with the Company object. If we use REST API to fetch the details of employees and their companies, we have to make two requests to the server like /api/v1/employees and /api/v1/companies. This will force mobile applications to make multiple calls to the server to get the desired data. But if you use GraphQL, the mobile application can fetch details for both Employee and Company objects in a single request. See the following GraphQL query: 
+{
+   employee{
+      id
+      firstName
+      college{
+         name
+         location
+      }
+   }
+}
+ You can see the output contains exactly those fields you have requested for: 
+{
+   "data": {
+      "employee": [
+         {
+            "id": "101",
+            "firstName": "Albert",
+            "company": {
+               "name": "JTP",
+               "location": "Paris"
+            }
+         },
+         
+         {
+            "id": "102",
+            "firstName": "Freda",
+            "company": {
+               "name": "HCL",
+               "location": "Noida"
+            }         
+         }
+      ]
+   }
+}
+ 3. GraphQL queries are simple and human-readable. 4. GraphQL is best suited for microservices and complex systems because of using a simple query. 5. It facilitates you to deal with many databases efficiently. 6. Data can be fetched using a single API call. 7. You don't face over fetching and under fetching issues in GraphQL. 8. Using GraphQL, you can discover the schema in the appropriate format. 9. GraphQL provides rich and powerful developer tools for testing queries and documentation. Audience To learn GraphQL, you must have the basic knowledge of . Prerequisites Our GraphQL tutorial is designed to help beginners and professionals. Problem We assure that you will not find any problem in this GraphQL tutorial. However, if there is any mistake, please post the problem in the contact form. Next TopicGraphQL Installation next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

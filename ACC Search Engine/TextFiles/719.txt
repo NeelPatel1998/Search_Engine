@@ -1,0 +1,198 @@
+https://www.javatpoint.com/palindrome-in-javascript
+Palindrome in JavaScript - javatpoint
+Palindrome in JavaScript - javatpoint ? Home JavaScript C C++ Java PHP HTML CSS Bootstrap jQuery \ Node.js SQL Android Quiz Projects Interview Q Comment Forum Training JavaScript Tutorial JavaScript Introduction JavaScript Example External JavaScript JavaScript Basics JS Comment JS Variable JS Global Variable JS Data Types JS Operators JS If Statement JS Switch JS Loop JS Function JavaScript Objects JS Object JS Array JS String JS Date JS Math JS Number JS Boolean JavaScript BOM Browser Objects 1) Window Object 2) History Object 3) Navigator Object 4) Screen Object JavaScript DOM 5) Document Object getElementById GetElementsByClassName() getElementsByName getElementsByTagName JS innerHTML property JS innerText property JavaScript Validation JS form validation JS email validation JavaScript OOPs JS Class JS Object JS Prototype JS constructor Method JS static Method JS Encapsulation JS Inheritance JS Polymorphism JS Abstraction JavaScript Cookies JS Cookies Cookie Attributes Cookie with multiple Name Deleting Cookies JavaScript Events JavaScript Events JavaScript addEventListener() JS onclick event JS dblclick event JS onload event JS onresize event Exception Handling JS Exception Handling JavaScript try-catch JavaScript Misc JS this Keyword JS Debugging JS Hoisting JS Strict Mode JavaScript Promise JS Compare dates JavaScript array.length JavaScript alert() JavaScript eval() function JavaScript closest() JavaScript continue statement JS getAttribute() method JS hide elements JavaScript prompt() removeAttribute() method JavaScript reset JavaScript return JS String split() JS typeof operator JS ternary operator JS reload() method JS setAttribute() method JS setInterval() method JS setTimeout() method JS string includes() method Calculate current week number in JavaScript Calculate days between two dates in JavaScript JavaScript String trim() JavaScript timer Remove elements from array JavaScript localStorage JavaScript offsetHeight Confirm password validation Static vs Const How to Convert Comma Separated String into an Array in JavaScript Calculate age using JavaScript JavaScript label statement JavaScript String with quotes How to create dropdown list using JavaScript How to disable radio button using JavaScript JavaScript Advance JS TypedArray JS Set JS Map JS WeakSet JS WeakMap JavaScript callback JavaScript closures JavaScript date difference JavaScript date format JS date parse() method JavaScript defer JavaScript redirect JavaScript scope JavaScript scroll JavaScript sleep JavaScript void JavaScript Form Differences jQuery vs JavaScript JavaScript vs PHP Questions How to add JavaScript to html How to enable JavaScript in my browser difference between Java and JavaScript How to call JavaScript function in html How to write a function in JavaScript Is JavaScript case sensitive How does JavaScript Work How to debug JavaScript How to Enable JavaScript on Android What is a promise in JavaScript What is hoisting in JavaScript What is Vanilla JavaScript How to add a class to an element using JavaScript How to calculate the perimeter and area of a circle using JavaScript How to create an image map in JavaScript How to find factorial of a number in JavaScript How to get the value of PI using JavaScript How to make a text italic using JavaScript What are the uses of JavaScript How to get all checked checkbox value in JavaScript How to open JSON file Random image generator in JavaScript How to add object in array using JavaScript JavaScript Window open method JavaScript Window close method How to check a radio button using JavaScript JavaScript Const JavaScript function to check array is empty or not JavaScript multi-line String JavaScript Anonymous Functions Implementing JavaScript Stack Using Array JavaScript classList JavaScript Code Editors JavaScript let keyword Random String Generator using JavaScript JavaScript Queue Event Bubbling and Capturing in JavaScript How to select all checkboxes using JavaScript JavaScript change Event JavaScript focusout event Traverse array object using JavaScript JavaScript create and download CSV file How to make beep sound in JavaScript How to add a WhatsApp share button in a website using JavaScript JavaScript Execution Context JavaScript querySelector Shallow Copy in JavaScript How to Toggle Password Visibility in JavaScript Removing Duplicate From Arrays JavaScript insertBefore JavaScript Select Option Get and Set Scroll Position of an Element Getting Child Elements of a Node in JavaScript JavaScript scrollIntoView JavaScript String startsWith JS First Class Function JavaScript Default Parameters JavaScript Recursion in Real Life JavaScript removeChild Remove options from select list in JavaScript JavaScript Calculator Palindrome in JavaScript JavaScript Call Stack MCQ JavaScript MCQ Interview Questions JavaScript I/Q next ? ? prev Palindrome in JavaScript In this topic, we will learn about Palindrome and validate that the given numbers or strings are Palindrome or not in JavaScript. A palindrome is used to verify a sequence of numbers, strings, or letters that are read left to right and right to left to match the same characters or return the same sequence of characters. In simple terms, when the numbers, strings, or characters are reversed that return the same result as the original numbers or characters, it is called a Palindrome. For example, NITIN, 123454321, madam, etc. Suppose we have a word, madam. When we read the word madam from the forward and the backward end, it returns the same string. Therefore, we can refer to the string or number as the Palindrome. Palindrome Algorithm Following are the steps to get the Palindrome in JavaScript, as follow: Get the strings or numbers from the user. Take a temporary variable that holds the numbers. Reverse the given number. Compare the original number with the reversed number If the temporary and original number are same, it the number or string is a Palindrome. Else the given string or number is not the Palindrome. Check Palindrome number and string by accepting the number through prompt box. string.html 
+<html>
+<head> <title> JavaScript Palindrome </title>
+</head>
+<body>
+
+<!-- Use JavaScript programming code to validate the Palindrome numbers or strings. -->
+<script>		
+		
+function validatePalin(str) {
+
+    // get the total length of the words
+    const len = string.length;
+
+    // Use for loop to divide the words into 2 half
+    for (let i = 0; i < len / 2; i++) {
+
+        // validate the first and last characters are same
+        if (string[i] !== string[len - 1 - i]) {
+            alert( 'It is not a palindrome');
+        }
+    }
+    alert( 'It is a palindrome');
+}
+
+// accept the string or number from the prompt
+const string = prompt('Enter a string or number: ');
+
+const value = validatePalin(string);
+
+console.log(value);
+</script>
+	</body>
+		</html> 
+ Test it Now Output When the above code is executed, it shows the below image: Now we enter the number or string on the prompt alert box and then click the OK button to validate the given string is Palindrome or not. After that, it shows the below Output. If the given string is not a Palindrome, it shows the string is not a Palindrome. Similarly, we can enter the number and validate whether the given number is Palindrome. Check Palindrome string using built-in Functions In this program, we use the built-in function like the split () method, reverse () method, and join () method to find the Palindrome of the number or string. Let's consider a JavaScript program to find the Palindrome of the given number using the built-in function. Program2.html 
+<html>
+<head> <title> JavaScript Palindrome </title>
+</head>
+<body>
+
+<!-- Use JavaScript programming code to validate the Palindrome numbers or strings. -->
+<script>			
+function palindromeFun (str )
+{
+// convert the string into an array using the string.split() function
+const arrValue = string.split (''); // 
+
+// use reverse() method to reverse the array values
+const reveArrVal = arrValue.reverse(); 
+
+// use join() method to group the array values into the string
+const revString = reveArrVal.join('');
+
+if (string == revString) // if string condition is equal to the revString
+{
+alert('It is a Palindrome string '); // print the Palindrome 
+}
+else {
+alert (' It is not a Palindrome string' ); // if the condition is not true.
+}
+}
+// take a string from the user
+const string = prompt( ' Enter the string to check Palindrome ');
+const value = palindromeFun (string); // call the function
+console.log(value);
+</script>
+	</body>
+		</html>
+ Test it Now Output When we execute the above code, it shows the below image: In the above images, we entered a string MADAM and then click the OK button to check the given string is a Palindrome or not. After that, it shows the below image: Following are the built-in function to check the palindrome in JavaScript. The split (' ') function is used to convert the string into the individual array characters. const arrayChar = string.split( ' '); // ["A", "P", "P", "L", "E"] A reverse () function helps to reverse the position of the individual array characters. const reverseArray = arrayChar.reverse (); // ["E", "L", "P", "P", "A"] The join () method is used to combine the individual array characters into the string. const reverseString = reverseArray.Join (' '); // return string is: "ELPPA" Check the Palindrome Number in JavaScript Let's create a program to check whether the entered number is a Palindrome in JavaScript. Str.html 
+<!Doctype html>
+<html lang = "en">
+
+<head>
+	<title> Palindrome Program in JavaScript </title>
+	<style>
+	h1 {
+	text-align: center;
+	padding: 30px;
+	background-color: skyblue;
+	color: white;
+	}
+	
+	.palindrome {
+	margin: auto;
+	width: 40%;
+	border: 3px solid gray;
+	border-radius: 5px;
+	padding: 30px;
+	}
+	
+	#palindrome {
+	width: 100%;
+	border: 3px solid gray;
+	border-radius: 5px;
+	padding: 6px;
+	}
+	</style>
+	
+	</head>
+	
+	<body>
+		<h1> Palindrome Program in JavaScript </h1>
+		<div class="palindrome">
+		<label> Enter any string or number : </label> <br> <br>
+		<input id= "palindrome"> <br> <br>
+		<button type = "button" onclick = "palindrome()" > Check </button>
+		</div>
+		</body>
+		</html>
+		
+		<script>
+		function palindrome() {
+		var a, b, no, temp = 0;
+		no = Number(document.getElementById ("palindrome").value);
+		b = no;
+		while (no > 0)
+		{
+		a = no % 10;
+		no = parseInt( no / 10);
+		temp = temp*10 + a;
+		}
+		if (temp == b)
+		{
+		alert( "It is a Palindrome Number");
+		}
+		else
+		{
+		alert ("it is not a Palindrome Number");
+		}
+		}
+		</script>
+ Test it Now Output When the above programming code is executed, it returns the below images: We enter the numbers and click on the Check button to validate the given number is Palindrome, as shown below. In the above image, it shows that "It is a Palindrome Number." And if the reversed number is not the same as the original number, it shows that the entered number is not a Palindrome. Check the Palindrome String in JavaScript Let's create a program to check whether the entered string is a Palindrome in JavaScript. Str2.html 
+<html>
+<head>
+<title> Palindrome Program in JavaScript </title>
+
+<style>
+	h1 {
+	text-align: center;
+	padding: 30px;
+	background-color: skyblue;
+	color: white;
+	}
+	
+	.palin {
+	margin: 30px;
+	width: 80%;
+	border: 3px solid gray;
+	border-radius: 5px;
+	padding: 30px;
+	}
+	
+
+	#pa2 {
+	
+	width: 50%;
+	border: 3px solid gray;
+	border-radius: 5px;
+	padding: 10px;
+	}
+	
+	</style>
+
+</head>
+<body>
+
+		<h1> Palindrome Program in JavaScript </h1>
+		<div class="palin">
+		<label> Enter any string : </label> 
+		<input type "text" id= "pa"> <br> <br>
+		<label> Resultant string : </label> 
+		 <input type = "text" id = "pa2" > </b> <br> 
+		<input type= "submit" onclick = "palindrome()" > <br> 
+		
+		</div>
+		
+		
+		
+		<script type = "text/javascript">
+		function palindrome()
+		{
+		var a= document.getElementById("pa").value;
+		var b = "";
+		for (i = a.length-1; i >= 0; i--)
+		{
+		b = b + a[i]
+		}
+		if (a == b)
+		document.getElementById("pa2"). value = b + " is a Palindrome String ";
+		else
+		document.getElementById("pa2"). value = b + " is not a Palindrome String";
+		}
+		</script>
+		</body>
+		</html>
+ Test it Now Output When the above programming code is executed, it returns the below image: We entered the string "MADAM" and then click on the Submit button in the above output. It displays the below result, as shown: Explanation of the code: When we entered the "MADAM" String in the textbox and then click on the Submit button. After that, the original string "MADAM" is reversed and compares each string's character with the original one. If both strings are equal, it shows that "It is a Palindrome String". In the above output, when we entered the string JOHN, it displays the string is not a Palindrome string as it does not match the reversed characters of the string with the original. Next TopicJavaScript Call Stack ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

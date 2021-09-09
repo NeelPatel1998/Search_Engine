@@ -1,0 +1,74 @@
+https://www.javatpoint.com/loop-array-in-reactjs
+Loop Array in React JS | React Foreach Loop Example - javatpoint
+Loop Array in React JS | React Foreach Loop Example - javatpoint ? Home React Native ReactJS TypeScript JavaScript Framework7 COA HTML CSS Selenium Servlet JSP jQuery Quiz Projects Interview Q Comment ReactJS Tutorial ReactJS Tutorial React Introduction React Version React Installation create-react-app React Features Pros & Cons ReactJS vs AngularJS ReactJS vs ReactNative React vs Vue React JSX React Components React State React Props React Props Validation React State vs Props React Constructor React Component API Component Life Cycle React Forms Controlled vs Uncontrolled React Events Conditional Rendering React Lists React Keys React Refs React Fragments React Router React CSS React Animation React Bootstrap React Map React Table Higher-Order Components React Code Splitting React Context React Hooks React Flux Concept React Flux Vs MVC React Redux React Redux Example React Portals React Error Boundaries Misc. Loop Array in React JS React Axios Delete Request Example React Multiple Checkbox Interview Questions ReactJS Interview next ? ? prev Loop Array in React JS | React Foreach Loop Example In this section, we are going to use an array to explain the reach native loop in the render. For this, we have described a react loop array example in the render. When we want to build any web application, it is very important to have the knowledge of handling an array of data. In this example, we will see the use of loop in react js. In our given example, we are going to use for loop in react js. To perform this, we have to follow some steps. In this section, we will use react app. When we require a map, foreach loop, and for loop in react, we can look at the following example to learn the use of loop array n react js. In array, we always want for loop and foreach loop. When we want to loop our array in reach, it will require a map to do this. So we are going to explain the example of a map in react native. A new array is created by the map() method. In the calling array, it provides the result of calling a function on each and every element. The looping process can be simplified by this. When we use the map, we don't require the use of forEach function and for loop. Map, forEach loop, for loop has many differences. Instead of overwriting the existing data, the map function uses the data and creates a new array. Due to all the features and the simplicity of the map function, React docs strongly encourage us to use the map function. We will provide two examples in react app to explain this easy concept. In the first example, we are going to describe the react loop, which has a single-dimensional array. In the second example, we will describe a loop that has a multidimensional array. Both examples are as follows: Example 1: rc/App.js 
+import React from 'react';
+   
+function App() {
+   
+  const myArray = ['Jack', 'Mary', 'John', 'Krish', 'Navin'];
+  
+  return (
+    <div className="container">	
+        <h1> Example of React Map Loop </h1>
+   
+        {myArray.map(name => (
+          <li>
+            {name}
+          </li>
+        ))}
+   
+    </div>
+  );
+}
+   
+export default App;
+ Example 2: src/App.js 
+import React from 'react';
+  
+function App() {
+  
+ const students = [
+              {
+                'id': 1, 
+                'name': Jack, 
+                'email': 'jack@gmail.com'
+              },
+              {
+                'id': 2, 
+                'name': 'Mary', 
+                'email': ?mary@gmail.com'
+              },
+              {
+                'id': 3, 
+                'name': 'John', 
+                'email': 'john@gmail.com'
+              },
+          ];
+  
+  return (
+    <div className="container">
+        <h1> Example of React Map Loop </h1>
+   
+        <table className="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+  
+            {students.map((student, index) => (
+              <tr data-index={index}>
+                <td>{student.id}</td>
+                <td>{student.name}</td>
+                <td>{student.email}</td>
+              </tr>
+            ))}
+  
+        </table>
+  
+    </div>
+  );
+}
+  
+export default App;
+ After running this example, we will get the following preview: Next TopicReact Axios Delete Request Example ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

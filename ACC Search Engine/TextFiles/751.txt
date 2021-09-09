@@ -1,0 +1,179 @@
+https://www.javatpoint.com/memory-management-in-ios-applications
+Memory Management in iOS applications - Javatpoint
+Memory Management in iOS applications - Javatpoint ? Home Java Swift iOS Development OS C PHP HTML CSS Bootstrap JavaScript jQuery jQuery UI Projects Interview Q Comment Forum Training iOS Development iOS Development using Swift Introduction to XCode IDE iPhone History & Versions Views & View Controllers Storyboard & interface builder Creating First iOS Application iOS UI Controls iOS: Label iOS: Button iOS: TextField iOS: DatePicker iOS: Slider iOS: Stepper iOS: Switch iOS: Segment Control iOS Container Views iOS: UIView iOS: TableView iOS: CollectionView iOS: ScrollView iOS Content Views iOS: ActivityIndicatorView iOS: ImageView iOS: PickerView iOS: ProgressView iOS: WebView iOS: MapView iOS View Controllers iOS: UIViewController iOS: Table View Controller iOS: Collection View Controller iOS: PageViewController iOS: Split View Controller Tab Bar Interface iOS: Tab Bar Controller iOS: Tab Bar iOS: Tab Bar Item Navigation Interface Navigation Controller Navigation Bar Navigation Item Architecture Pattern Model View Controller Model View View-Model Model View Presenter Install Libraries Setting Up Cocoapods for XCode Projects Using Cocoapods for XCode Projects Web Request & Parsing Alamofire Library Fetching data through Get Request Parsing JSON Response Image Caching Pull to Refresh functionality iOS UserDefaults Saving Data in UserDefaults Getting Data from UserDefaults CoreData & Database CoreData Managed Object Model Persistent Object Coordinator Multithreading in Swift Multithreading in Swift Concurrency in swift Handling Background Tasks Misc Firebase Crashalytics iOS Swift IOS app lifecycle What is Jailbreaking in iOS Why is iOS better than Android Features of iOS 14 Getting user location in iOS Push Notifications in iOS Sign-in with Apple using swift SSL Pinning in Swift XCode 12 Features Facebook Login Integration in iOS Google Sign-in integration in iOS How to capture the image using the iOS app How to make a phone call in the iOS app Paytm SDK Integration in iOS Razorpay Integration in iOS UIAlertController in Swift Using SQLite in iOS app Creating a real-time chat application using Firebase Using Realm database in iOS app iOS: machine learning What is CoreML Using Advanced CoreML Access Control in Swift iOS Memory Management in iOS applications Protocol Oriented Programming in iOS Swift Initialization in Swift Parsing a Static JSON file in iOS application Sending Email using the iOS application Using AVAudioPlayer to play sounds in iOS applications next ? ? prev Memory Management in iOS applications We can't imagine a technology enhancement without memory in today's tech world. The memory includes the hardware which is used to store information on the device. As far as iPhone is concerned, it uses two main ways to store data, 1. the disk, 2. Random Access Memory. However, when an app runs on an iPhone device, a file that contains all the executable instructions is loaded into the RAM. The app also needs some memory to maintain the heap since all the objects of our classes reside in it. Memory management is the process of managing this heap memory. It includes the life cycle management of the heap objects so that the objects get freed when they are no longer needed to rescue the memory. However, in swift, the reference types are allocated on the heap memory whereas, the value types are not allocated on the heap. It is an important task to maintain the heap memory because our objects are large enough to contain a heavy part of the memory if they don't get freed. The app might get into a crash if it keeps running low on the memory. Automatic Reference Counting (ARC) in Swift swift uses a smarter way for managing the memory, I.e., Automatic Reference Counting (ARC). It automatically frees up the memory used by the class instances when we don't require them. However, as we have already stated in this article, Automatic Reference Counting (ARC) applies only to the class instances. Structure and Enumerations are Value types in swift, and therefore, their instances are not counted. ARC allocates the chunk of memory to store information about the instance whenever created in our app code. The information contains the instance's type, including the value of any stored property associated with the instance. ARC also frees up the memory when the instance is no longer needed. In this scenario, the memory used by that instance gets freed and used for other purposes instead. This also ensures that the instances don't take up unnecessary space in the memory when they are not used. However, if ARC deallocates an instance that is still in use, we would be unable to retrieve any of its properties along with the methods associated with it. Although, the app will get crashed If we try to do so. We also need to make sure that instances don't get deallocated when they are in use. For this purpose, ARC keeps track of the number of properties, constants, and variables currently referring to each class instance. ARC doesn't deallocate the instance as long as at least one active reference to that instance still exists. To make this happen, whenever the instance is referred by a property, constant, or variable, it makes a strong reference to the instance. This reference is called a strong reference since it won't get that instance deallocated as long as the strong reference remains. Automatic Reference Counting with Example Here, we will discuss how the ARC works by giving an example. Let's create a simple class called Employee, which defines a stored constant property as Name. 
+class Employee {
+    let name:String
+    init(name:String){
+        self.name = name
+        debugPrint("\(name) gets initialized")
+    }
+    deinit {
+        debugPrint("\(name) gets deinitialized")
+    }
+}
+ The Employee class contains an initializer that is used to initialize the name property to some value. It also prints a message that the instance is gating initialized. However, the Employee class also contains a deinitializer that informs the user by printing a message. Let's define three variables of type Employee, which will set up the multiple references to the new Employee instance. 
+var ref1:Employee?
+var ref2:Employee?
+var ref3:Employee?
+ We can create the new Employee Instance to assign this for one of the references we have created so far. 
+ref1 = Employee(name: "John")
+ Here, we must notice that the message gets printed once we initialize the Employee class. The variable ref1 is holding a strong reference to the Employee instance; ARC ensures that the Employee instance is kept in the memory. However, if we assign the same Employee to two more reference variables, we get two more strong references that point to the Employee instance. 
+ref2 = ref1
+ref3 = ref1
+ However, we assign nil to three strong references we just created for Employee Instance; we will get it deallocated by the ARC, which means that we are no longer using the Employee Instance. 
+ref1 = nil
+ref2 = nil
+ref3 = nil
+ Here, we must notice that the message gets printed on the console on the deinitialization of the instance. Strong Reference Cycles between Class instances In the above example, ARC keeps track of the number of references to the Employee instance. However, there can be a scenario in which a class instance never gets to zero strong references. This happens when two class instances hold a strong reference to each other. This scenario is called a strong reference cycle where each instance keeps the other alive. Let's create such an example where we have two instances having strong references to each other. 
+class Employee {
+    let name:String
+    var dep:Department?
+    init(name:String){
+        self.name = name
+        debugPrint("\(name) gets initialized")
+    }
+    deinit {
+        debugPrint("\(name) gets deinitialized")
+    }
+}
+
+
+
+class Department {
+    let name:String
+    var employees:Array<Employee>?
+    init(name:String) {
+        self.name = name
+        debugPrint("\(name) gets initialized")
+    }
+    deinit {
+        debugPrint("\(name) gets deinitialized")
+    }
+}
+ In the above code, the Employee instance contains a name property and Department instance that is initially nil. Here, the dep (department) property is nil since the Employee may not always have a department. On the other hand, the Department instance has a name property and an array of Employee that represents the Employees working for the department. The employees property is optional since there is a possibility that the department doesn't have an employee. Both the classes define the initializer and deinitializer to inform the user whether the instances are getting initialized or deinitalized. Now, let's define two variables of an optional type called Mike and IT, which will be of type Employee and Department. 
+var mike:Employee?
+var IT:Department?
+ Now, let's create a specific Employee instance and Department instance. 
+mike = Employee(name: "Mike")
+IT = Department(name: "IT")
+ We need to link the two instances together so that the Employee has the department and the Department has Employees. 
+mike!.dep = IT
+IT!.employees = [mike!]
+ Now, linking these two instances creates a strong reference cycle between them. The Employee instance has a strong reference to Department Reference, and at the same time, the Department Reference has a strong reference to Employee Reference. If we deinitalize the references (mike and IT), we will notice that the reference counts don't drop to zero. 
+mike = nil
+IT = nil
+ We must notice that the deintializers don't get called when we set these variables to nil. However, it causes a memory leak in the memory app since reference cycles prevent the instances from being deallocated. Resolving Strong Reference Cycles There are two ways to resolve strong reference cycles, i.e., weak references and unowned references. Weak and Unowned references allow us to refer to another instance by not holding a strong reference. We can use the weak reference when the other instance has a shorter lifetime. On the other hand, we can use the unowned reference when the other instance has the same lifetime or longer lifetime. Weak References The Weak Reference is defined as the reference that doesn't keep the strong hold on another instance it refers to. It allows the ARC to deinitialize the instance in case of strong reference cycles. It doesn't let the reference be part of string reference cycles. We can use the weak keyword to declare the variable as a weak reference. As we have already discussed, that weak reference doesn't keep a strong hold on the instance it refers to; it's possible for ARC to set the weak reference to nil when the instance it refers to is deallocated. Here, we must ensure that weak references are always declared as variables rather than constants. The weak references are also to be declared as optional. Now, let's change the Employee Instance and define the dep (Department) property as weak. 
+class Employee {
+    let name:String
+    weak var dep:Department?
+    init(name:String){
+        self.name = name
+        debugPrint("\(name) gets initialized")
+    }
+    deinit {
+        debugPrint("\(name) gets deinitialized")
+    }
+}
+ Now let's create the Department Instance again as given below. 
+class Department {
+    let name:String
+    var employees:Array<Employee>?
+    init(name:String) {
+        self.name = name
+        debugPrint("\(name) gets initialized")
+    }
+    deinit {
+        debugPrint("\(name) gets deinitialized")
+    }
+}
+ Let's create two strong references and the link between the instances. 
+var mike:Employee?
+var IT:Department?
+
+
+mike = Employee(name: "Mike")
+IT = Department(name: "IT")
+
+
+mike!.dep = IT
+IT!.employees = [mike!]
+ The Employee has the weak reference to the Department instance; it allows us to break the strong reference held by setting mike and IT reference variables to nil. 
+IT = nil
+mike = nil
+ We must notice that the deinitializer for both instances gets called, and the message gets printed. The following output gets printed on the console. 
+"Mike gets initialized"
+"IT gets initialized"
+"IT gets deinitialized"
+"Mike gets deinitialized"
+ Unowned References An unowned reference doesn't keep a strong hold on the instance. It is referring like a weak reference. However, an unowned reference is used when the other instance has the same lifetime or longer lifetime. We declare a variable as unowned by using the unowned keyword with the variable. An unowned reference always has a value; therefore, declaring an unowned variable doesn't make the variable optional. ARC doesn't set the value of an unowned reference variable to nil. However, we need to make sure that the reference refers to the instance that is not deallocated since if we try to access the value of an unowned reference after that the instance has been deallocated, we will get the Runtime error. Let's consider the following example in which we have defined a relationship between an Employee and a Department. The Department may or may not have an employee, but the Employee will always be associated with a department. Here, the Employee instance never outlives the Department it refers to. This is represented by the scenario in which the Department has an optional Employee property, but the Employee has an unowned Department property. 
+class Department {
+    let name:String
+    var emp:Employee?
+    init(name:String) {
+        self.name = name
+    }
+    deinit {
+        debugPrint("\(name) Department Deinitialized")
+    }
+}
+
+
+class Employee{
+    let name:String
+    unowned let department:Department
+    init(name:String,department:Department) {
+        self.name = name
+        self.department = department
+    }
+    deinit {
+        debugPrint("\(name) employee is being deinitialized")
+    }
+}
+ Let's create an optional reference variable for the Department class. 
+var it:Department?
+ Now create a Department instance and assign a new Employee instance as the Department's employee property. 
+it = Department(name: "IT")
+it?.emp = Employee(name: "John", department: it!)
+ Here, we must notice that the Department instance has a strong reference to the Employee instance, but the Employee instance has an unowned reference to the Department instance. Due to the unowned instance, if we break the strong reference held by the "it" variable, the strong references to the Department instance become zero. 
+it = nil
+ By deinitializing the Department instance, we must notice that the deinit() of Employee will be called. Output: 
+ "IT Department Deinitialized"
+"John employee is being deinitialized"
+ Unowned Optional References We can declare an unowned variable as optional. However, when we use an unowned optional reference, we must guarantee that it should always refer to a valid object or remains nil. Let's consider the following example, which extends the Department-Employee Relationship. Here, we have a different entity as Course which keeps track of the courses provided by the Department. 
+class Department {
+    let name:String
+    var courses:[Course]
+    init(name:String) {
+        self.name = name
+        self.courses = []
+    }
+    deinit {
+        debugPrint("\(name) Department Deinitialized")
+    }
+}
+
+class Course{
+    var name:String
+    unowned var department:Department
+    unowned var otherCourse:Course?
+    init(name:String, department:Department) {
+        self.department = department
+        self.name = name
+        self.otherCourse = nil
+    }
+    deinit {
+        debugPrint("\(name) course is being deinitialized")
+    }
+}
+ Here, we must notice that the Department has a strong reference to its courses. In other words, we can say that the Department owns all of its courses maintained using an array of objects. However, the Course doesn't own any department, or it has an unowned reference to the Department. Here, each of the Course is part of some Department. Hence, the department property is not optional, although there may or may not be any other course to follow each of the Courses therefore, the otherCourse property is optional. Let's create the instance of the Department and the Course to look into the functionality. 
+var it:Department?
+
+it = Department(name: "IT")
+
+var swift = Course(name: "Swift", department: it!)
+var cocoa = Course(name: "CocoaTouch", department: it!)
+var coreData = Course(name: "Core Data", department: it!)
+swift.otherCourse = cocoa
+cocoa.otherCourse = coreData
+it?.courses = [swift,cocoa,coreData]
+ Here, we are creating a Department instance and assigning three courses to it. The swift and cocoa courses have their respective other courses assigned to their otherCourse property. As we have already discussed, unowned variable doesn't keep a strong hold on the reference it holds; however, in this scenario, the unowned optional reference variable can be nil. Here, we must ensure that the otherCourse property always refers to a Course that hasn't been deallocated. Next TopicProtocol Oriented Programming in iOS Swift ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

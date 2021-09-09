@@ -1,0 +1,162 @@
+https://www.javatpoint.com/angular-material-checkbox
+Angular Material Checkbox - Javatpoint
+Angular Material Checkbox - Javatpoint ? Home Angular Material AngularJS Angular 8 Angular 7 AWS IoT Control System HTML CSS Aptitude Selenium Kotlin JavaScript Projects Interview Q Comment Forum Angular Material Angular Material Tutorial Angular Material Installation Angular Material Icons Angular Material Inputs Angular Material Widgets Angular Material Buttons Angular Material Checkbox Angular Material Sort Header Angular Material Divider Angular Material List Angular Material Tree Angular Material Dialog next ? ? prev Angular Material Checkbox The <mat-checkbox> is used as an enhanced checkbox with content design styling and animation features. It provides precise functionality as a basic <input type = "checkbox"> content design enhanced with styling and animations. The checkbox label is provided as the content of the <mat-checkbox> element. The brand is posted by setting the Label Status property to 'Before' or 'After' before or after the checkbox. If you do not want the label to appear next to the checkbox, you can use aria-label or aria-label to specify a suitable label. Use with @angular/forms <mat-checkbox> is compatible with @ angular / forms and supports both FormsModule and ReactiveFormsMinule. Intermediate state <mat-checkbox> supports an indefinite state <input type = "checkbox">. Although the indefinite property of the checkbox is correct, it will render it as undetermined regardless of the checked value. Click on action config When the user clicks the matte-checkbox, the default behavior toggles the checked value and sets Uncertain to False. It provides functionality similar to a native <input type = "checkbox"> enhanced with <mat- <mat-checkbox> material design styling and animations. 
+ providers: [
+  {provide: MAT_CHECKBOX_DEFAULT_OPTIONS, useValue: { clickAction: 'noop' } as MatCheckboxDefaultOptions}
+]
+ The possible values are: noop Do not change the indefinite value. Developers have the power to implement customized click actions. check Ignore the indefinite value and toggle the checked value of the checkbox. If the checkbox is in an indefinite state then the checkbox will display as an indefinite checkbox of the checked value. check-indeterminate When the user clicks the mat-checkbox, set Uncertain to False. Theming The color of <mat-checkbox> will be changed using the color property. Checkboxes use the theme's accent color by default. It can be adjusted to 'Primary' or 'Warning'. Accessibility <mat-checkbox> uses internal <input type = "checkbox"> to provide an accessible experience. It receives the internal checkbox focus and is automatically labelled the text content of the <mat-checkbox> element. Createing Angular Application Follow the steps to update the Angular application: Create a project with a content application. Modify module.ts, app.component.ts, app.component.css and app.component.html. Keep the remaining files unchanged. Compile and run the application. Let's see an example. The file is a modified module descriptor. app.module.ts 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCheckboxModule} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+@NgModule({
+   declarations: [
+      AppComponent
+   ],
+   imports: [
+      BrowserModule,
+      BrowserAnimationsModule,
+      MatCheckboxModule,
+      FormsModule,
+      ReactiveFormsModule
+   ],
+   providers: [],
+   bootstrap: [AppComponent]
+})
+export class AppModule { }
+ app.component.html 
+<h2 class = "tp-h2">Checkbox configuration</h2>
+<section class = "tp-section">
+   <mat-checkbox class = "tp-margin" [(ngModel)] = "checked">Checked</mat-checkbox>
+   <mat-checkbox class = "tp-margin" [(ngModel)] = "indeterminate">Indeterminate</mat-checkbox>
+</section> 
+<section class = "tp-section">
+   <mat-checkbox class = "tp-margin" [(ngModel)] = "disabled">Disabled</mat-checkbox>
+</section>
+<h2 class = "tp-h2">Result</h2>
+<section class = "tp-section">
+   <mat-checkbox
+      class = "tp-margin"
+      [(ngModel)] = "checked"
+      [(indeterminate)] = "indeterminate"
+      [labelPosition] = "labelPosition"
+      [disabled] = "disabled">
+      Sample Checkbox
+   </mat-checkbox>
+</section>
+ app.component.css 
+.tp-h2 {
+   margin: 10px;
+}
+.tp-section {
+   display: flex;
+   align-content: center;
+   align-items: center;
+   height: 60px;
+}
+.tp-margin {
+   margin: 0 10px;
+}
+ app.component.ts 
+import { Component } from '@angular/core';
+import { FormControl } from "@angular/forms";
+@Component({
+   selector: 'app-root',
+   templateUrl: './app.component.html',
+   styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+   title = 'materialApp';
+   checked = false;
+   indeterminate = false;
+   labelPosition = 'after';
+   disabled = false;
+}
+ Output: Previously, we have created three check boxes using mat-checkboxes and tied them using ngModel with variables. After that, we have created another checkbox and tied its various attributes with variables in the .ts file. Let's see another example to create check boxes. app.component.html 
+<section class="example-section">
+  <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+  <mat-checkbox class="example-margin" [disabled]="true">Disabled</mat-checkbox>
+</section>
+
+<section class="example-section">
+  <span class="example-list-section">
+    <mat-checkbox class="example-margin"
+                  [checked]="allComplete"
+                  [color]="task.color"
+                  [indeterminate]="someComplete()"
+                  (change)="setAll($event.checked)">
+      {{task.name}}
+    </mat-checkbox>
+  </span>
+  <span class="example-list-section">
+    <ul>
+      <li *ngFor="let subtask of task.subtasks">
+        <mat-checkbox [(ngModel)]="subtask.completed"
+                      [color]="subtask.color"
+                      (ngModelChange)="updateAllComplete()">
+          {{subtask.name}}
+        </mat-checkbox>
+      </li>
+    </ul>
+  </span>
+</section>
+ app.module.ts 
+import {Component} from '@angular/core';
+import {ThemePalette} from '@angular/material/core';
+export interface Task {
+  name: string;
+  completed: boolean;
+  color: ThemePalette;
+  subtasks?: Task[];
+}
+/**
+ * @title Basic checkboxes
+ */
+@Component({
+  selector: 'checkbox-overview-example',
+  templateUrl: 'checkbox-overview-example.html',
+  styleUrls: ['checkbox-overview-example.css'],
+})
+export class CheckboxOverviewExample {
+  task: Task = {
+    name: 'Indeterminate',
+    completed: false,
+    color: 'primary',
+    subtasks: [
+      {name: 'Primary', completed: false, color: 'primary'},
+      {name: 'Accent', completed: false, color: 'accent'},
+      {name: 'Warn', completed: false, color: 'warn'}
+    ]
+  };
+  allComplete: boolean = false;
+  updateAllComplete() {
+    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+  }
+  someComplete(): boolean {
+    if (this.task.subtasks == null) {
+      return false;
+    }
+    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
+  }
+  setAll(completed: boolean) {
+    this.allComplete = completed;
+    if (this.task.subtasks == null) {
+      return;
+    }
+    this.task.subtasks.forEach(t => t.completed = completed);
+  }
+}
+ app.component.css: 
+.example-section {
+  margin: 12px 0;
+}
+.example-margin {
+  margin: 0 12px;
+}
+ul {
+  list-style-type: none;
+  margin-top: 4px;
+}
+ Output: When we click on the check boxes, the boxes fill with color and a small check sign appears to it. Next TopicAngular Material Sort Header ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

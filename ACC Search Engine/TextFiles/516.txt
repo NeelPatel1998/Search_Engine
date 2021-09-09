@@ -1,0 +1,118 @@
+https://www.javatpoint.com/parsing-a-static-json-file-in-ios-application
+Parsing a Static JSON file in iOS application - Javatpoint
+Parsing a Static JSON file in iOS application - Javatpoint ? Home Java Swift iOS Development OS C PHP HTML CSS Bootstrap JavaScript jQuery jQuery UI Projects Interview Q Comment Forum Training iOS Development iOS Development using Swift Introduction to XCode IDE iPhone History & Versions Views & View Controllers Storyboard & interface builder Creating First iOS Application iOS UI Controls iOS: Label iOS: Button iOS: TextField iOS: DatePicker iOS: Slider iOS: Stepper iOS: Switch iOS: Segment Control iOS Container Views iOS: UIView iOS: TableView iOS: CollectionView iOS: ScrollView iOS Content Views iOS: ActivityIndicatorView iOS: ImageView iOS: PickerView iOS: ProgressView iOS: WebView iOS: MapView iOS View Controllers iOS: UIViewController iOS: Table View Controller iOS: Collection View Controller iOS: PageViewController iOS: Split View Controller Tab Bar Interface iOS: Tab Bar Controller iOS: Tab Bar iOS: Tab Bar Item Navigation Interface Navigation Controller Navigation Bar Navigation Item Architecture Pattern Model View Controller Model View View-Model Model View Presenter Install Libraries Setting Up Cocoapods for XCode Projects Using Cocoapods for XCode Projects Web Request & Parsing Alamofire Library Fetching data through Get Request Parsing JSON Response Image Caching Pull to Refresh functionality iOS UserDefaults Saving Data in UserDefaults Getting Data from UserDefaults CoreData & Database CoreData Managed Object Model Persistent Object Coordinator Multithreading in Swift Multithreading in Swift Concurrency in swift Handling Background Tasks Misc Firebase Crashalytics iOS Swift IOS app lifecycle What is Jailbreaking in iOS Why is iOS better than Android Features of iOS 14 Getting user location in iOS Push Notifications in iOS Sign-in with Apple using swift SSL Pinning in Swift XCode 12 Features Facebook Login Integration in iOS Google Sign-in integration in iOS How to capture the image using the iOS app How to make a phone call in the iOS app Paytm SDK Integration in iOS Razorpay Integration in iOS UIAlertController in Swift Using SQLite in iOS app Creating a real-time chat application using Firebase Using Realm database in iOS app iOS: machine learning What is CoreML Using Advanced CoreML Access Control in Swift iOS Memory Management in iOS applications Protocol Oriented Programming in iOS Swift Initialization in Swift Parsing a Static JSON file in iOS application Sending Email using the iOS application Using AVAudioPlayer to play sounds in iOS applications next ? ? prev Parsing a Static JSON file in iOS application In iOS applications, we often need to parse the JSON data, whether it is coming as a response or being saved as a local file on our device. In this article, we will discuss how we can parse a JSON from a local JSON file. Consider the following Steps. 1. First, we need to store the drag the JSON file from our file system into XCode. We can also create a new file in XCode and save it with extension json, as shown below. Let's add the following JSON in the file. 
+{
+    "quiz": {
+        "sport": {
+            "q1": {
+                "question": "Which one is correct team name in NBA?",
+                "options": [
+                    "New York Bulls",
+                    "Los Angeles Kings",
+                    "Golden State Warriros",
+                    "Huston Rocket"
+                ],
+                "answer": "Huston Rocket"
+            }
+        },
+        "maths": {
+            "q1": {
+                "question": "5 + 7 = ?",
+                "options": [
+                    "10",
+                    "11",
+                    "12",
+                    "13"
+                ],
+                "answer": "12"
+            },
+            "q2": {
+                "question": "12 - 8 = ?",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "answer": "4"
+            }
+        }
+    }
+}
+ 2. We need to prepare a model for the above JSON; for this purpose, we need to look into every object of the JSON and decode the same in a separate class. To create a model, create a new file in XCode as QuizResponseModel.swift and place the following code. 
+import Foundation
+
+
+public class QuizResponseModel:Decodable{
+    public var quiz : Quiz?
+}
+
+
+public class Quiz:Decodable{
+    public var sport : Sport?
+    public var maths : Maths?
+}
+public class Maths : Decodable{
+    public var q1 : Question?
+    public var q2 : Question?
+}
+
+
+public class Sport : Decodable{
+    public var q1 : Question?
+}
+
+
+public class Question : Decodable{
+    public var question : String?
+    public var options : Array<String>?
+    public var answer : String?
+}
+ 3. Now, add the following code in ViewController to parse the SampleJson. 
+func parseJSON(_ name: String){
+        guard let path = Bundle.main.path(forResource: name, ofType: "txt") else{ return}
+        debugPrint(path)
+        let url = URL(fileURLWithPath: path)
+        debugPrint(url)
+        do{
+            let data = try Data(contentsOf: url)
+            let response = try JSONDecoder().decode(QuizResponseModel.self, from: data)
+            debugPrint(response)
+        }catch{
+            debugPrint(error)
+        }
+    }
+ Let's see whether we have received some data in our model or not. For this purpose, let's print the questions on the console. Add the following code into viewDidLoad() method. 
+for response in (quizResponse.quiz?.sport?.q1?.question!)!{
+            debugPrint("Question: \(response)")
+        }
+ The ViewController.swift contains the following code. 
+import UIKit
+
+class ViewController: UIViewController {
+
+    var quizResponse = QuizResponseModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        parseJSON("SampleJSON")
+        for response in (quizResponse.quiz?.sport?.q1?.question!)!{
+            debugPrint("Question: \(response)")
+        }
+    }
+    func parseJSON(_ name: String){
+        guard let path = Bundle.main.path(forResource: name, ofType: "txt") else{ return}
+        debugPrint(path)
+        let url = URL(fileURLWithPath: path)
+        debugPrint(url)
+        do{
+            let data = try Data(contentsOf: url)
+            let response = try JSONDecoder().decode(QuizResponseModel.self, from: data)
+            quizResponse = response
+        }catch{
+            debugPrint(error)
+        }
+    }
+}
+ Reading a JSON file (either local or on the web) is very easy with Swift. Here, we use the decodable protocol to decode the JSON response into our decodable model and use it anywhere in our code. Next TopicSending Email using the iOS application ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

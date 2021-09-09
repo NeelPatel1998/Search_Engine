@@ -1,0 +1,56 @@
+https://www.javatpoint.com/sparse-matrix
+Sparse Matrix - javatpoint
+Sparse Matrix - javatpoint ? Home Data Structure C C++ C# Java SQL HTML CSS JavaScript Ajax Android Cloud Design Pattern Quiz Projects Interview Q Comment Forum DS Tutorial DS Tutorial DS Introduction DS Algorithm Asymptotic Analysis DS Pointer DS Structure DS Array DS Array 2D Array DS Linked List Linked List Types of Linked List Singly Linked List Doubly Linked List Circular Linked List Circular Doubly List Skip list in DS DS Stack DS Stack Array Implementation Linked List Implementation DS Queue DS Queue Types of Queues Array Representation Linked List Representation Circular Queue Deque Priority Queue DS Tree DS Tree Binary Tree Binary Search Tree AVL Tree B Tree B+ Tree DS Graph DS Graph Graph Implementation BFS Algorithm DFS Algorithm Spanning Tree DS Searching Linear Search Binary Search DS Sorting Bubble Sort Bucket Sort Comb Sort Counting Sort Heap Sort Insertion Sort Merge Sort Quick Sort Radix Sort Selection Sort Shell Sort Bitonic Sort Cocktail Sort Cycle Sort Tim Sort Differences Linear vs non-linear Array vs linked list Stack vs queue Linear vs Circular Queue Linear Search vs Binary Search Singly Linked List vs Doubly Linked List Binary vs Binary Search Tree Tree vs Graph Binary Search tree vs AVL tree Red Black Tree vs AVL tree B tree vs B+ tree Quick Sort vs Merge Sort BFS vs DFS Stack vs Heap Bubble sort vs. Selection sort Misc Trie Data Structure Heap Data Structure Splay Tree Fundamental of the DS Hash Table Preorder Traversal Tree Traversal Implementation of Queue using Stacks Implementation of Stack using Queue Binomial Heap Postorder Traversal Sparse Matrix Detect loop in a Linked list Inorder Traversal Convert Infix to Postfix notation Convert infix to prefix notation Conversion of Prefix to Postfix expression Conversion of Postfix to Prefix expression DS MCQ Data Structure MCQ next ? ? prev Sparse Matrix A matrix can be defined as a two-dimensional array having 'm' columns and 'n' rows representing m*n matrix. Sparse matrices are those matrices that have the majority of their elements equal to zero. In other words, the sparse matrix can be defined as the matrix that has a greater number of zero elements than the non-zero elements. Why do we need to use a sparse matrix instead of a simple matrix? We can also use the simple matrix to store the elements in the memory; then why do we need to use the sparse matrix. The following are the advantages of using a sparse matrix: Storage: As we know, a sparse matrix that contains lesser non-zero elements than zero so less memory can be used to store elements. It evaluates only the non-zero elements. Computing time: In the case of searching n sparse matrix, we need to traverse only the non-zero elements rather than traversing all the sparse matrix elements. It saves computing time by logically designing a data structure traversing non-zero elements. Representing a sparse matrix by a 2D array leads to the wastage of lots of memory. The zeroes in the matrix are of no use to store zeroes with non-zero elements. To avoid such wastage, we can store only non-zero elements. If we store only non-zero elements, it reduces the traversal time and the storage space. Sparse Matrix Representation The non-zero elements can be stored with triples, i.e., rows, columns, and value. The sparse matrix can be represented in the following ways: Array representation Linked list representation Array Representation The 2d array can be used to represent a sparse matrix in which there are three rows named as: Row: It is an index of a row where a non-zero element is located. Column: It is an index of the column where a non-zero element is located. Value: The value of the non-zero element is located at the index (row, column). Let's understand the sparse matrix using array representation through an example. As we can observe above, that sparse matrix is represented using triplets, i.e., row, column, and value. In the above sparse matrix, there are 13 zero elements and 7 non-zero elements. This sparse matrix occupies 5*4 = 20 memory space. If the size of the sparse matrix is increased, then the wastage of memory space will also be increased. The above sparse matrix can be represented in the tabular form shown as below: In the above table structure, the first column is representing the row number, the second column is representing the column number and third column represents the non-zero value at index(row, column). The size of the table depends upon the number of non-zero elements in the sparse matrix. The above table occupies (7 * 3) = 21 but it more than the sparse matrix. Consider the case if the matrix is 8*8 and there are only 8 non-zero elements in the matrix then the space occupied by the sparse matrix would be 8*8 = 64 whereas, the space occupied by the table represented using triplets would be 8*3 = 24. In the 0th row and 1nd column, 4 value is available. In the 0th row and 3rd column, value 5 is stored. In the 1st row and 2nd column, value 3 is stored. In the 1st row and 3rd column, value 6 is stored. In 2nd row and 2nd column, value 2 is stored. In the 3rd row and 0th column, value 2 is stored. In the 3rd row and 1st column, value 3 is stored. Array implementation of sparse matrix in C 
+#include <stdio.h>
+int main()
+{
+    // Sparse matrix having size 4*5
+    int sparse_matrix[4][5] =
+    {
+        {0 , 0 , 7 , 0 , 9 },
+        {0 , 0 , 5 , 7 , 0 },
+        {0 , 0 , 0 , 0 , 0 },
+        {0 , 2 , 3 , 0 , 0 }
+    };
+   // size of matrix
+    int size = 0;
+    for(int i=0; i<4; i++)
+    {
+        for(int j=0; j<5; j++)
+        {
+            if(sparse_matrix[i][j]!=0)
+            {
+                size++;
+            }
+        }
+    }
+   // Defining final matrix
+    int matrix[3][size]; 
+     int k=0;
+   // Computing final matrix
+    for(int i=0; i<4; i++)
+    {
+        for(int j=0; j<5; j++)
+        {
+            if(sparse_matrix[i][j]!=0)
+            {
+                matrix[0][k] = i;
+                matrix[1][k] = j;
+                matrix[2][k] = sparse_matrix[i][j];
+                k++;
+            }
+      }
+    }
+   // Displaying the final matrix
+    for(int i=0 ;i<3; i++)
+    {
+        for(int j=0; j<size; j++)
+        {
+            printf("%d ", matrix[i][j]);
+            printf("\t");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+ Output Linked List Representation In linked list representation, linked list data structure is used to represent a sparse matrix. In linked list representation, each node consists of four fields whereas, in array representation, there are three fields, i.e., row, column, and value. The following are the fields in the linked list: Row: It is an index of row where a non-zero element is located. Column: It is an index of column where a non-zero element is located. Value: It is the value of the non-zero element which is located at the index (row, column). Next node: It stores the address of the next node. Let's understand the sparse matrix using linked list representation through an example. In the above figure, sparse represented in the linked list form. In the node, first field represents the index of row, second field represents the index of column, third field represents the value and fourth field contains the address of the next node. Next TopicDetect loop in a Linked list ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

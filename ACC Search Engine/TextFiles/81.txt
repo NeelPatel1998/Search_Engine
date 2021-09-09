@@ -1,0 +1,120 @@
+https://www.javatpoint.com/login-form-java
+Login Form Java - Javatpoint
+Login Form Java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Login Form Java In Java, a form for entering authentication credentials to access the restricted page is referred to as a Login form. A login form contains only two fields, i.e., username and password. Each user should have a unique username that can be an email, phone number, or any custom username. After submitting the login form, the underlying code of the form checks whether the credentials are authentic or not to allow the user to access the restricted page. If the users provide unauthentic credentials, they will not be able to forward the login form. In Java, we can develop the login form by using Swing technology. We implement the LoginFormDemo.java class in which we create two text fields, i.e., text1 and text2, for setting the username and password. We also create a button for performing the action. Steps to create login form: In order to create a login form in Java, we have to follow the following steps: Create a class that uses the JFrame and ActionListener to design the login form and perform the action. Create user interface components using swings and awt and add them to the panel. Override the actionPerformed() method that will call on the button click. In this method, we will verify the user entered credentials. Create a new page using JFrame and navigate the user to it if the credentials are authentic. Else show an error message to the user. Let's follow the above steps and implement the login form using swing and awt in Java: LoginFormDemo.java 
+//import required classes and packages
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.lang.Exception;
+
+//create CreateLoginForm class to create login form
+//class extends JFrame to create a window where our component add
+//class implements ActionListener to perform an action on button click
+class CreateLoginForm extends JFrame implements ActionListener
+{
+	//initialize button, panel, label, and text field
+	JButton b1;
+	JPanel newPanel;
+	JLabel userLabel, passLabel;
+	final JTextField  textField1, textField2;
+	
+	//calling constructor
+	CreateLoginForm()
+	{	
+		
+		//create label for username 
+		userLabel = new JLabel();
+		userLabel.setText("Username");		//set label value for textField1
+		
+		//create text field to get username from the user
+		textField1 = new JTextField(15);	//set length of the text
+
+		//create label for password
+		passLabel = new JLabel();
+		passLabel.setText("Password");		//set label value for textField2
+		
+		//create text field to get password from the user
+		textField2 = new JPasswordField(15);	//set length for the password
+		
+		//create submit button
+		b1 = new JButton("SUBMIT");	//set label to button
+		
+		//create panel to put form elements
+		newPanel = new JPanel(new GridLayout(3, 1));
+		newPanel.add(userLabel);	//set username label to panel
+		newPanel.add(textField1);	//set text field to panel
+		newPanel.add(passLabel);	//set password label to panel
+		newPanel.add(textField2);	//set text field to panel
+		newPanel.add(b1);			//set button to panel
+		
+		//set border to panel 
+		add(newPanel, BorderLayout.CENTER);
+		
+		//perform action on button click 
+		b1.addActionListener(this);		//add action listener to button
+		setTitle("LOGIN FORM");			//set title to the login form
+	}
+	
+	//define abstract method actionPerformed() which will be called on button click 
+	public void actionPerformed(ActionEvent ae)		//pass action listener as a parameter
+	{
+		String userValue = textField1.getText();		//get user entered username from the textField1
+		String passValue = textField2.getText();		//get user entered pasword from the textField2
+		
+		//check whether the credentials are authentic or not
+		if (userValue.equals("test1@gmail.com") && passValue.equals("test")) {	//if authentic, navigate user to a new page
+			
+			//create instance of the NewPage
+			NewPage page = new NewPage();
+			
+			//make page visible to the user
+			page.setVisible(true);
+			
+			//create a welcome label and set it to the new page
+			JLabel wel_label = new JLabel("Welcome: "+userValue);
+			page.getContentPane().add(wel_label);
+		}
+		else{
+			//show error message
+			System.out.println("Please enter valid username and password");
+		}
+	}
+}
+//create the main class
+class LoginFormDemo
+{
+	//main() method start
+	public static void main(String arg[])
+	{
+		try
+		{
+			//create instance of the CreateLoginForm
+			CreateLoginForm form = new CreateLoginForm();
+			form.setSize(300,100);	//set size of the frame
+			form.setVisible(true);	//make form visible to the user
+		}
+		catch(Exception e)
+		{	
+			//handle exception 
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+	}
+}
+ NewPage.java 
+//import required classes and packages
+import javax.swing.*;
+import java.awt.*;
+
+//create NewPage class to create a new page on which user will navigate
+class NewPage extends JFrame
+{
+	//constructor
+	NewPage()
+	{
+		setDefaultCloseOperation(javax.swing.
+		WindowConstants.DISPOSE_ON_CLOSE);
+		setTitle("Welcome");
+		setSize(400, 200);
+	}
+}
+ Output: Now, when we run the LoginFormDemo.java class, a panel will be open having the label, text fields, and button. We enter the credentials and hit on the submit button. If the credentials are authentic, the login form will navigate us to the welcome page as described below: Next TopicVaadin Framework Java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

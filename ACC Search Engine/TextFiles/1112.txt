@@ -1,0 +1,250 @@
+https://www.javatpoint.com/gregorian-calendar-java
+Gregorian calendar Java - Javatpoint
+Gregorian calendar Java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Gregorian calendar Java A concrete subclass of the Calendar class is referred to as GregorianCalendar. The GregorianCalendar class has an implementation of all of its inherited members. The Calendar class implements the mostly used Gregorian calendar. In order to use the Gregorian calendar in Java, we import the Java.util.GregorianCalendar class in our program. We cannot instantiate the Calendar class because of being an abstract class. So, the initialization of the calendar is done in the following way: 
+ Calendar cal = Calendar.getInstance();
+ The initialization of the cal object is done with the current date and time in the default locale and timezone. We can instantiate the GregorianCalendar class because of being a concrete class. So, the initialization of the calendar is done in the following way: 
+GregorianCalendar gcal = new GregorianCalendar();
+ The initialization of the gcal object is done with the current date and time in the default locale and timezone. The anno Domini(AD) and the Before Christ(BC) are the two fields defined by the GregorianCalendar class. Constructors of GregorianCalendar class For GregorianCalendar class object, there are the following constructors: GregorianCalendar() In order to initialize the object with the current time in the default time zone with the default locale, GregorainCalendar() is used. GregorianCalendar(int year, int month, int day) In order to initialize the object with the date-set defined in the default locale and time zone, GregorianCalendar(int year, int month, int day) is used. GregorianCalendar(int year, int month, int day, int hours, int min) It initializes the object with the date and time-set defined in the default locale and time zone. GregorianCalendar(int year, int month, int day int hours, int minutes, int seconds) It initializes the object with the date and more specific time-set defined in the default locale and time zone. GregorianCalendar(Locale locale) It initializes the object with a defined date, time, and locale. GregorianCalendar(TimeZone timeZone) It initializes the object with the defined date, time-set, and TimeZone. GregorianCalendar(TimeZone timeZone, Locale locale) It initializes the object with the defined Locale and TimeZone. Let's implement the code for all these constructors to understand how they actually work in Java. In the below example, we define the instance of the GregorianCalendar by using its default constructor. GregorianCalendarExample1.java 
+//importing classes for time zone, calendar, locale, and gregorian calendar
+import java.util.TimeZone; 
+import java.util.Locale; 
+import java.util.Calendar; 
+import java.util.GregorianCalendar; 
+
+//creating GregorianCalendarExample1 to define default constructor
+public class GregorianCalendarExample1 { 
+    //main() method start
+	public static void main(String args[]) 
+    { 
+        // creating array of months
+        String months[] = { "January", "February", "March", "April", 
+                           "May", "June", "July", "August", 
+                           "September", "October", "November", "December" }; 
+  
+        // creating an array for storing AM(Morning) and PM(Evening)
+        String arr[] = { "AM", "PM" }; 
+  
+        //creating GregorianCalendar class object using its default constructor
+        GregorianCalendar obj = new GregorianCalendar(); 
+  
+        // Showing the time, date, locale, and time zone
+        System.out.print("Today's date = "
+                         + obj.get(Calendar.DATE) + " "
+						 + months[obj.get(Calendar.MONTH)] + ", "
+                         + obj.get(Calendar.YEAR) + "\n"
+                         + "Current time = "
+                         + obj.get(Calendar.HOUR) + "-"
+                         + obj.get(Calendar.MINUTE) + "-"
+                         + obj.get(Calendar.SECOND) + " "
+                         + arr[obj.get(Calendar.AM_PM)] + "\n"
+                         + "Current Time Zone = " + obj.getTimeZone().getDisplayName() 
+                         + "\n"
+                         + "Locale = "
+                         + Locale.getDefault().getDisplayName()); 
+    }
+}
+ Output In the below example, we define the instance of the GregorianCalendar by using a defined date-set. GregorianCalendarExample2.java 
+//importing classes for time zone, calendar, locale, and gregorian calendar
+import java.util.TimeZone; 
+import java.util.Locale; 
+import java.util.Calendar; 
+import java.util.GregorianCalendar; 
+
+//creating GregorianCalendarExample2 to define default constructor
+public class GregorianCalendarExample2 { 
+    //main() method start
+	public static void main(String args[]) 
+    { 
+        // creating array of months
+        String months[] = { "January", "February", "March", "April", 
+                           "May", "June", "July", "August", 
+                           "September", "October", "November", "December" }; 
+  
+        // creating an array for storing AM(Morning) and PM(Evening)
+        String arr[] = { "AM", "PM" }; 
+  
+        //creating GregorianCalendar class object using defined date-set
+        GregorianCalendar obj = new GregorianCalendar(2021, 2, 20); 
+  
+        // Showing the time, date, locale, and time zone
+        System.out.print("Today's date = "
+                         + obj.get(Calendar.DATE) + " "
+						 + months[obj.get(Calendar.MONTH)] + ", "
+                         + obj.get(Calendar.YEAR) + "\n"
+                         + "Current time = "
+                         + obj.get(Calendar.HOUR) + "-"
+                         + obj.get(Calendar.MINUTE) + "-"
+                         + obj.get(Calendar.SECOND) + " "
+                         + arr[obj.get(Calendar.AM_PM)] + "\n"
+                         + "Current Time Zone = " + obj.getTimeZone().getDisplayName() 
+                         + "\n"
+                         + "Locale = "
+                         + Locale.getDefault().getDisplayName()); 
+    }
+}
+ Output In the below example, we define the instance of the GregorianCalendar by using a more specific date and time set. GregorianCalendarExample3.java 
+//importing classes for time zone, calendar, locale, and gregorian calendar
+import java.util.TimeZone; 
+import java.util.Locale; 
+import java.util.Calendar; 
+import java.util.GregorianCalendar; 
+
+//creating GregorianCalendarExample2 to define constructor with more specific date and time-set
+public class GregorianCalendarExample3 { 
+    //main() method start
+	public static void main(String args[]) 
+    { 
+        // creating array of months
+        String months[] = { "January", "February", "March", "April", 
+                           "May", "June", "July", "August", 
+                           "September", "October", "November", "December" }; 
+  
+        // creating an array for storing AM(Morning) and PM(Evening)
+        String arr[] = { "AM", "PM" }; 
+  
+        //creating GregorianCalendar class object using defined date-set
+        GregorianCalendar obj = new GregorianCalendar(2021, 2, 20, 10, 21, 36);  
+        // Showing the time, date, locale, and time zone
+        System.out.print("Today's date = "
+                         + obj.get(Calendar.DATE) + " "
+						 + months[obj.get(Calendar.MONTH)] + ", "
+                         + obj.get(Calendar.YEAR) + "\n"
+                         + "Current time = "
+                         + obj.get(Calendar.HOUR) + "-"
+                         + obj.get(Calendar.MINUTE) + "-"
+                         + obj.get(Calendar.SECOND) + " "
+                         + arr[obj.get(Calendar.AM_PM)] + "\n"
+                         + "Current Time Zone = " + obj.getTimeZone().getDisplayName() 
+                         + "\n"
+                         + "Locale = "
+                         + Locale.getDefault().getDisplayName()); 
+    }
+}
+ Output In the below example, we define the instance of the GregorianCalendar by using the specified time zone. GregorianCalendarExample4.java 
+//importing classes for time zone, calendar, locale, and gregorian calendar
+import java.util.TimeZone; 
+import java.util.Locale; 
+import java.util.Calendar; 
+import java.util.GregorianCalendar; 
+
+//creating GregorianCalendarExample4 to define constructor with TimeZone
+public class GregorianCalendarExample4 { 
+    //main() method start
+	public static void main(String args[]) 
+    { 
+        // creating array of months
+        String months[] = { "January", "February", "March", "April", 
+                           "May", "June", "July", "August", 
+                           "September", "October", "November", "December" }; 
+  
+        // creating an array for storing AM(Morning) and PM(Evening)
+        String arr[] = { "AM", "PM" }; 
+		
+		//creating instance of the TimeZone class to pass it to the GregorianCalendar object constructor
+		TimeZone tz = TimeZone.getTimeZone("GMT+5:30"); 
+		
+        //creating GregorianCalendar class object using TimeZone constructor
+        GregorianCalendar obj = new GregorianCalendar(tz);  
+        // Showing the time, date, locale, and time zone
+        System.out.print("Today's date = "
+                         + obj.get(Calendar.DATE) + " "
+						 + months[obj.get(Calendar.MONTH)] + ", "
+                         + obj.get(Calendar.YEAR) + "\n"
+                         + "Current time = "
+                         + obj.get(Calendar.HOUR) + "-"
+                         + obj.get(Calendar.MINUTE) + "-"
+                         + obj.get(Calendar.SECOND) + " "
+                         + arr[obj.get(Calendar.AM_PM)] + "\n"
+                         + "Current Time Zone = " + obj.getTimeZone().getDisplayName() 
+                         + "\n"
+                         + "Locale = "
+                         + Locale.getDefault().getDisplayName()); 
+    }
+}
+ Output In the below example, we define the instance of the GregorianCalendar by using the specified locale. GregorianCalendarExample5.java 
+//importing classes for time zone, calendar, locale, and gregorian calendar
+import java.util.TimeZone; 
+import java.util.Locale; 
+import java.util.Calendar; 
+import java.util.GregorianCalendar; 
+
+//creating GregorianCalendarExample5 to define constructor with locale
+public class GregorianCalendarExample5 { 
+    //main() method start
+	public static void main(String args[]) 
+    { 
+        // creating array of months
+        String months[] = { "January", "February", "March", "April", 
+                           "May", "June", "July", "August", 
+                           "September", "October", "November", "December" }; 
+  
+        // creating an array for storing AM(Morning) and PM(Evening)
+        String arr[] = { "AM", "PM" }; 
+		
+		//creating instance of the Locale class to pass it to the GregorianCalendar object constructor
+		Locale locale = new Locale("en", "IN"); 
+		
+        //creating GregorianCalendar class object by passing Locale to the constructor
+        GregorianCalendar obj = new GregorianCalendar(locale);  
+        // Showing the time, date, locale, and time zone
+        System.out.print("Today's date = "
+                         + obj.get(Calendar.DATE) + " "
+						 + months[obj.get(Calendar.MONTH)] + ", "
+                         + obj.get(Calendar.YEAR) + "\n"
+                         + "Current time = "
+                         + obj.get(Calendar.HOUR) + "-"
+                         + obj.get(Calendar.MINUTE) + "-"
+                         + obj.get(Calendar.SECOND) + " "
+                         + arr[obj.get(Calendar.AM_PM)] + "\n"
+                         + "Current Time Zone = " + obj.getTimeZone().getDisplayName() 
+                         + "\n"
+                         + "Locale = "
+                         + Locale.getDefault().getDisplayName()); 
+    }
+}
+ Output In the below example, we define the instance of the GregorianCalendar by using the specified locale and time zone. GregorianCalendarExample6.java 
+//importing classes for time zone, calendar, locale, and gregorian calendar
+import java.util.TimeZone; 
+import java.util.Locale; 
+import java.util.Calendar; 
+import java.util.GregorianCalendar; 
+
+//creating GregorianCalendarExample6 to define constructor with locale
+public class GregorianCalendarExample6 { 
+    //main() method start
+	public static void main(String args[]) 
+    { 
+        // creating array of months
+        String months[] = { "January", "February", "March", "April", 
+                           "May", "June", "July", "August", 
+                           "September", "October", "November", "December" }; 
+  
+        // creating an array for storing AM(Morning) and PM(Evening)
+        String arr[] = { "AM", "PM" }; 
+		
+		
+		//creating instance of the Locale class to pass it to the GregorianCalendar object constructor
+		Locale locale = new Locale("en", "IN"); 
+		
+		//creating instance of the TimeZone class to pass it to the GregorianCalendar object constructor
+		TimeZone timezone = TimeZone.getTimeZone("GMT+5:30"); 
+
+        //creating GregorianCalendar class object by passing Locale and TimeZone to the constructor
+        GregorianCalendar obj = new GregorianCalendar(timezone, locale);  
+        // Showing the time, date, locale, and time zone
+        System.out.print("Today's date = "
+                         + obj.get(Calendar.DATE) + " "
+						 + months[obj.get(Calendar.MONTH)] + ", "
+                         + obj.get(Calendar.YEAR) + "\n"
+                         + "Current time = "
+                         + obj.get(Calendar.HOUR) + "-"
+                         + obj.get(Calendar.MINUTE) + "-"
+                         + obj.get(Calendar.SECOND) + " "
+                         + arr[obj.get(Calendar.AM_PM)] + "\n"
+                         + "Current Time Zone = " + obj.getTimeZone().getDisplayName() 
+                         + "\n"
+                         + "Locale = "
+                         + Locale.getDefault().getDisplayName()); 
+    }
+}
+ Output Next Topicint vs Integer Java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

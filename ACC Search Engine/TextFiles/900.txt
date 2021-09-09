@@ -1,0 +1,103 @@
+https://www.javatpoint.com/gdb
+GDB Tutorial - Javatpoint
+GDB Tutorial - Javatpoint ? Home Java GDB C++ C JavaScript Bootstrap HTML XHTML CSS jQuery XML JSON Comment Forum GDB Tutorial GDB Tutorial GDB Tutorial What is GDB? GDB stands for GNU Debugger. It is a powerful tool for debugging the programs of various programming languages like C, Fortran, Go, C++, etc. It runs on the Unix-like operating systems. This concept was written in 1986 by Richard Stallman. It is actually a free software, which is released under the GNU GPL. This debugger is written in a C language. Following are the various languages supported by the GDB: Ada Assembly C Fortran Go OpenCL Modula-2 C++ D Pascal Rust GDB uses the simple CLI (Command Line Interface), so that users or programmers can understand it easily. It allows users to inspect what the program or code is doing at a specific point during its execution. It also enables the users/programmers to stop a program at a certain point and print the value of a specific variable at that point. It also operates on the binary files produced by the process of compilation. Installation of GDB Firstly, we have to check that the GNU debugger is already installed on a Unix or Linux operating system or not. For this, we have to run the following command in the terminal: 
+gdb -help
+ If GDB is already installed, then the above command will show the options which are available with GDB. If this tool is not installed, then we have to install the GDB on our system. We can easily install the GDB on our Linux machine using the following two different ways or process: 1. Using the pre-built gdb binaries: In this process, we have to run the following two commands on our ubuntu terminal. The following first command is used to update the dependencies: 
+sudo apt-get update
+ After the successful execution of above command, run the following command which installs the GDB: 
+sudo apt-get install gdb
+ 2. Using the compilation process of the downloaded source code In this process, we have to follow the given steps for downloading the GDB: 1. In this step, we have to download the source code by using the http://ftp.gnu.org/gnu/gdb/ site in the command. 
+wget "http://ftp.gnu.org/gnu/gdb/gdb-7.11.tar.gz
+ 2. Now, we have to extract the downloaded source code: 
+tar -xvzf gdb-7.11.tar.gz
+ 3. After extracting, we have to configure and compile the source code by running the following three commands one by one: 
+cd gdb-7.11
+gdb-7.11$ ./configure
+gdb-7.11$ make
+ 4. After the completion of the above commands. Now, we have to install the GDB using the command which is given below: 
+make install
+ The above command installs the binaries of a GDB /usr/local/bin and libraries of GDB in /usr/local/lib by default. After the successful execution of the above command, we have successfully compiled and installed the GNU Debugger in our Linux system. After this, we can easily see the version of GDB by typing the following command and verify that it is successfully installed or not: 
+gdb --version
+ GDB Commands GDB is a command-line tool. So, we have to learn about the commands of GDB before learn about how to use the GDB. GDB provides the various commands, which helps users for debugging the code or programs. The following table shows the list of command with their description: S. No. Name of a Command Description 1. Attach This command attaches the GNU Debugger with the process which is running. 2. backtrace This command displays the call stack for the thread which is selected currently. 3. backtrace full This command displays the value of local variables. 4. b fun This command sets a breakpoint at the starting of function. 5. b N This command sets a breakpoint at Nth line number of a file which is executing currently. 6. b main This command sets a breakpoint at the starting of a program. 7. b This command sets a breakpoint at the current line of a file which is executing. 8. b +N This command sets a breakpoint after the N lines from the current line of a file. 9. Bt This command displays the stack trace. 10. C This 'command' allows the GDB to run the program till the next breakpoint or error. 11. Clear This command deletes the breakpoint at a particular location. 12. checkpoint This command helps in creating a new checkpoint. 13. d This command deletes or removes all the breakpoint from the program. This command is different from clear command. 14. d N This command deletes/removes the breakpoint at Nth line number. 15. d 1 2 This command deletes or removes the breakpoint 1, and 2 from the program. 16. delete checkpoint This command deletes or removes the checkpoint which is created previously. 17. detach This command detaches the GNU Debugger from the process. 18. disable This command disables all the breakpoints or particular breakpoints of a program. 19. down This command only selects the frame which is one level down. 20. down N This command selects those frame or frames which are N level down. 21. enable This command enables all the breakpoints or particular breakpoints of a program. 22. enable once This command enables the breakpoint and after the first hit, it is disabled automatically. 23. enable delete This command enables the breakpoint and after the first hit, it is deleted automatically. 24. finish This command continues the execution to the end of the function. 25. frame This command selects the stack frame. It also displays the stack frame which is selected currently. 26. gdb This command starts the GNU debugger. It starts with no files of debugging. 27. gdb --help This command describes the various options of a command line. 28. gdb --version This command prints the version of GDB and some information about GDB. 29. help This command displays the list of classes of commands. 30. help <cmd> This command describes the command about how to use it. 31. i This command provides the list of all the info command. 32. info address This command displays the address of a specified symbol. 33. info b This command displays the list of all the breakpoints. 34. info breakpoints This command displays the information about breakpoints. 35. info checkpoints This command provides the list of checkpoints which are created. 36. info functions This command shows the list of function of the program. 37. info registers This command displays the content/list of registers which are in use. 38. info watch This command displays the defined watchpoints. 39. info source This command displays the information of a file which is used currently. 40. Info sources This command provides the list of all source files which are in use. 41. info symbol This command prints the symbol name which resides at the particular address. 42. Info lines This command shows the starting and ending addresses of the specified source line in a code. 43. info args This command shows the argument values of the function of the frame which is used currently. 44. info locals This command shows the information about the local variables. 45. info frame This command shows the advanced information about the stack frame. 46. info break <breakpoint-number> This command prints the information about the particular breakpoint. 47. info vector This command shows the information of the vector registers. 48. info variables This command shows the list of static or global variables which are present in the debugged program or code. 49. kill This command stops the execution of the program. 50. print This command displays the value of a specified expression. 51. p var This command prints or displays the value of variable 'var' which is used currently. 52. p/x variable This command prints the value of an integer variable in the hexadecimal format. 53. p/d variable This command prints the value of the variable as a signed integer. 54. p/o variable This command prints the value of an integer variable in the octal format. 55. p/a variable This command prints the value of a variable as a hex address. 56. q or quit This command exits the GNU debugger. 57. run or r This command runs the program from the beginning to the end or to the next breakpoint. 58. s This command executes the next line or statement of a program. 59. s N This command executes the next Nth line or statement of a program. 60. select-frame This command is used to select a stack frame. 61. show args This command displays the list of arguments. 62. set args This command specifies the list of argument list which is empty. 63. set var = v This command assigns the value 'v' to the variable 'var'. 64. set args arglist This command specifies the default arguments for the debugged program. 65. show env This command displays all the environment variables. 66. show env 'var' This command displays the value of 'var', which is an environment variable. 67. step This command executes the next line of the code. 68. step N This command executes the next Nth line of a code. 69. tbreak This command is similar to the break command, but it is a temporary breakpoint. The breakpoint will be automatically deleted after the one hit. 70. up This command only selects the frame which is one level up. 71. up N This command selects those frame or frames which are N level up. 72. undisplay This command removes the automatically displayed expression, which is set by the display command. 73. unset env var This command removes the variable 'var' from the environment. 74. where This command displays the number of a current line and the function in which you are. 75. x Address Expr This command displays the information of memory at an address which is given in command. How to Use GNU Debugger Till now, we have studied what is GDB and what are its commands, now we have to learn about the example and how to use it. In this section, we learn how to debug a program using the GNU debugger. Now, we have to follow the steps on how to run a program with GDB: Step 1: Firstly, we have to create a program of C or C++ in the text editor. So, we create the following code for finding a factorial of a number. And, we save this code with the .c extension. 
+# include <stdio.h>
+int main()
+{
+      int i, number, j; //Declare three variables
+      printf ("Enter the number: "); 
+      scanf ("%d", &number );   // Enter the Number whose factorial to be calculate
+     for (i=number; i>0; i--)  // This loop executes (number-0) times.         
+     {
+	j=j*i;    
+      }
+      printf("The factorial of %d is %d\n",number,j);
+}
+ Step 2: Now, we have to compile and build the above program.c in terminal with the help of debugging symbols. 
+gcc -g program.c
+ In the above command, we use the -g option, which is used for compiling the program in debugging mode. Step 3: Now, we have to run the program with the GDB, so type the following command in the terminal after the above command: 
+gdb a.out
+ The above command gives the following console of GDB of the current program. 
+GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) 
+ In this console, we have to use the GDB commands for analyzing, and debugging the program. Step 4: And, at last after debugging, exit the GDB by typing the quit or q command on the prompt of GDB. GDB Example In this section, we will learn about how to use the commands of GDB with the example of the C programming language: This example finds the factorial of a given number. In this program, there is an error for the debugging purpose. 
+# include <stdio.h>
+int main()
+{
+      int i, number, j; //Declare three variables
+      printf ("Enter the number: "); 
+      scanf ("%d", &number );   // Enter the Number whose factorial to be calculate
+     for (i=number; i>0; i--)  // This loop executes (number-0) times.         
+     {
+	j=j*i;    
+      }
+      printf("The factorial of %d is %d\n",number,j);
+}
+ Now, check the output of the program by typing the following two commands in the terminal. The first command is for compiling the program: 
+gcc program.c
+ And, the second command is to run the program: 
+./a.out
+ After typing the above command, we will see the following output: 
+Enter the number: 6
+The factorial of 6 is 23592240
+ In this output, the factorial of 6 is wrong, so we have to again compile the above program for debugging by using the -g option in the command: 
+gcc -g program.c
+ Now, launch the GDB debugger for debugging the problem by typing the following command. In this command, a.out is a file which is produced after the compilation. The above command gives the following console, which allows us to run the commands of GDB for debugging: Now, we use the following steps to debug the above program: Step 1: Firstly, we have to set a breakpoint in this factorial program by using the following syntax: 
+break line number
+ After placing the breakpoint in c program, the debugger will stop at it, and gives us a prompt for debugging. So, before executing the program from starting, we have to place the given breakpoint in the program: 
+break 10
+ This command gives the following statement: 
+Breakpoint 1 at 0x776: file program.c, line 10.
+ Step 2: Now, we have to execute the c program from starting in gdb debugger by using the following syntax: 
+run <args>
+ we can easily run the program from starting using the above command. We can also provide the command line arguments to the code by passing the arguments in the above command. But, our program does not need the command line arguments, so we use only run: 
+run
+ After the typing of the above command, it gives the following prompt for debugging and execute the program until the first breakpoint: 
+Starting program: /home/sumit/Desktop/a.out 
+Enter the number: 6
+ After typing 6, it will give the following prompt: 
+Breakpoint 2, main () at program.c:10
+10			j=j*i; 
+ Step 3: Now, we have to print the values of a variable which are used in this program by using the following syntax: 
+print <variable>
+ Type the following commands for displaying the value of variables of the above program on the console: 
+(gdb) print i
+$1 = 6    // This is the values of variable i, because in for loop we assign the value of num to variable i.
+(gdb) print number
+$2 = 6    // This is the value of variable number.
+(gdb) print j
+$3 = 32767  // This is the value of a variable j. 
+(gdb) 
+ In the above values, the value of variable j is the garbage, so due to this the output of the factorial program is wrong. Therefore, firstly we have to initialize the value of variable j as 1 and execute the above program again. For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

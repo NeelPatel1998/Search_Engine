@@ -1,0 +1,117 @@
+https://www.javatpoint.com/local-variable-vs-global-variable
+Difference between Local variable and Global Variable - javatpoint
+Difference between Local variable and Global Variable - javatpoint ? Home All Differences IT Differences Medical Differences Science Differences Quiz Projects Interview Q Forum Training Differences All Differences Animal Differences Finance Differences Food Differences Geography Differences IT Differences Law Differences Medical Differences Politics Differences Science Differences Miscellaneous Differences next ? ? prev Difference between Local variable and Global Variable Variables in any programming language have a crucial role. Variables are classified into Global variables and Local variables based on their scope. The main difference between Global and local variables is that global variables can be accessed globally in the entire program, whereas local variables can be accessed only within the function or block in which they are defined. In this topic, we will first understand what are the variables and scope, along with local variables, global variables, and then differences between both the variables. What is a Variable? A variable is a name given to a memory location to store values in a computer program. It is used to store information that can be referenced and manipulated in a program. We can choose any name for the variable, but it must follow the programming semantics. Such as it can be, a, b, x, y, z, sub, div, total, avg, etc. Let's say there are two values, 10 and 20, that we want to store and use in our program. For this, we need to use a variable, and we will do the below steps: First, we will create or declare a variable with a suitable name. Assign those values to the variables to store them. Once these values are stores, we can use these variables with their name in our program. As we can see in the above image, there are two memory slots, 001 and 002, and we have given names to these locations as A and B. A is containing 10, and B is containing 20. Different programming languages have different ways to declare the variable. For example, in C language, we can declare the variable in the following manner: Syntax: (Variable declaration syntax in C language) 
+datatype v1, v2, v3,....;
+ Example: 
+#include <stdio.h>
+void main(){
+     int a;
+     int b;
+     int sum;
+}
+ Scope of Variable Each variable is defined and can be used within its scope and determines that wherein the program this variable is available to use. The scope means the lifetime of that variable. It means the variable can only be accessed or visible within its scope. The scope of variables can be defined with their declaration, and variables are declared mainly in two ways: Global Variable: Outside of all the functions Local Variable: Within a function block: What is a Global Variable? Global variables are those variables which are declared outside of all the functions or block and can be accessed globally in a program. It can be accessed by any function present in the program. Once we declare a global variable, its value can be varied as used with different functions. The lifetime of the global variable exists till the program executes. These variables are stored in fixed memory locations given by the compiler and do not automatically clean up. Global variables are mostly used in programming and useful for cases where all the functions need to access the same data. Example: 
+#include<stdio.h>
+int a=50, b=40;
+void main()
+{
+  printf("a = %d and b=%d",a,b);
+}
+ In the above example, a and b are the global variables. Advantages of Global Variable Global variables can be accessed by all the functions present in the program. Only a single declaration is required. Very useful if all the functions are accessing the same data. Disadvantages of Global Variable The value of a global variable can be changed accidently as it can be used by any function in the program. If we use a large number of global variables, then there is a high chance of error generation in the program. What is a Local Variable? Variables that are declared within or inside a function block are known as Local variables. These variables can only be accessed within the function in which they are declared. The lifetime of the local variable is within its function only, which means the variable exists till the function executes. Once function execution is completed, local variables are destroyed and no longer exist outside the function. The reason for the limited scope of local variables is that local variables are stored in the stack, which is dynamic in nature and automatically cleans up the data stored within it. But by making the variable static with "static" keyword, we can retain the value of local variable. Example: 
+#include<stdio.h>
+void main()
+{
+   int x=50, y=40;
+   printf("x = %d and y=%d",x, y);
+}
+ In the above example, we have declared x and y two variables inside the main function. Hence these are local variables. Advantages of Local Variable The same name of a local variable can be used in different functions as it is only recognized by the function in which it is declared. Local variables use memory only for the limited time when the function is executed; after that same memory location can be reused. Disadvantages of Local Variables The scope of the local variable is limited to its function only and cannot be used by other functions. Data sharing by the local variable is not allowed. Comparison Chart Between Global Variable and Local Variable Global Variable Local Variable Global variables are declared outside all the function blocks. Local Variables are declared within a function block. The scope remains throughout the program. The scope is limited and remains within the function only in which they are declared. Any change in global variable affects the whole program, wherever it is being used. Any change in the local variable does not affect other functions of the program. A global variable exists in the program for the entire time the program is executed. A local variable is created when the function is executed, and once the execution is finished, the variable is destroyed. It can be accessed throughout the program by all the functions present in the program. It can only be accessed by the function statements in which it is declared and not by the other functions. If the global variable is not initialized, it takes zero by default. If the local variable is not initialized, it takes the garbage value by default. Global variables are stored in the data segment of memory. Local variables are stored in a stack in memory. We cannot declare many variables with the same name. We can declare various variables with the same name but in other functions. Examples to understand differences between Local and Global Variable Now let's understand examples in different programming languages to better understand the difference between local and global variables. Local vs Global in C Example-1: 
+#include<stdio.h>
+
+	// Global variables
+	int a;
+	int b;
+	int Add()
+	{
+
+		return a + b;
+	}
+
+    int Mul()
+
+    {
+    int c=10; //Local Variable
+    int d=20;  ////Local Variable
+    return c*d;
+    }
+    void main()
+	{
+		int Ans1, Ans2, c=30;// Local variable
+		a = 50;
+		b = 70;
+		
+		Ans1 = Add();
+		Ans2= Mul();
+		
+		printf("The addition result is: %d\n",Ans1);
+     	          printf("The Multiplication result is: %d\n",Ans2);
+     	          printf("%d\n", c);
+	}
+ Output: 
+The addition result is: 120
+The Multiplication result is: 200
+30
+ As we can see in the above program, we have taken a and b global variables that are being accessed in different functions such as Add() and main(). Whereas there are also local variables such as c, d, Ans1, and Ans2, which are being accessed by those functions only in which they are declared. If we try to use c and d variables outside the Mul() function, they will be used as new variables. As we have shown by taking c in the main() function also, it is treated as a new variable. Local Vs. Global in Python Example-1: 
+v1 = "Hey, I am Global Variable!, I can be used everywhere in the program."   #globalvariable
+def func1():
+    v2="Hey, I am Local Variable!, I can be used within this block only in the program." #localvariable
+    print(v2)
+func1()     #calling func1
+
+def func2():  
+    print(v1) 
+func2()     #callin func2
+ Output: 
+Hey, I am a Local Variable!, I can be used within this block only in the program.
+Hey, I am Global Variable!, I can be used everywhere in the program.
+ In the above program, we have taken one global variable v1 and one local variable v2. Since v1 is global, it can be easily accessed in any function, and v2 is local; it is used only within its declared function. But if we try to use v1 in func1, it will give an error. Let's see the below example: Example-2 
+v1 = "Hey, I am Global Variable!, I can be used everywhere in the program."   #globalvariable
+def func1():
+    v2="Hey, I am Local Variable!, I can be used within this block only in the program." #localvariable
+    print(v2)
+    print(v1)
+func1()     #calling func1
+
+def func2():  
+    print(v1) 
+    print(v2)
+func2()     #callin func2
+ If we try accessing v1, it can easily be accessed in fun1 and func2. But if we try to access v2 outside its function, which means in func2, it will give the runtime error. We will get the below output after executing the above code: Runtime Error: 
+NameError: global name 'v2' is not defined
+ Output: 
+Hey, I am Local Variable!, I can be used within this block only in the program.
+Hey, I am Global Variable!, I can be used everywhere in the program.
+Hey, I am Global Variable!, I can be used everywhere in the program.
+ Local Vs. Global Variable in Java In Java, there is no concept of global variables; since Java is an Object-oriented programming language, everything is a part of the Class. But if we want to make a variable globally accessible, we can make it static by using a static Keyword. 
+class Demo {
+
+   // static variable
+   static int a = 10;
+  
+   // non-static or local variable
+   int b = 20;
+}
+
+public class Main {
+   public static void main(String[] args) {
+       Demo obj = new Demo();
+
+       // accessing the non-static variable
+       System.out.println("Value of non-static variable is: " + (obj.b));
+
+       // accessing the static variable
+       System.out.println("Value of static variable is:" + (Demo.a));
+   }
+}
+ Output: 
+Value of non-static variable is: 20
+Value of static variable is:10
+ In the above program, we have used one local variable or non-static variable and one static variable. The local variable can be accessed by using the object of the Demo class, whereas the static variable can be accessed using the name of the class. Next TopicDifference between ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

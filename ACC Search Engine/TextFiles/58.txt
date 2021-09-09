@@ -1,0 +1,53 @@
+https://www.javatpoint.com/bootstrap-4-layouts
+Bootstrap 4 Layouts - Javatpoint
+Bootstrap 4 Layouts - Javatpoint ? Home Bootstrap 4 Bootstrap HTML JavaScript jQuery jQuery UI CSS XML JSON C Java PHP Ajax Quiz Projects Interview Q Bootstrap 4 Tutorial Bootstrap 4 Tutorial Environment setup Bootstrap 4 Layout Bootstrap 4 Buttons Bootstrap 4 Dropdown Bootstrap 4 Spinners Bootstrap 4 Badges Bootstrap 4 Progress Bars Bootstrap 4 Jumbotron Bootstrap 4 Text Bootstrap 4 Pagination Bootstrap 4 Carousel Bootstrap 4 Scrollspy next ? ? prev Bootstrap 4 - Layouts Bootstrap 4 is the newest version of Bootstrap. The Bootstrap is a free to use and completely open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS- and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components which is the most popular HTML, CSS, and JavaScript framework for developing responsive, mobile-first websites. Bootstrap 4 is completely free to download and use. Layouts in Bootstrap 4 In Bootstrap 4, there are container classes that are typically used to wrap the different contents in a page. There are basically two container classes that can be used for various different activities - .container - this container class can be used to represent a fixed width container. .container-fluid - this container can be used to represent a full width container. Container The .container class in Bootstrap 4 can be applied into a web page for the purpose of wrapping the page content with a fixed width. Moreover, by using the container class the content can be placed in the center very easily with the help of using the .container class as shown below. The syntax of this class is given below: 
+<div class = "container">   
+......
+</div>
+ The example of a simple web page that shows a fixed width container class can be seen in the code given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>This is the Sample Container Class</h1>
+  <p>This section is inside a .container class</p> 
+  <p>The .container class gives a responsive fixed width container.</p>
+  <p>A user will have to resize the window of the browser to understand that its width that is the max width will substitute at the various breakpoints.</p>
+</div>
+</body>
+</html>
+ Test it Now The output of the following program is shown below - Output: Fluid Container In this section, a user can build a full width container with the help of a .container-fluid class. The syntax is given below: 
+<div class = "container-fluid"> 
+...
+</div>
+ The example of this class is given below, the example below shows a simple web page that contains a full width container - Example: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+  
+<div class="container-fluid">
+  <h1>The Sample Fluid Container is shown here</h1>
+  <p>This section is a part of a .container-fluid class.</p>
+  <p>The .container-fluid class will give a full width container, that will span the entire width of the viewport.</p>           
+</div> 
+</body>
+</html>
+ Test it Now The output of the following program is shown below - Output: Next TopicBootstrap 4 Buttons ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

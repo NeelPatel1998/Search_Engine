@@ -1,0 +1,72 @@
+https://www.javatpoint.com/conversion-of-postfix-to-prefix-expression
+Conversion of Postfix to Prefix expression - javatpoint
+Conversion of Postfix to Prefix expression - javatpoint ? Home Data Structure C C++ C# Java SQL HTML CSS JavaScript Ajax Android Cloud Design Pattern Quiz Projects Interview Q Comment Forum DS Tutorial DS Tutorial DS Introduction DS Algorithm Asymptotic Analysis DS Pointer DS Structure DS Array DS Array 2D Array DS Linked List Linked List Types of Linked List Singly Linked List Doubly Linked List Circular Linked List Circular Doubly List Skip list in DS DS Stack DS Stack Array Implementation Linked List Implementation DS Queue DS Queue Types of Queues Array Representation Linked List Representation Circular Queue Deque Priority Queue DS Tree DS Tree Binary Tree Binary Search Tree AVL Tree B Tree B+ Tree DS Graph DS Graph Graph Implementation BFS Algorithm DFS Algorithm Spanning Tree DS Searching Linear Search Binary Search DS Sorting Bubble Sort Bucket Sort Comb Sort Counting Sort Heap Sort Insertion Sort Merge Sort Quick Sort Radix Sort Selection Sort Shell Sort Bitonic Sort Cocktail Sort Cycle Sort Tim Sort Differences Linear vs non-linear Array vs linked list Stack vs queue Linear vs Circular Queue Linear Search vs Binary Search Singly Linked List vs Doubly Linked List Binary vs Binary Search Tree Tree vs Graph Binary Search tree vs AVL tree Red Black Tree vs AVL tree B tree vs B+ tree Quick Sort vs Merge Sort BFS vs DFS Stack vs Heap Bubble sort vs. Selection sort Misc Trie Data Structure Heap Data Structure Splay Tree Fundamental of the DS Hash Table Preorder Traversal Tree Traversal Implementation of Queue using Stacks Implementation of Stack using Queue Binomial Heap Postorder Traversal Sparse Matrix Detect loop in a Linked list Inorder Traversal Convert Infix to Postfix notation Convert infix to prefix notation Conversion of Prefix to Postfix expression Conversion of Postfix to Prefix expression DS MCQ Data Structure MCQ next ? ? prev Conversion of Postfix to Prefix expression What is Postfix expression? A postfix expression is said to be an expression in which the operator appears after the operands. It can be written as: (operand) (operand) (operator) For example: If the expression is: (A+B) * (C+D) Firstly, operator precedence rules will be applied to the above expression. Since the parenthesis has higher precedence than the multiplication operator; therefore '+' will be resolved first, and the + operator will come after AB and CD shown as below: (AB+) * (CD+) Now, the multiplication operator will move after CD+ shown as below: AB+ CD+* What is Prefix Expression? A prefix expression is said to be an expression in which the operator appears before the operands. For example: If the expression is given as: (A+B) * (C+D) Firstly, operator precedence rules will be applied to the above expression. Since the parenthesis has higher precedence than the multiplication operator; therefore, the '+' operator will be resolved first, and the '+' operator will move before the operands AB and CD shown as below: (+AB) * (+CD) Now, the multiplication operator will move before the +AB shown as below: *+AB+CD Conversion of Postfix to Prefix expression There are two ways of converting a postfix into a prefix expression: Conversion of Postfix to Prefix expression manually. Conversion of Postfix to Prefix expression using stack. Conversion of Postfix to Prefix expression manually The following are the steps required to convert postfix into prefix expression: Scan the postfix expression from left to right. Select the first two operands from the expression followed by one operator. Convert it into the prefix format. Substitute the prefix sub expression by one temporary variable Repeat this process until the entire postfix expression is converted into prefix expression. Let's understand through an example. a b - c + First, we scan the expression from left to right. We will move '-' operator before the operand ab. -abc+ The next operator '+' is moved before the operand -abc is shown as below: +-abc Conversion of Postfix to Prefix expression using Stack The following are the steps used to convert postfix to prefix expression using stack: Scan the postfix expression from left to right. If the element is an operand, then push it into the stack. If the element is an operator, then pop two operands from the stack. Create an expression by concatenating two operands and adding operator before the operands. Push the result back to the stack. Repeat the above steps until we reach the end of the postfix expression. Pseudocode for the conversion of Postfix to Prefix 
+Function PostfixToPrefix(string postfix)
+1.	Stack s
+2.	Loop: i = 0 to postfix.length
+2.1 if postfix[i] is operand ->
+s.push(postfix[i])
+
+2.2	else if postfix[i] is operator->
+op1 = s.top()
+s.pop()
+op2 = s.top()
+s.pop()
+expression = postfix[i] + op2 + op1
+s.push(expression)
+          end loop
+         return s.top
+ Let's understand the conversion of postfix to prefix expression using stack. If the Postfix expression is given as: AB + CD - * Symbol Scanned Action Stack Description A Push A into the stack A B Push B into the stack AB + Pop B from the stack Pop A from the stack Push +AB into the stack. +AB Pop two operands from the stack, i.e., A and B. Add '+' operator before the operands AB, i.e., +AB. C Push C into the stack +ABC D Push D into the stack +ABCD - Pop D from the stack. Pop C from the stack. Push -CD into the stack +AB -CD Pop two operands from the stack, i.e., D and C. Add '-' operator before the operands CD, i.e., -CD. * Pop -CD from the stack. Pop +AB from the stack. Push *+AB -CD into the stack. *+AB - CD Pop two operands from the stack, i.e., -CD and +AB. Add '*' operator before +AB then the expression would become *+AB-CD. The prefix expression of the above postfix expression is *+AB-CD. Implementation of Postfix to Prefix conversion in C++ 
+// C++ program to convert postfix to prefix expression.
+#include <iostream>
+#include<stack>
+using namespace std;
+// Checking whether the symbol is operand or not..
+bool isOperand(char c)
+{
+    if((c>='a' && c<='z') || (c>='A' && c<='Z'))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+// Converting postfix to prefix expression in C++
+string postfixtoprefix(string postfix)
+{
+    stack<string> s;  // using predefined stack data structure in stl library
+   //  executing the loop from 0 till the length of the expression..
+   for(int i=0; i< postfix.length(); i++)
+    {
+        if(isOperand(postfix[i]))  // calling the isOperand() function
+        {
+            string op(1, postfix[i]);  // converting the char type variable into string type.
+            s.push(op);  // Pushing the operand into the stack..
+        }
+        else
+        {
+            string op1 = s.top();  // declaration of op1 variable of type string.
+            s.pop(); // pop the operand from the stack.
+            string op2 = s.top(); // declaration of op2 variable of type string
+            s.pop(); // pop the operand from the stack.
+            string expression = postfix[i] + op2 + op1;  // concatenating the operands and operator
+            s.push(expression); // push the expression into the stack.
+            
+        }
+        
+    }
+    return s.top(); // returning the top of the stack.
+}
+int main()
+{
+    string postfix, prefix; // declaration of two variables of type string
+    std::cout << "Enter a postfix expression :" << std::endl;
+    std::cin >> postfix;
+    std::cout << "postfix expression : " << postfix<<std::endl;
+    prefix = postfixtoprefix(postfix); // calling the postfixtoprefix() function
+    std::cout << "prefix expression : " << prefix<< std::endl;
+    return 0;
+}
+ Output Next TopicDS MCQ ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

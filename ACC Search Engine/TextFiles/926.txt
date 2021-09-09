@@ -1,0 +1,101 @@
+https://www.javatpoint.com/dynamically-add-and-remove-fields-in-angular
+Dynamically Add and Remove Fields in Angular - javatpoint
+Dynamically Add and Remove Fields in Angular - javatpoint ? Home AngularJS Angular 7 C Java HTML CSS JavaScript jQuery Bootstrap PHP SQL PL/SQL Python Quiz Projects Interview Q Comment Forum Training AngularJS Tutorial AngularJS Tutorial What is AngularJS AngularJS MVC AngularJS First App AngularJS Data Binding AngularJS Expressions AngularJS Directives AngularJS Controllers AngularJS Modules AngularJS Scopes AngularJS Dependency AngularJS Filters AngularJS Tables AngularJS Select AngularJS DOM AngularJS Forms AngularJS Validation AngularJS AJAX AngularJS Animation Misc Angularjs Simple Datepicker directive Example Display Data from Json File in Angular Create Pagination using dirPagination directive in Angularjs Angular 7 Tutorial Angular 7 Tutorial Angular 7 Introduction Angular 7 Installation History & Versions Angular 7 First App Angular 7 Files Explanation Angular 7 with Bootstrap All CLI commands Angular 7 Libraries Angular 7 Architecture Angular 7 Components Angular 7 Directives Angular 7 Directives Angular 7 ngIf Directive Angular 7 ngStyle Directive Angular 7 Databinding Angular 7 Databinding Angular 7 String Interpolation Angular 7 Event Binding Angular 7 Property Binding Angular 7 Pipes Angular 7 Pipes Error Fixing Angular 7 Error Fixing Angular 7 Forms Angular 7 Forms Data Flow in Angular Forms Angular Reactive Forms Template-driven Forms Angular Misc Angular vs React Dynamically Add and Remove Form Fields in Angular Dropzone Image Upload in Angular 9/8 Angular 9/8 Select Dropdown Example Angular + Spring CRUD Example File Upload Example Login & Logout Example Search Field Example Interview Questions AngularJS Interview JavaScript Interview jQuery Interview Backbone.js Interview Ember.js Interview Neo4j Interview next ? ? prev Dynamically Add and Remove Form Fields in Angular In this section, we are going to use Angular so that we can add and remove fields from the form dynamically. The following example will be very useful for us to learn this concept. We can do this in various versions of Angular like 6, 7, 8, and 9. In our below example, we will create a form which will contain the name of product. It will also contain the Add Multiple Quantity options, where users can select more than one quantity with the price. In our angular application, we are going to create a dynamic form by using the formarray and formgroup. In order to add and remove fields, we will describe some steps, which are shown as follows: Step 1: This is the first step, and in this step, we will Import FormsModule. src/app/app.module.ts: 
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+   
+import { AppComponent } from './app.component';
+   
+@NgModule({
+  imports:      [ BrowserModule, FormsModule, ReactiveFormsModule ],
+  declarations: [ AppComponent ],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }
+ Step 2: In this step, we are going to Update TS file. For this, we will use the angular forms library to import the FormArray, FormControl, FormBuilder, and FormGroup. src/app/app.component.ts 
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
+  
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.css' ]
+})
+export class AppComponent  {
+  name = 'Angular';
+  
+  productForm: FormGroup;
+   
+  constructor(private fb:FormBuilder) {
+   
+    this.productForm = this.fb.group({
+      name: '',
+      quantities: this.fb.array([]) ,
+    });
+  }
+  
+  quantities() : FormArray {
+    return this.productForm.get("quantities") as FormArray
+  }
+   
+  newQuantity(): FormGroup {
+    return this.fb.group({
+      qty: '',
+      price: '',
+    })
+  }
+   
+  addQuantity() {
+    this.quantities().push(this.newQuantity());
+  }
+   
+  removeQuantity(i:number) {
+    this.quantities().removeAt(i);
+  }
+   
+  onSubmit() {
+    console.log(this.productForm.value);
+  }
+ Step 3: In this step, we will create Template code. For this, we will use ngModel so that we can write code of html form. We will use the file app.component.html to add the below code. In our following form, we can also use the Bootstrap class. src/app/app.component.html 
+<div class="container">
+  
+  <h1> Dynamically Add New Input Fields in Angular </h1>
+  
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    
+    <p>
+      <label for="name">Product Name:</label>
+      <input type="text" id="name" name="name" formControlName="name" class="form-control">
+    </p>
+  
+    <table class="table table-bordered" formArrayName="quantities">
+      <tr>
+        <th colspan="2">Add Multiple Quantity:</th>
+        <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>
+      </tr>
+      <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
+        <td>
+            Quantity :
+            <input type="text" formControlName="qty" class="form-control">
+        </td>
+        <td>
+            Price:
+            <input type="text" formControlName="price" class="form-control">
+        </td>
+        <td>
+            <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+    </table>
+   
+    <button type="submit" class="btn btn-success">Submit</button>
+    
+  </form>
+    
+  <br/>
+  {{this.productForm.value | json}}
+</div>
+ Now, the above application is ready to run. The following command will be used to run our above application. 
+ng serve
+ After running this command, the following output will be generated: Next TopicDropzone Image Upload in Angular 9/8 ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

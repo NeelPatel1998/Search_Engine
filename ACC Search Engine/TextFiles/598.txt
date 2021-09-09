@@ -1,0 +1,53 @@
+https://www.javatpoint.com/get-and-set-scroll-position-of-an-element
+Get and Set Scroll Position of an Element - javatpoint
+Get and Set Scroll Position of an Element - javatpoint ? Home JavaScript C C++ Java PHP HTML CSS Bootstrap jQuery \ Node.js SQL Android Quiz Projects Interview Q Comment Forum Training JavaScript Tutorial JavaScript Introduction JavaScript Example External JavaScript JavaScript Basics JS Comment JS Variable JS Global Variable JS Data Types JS Operators JS If Statement JS Switch JS Loop JS Function JavaScript Objects JS Object JS Array JS String JS Date JS Math JS Number JS Boolean JavaScript BOM Browser Objects 1) Window Object 2) History Object 3) Navigator Object 4) Screen Object JavaScript DOM 5) Document Object getElementById GetElementsByClassName() getElementsByName getElementsByTagName JS innerHTML property JS innerText property JavaScript Validation JS form validation JS email validation JavaScript OOPs JS Class JS Object JS Prototype JS constructor Method JS static Method JS Encapsulation JS Inheritance JS Polymorphism JS Abstraction JavaScript Cookies JS Cookies Cookie Attributes Cookie with multiple Name Deleting Cookies JavaScript Events JavaScript Events JavaScript addEventListener() JS onclick event JS dblclick event JS onload event JS onresize event Exception Handling JS Exception Handling JavaScript try-catch JavaScript Misc JS this Keyword JS Debugging JS Hoisting JS Strict Mode JavaScript Promise JS Compare dates JavaScript array.length JavaScript alert() JavaScript eval() function JavaScript closest() JavaScript continue statement JS getAttribute() method JS hide elements JavaScript prompt() removeAttribute() method JavaScript reset JavaScript return JS String split() JS typeof operator JS ternary operator JS reload() method JS setAttribute() method JS setInterval() method JS setTimeout() method JS string includes() method Calculate current week number in JavaScript Calculate days between two dates in JavaScript JavaScript String trim() JavaScript timer Remove elements from array JavaScript localStorage JavaScript offsetHeight Confirm password validation Static vs Const How to Convert Comma Separated String into an Array in JavaScript Calculate age using JavaScript JavaScript label statement JavaScript String with quotes How to create dropdown list using JavaScript How to disable radio button using JavaScript JavaScript Advance JS TypedArray JS Set JS Map JS WeakSet JS WeakMap JavaScript callback JavaScript closures JavaScript date difference JavaScript date format JS date parse() method JavaScript defer JavaScript redirect JavaScript scope JavaScript scroll JavaScript sleep JavaScript void JavaScript Form Differences jQuery vs JavaScript JavaScript vs PHP Questions How to add JavaScript to html How to enable JavaScript in my browser difference between Java and JavaScript How to call JavaScript function in html How to write a function in JavaScript Is JavaScript case sensitive How does JavaScript Work How to debug JavaScript How to Enable JavaScript on Android What is a promise in JavaScript What is hoisting in JavaScript What is Vanilla JavaScript How to add a class to an element using JavaScript How to calculate the perimeter and area of a circle using JavaScript How to create an image map in JavaScript How to find factorial of a number in JavaScript How to get the value of PI using JavaScript How to make a text italic using JavaScript What are the uses of JavaScript How to get all checked checkbox value in JavaScript How to open JSON file Random image generator in JavaScript How to add object in array using JavaScript JavaScript Window open method JavaScript Window close method How to check a radio button using JavaScript JavaScript Const JavaScript function to check array is empty or not JavaScript multi-line String JavaScript Anonymous Functions Implementing JavaScript Stack Using Array JavaScript classList JavaScript Code Editors JavaScript let keyword Random String Generator using JavaScript JavaScript Queue Event Bubbling and Capturing in JavaScript How to select all checkboxes using JavaScript JavaScript change Event JavaScript focusout event Traverse array object using JavaScript JavaScript create and download CSV file How to make beep sound in JavaScript How to add a WhatsApp share button in a website using JavaScript JavaScript Execution Context JavaScript querySelector Shallow Copy in JavaScript How to Toggle Password Visibility in JavaScript Removing Duplicate From Arrays JavaScript insertBefore JavaScript Select Option Get and Set Scroll Position of an Element Getting Child Elements of a Node in JavaScript JavaScript scrollIntoView JavaScript String startsWith JS First Class Function JavaScript Default Parameters JavaScript Recursion in Real Life JavaScript removeChild Remove options from select list in JavaScript JavaScript Calculator Palindrome in JavaScript JavaScript Call Stack MCQ JavaScript MCQ Interview Questions JavaScript I/Q next ? ? prev Get and Set Scroll Position of an Element In JavaScript, it is quite simple and easy to get and set the scroll position of an element of JS and especially when a user is building a user interface in the web browser. As when creating a user interface, we need to have an element that can be scrolled and for which it is required that you know its horizontal and vertical scrolling. In this section, we will discuss how we can get and set the scroll position of an element and what the properties are used for doing so. With this, we will also discuss and implement some examples that will help us to get the concept better. For getting and setting the scroll position of a JS element, there are following two properties of the element we need to use. These properties will enable to know the element's horizontal as well as vertical scrolling: scrollTop: The property of an element that returns the number of pixels permitted to the element's content to scroll vertically. scrollLeft: The property of an element that returns the number of pixels permitted to the element's content to scroll horizontally. Other than this, the scrollTop and scrollLeft properties of the element are highly relative to the top left corner of the element, and as a result, by default, the value of the top left corner is (0, 0). Let's see an implementation that will help us understand the use of both element's properties. Implementation Let's see two different example codes to know how we can get and set the scroll position of an element: Setting the scroll position of an element using scrollRight property: Below is the given code: 
+<html>
+<div id="id_1">
+  <div id="value">User click the button</div>
+</div>
+<button id="slide" type="button">Slide it right</button>
+<style>
+#id_1 {
+  width: 150px;
+  height: 100px;
+  border: 1px solid #ccc;
+  overflow-x: scroll;
+}
+
+#value {
+  width: 250px;
+  background-color: #ccc;
+}
+</style>
+
+<script>
+const button = document.getElementById('slide');
+
+button.onclick = function () {
+  document.getElementById('id_1').scrollLeft += 20;
+};
+</script>
+</html>
+ The output of the above code is shown below: It is clear from the code that the scrollLeft property of the element gets and sets the element horizontally where on clicking on the button, the text gets scrolled in the horizontal direction. Similarly, the scrollRight property is used. Example 2: Implementing scrollTop property of an element We can have the same example code to get and set the element scroll position vertically: 
+<html>
+<div id="container">
+  <div id="content">Slide Vertically</div>
+</div>
+<style>
+#container {
+  width: 100px;
+  height: 250px;
+  border: 1px solid #ccc;
+  overflow-x: auto;
+}
+
+#content {
+  height: 300px;
+  background-color: #ccc;
+}
+</style>
+<script>
+document.getElementById('container').scrollTop;
+</script>
+</html>
+ The output of the above code is shown below: It is clear from the code that the scrollTop property of the element gets and sets the element vertically on sliding, and the text gets scrolled in the vertical direction. So, using both these element properties, we can know the element's position, and then we can set and get the scroll position of the element. Next TopicGetting Child Elements of a Node in JavaScript ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

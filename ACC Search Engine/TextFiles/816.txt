@@ -1,0 +1,62 @@
+https://www.javatpoint.com/install-and-use-font-awesome-icons-in-laravel
+Install and Use Font Awesome Icons in Laravel - Javatpoint
+Install and Use Font Awesome Icons in Laravel - Javatpoint ? Home PHP Laravel Magento 2 HTML CSS Java MySQL Bootstrap JavaScript jQuery C XML Quiz Interview Q Comment Forum Training Laravel Tutorial Laravel Tutorial Features of Laravel History of Laravel Installation on Windows XAMPP Installation Composer Installation Git Installation Creating First Laravel Project Laravel Application Structure Laravel Routing Laravel Basic Routing Routing Parameters Laravel Named Routes Laravel Middleware Laravel Route Groups Laravel Controllers Laravel Controllers Routing Controllers Resource Controllers Controller Middleware Laravel Views Laravel Views Passing data to views Laravel Blade Template Blade Template Template Inheritance Laravel Forms Laravel Migration Laravel Migration Migration Structure Generating Migrations Migration Commands Laravel Database Laravel Database Laravel Eloquent Laravel Relationship Laravel Tinker Laravel Crud Misc. Laravel Validation Laravel File Upload Laravel Sessions Laravel vs CodeIgniter Laravel vs Django Laravel vs Symfony Laravel vs WordPress Install and Use Font Awesome Icons in Laravel Delete Multiple Records using Checkbox in Laravel Import and Export CSV file in Laravel 5.8 Generate PDF from html view file and download using dompdf in Laravel Implement Flash Message with Laravel 5.7 Laravel VueJS File Upload Using Vue-dropzone Example Interview Questions Laravel Interview Questions next ? ? prev Install and Use Font Awesome Icons in Laravel In this section, we are going to use Laravel to install the font awesome. We will discuss a simple example to understand the use of font-awesome in laravel. In the following example, we will install font-awesome laravel 7. Now, understand the step-by-step process to use laravel mix for installing font-awesome icons. The font awesome can be installed in laravel in two ways, which we explain through two examples. In our first example, we will use the npm command and laravel mix. In our second example, we will use cdn js. The font-awesome icons can be easily used in laravel versions like 6, 7, and 8. The step by step process to install icons is as follows: Example 1: Install using Namp Firstly, the latest version of laravel will be installed. For this, the following command will be run. 
+composer create-project --prefer-dist laravel/laravel blog
+ Now we will use our laravel application and install npm. For this, the following command will be used. Using this command, the folder of mode_module will be created in our root directory, which will store all npm modules. 
+npm install
+ Now, we will use the following npm command and install the font-awesome library: 
+npm install font-awesome --save
+ After successful installing this library, we will use the app.scss file and import font awesome CSS on it. We can import it using the following command: resources/sass/app.scss 
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+ Now everything is installed. So we can run the npm dev command. We will use the following command to run it: 
+npm run dev
+ In the following code, we are using our generated app.css file in our blade file: resources/views/welcome.blade.php 
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Use of font awesome </title>
+    <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <style type="text/css">
+        i{
+            font-size: 50px !important;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+  
+<h1> Use of font awesome </h1>
+  
+<i class="fa fa-copy"></i>
+<i class="fa fa-save"></i>
+<i class="fa fa-trash"></i>
+<i class="fa fa-home"></i>
+  
+</body>
+</html>
+ Now our above application is ready to run, and see it on the home page. After running this application, we will get the following layout. Example 2: Install Using CDNJS Now we will add the font awesome icons by using the cdn js file. The code to add this is described as follows: resources/views/welcome.blade.php 
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Use of font awesome </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
+    <style type="text/css">
+        i{
+            font-size: 50px !important;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+  
+<h1> Use of font awesome </h1>
+   
+<i class="fa fa-copy"></i>
+<i class="fa fa-save"></i>
+<i class="fa fa-trash"></i>
+<i class="fa fa-home"></i>
+  
+</body>
+</html>
+ After executing any of the above examples, we will get the following output: Next TopicDelete Multiple Records using Checkbox in Laravel ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

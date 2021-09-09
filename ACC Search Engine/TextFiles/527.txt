@@ -1,0 +1,88 @@
+https://www.javatpoint.com/inline-block-vs-block-elements
+Inline-block vs. Block Elements - javatpoint
+Inline-block vs. Block Elements - javatpoint ? Home All Differences IT Differences Medical Differences Science Differences Quiz Projects Interview Q Forum Training Differences All Differences Animal Differences Finance Differences Food Differences Geography Differences IT Differences Law Differences Medical Differences Politics Differences Science Differences Miscellaneous Differences next ? ? prev Inline-block vs. Block Elements In this article, we will discuss the differences between inline-block and block elements. These elements are used widely every day while designing a website. People normally get confused between these elements. So let's understand the differences to avoid such confusion. Block Elements The elements that begin on a new line are known as block elements. A block element takes up the full width of the content. Unlike inline, there exists a top and bottom margin for these elements. Block-level elements may only appear inside the body tag. Block-level elements create a larger structure than inline elements. Example of Block elements: <div>, <p>, <li>, <main>, <nav>, <ul>, <form>, <video>, <table>, <aside>, <article> are some of the inline tags. Example: 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<style>
+p { background-color: #8A55; }
+
+</style>
+</head>
+<body>
+<p>This paragraph is a block-level element; its background has been colored to display the paragraph's parent element.</p>
+
+</body>
+</html>
+ Output: Inline-Block Elements The display value of inline-block works similarly to inline with one exception: the height and width of that element become modifiable. Example: 
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+span.b {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  color:white;
+  border: 1px solid blue;    
+  background-color: blue; 
+}
+</style>
+</head>
+<body>
+
+<div>This is an example of inline-block element with a span colored as blue <span class="b">Inline-Block</span>  </div>
+
+</body>
+</html>
+ Output: Differences between Block and Inline-block Block Inline-block A block element begins on a new line. It remains inline with all the text around the element and appears the same as inline. Examples: div, p, li, main, etc. It has no tag examples as it can be applied to any tag using CSS. CSS property: display:block CSS property: display:inline-block Here is the output file using all the elements on one page: The code of the above web page: 
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+span.a {
+  display: inline; /* the default for span */
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border: 1px solid white;  
+  background-color: blue; 
+}
+
+span.b {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border: 1px solid white;    
+  background-color: green; 
+}
+
+span.c {
+  display: block;
+  width: 70px;
+  height: 50px;
+  padding: 5px;
+  border: 1px solid blue;    
+  background-color: pink; 
+}
+</style>
+</head>
+<body>
+
+<h1>The display Property</h1>
+
+
+<h2>display: block</h2>
+
+<div>This is section with a block span made pink <span class="c">block</span> <span class="c">element</span> . </div>
+
+
+<h2>display: inline-block</h2>
+<div> This is section with a inline block span made green<span class="b">inline</span> <span class="b">block</span>  </div>
+
+</body>
+</html>
+ Next TopicDifference between ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

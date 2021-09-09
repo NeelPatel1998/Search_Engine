@@ -1,0 +1,352 @@
+https://www.javatpoint.com/creating-a-real-time-chat-application-using-firebase
+Creating a real-time chat application using Firebase - Javatpoint
+Creating a real-time chat application using Firebase - Javatpoint ? Home Java Swift iOS Development OS C PHP HTML CSS Bootstrap JavaScript jQuery jQuery UI Projects Interview Q Comment Forum Training iOS Development iOS Development using Swift Introduction to XCode IDE iPhone History & Versions Views & View Controllers Storyboard & interface builder Creating First iOS Application iOS UI Controls iOS: Label iOS: Button iOS: TextField iOS: DatePicker iOS: Slider iOS: Stepper iOS: Switch iOS: Segment Control iOS Container Views iOS: UIView iOS: TableView iOS: CollectionView iOS: ScrollView iOS Content Views iOS: ActivityIndicatorView iOS: ImageView iOS: PickerView iOS: ProgressView iOS: WebView iOS: MapView iOS View Controllers iOS: UIViewController iOS: Table View Controller iOS: Collection View Controller iOS: PageViewController iOS: Split View Controller Tab Bar Interface iOS: Tab Bar Controller iOS: Tab Bar iOS: Tab Bar Item Navigation Interface Navigation Controller Navigation Bar Navigation Item Architecture Pattern Model View Controller Model View View-Model Model View Presenter Install Libraries Setting Up Cocoapods for XCode Projects Using Cocoapods for XCode Projects Web Request & Parsing Alamofire Library Fetching data through Get Request Parsing JSON Response Image Caching Pull to Refresh functionality iOS UserDefaults Saving Data in UserDefaults Getting Data from UserDefaults CoreData & Database CoreData Managed Object Model Persistent Object Coordinator Multithreading in Swift Multithreading in Swift Concurrency in swift Handling Background Tasks Misc Firebase Crashalytics iOS Swift IOS app lifecycle What is Jailbreaking in iOS Why is iOS better than Android Features of iOS 14 Getting user location in iOS Push Notifications in iOS Sign-in with Apple using swift SSL Pinning in Swift XCode 12 Features Facebook Login Integration in iOS Google Sign-in integration in iOS How to capture the image using the iOS app How to make a phone call in the iOS app Paytm SDK Integration in iOS Razorpay Integration in iOS UIAlertController in Swift Using SQLite in iOS app Creating a real-time chat application using Firebase Using Realm database in iOS app iOS: machine learning What is CoreML Using Advanced CoreML Access Control in Swift iOS Memory Management in iOS applications Protocol Oriented Programming in iOS Swift Initialization in Swift Parsing a Static JSON file in iOS application Sending Email using the iOS application Using AVAudioPlayer to play sounds in iOS applications next ? ? prev Creating a real-time chat application using Firebase In this tutorial, we will use Firebase to build a real-time chat application. The most important aspect of building a messaging app is to learn to set up Firebase for iOS apps and to save the chat data into the database. Firebase can be defined as a service that acts as a backend provider. In other words, we can say that it is a web service that provides us a cloud-based infrastructure that allows us to save and retrieve our data from google web service. We don't need to maintain our servers and writing server-side code. It provides many features, including data storage, authentication, analytics, notifications, hosting, crashalytics, etc. It is free to use up to most of the extent. In this tutorial, we will be using two of Firebase's core features, I.e., Real-time database and Authentication. We will save our real-time chat messages, retrieved on all the devices on which the app is installed. In this iOS app, we will provide Sign-up and login features to the user by using the Authentication feature on Firebase. Setting up Firebase for the development To set up a firebase for the development, we need to register our project on the console. For this purpose, browse https://console.firebase.google.com/ into the browser, and click on Add Project to add a project. This will prompt us to provide the name for the project, as shown below. Now, click Continue to continue with setting up the Firebase. The next window prompts us to enable Google Analytics in the project, as shown below. In step 3, select a google account to continue with the process. Once we choose the account from the dropdown, we are done with creating the project on Firebase. Now, our project is ready. We need to add our iOS app to this project. For this purpose, click iOS on the project dashboard screen, as shown below. This will prompt us to provide the application's bundle id, App nickname, and App Store Id. However, the nickname and store id is optional, but we have to provide the bundle id, which must be similar to the one we will be using on the Apple developer account and XCode app. Now, download the GoogleService-info.plist file from the dashboard and add it to the XCode project. Now, add firebase SDK into the project. The process to add firebase SDK is given in the below image. Along with the Firebase/Analytics pod, we also need various other dependencies to use the database and Authentication services of Firebase in our iOS app. For this purpose, add the following code to the Podfile. 
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+
+target 'realtimechatapp' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+
+  # Pods for realtimechatapp
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'SVProgressHUD'
+  pod 'ChameleonFramework'
+end
+ Now add the initialization code to the AppDelegate in XCode. Once we add the initialization code to the AppDelegate, we are all set to use Firebase in our iOS app. Create an XCode project and perform all the above steps to connect to Firebase. Make sure to use the same bundle id we have been using in Firebase for our iOS app. Set up Firebase Realtime Database To create our real-time chat application, we need to setup Realtime Database on our Firebase. For this purpose, click on Realtime Database on the project console. We will be prompted to create a database, as shown below. Click on Create Database to create the one. In the first step, we will be prompted to choose the Country, that is, the United States, by default. Let it be the United States and click Next. Once we click Next, we will be prompted to choose the Database Rules, I.e., locked and test mode. For now, we will start in test mode. Choose test mode and click Enable to continue with the database. Configure iOS app to use firebase database Now, we will configure our iOS app to use the firebase database. For this purpose, add the following code into the didFinishLaunchingWithOptions(: ) method (just before the return statement) in AppDelegate to create a reference of the firebase database test whether the data is being stored in the project dashboard on the firebase console. 
+let myDb = Database.database().reference()
+myDb.setValue("This is some peice of data")
+ Make sure to delete this code once our testing is done since this will wipe out the database every time and store new data. We need to move back to the firebase console and check whether the data has been added to the database or not. For this purpose, go to Realtime Database on the firebase console and check the data. We should get the data shown below in the dashboard. Adding users to our app on Firebase Now, we will add users to our app by using the Firebase Authentication feature. For this purpose, go to Authentication on the firebase console. It will prompt us to get started, as shown below. Once we get started with the Authentication Feature, we need to enable the Sign-in method to be used in our app. There is a variety of options, as shown below. We will enable the Email/Password Sign-in method to use in our app. For this purpose, click on the Edit icon and enable the option as shown in the below image. Now, our app will allow users to register and sign-in using their email and password combination. Create Interface Builder Our app will contain 4 Screens, I.e., Welcome Screen, Register Screen, Sign-In Screen, and Chat Screen. Welcome Screen: When a new user installs the app, it will land on the Welcome screen, where the user can choose to register himself into the application or log in to the application if already registered. The Welcome screen is shown in the image below. On iPhone 11 pro max, it will look like below. Register Screen: If the user is not registered on the app, they may need to register themselves into the application. On iPhone 11 pro max, it will look like below. Login Screen: The login screen will look similar to the register screen up to an extent. The Login Screen in the Main.storyboard is given below, which contains a Label, two textfields, and a button to trigger the user's event. It will look like below on iPhone 11 pro max. Chat Screen The chat screen will contain a title and logout button at the top, tableview to display the list of messages, a textfield and send button to type and send message to the other person. It is shown in the storyboard as given in the below image. Now, we are done with designing the user interface for the application. Now we will create UIViewController classes for the XCode Uis and connect the respective outlets. Implementing the Code The first thing we need to do is to create a link among WelcomeViewController, LoginVC, and RegisterVC. For this purpose, add the following code into WelcomeViewController. 
+import UIKit
+
+
+class WelcomeViewController: UIViewController {
+
+
+    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+    @IBAction func btnClickedLogin(_ sender: Any) {
+        let vc = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction func btnClickedRegister(_ sender: Any) {
+        let vc = storyBoard.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+}
+ Here, we need to ensure that we have given the same storyboard id to the view controllers in the storyboard. Register into the app To continue with the registration into the app, we need to make sure that we have connected outlets for the email and password text field. We also need to connect the outlet for the Register button to trigger the user event. To add a user to the firebase database, add the following code into the btnClickedRegister() method. 
+@IBAction func btnClickedRegister(_ sender: Any) {
+        Auth.auth().createUser(withEmail: emailIdTF.text!, password: passwordTF.text!) { (user, error) in
+            if(error == nil){
+                debugPrint("Registration Successful")
+            }else{
+                debugPrint(error)
+            }
+        }
+    }
+ This will add the user to the firebase database; we can check the entry in the Authentication section as the user on the firebase console. To add a user, build and run the application, choose register, and enter the credentials (email and password) as shown below. Now, if we click Register and check the users on the firebase console, we will get an entry as register@example.com in the Authentication section, as shown below. Now, we must notice that the registration is successful, but nothing happens on screen. We must be able to navigate the user to the chat screen directly once the registration is successful. For this purpose, add the following code just after we print the success message on the console. 
+let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
+self.navigationController?.pushViewController(vc, animated: true)
+ Now, we will see the chat screen as shown below. Logout from the app Now, we should be able to logout from the chat screen to implement the login functionality in the application. For this purpose, let's implement logout first, which will be done when the user pressed the logout button on the chat screen. Let's create the action outlet for logout the ChatVC. For logging out the user, Firebase provides the signOut() method by using which we can escape from the app. Let's add the following code in the ChatVC. 
+import UIKit
+import Firebase
+
+
+class ChatVC: UIViewController {
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+
+        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    @IBAction func logOutPressed(_ sender: Any) {
+        do{
+            try Auth.auth().signOut()
+            self.navigationController?.popToRootViewController(animated: true)
+        }catch{
+            debugPrint(error)
+        }
+    }
+    
+}
+ This will let us logout from the application and navigate us back to the Welcome screen of the application. Login Functionality Now, we have to implement the login functionality to login back to the application with the credentials we are registered with. To code up the login screen, we need to create the outlet for the login button in LoginVC. To implement login, add the following code to the LoginVC. 
+import UIKit
+import Firebase
+
+
+class LoginVC: UIViewController {
+
+
+    @IBOutlet weak var emailTF: UITextField!
+    @IBOutlet weak var passwordTF: UITextField!
+    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+
+        // Do any additional setup after loading the view.
+         self.navigationController?.navigationBar.isHidden = true
+    }
+    func showAlert(_ msg: String){
+        let alertController = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        
+    }
+    @IBAction func loginBtnClicked(_ sender: Any) {
+        Auth.auth().signIn(withEmail: emailTF.text!, password: passwordTF.text!) { (user, error) in
+            if(error != nil){
+                debugPrint(error)
+                self.showAlert(error?.localizedDescription ?? "")
+            }else{
+                
+                let vc = self.storyBoard.instantiateViewController(withIdentifier: "ChatVC") as! ChatVC
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
+    
+}
+ This will let the user login to the application. However, this will also show the error to the user as an alert if there is an error with the provided credentials, as shown below. Chat Functionality Now, we are done with implementing login and logout functionality; we are ready to implement the chat functionality in the app. Let's look at the ChatVC in the storyboard as we haven't added any cell UI to the tableview, which will show the chat messages between the users. Now, let's add a XIB file which will be the subclass of UITableViewCell, and register it to the tableview. To create a XIB file, we need to check the "Also Create the Xib" option while creating a CocoaTouch Class, as shown below. This will create the ChatTableViewCell XIB and class. Let's configure the design first. In ChatTableViewCell, we will add an image view to show the profile pic of the user, and we will also add the UILabels to show the name and message of the user, as shown below. We need to create the outlets in the ChatTableViewCell, which will have the following code. 
+import UIKit
+
+class ChatTableViewCell: UITableViewCell {
+    @IBOutlet weak var userName: UILabel!
+    
+    @IBOutlet weak var msgBckground: UIView!
+    @IBOutlet weak var messageBody: UILabel!
+    @IBOutlet weak var userProfile: UIImageView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+
+        // Configure the view for the selected state
+    }
+    
+}
+ To register the XIB file with the tableview, add the following code into the viewDidLoad() method of ChatVC. 
+let nib = UINib(nibName: "ChatTableViewCell", bundle: nil)
+tableView.register(nib, forCellReuseIdentifier: "ChatTableViewCell")
+ Now, let's implement the delegate and datasource methods of tableview to create the cells in tableview. For this purpose, add the following code into ChatVC. 
+import UIKit
+import Firebase
+
+class ChatVC: UIViewController {
+
+    @IBOutlet weak var msgTF: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    let msgArr = ["first", "Second", "Third"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = true
+        let nib = UINib(nibName: "ChatTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "ChatTableViewCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    @IBAction func clickedBtnMsgSend(_ sender: Any) {
+    }
+    
+    @IBAction func logOutPressed(_ sender: Any) {
+        do{
+            try Auth.auth().signOut()
+            self.navigationController?.popToRootViewController(animated: true)
+        }catch{
+            debugPrint(error)
+        }
+    }
+    
+}
+
+
+extension ChatVC : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+extension ChatVC : UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return msgArr.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
+        cell.messageBody.text = msgArr[indexPath.row]
+        return cell
+    }
+}
+ Once we build, run, and log in to the application, we will see the following Chat screen, which contains the dummy messages with default label usernames and blank user profile images. Now, let's create a Model class for setting up the custom message. Our model class will contain our messages. Create a new Swift file as Message.swift and add the following code into it. 
+import Foundation
+
+class Message{
+    var sender = ""
+    var msgBody = ""
+}
+ Let's send some messages using our Real-time chat app. Till now, we are using dummy text to display the UI. However, we will use the firebase database to send and retrieve the actual messages in the application. In our app, when the user types any message in the message textfield in ChatVC, the message will get saved in our firebase database. Let's implement this inside send button action outlet. 
+@IBAction func clickedBtnMsgSend(_ sender: Any) {
+        msgTF.endEditing(true)
+        msgTF.isEnabled = false
+        sendBtn.isEnabled = false
+        let msgDB = Database.database().reference().child("Messages")
+        let msgDict = ["Sender" : Auth.auth().currentUser?.email, "MessageBody" : msgTF.text!]
+        msgDB.childByAutoId().setValue(msgDict){(error,ref) in
+            if(error != nil){
+                debugPrint(error)
+            }else{
+                debugPrint("Msg saved successfully")
+                self.msgTF.isEnabled = true
+                self.sendBtn.isEnabled = true
+                self.msgTF.text = nil
+            }
+        }
+    }
+ Once we build and run the app after adding this code and send any message, we can check the firebase console whether the message is getting saved or not. We need to populate the messages in the tableview to show sent messages instead of displaying dummy text. For this purpose, let's create an array of Message objects in ChatVC. 
+  var messageArr = [Message]()
+ Now, add the following method to ChatVC for retrieving messages. 
+func getMsgs(){
+        let msgDB = Database.database().reference().child("Messages")
+        msgDB.observe(.childAdded) { (snapShot) in
+            let value = snapShot.value as! Dictionary<String,String>
+            let text = value["MessageBody"]!
+            let sender = value["Sender"]!
+            let msg = Message()
+            msg.msgBody = text
+            msg.sender = sender
+            self.messageArr.append(msg)
+            debugPrint(self.messageArr.count)
+            self.tableView.reloadData()
+        }
+    }
+ We are reloading the tableview as well inside the getMsgs() method. We also need to change the delegate and dataSource implementation of tableview to use messageArr for data population. 
+extension ChatVC : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+extension ChatVC : UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messageArr.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
+        cell.messageBody.text = messageArr[indexPath.row].msgBody
+        cell.userName.text = messageArr[indexPath.row].sender
+        cell.userProfile.image =  imageLiteral(resourceName: "profilePic")
+        return cell
+    }
+}
+ Now, we are all done with setting up our Realtime Chat app. We need to call getMsgs() method from viewDidLoad() method in ChatVC. Build, run, and log in to the app on two different simulators or devices and see if we can send the messages or not. Our ChatVC will contain the following code. 
+import UIKit
+import Firebase
+
+
+class ChatVC: UIViewController {
+
+
+    @IBOutlet weak var sendBtn: UIButton!
+    @IBOutlet weak var msgTF: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var messageArr = [Message]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = true
+        let nib = UINib(nibName: "ChatTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "ChatTableViewCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+       getMsgs()
+    }
+    
+    func getMsgs(){
+        let msgDB = Database.database().reference().child("Messages")
+        msgDB.observe(.childAdded) { (snapShot) in
+            let value = snapShot.value as! Dictionary<String,String>
+            let text = value["MessageBody"]!
+            let sender = value["Sender"]!
+            let msg = Message()
+            msg.msgBody = text
+            msg.sender = sender
+            self.messageArr.append(msg)
+            debugPrint(self.messageArr.count)
+            self.tableView.reloadData()
+        }
+    }
+    @IBAction func clickedBtnMsgSend(_ sender: Any) {
+        msgTF.endEditing(true)
+        msgTF.isEnabled = false
+        sendBtn.isEnabled = false
+        let msgDB = Database.database().reference().child("Messages")
+        let msgDict = ["Sender" : Auth.auth().currentUser?.email, "MessageBody" : msgTF.text!]
+        msgDB.childByAutoId().setValue(msgDict){(error,ref) in
+            if(error != nil){
+                debugPrint(error)
+            }else{
+                debugPrint("Msg saved successfully")
+                self.msgTF.isEnabled = true
+                self.sendBtn.isEnabled = true
+                self.msgTF.text = nil
+               
+            }
+        }
+    }
+    
+    @IBAction func logOutPressed(_ sender: Any) {
+        do{
+            try Auth.auth().signOut()
+            self.navigationController?.popToRootViewController(animated: true)
+        }catch{
+            debugPrint(error)
+        }
+    }
+    
+}
+
+
+extension ChatVC : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+extension ChatVC : UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messageArr.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
+        cell.messageBody.text = messageArr[indexPath.row].msgBody
+        cell.userName.text = messageArr[indexPath.row].sender
+        cell.userProfile.image =  imageLiteral(resourceName: "profilePic")
+        return cell
+    }
+}
+ Next TopicUsing Realm database in iOS app ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

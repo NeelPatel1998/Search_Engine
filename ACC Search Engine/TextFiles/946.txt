@@ -1,0 +1,106 @@
+https://www.javatpoint.com/angular-material-divider-or-content
+Angular Material Divider/ Content - Javatpoint
+Angular Material Divider/ Content - Javatpoint ? Home Angular Material AngularJS Angular 8 Angular 7 AWS IoT Control System HTML CSS Aptitude Selenium Kotlin JavaScript Projects Interview Q Comment Forum Angular Material Angular Material Tutorial Angular Material Installation Angular Material Icons Angular Material Inputs Angular Material Widgets Angular Material Buttons Angular Material Checkbox Angular Material Sort Header Angular Material Divider Angular Material List Angular Material Tree Angular Material Dialog next ? ? prev Angular Material Divider/ Content <Mat-divider> is an Angular Material directive that allows us for styling a line separator's contents with different orientation options. It is used to create a divider with content design styling and animation capabilities. It provides a separator between two objects. Simple divider An <matte-divider> element is used to create a horizontal or vertical line with the content. 
+<mat-divider></mat-divider>
+ Inset divider We add the inset attribute to determine the divider is inset divider or not. 
+<mat-divider [inset] ="true"></mat-divider>
+ Vertical divider Add the vertical attribute to set the divider is vertically-oriented or not. 
+<mat-divider [vertical] ="true"></mat-divider>
+ Lists with inset dividers Dividers can be added to lists to separating content into different classes. Inset dividers can also be added to provide the presence of separate elements in a list without clutter content such as avatar images or icons. 
+<mat-list>
+   <h3 mat-subheader>Folders</h3>
+   <mat-list-item *ngFor="let folder of folders; last as last">
+      <mat-icon mat-list-icon>folder</mat-icon>
+      <h4 mat-line>{{folder.name}}</h4>
+      <p mat-line class="demo-2"> {{folder.updated}} </p>
+      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+   </mat-list-item>
+   <mat-divider></mat-divider>
+   <h3 mat-subheader>Notes</h3>
+   <mat-list-item *ngFor="let note of notes">
+      <mat-icon mat-list-icon>note</mat-icon>
+      <h4 mat-line>{{note.name}}</h4>
+      <p mat-line class="demo-2"> {{note.updated}} </p>
+   </mat-list-item>
+</mat-list>
+ Example 1: Follow the steps to update the Angular application that we created in Angular: Create a project with the name materialApp Addmodule.ts , app.component.ts, app.component.css, and app.component.html as below. Compile the code to verify the result. Below is the content of the modified module descriptor app.module.ts. 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatDividerModule, MatListModule} from '@angular/material'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+@NgModule({
+   declarations: [
+      AppComponent
+   ],
+   imports: [
+      BrowserModule,
+      BrowserAnimationsModule,
+      MatDividerModule, MatListModule,
+      FormsModule,
+      ReactiveFormsModule
+   ],
+   providers: [],
+   bootstrap: [AppComponent]
+})
+export class AppModule { }
+ Below is the modified HTML host file app.component.html. 
+<mat-list>
+   <mat-list-item>Apple</mat-list-item>
+   <mat-divider></mat-divider>
+   <mat-list-item>Orange</mat-list-item>
+   <mat-divider></mat-divider>
+   <mat-list-item>Banana</mat-list-item>
+</mat-list>
+ Output: Explanation: Previously, we have created a list using the mat-list. Then, we have added dividers between list items by using mat-divider. Example 2: app.component.html 
+<mat-list>
+<mat-list-item>Item 1</mat-list-item>
+ <mat-divider></mat-divider>
+ <mat-list-item>Item 2</mat-list-item>
+<mat-divider></mat-divider>
+<mat-list-item>Item 3</mat-list-item>
+</mat-list>
+ app.component.ts 
+import {Component} from '@angular/core';
+
+/**
+* @title Basic divider
+ */
+@Component({
+  selector: 'divider-overview-example',
+ templateUrl: 'divider-overview-example.html',
+})
+export class DividerOverviewExample {}
+ Output: Angular Material Content The Angular Directive <md-content> is a container element that is used for scrollable content. The layout-padding feature is added to the padded material. The example below also shows the use of the md-content directive and the use of angular content display. am_content.htm 
+<html lang = "en">
+   <head>
+      <link rel = "stylesheet"
+         href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+      <script type = "text/javascript">    
+         angular.module('firstApplication', ['ngMaterial']);
+      </script>
+   </head>
+   <body ng-app = "firstApplication" ng-cloak>
+      <md-toolbar class = "md-warn">
+         <div class = "md-toolbar-tools">
+            <h2 class = "md-flex">HTML 5</h2>
+         </div>
+      </md-toolbar>
+       <md-content flex layout-padding>
+         <p>HTML5 is the next major revision of the HTML standard superseding HTML
+         4.01, XHTML 1.0, and XHTML 1.1. HTML5 is a standard used for 
+         presenting content on the World Wide Web.</p>
+         <p>HTML5 is a cooperation between the World Wide Web Consortium and the Web Hypertext Application Technology Working Group</p>         
+         <p>The new incorporates features like video playback and drag-and-drop
+         that have been dependent on third-party browser plug-ins such as Adobe
+         Flash, Microsoft Silverlight, and Google Gears.</p>
+      </md-content>
+   </body>
+</html>
+ Output: Next TopicAngular Material List ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,140 @@
+https://www.javatpoint.com/javascript-select-option
+JavaScript Select Option - javatpoint
+JavaScript Select Option - javatpoint ? Home JavaScript C C++ Java PHP HTML CSS Bootstrap jQuery \ Node.js SQL Android Quiz Projects Interview Q Comment Forum Training JavaScript Tutorial JavaScript Introduction JavaScript Example External JavaScript JavaScript Basics JS Comment JS Variable JS Global Variable JS Data Types JS Operators JS If Statement JS Switch JS Loop JS Function JavaScript Objects JS Object JS Array JS String JS Date JS Math JS Number JS Boolean JavaScript BOM Browser Objects 1) Window Object 2) History Object 3) Navigator Object 4) Screen Object JavaScript DOM 5) Document Object getElementById GetElementsByClassName() getElementsByName getElementsByTagName JS innerHTML property JS innerText property JavaScript Validation JS form validation JS email validation JavaScript OOPs JS Class JS Object JS Prototype JS constructor Method JS static Method JS Encapsulation JS Inheritance JS Polymorphism JS Abstraction JavaScript Cookies JS Cookies Cookie Attributes Cookie with multiple Name Deleting Cookies JavaScript Events JavaScript Events JavaScript addEventListener() JS onclick event JS dblclick event JS onload event JS onresize event Exception Handling JS Exception Handling JavaScript try-catch JavaScript Misc JS this Keyword JS Debugging JS Hoisting JS Strict Mode JavaScript Promise JS Compare dates JavaScript array.length JavaScript alert() JavaScript eval() function JavaScript closest() JavaScript continue statement JS getAttribute() method JS hide elements JavaScript prompt() removeAttribute() method JavaScript reset JavaScript return JS String split() JS typeof operator JS ternary operator JS reload() method JS setAttribute() method JS setInterval() method JS setTimeout() method JS string includes() method Calculate current week number in JavaScript Calculate days between two dates in JavaScript JavaScript String trim() JavaScript timer Remove elements from array JavaScript localStorage JavaScript offsetHeight Confirm password validation Static vs Const How to Convert Comma Separated String into an Array in JavaScript Calculate age using JavaScript JavaScript label statement JavaScript String with quotes How to create dropdown list using JavaScript How to disable radio button using JavaScript JavaScript Advance JS TypedArray JS Set JS Map JS WeakSet JS WeakMap JavaScript callback JavaScript closures JavaScript date difference JavaScript date format JS date parse() method JavaScript defer JavaScript redirect JavaScript scope JavaScript scroll JavaScript sleep JavaScript void JavaScript Form Differences jQuery vs JavaScript JavaScript vs PHP Questions How to add JavaScript to html How to enable JavaScript in my browser difference between Java and JavaScript How to call JavaScript function in html How to write a function in JavaScript Is JavaScript case sensitive How does JavaScript Work How to debug JavaScript How to Enable JavaScript on Android What is a promise in JavaScript What is hoisting in JavaScript What is Vanilla JavaScript How to add a class to an element using JavaScript How to calculate the perimeter and area of a circle using JavaScript How to create an image map in JavaScript How to find factorial of a number in JavaScript How to get the value of PI using JavaScript How to make a text italic using JavaScript What are the uses of JavaScript How to get all checked checkbox value in JavaScript How to open JSON file Random image generator in JavaScript How to add object in array using JavaScript JavaScript Window open method JavaScript Window close method How to check a radio button using JavaScript JavaScript Const JavaScript function to check array is empty or not JavaScript multi-line String JavaScript Anonymous Functions Implementing JavaScript Stack Using Array JavaScript classList JavaScript Code Editors JavaScript let keyword Random String Generator using JavaScript JavaScript Queue Event Bubbling and Capturing in JavaScript How to select all checkboxes using JavaScript JavaScript change Event JavaScript focusout event Traverse array object using JavaScript JavaScript create and download CSV file How to make beep sound in JavaScript How to add a WhatsApp share button in a website using JavaScript JavaScript Execution Context JavaScript querySelector Shallow Copy in JavaScript How to Toggle Password Visibility in JavaScript Removing Duplicate From Arrays JavaScript insertBefore JavaScript Select Option Get and Set Scroll Position of an Element Getting Child Elements of a Node in JavaScript JavaScript scrollIntoView JavaScript String startsWith JS First Class Function JavaScript Default Parameters JavaScript Recursion in Real Life JavaScript removeChild Remove options from select list in JavaScript JavaScript Calculator Palindrome in JavaScript JavaScript Call Stack MCQ JavaScript MCQ Interview Questions JavaScript I/Q next ? ? prev JavaScript Select Option We will understand how to manage <select> option in JavaScript in this tutorial. HTML Select Option A <select> option facilitate us the options list. It permits us to choose a single or more than one option. We use the <option> and <select> elements for forming a <select> option. For example: 
+<select id="color">
+<option value="1">Red</option>
+<option value="2">Yellow</option>
+<option value="3">Green</option>
+<option value="4">Blue</option>
+</select>
+ The <select> option permits us to choose one option at a time which is mentioned above. If we wish more than one selections, we can include <select>attribute to <multiple> elements below: 
+<select id="color" multiple>
+<option value="1">Red</option>
+<option value="2">Yellow</option>
+<option value="3">Green</option>
+<option value="4">Blue</option>
+</select>
+ HTMLSelectElement type We use the HTMLSelectElement type for interacting with <select>option in JavaScript. The HTMLSelectElement type contains the following helpful attributes: selectedIndex- This attribute gives a zero-based selected options index. The selectedIndex will be -1 when no option is chosen. When the <select> option permits more than once selections, the selectedIndex gives the first option's value. value- The value attribute gives the value attribute of the initially selected option component if there is a single, otherwise, it will return the empty strings. multiple- The multiple attributes give true when the <select> component permits more than one selection. It is the same as the multiple attributes. selectedIndex property We apply the DOM API like querySelector() or getElementById(). The example indicates how to obtain the selected option index which is mentioned below: 
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Select Option Demo</title>
+<link href="css/selectbox.css" rel="style sheet">
+</head>
+<body>
+<form>
+<label for="color">Select a Color</label>
+<select id="color">
+<option value="1">Red</option>
+<option value="2">Yellow</option>
+<option value="3">Green</option>
+<option value="4">Blue</option>
+</select>
+<button id="btn">Get a Selected Index</button>
+</from>
+<script>
+const btn = document.querySelector('#btn');
+const sb = document.querySelector('#color');
+btn.onclick = (event) =>
+{
+event.preventDefault();
+alert(sb.selectedIndex);
+};
+</script>
+</body>
+</html>
+ How it works: Initially, select the <select> and <button> components with the help of querySelector() method. After that, link the click event listener to this button and display the selected index with the help of alert() method if the button is pressed. value property The <select> element's value property relies on the <option> component and multiple attribute of its HTML: The value property of a select box will be an empty string when no option has been selected. The value property of a select box will be the value of the chosen option when an option has been chosen and contains the value attribute. The value property of a select box will be the text of the chosen option when an option has been chosen and contains no value attribute. The value property of a select box will be derived from the initial selected option regarding the past two rules when more than one options are chosen. Consider the below example: 
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Selected Value</title>
+<link href="css/selectbox.css" rel="style sheet">
+</head>
+<body>
+<div id="container">
+<form>
+<label for="color">Select a Color</label>
+<select id="color">
+<option value="1">Red</option>
+<option value="2">Yellow</option>
+<option value="3">Green</option>
+<option value="4">Blue</option>
+</select>
+<button id="btn">Get a Selected Value</button>
+</from>
+</div>
+<script>
+const btn = document.querySelector('#btn');
+const sb = document.querySelector('#color');
+btn.onclick = (event) =>
+{
+event.preventDefault();
+alert(sb.value);
+};
+</script>
+</body>
+</html>
+ In this above example: The value attribute of the <select> element is empty when we select the initial option. The value attribute of a select box will be Ember.js due to the chosen option contains no value attribute when we choose the last option. The value attribute will be "1" or "2" when we choose the third or second option. HTMLOptionElement type The HTMLOptionElement type illustrates the <option> element in JavaScript. This type contains the following properties: Index- The option's index within the group of options. Selected- It returns a true value if the option is chosen. We set the selected property true for selecting an option. Text- It returns the text of the option. Value- It returns the value attribute of HTML. The <select> component contains an option attribute that permits us for accessing the collection options: 
+selectBox.options
+ For example, for accessing the value and text of the second option, we use the below: 
+const text = selectBox.options[1].text;
+const value = selectBox.options[1].value;
+ For getting a selected option of the <select> component along with an individual selection, we use the below code: 
+let selectOption = selectBox.options [selectBox.selectedIndex];
+ After that, we can access the value and text of a selected option by value and text properties: 
+const selectedText = selectedOption.text;
+const selectedValue = selectedOption.value;
+ When the <select> component permits more than one selections, we can use a selected attribute for determining which option is selected: 
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Selected Box</title>
+<link href="css/selectbox.css" rel="style sheet">
+</head>
+<body>
+<div id="container">
+<form>
+<label for="color">Select one or more Colors:</label>
+<select id="color" multiple>
+<option value="1">Red</option>
+<option value="2">Yellow</option>
+<option value="3">Green</option>
+<option value="4">Blue</option>
+</select>
+<button id="btn">Get a Selected Colors</button>
+</form>
+</div>
+<script>
+const btn = document.querySelector('#btn');
+const sb = document.querySelector('#color');
+btn.onclick = (e) =>
+{
+e.preventDefault();
+const selectValues = [].filter.call(sb.options, option => option.selected).map (option => option.text);
+alert(selectedValues);
+};
+</script>
+</body>
+</html>
+ In the example, the sb.option is the array-like object. Hence, it does not contain the filter() method same as the Array object. For borrowing these types of methods through an array object, we use a call() method, the below gives the array of chosen options: 
+[].filter.call(sb.options, option => option.selected)
+ And for getting the text attribute of any option, we can chain the outcome of a filter() method along with a map() method like below: 
+.map(option => option.text);
+ To get Selected Option using for loop WE can use the for loop for iterating by the selected list options for determining which is chosen. A function could be described for returning the reference to a selected option or the value. The below gives the reference to a selected option: 
+function getSelectedOption(sel)
+{
+var opt;
+for (var i= 0, len= sel.options.length; i<len; i++)
+{
+opt= sel.options[i];
+if (opt.selected === true)
+{
+break;
+}
+}
+return opt;
+}
+var opt= getSelectedOption(sel);
+console.log(opt.value);
+console.log(opt.text);
+ This function gives a single chosen option, which is compatible for the select-one type of select list. The same function compatible for select-multiple type pf select lists could give more than one selected option. Summary The <select> component permits us for selecting one or more options. We can include the multiple property to the <select> component for enabling more than one selections. The HTMLOptionElement illustrates the <option> component. The selected attribute is true if an option is chosen. The selected value and selected text attributes return the value Add the text of the chosen option. The HTMLSelectElement illustrates the <select> component. We can use the value and selected index for getting the value and index of the chosen option. Next TopicGet and Set Scroll Position of an Element ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

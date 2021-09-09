@@ -1,0 +1,199 @@
+https://www.javatpoint.com/bootstrap-4-dropdowns
+Bootstrap 4 Dropdown - Javatpoint
+Bootstrap 4 Dropdown - Javatpoint ? Home Bootstrap 4 Bootstrap HTML JavaScript jQuery jQuery UI CSS XML JSON C Java PHP Ajax Quiz Projects Interview Q Bootstrap 4 Tutorial Bootstrap 4 Tutorial Environment setup Bootstrap 4 Layout Bootstrap 4 Buttons Bootstrap 4 Dropdown Bootstrap 4 Spinners Bootstrap 4 Badges Bootstrap 4 Progress Bars Bootstrap 4 Jumbotron Bootstrap 4 Text Bootstrap 4 Pagination Bootstrap 4 Carousel Bootstrap 4 Scrollspy next ? ? prev Bootstrap 4 - Dropdowns A drop-down list or drop-down menu can be defined as a graphical control element, which is somewhat similar to a list box, that gives access to a user to choose one value from a list or a menu. In Bootstrap 4, there are different types of dropdowns that can be used, the list of those is given below: Basic Dropdown Dropdown with a divider Dropdown with a header Dropdown with disabled and active elements Dropdown in any position i.e., right, left, and up Group Buttons with Dropdown Basic Dropdown: A Basic Dropdown is a dropdown menu that is toggleable and gives user the access to choose an option from a predefined list of options. In the basic dropdown menu, .dropdown class is used which indicates a dropdown menu. A user can also open the dropdown menu by using a button or a link with a class .dropdown-toggle and the data-toggle="dropdown" attribute. A user has to add the .dropdown-menu class to a <div> element to actually build the dropdown menu. Then add the .dropdown-item class to each element such as links or buttons inside the dropdown menu. The Sample code for Basic Dropdown Menu is given below: 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Basic Dropdown in Bootstrap 4</h2>                                     
+  <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Dropdown button
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Option 1</a>
+      <a class="dropdown-item" href="#">Option 2</a>
+      <a class="dropdown-item" href="#">Option 3</a>
+      <a class="dropdown-item" href="#">Option 4</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+ Test it Now The Output of this will be: Dropdown with a divider: By using dropdown with a divider, a user can create separate groups of related menu items with a divider. The separation is shown with the help of a thin horizontal line. The Sample Code for Dropdown with a divider is given below: 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Dropdowns with a divider</h2>
+  <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Dropdown button
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Element 1</a>
+      <a class="dropdown-item" href="#">Element 2</a>
+      <a class="dropdown-item" href="#">Element 3</a>
+      <a class="dropdown-item" href="#">Element 3</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">A different element</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+ Test it Now The Output of the sample code will be: Dropdown with a header: A user can add headers inside the dropdown menu by using the .dropdown-header class. The Sample Code for Dropdown with a header is given below: 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Dropdowns with a header</h2>
+  <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Dropdown
+    </button>
+    <div class="dropdown-menu">
+      <h5 class="dropdown-header">This is a header</h5>
+      <a class="dropdown-item" href="#">Element 1</a>
+      <a class="dropdown-item" href="#">Element 2</a>
+      <a class="dropdown-item" href="#">Element 3</a>
+      <a class="dropdown-item" href="#">Element 4</a>
+      <h5 class="dropdown-header">This is a header</h5>
+      <a class="dropdown-item" href="#">A different element</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+ Test it Now The Output of the Sample Code will be: Dropdown with disabled and active elements: In Dropdown with disabled and active elements, the elements highlight a specific dropdown item with the .active class by adding a blue background color. And similarly, in order to disable an item in the dropdown menu, a user has to use the .disabled class that gets a light-grey text color and a "no-parking-sign" icon on hovering. The Sample Code for Dropdown with disabled and active elements is given below: 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Dropdown with Active and Disabled Elements</h2>
+  <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Dropdown button
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Default</a>
+      <a class="dropdown-item active" href="#">Active Element</a>
+      <a class="dropdown-item disabled" href="#">Disabled Element</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+ Test it Now The Output of the Sample Code will be: Dropdown in any position i.e., right, left, and up: A user can also create a "drop right" or "drop left" menu, by adding .dropright or .dropleft class to the dropdown element. In addition to that, if a user wants the dropdown menu to expand upwards instead of downwards, change the <div> element with class="dropdown" to "dropup" The caret/arrow is added automatically in this dropdown. The Sample Code for Dropdown in any position i.e., right or left: 
+Dropright Button - <div class="dropdown dropright">
+ Output: 
+Dropleft Button - <div class="dropdown dropleft">
+ Output: The Sample Code for Dropup Menu is given below: 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<br>
+<div class="container">
+  <h2>Dropup Menu</h2>
+  <div class="dropup">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Dropup button
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Element 1</a>
+      <a class="dropdown-item" href="#">Element 2</a>
+      <a class="dropdown-item" href="#">Element 3</a>
+      <a class="dropdown-item" href="#">Element 4</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+ Test it Now The Output of the Sample Code will be: Group Buttons with Dropdown: For Grouping buttons with dropdowns, a user has to add several buttons and add dropdown feature to one of these buttons. The Sample Code for Group Buttons with Dropdown is given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Dropdowns with Groups</h2>
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary">Element 1</button>
+    <button type="button" class="btn btn-primary">Element 2</button>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Element with Dropdown
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Option 1</a>
+        <a class="dropdown-item" href="#">Option 2</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+ Test it Now The Output of the Sample Code will be: A user can also create vertically aligned button dropdowns. An example of that is given below: 
+<div class="container">
+  <h2>Vertically Aligned Button Group with Dropdown</h2>
+  <div class="btn-group-vertical">
+    <button type="button" class="btn btn-primary">Element 1</button>
+    <button type="button" class="btn btn-primary">Element 2</button>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        Element with Dropdown
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Option 1</a>
+        <a class="dropdown-item" href="#">Option 2</a>
+      </div>
+    </div>
+  </div>
+ The Output of this code will be: Next TopicBootstrap 4 Spinner ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

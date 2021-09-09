@@ -1,0 +1,137 @@
+https://www.javatpoint.com/shallow-copy-and-deep-copy-in-python
+Shallow Copy and Deep Copy in Python - Javatpoint
+Shallow Copy and Deep Copy in Python - Javatpoint ? Home Python If Else For Loop Function Array String Regex List Set Tuple Dictionary Lambda Function Modules Programs Tkinter Numpy Interview Questions Python Tutorial Python Tutorial Python Features Python History Python Applications Python Install Python Example Python Variables Python Data Types Python Keywords Python Literals Python Operators Python Comments Python If else Python Loops Python For Loop Python While Loop Python Break Python Continue Python Pass Python Strings Python Lists Python Tuples Python List Vs Tuple Python Sets Python Dictionary Python Functions Python Built-in Functions Python Lambda Functions Python Files I/O Python Modules Python Exceptions Python Date Python Regex Python Sending Email Read CSV File Write CSV File Read Excel File Write Excel File Python Assert Python List Comprehension Python Collection Module Python Math Module Python OS Module Python Random Module Python Statistics Module Python Sys Module Python IDEs Python Arrays Command Line Arguments Python Magic Method Python Stack & Queue PySpark MLlib Python Decorator Python Generators Web Scraping Using Python Python JSON Python Itertools Python Multiprocessing Python OOPs Python OOPs Concepts Python Object Class Python Constructors Python Inheritance Abstraction in Python Python MySQL Environment Setup Database Connection Creating New Database Creating Tables Insert Operation Read Operation Update Operation Join Operation Performing Transactions Python MongoDB Python MongoDB Python SQLite Python SQLite Python Questions How to install Python in Windows How to reverse a string in Python How to read CSV file in Python How to run Python Program How to take input in Python How to convert list to string in Python How to append element in the list How to compare two lists in Python How to convert int to string in Python How to create a dictionary in Python How to create a virtual environment in Python How to declare a variable in Python How to install matplotlib in Python How to install OpenCV in Python How to print in same line in Python How to read JSON file in Python How to read a text file in Python How to use for loop in Python Is Python scripting language How long does it take to learn Python How to concatenate two strings in Python How to connect Database in Python How to convert list to dictionary in Python How to declare a global variable in Python How to reverse a number in Python What is an object in Python Which is the fastest implementation of Python How to clear Python shell How to create a DataFrames in Python How to develop a game in Python How to install Tkinter in Python How to plot a graph in Python How to print pattern in Python How to remove an element from a list in Python How to Round number in Python How to sort a dictionary in Python Strong Number in Python How to Convert Text to Speech in Python Bubble Sort in Python Logging in Python Insertion Sort in Python Binary Search in Python Linear Search in Python Python vs Scala Queue in Python Stack in Python Heap Sort in Python Palindrome program in python Program of Cumulative sum in python Merge Sort in Python Python Matrix Python Unit Testing Forensics & Virtualization Best Books to Learn Python Best Books to Learn Django GCD of two number in python Python Program to generate a Random String How to One Hot Encode Sequence Data in Python How to write square root in Python Pointer in Python Python 2D array Python Memory Management Python Libraries for Data Visualization How to call a function in Python Git Modules in Python Top Python Frameworks for Gaming Python Audio Modules Wikipedia Module in Python Python random randrange() Permutation and Combination in Python Getopt module in Python Merge two Dictionaries in Python Multithreading in Python 3 Static in Python How to get the current date in Python argparse in Python Python tqdm Module Caesar Cipher in Python Tokenizer in Python How to add two lists in Python Shallow Copy and Deep Copy in Python Atom Python Contains in Python Label Encoding in Python Django vs. Node JS Python Frameworks How to create a vector in Python using NumPy Pickle Module of Python How to convert Bytes to string in Python Python Program to Find Anagram How to convert List to Set Python vs JavaScript Python Holidays Module FuzzyWuzzy Python Library Dask Python Python Tkinter (GUI) Python Tkinter Tkinter Button Tkinter Canvas Tkinter Checkbutton Tkinter Entry Tkinter Frame Tkinter Label Tkinter Listbox Tkinter Menubutton Tkinter Menu Tkinter Message Tkinter Radiobutton Tkinter Scale Tkinter Scrollbar Tkinter Text Tkinter Toplevel Tkinter Spinbox Tkinter PanedWindow Tkinter LabelFrame Tkinter MessageBox Python Web Blocker Introduction Building Python Script Script Deployment on Linux Script Deployment on Windows Python MCQ Python MCQ Related Tutorials NumPy Tutorial Django Tutorial Flask Tutorial Pandas Tutorial Pytorch Tutorial Pygame Tutorial Matplotlib Tutorial OpenCV Tutorial Openpyxl Tutorial Python CGI Python Design Pattern Python Programs Python Programs next ? ? prev Shallow Copy and Deep Copy in Python In this tutorial, we will learn how we can create shallow copy and deep copy using the Python script. Generally, we use the = (assignment operator) to create a copy of the Python object. Let's understand the full concept related to creating copies in Python. Copy in Python As we all know, the assignment operator is used to create the copy of the Python object, but this is not true; it only create the binding between a target and object. When we use the assignment operator, instead of creating a new object, it creates a new variable that shares the old object's reference. The copies are helpful when a user wants to make changes without modifying the original object at the same time. A user also prefers to create a copy to work with mutable objects. Let's understand the following example. Example - 
+list1 = [[1, 2, 3], [4, 5, 6], [7, 8, 'a']]
+list2 = list1
+
+list2[1][2] = 4
+
+print('Old List:', list1)
+print('ID of Old List:', id(list1))
+
+print('New List:', list2)
+print('ID of New List:', id(list2))
+ Output: 
+Old List: [[1, 2, 3], [4, 5, 4], [7, 8, 'a']]
+ID of Old List: 1909447368968
+New List: [[1, 2, 3], [4, 5, 4], [7, 8, 'a']]
+ID of New List: 1909447368968
+ Explanation - In the above output, we can see that both variable list1 and list2 share the same id 1909447368968. If we make any changes in any value in list1 or list2, the change will reflect in both. Types of Copies in Python The main motive is to create a copy of Python object that we can modify the copy without changing the original data. In Python, there are two methods to create copies. Shallow Copy Deep Copy We will use the copy module to create the above copies. The copy Module The copy module is used to create the shallow copy and deep copy. Let's see the each method. Shallow Copy A shallow copy is a copy of an object that stores the reference of the original elements. It creates the new collection object and then occupying it with reference to the child objects found in the original. It makes copies of the nested objects' reference and doesn't create a copy of the nested objects. So if we make any changes to the copy of the object will reflect in the original object. We will use the copy() function to implement it. Example - 
+# importing "copy" for copy operations 
+import copy 
+
+# initializing list 1 
+list1 = [1, 7, [3,5], 8] 
+
+# using copy to shallow copy 
+list2 = copy.copy(list1) 
+
+# original elements of list 
+print ("The original elements before shallow copying") 
+for i in range(0,len(list1)): 
+   print (list1[i],end=" ") 
+
+print("\r") 
+
+# adding and element to new list 
+list2[2][0] = 10
+
+# checking if change is reflected 
+print ("The original elements after shallow copying") 
+for i in range(0,len( list1)): 
+   print (list1[i],end=" ") 
+ Output: 
+The original elements before shallow copying
+1 7 [3, 5] 8 
+The original elements after shallow copying
+1 7 [10, 5] 8
+ In the above code, we made chance in the list1 that reflected in the other list. Example - 2 
+import copy
+
+list1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
+list2 = copy.copy(list1)
+
+list1.append([13, 14,15])
+
+print("Old list:", list1)
+print("New list:", list2)
+ Output: 
+Old list: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15]]
+New list: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
+ Explanation - In the above code, we have created a shallow copy of list1. The newly created list2 contains the reference of the original nested object stored in list1. We have then appended the [13, 14, 15] into the old list and sublist not copied in the new list. Deep Copy in Python A deep copy is a process where we create a new object and add copy elements recursively. We will use the deecopy() method which present in copy module. The independent copy is created of original object and its entire object. Let's understand the following example. Example - 
+import copy
+x = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+z = copy.deepcopy(xs)
+print(x)
+prin(z)
+ Output: 
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+ Explanation - In the above output, we can see that z is a clone of x that we have created using the deecopy() method. If we make change to one of child won't affect the original object. Both objects are fully independent in the deep copy. The list x was cloned recursively, including all of its child objects. 
+import copy
+x = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+z = copy.deepcopy(x)
+
+x[2][2] = 'Hello'
+print(x)
+ Example - 2: 
+import copy 
+
+list1 = [0, [1, 2], [3,5], 4] 
+
+# using deepcopy to deep copy 
+list2 = copy.deepcopy(list1) 
+
+# original elements of list 
+print ("The original list: ")
+for i in range(0,len(list1)): 
+   print (list1[i],end=" ") 
+
+print("\r") 
+
+# adding and element to new list 
+list2[1][0] = 8
+
+# Change is reflected in l2 
+print ("The new list after deep copying: ")
+for i in range(0,len( list1)): 
+   print (list2[i],end=" ") 
+
+print("\r") 
+
+# Change is NOT reflected in original list 
+# as it is a deep copy 
+print ("The original elements:")
+for i in range(0,len( list1)): 
+   print (list1[i],end=" ") 
+ Output: 
+The original list: 
+0 [1, 2] [3, 5] 4 
+The new list after deep copying: 
+0 [8, 2] [3, 5] 4 
+The original elements:
+0 [1, 2] [3, 5] 4
+ Copying Arbitrary Python Objects We can also copy the arbitrary Python objects including custom classes using copy method. The copy.copy() and copy.deepcopy() method can be used to duplicate any objects. Let's understand the following example. Example - 
+import copy
+class Func_New:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+      return 'Func_new(%r, %r)' % (self.x, self.y)
+
+a = Func_New(50, 56)
+b = copy.copy(a)
+
+print(a)
+print(b)
+
+print(a is b)
+print(b is a)
+ Output: 
+Func_new(50, 56)
+Func_new(50, 56)
+False
+False
+ Explanation - In the above code, we have created a user define class named Func_new and we defined the __repr__() to inspect objects. Next, we created the shallow copy using the copy module. We instantiated the class and check whether the both original and its shallow copy. Points to Remember The compound objects are the main difference between the shallow and deep copy. The objects that contain other objects, such as a list or class instance, are called list or class instances. A shallow copy creates a new compound object and then adds a reference to the object found in the original. A deep copy creates a new compound object and then adds a reference to the object found in the original. We can copy arbitrary objects (including custom classes) with the copy module. Next TopicAtom Python ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

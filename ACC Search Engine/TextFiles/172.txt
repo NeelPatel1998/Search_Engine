@@ -1,0 +1,210 @@
+https://www.javatpoint.com/delete-multiple-records-using-checkbox-in-laravel
+Delete Multiple Records using Checkbox in Laravel - Javatpoint
+Delete Multiple Records using Checkbox in Laravel - Javatpoint ? Home PHP Laravel Magento 2 HTML CSS Java MySQL Bootstrap JavaScript jQuery C XML Quiz Interview Q Comment Forum Training Laravel Tutorial Laravel Tutorial Features of Laravel History of Laravel Installation on Windows XAMPP Installation Composer Installation Git Installation Creating First Laravel Project Laravel Application Structure Laravel Routing Laravel Basic Routing Routing Parameters Laravel Named Routes Laravel Middleware Laravel Route Groups Laravel Controllers Laravel Controllers Routing Controllers Resource Controllers Controller Middleware Laravel Views Laravel Views Passing data to views Laravel Blade Template Blade Template Template Inheritance Laravel Forms Laravel Migration Laravel Migration Migration Structure Generating Migrations Migration Commands Laravel Database Laravel Database Laravel Eloquent Laravel Relationship Laravel Tinker Laravel Crud Misc. Laravel Validation Laravel File Upload Laravel Sessions Laravel vs CodeIgniter Laravel vs Django Laravel vs Symfony Laravel vs WordPress Install and Use Font Awesome Icons in Laravel Delete Multiple Records using Checkbox in Laravel Import and Export CSV file in Laravel 5.8 Generate PDF from html view file and download using dompdf in Laravel Implement Flash Message with Laravel 5.7 Laravel VueJS File Upload Using Vue-dropzone Example Interview Questions Laravel Interview Questions next ? ? prev Delete Multiple Records using Checkbox in Laravel In this section, we are going to use Laravel to delete more than one record by using the checkbox. If we want to develop a huge web application or an e-commerce application, we should provide the feature to remove more than one record. Now we will describe the use of a checkbox to delete multiple records in various versions of laravel applications like 5, 6, 7, and 8. Here we can delete a single record or more than one record. In our example, we will create a table named "products", which will contain the created_at, details, updated_at columns, name, and id. We will also add dummy records by using the mysql query. In order to delete all records by selecting all checkboxes, we will use jquery. For this, we should follow the following steps: Step 1: In the first step, we will create a product table with dummy records. For this, we will create a "product" table. After that, we will create dummy records by running mysql query. We can use a migration to create the product table, and then we will use seeder to create some dummy records. In the following example, we will simply use the sql query. Dummy record query: 
+INSERT INTO `products` (`id`, `name`, `details`, `created_at`, `updated_at`) VALUES
+(1, 'Laravel', 'Laravel posts', NULL, NULL),
+(2, 'PHP', 'PHP posts', NULL, NULL),
+(3, 'JQuery', 'JQuery posts', NULL, NULL),
+(4, NodeJS, 'NodeJS posts', NULL, NULL),
+(5, 'Ajax', 'Ajax posts', NULL, NULL);
+(6, 'Codeigniter', 'Codeigniter posts', NULL, NULL);
+ Step 2: In this step, we will Create new routers. For this, we will add tree routers. The first router will be created for displaying data. The second router will be created for deleting the request. The third router will be created to remove all selected data. So we will use our laravel application and add these three new routers. routes/web.php 
+Route::get('myproducts', 'ProductController@index');
+Route::delete('myproducts/{id}', 'ProductController@destroy');
+Route::delete('myproductsDeleteAll', 'ProductController@deleteAll');
+ Step 3: In this step, we will Add a product controller. For this, we will create a new ProductController file, which is used to handle the request created by the above three routers. We will use this controller to create three methods, i.e., deleteAll(), destroy(), index(). These methods are used to handle the request of the router. Now we will create a new controller and then put the following code: app/Http/Controllers/ProductController.php 
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use DB;
+
+class ProductController extends Controller
+{
+    /**
+     * It will display application dashboard.
+     *
+     * It will return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $products = DB::table("products")->get();
+        return view('products?,compact('products'));
+    }
+
+    /**
+     * It will display application dashboard.
+     *
+     * It will return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+    	DB::table("products")->delete($id);
+    	return response()->json(['success'=>"Product Deleted successfully.", 'tr'=>'tr_'.$id]);
+    }
+
+    /**
+     * It will display application dashboard.
+     *
+     * It will return \Illuminate\Http\Response
+     */
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        DB::table("products")->whereIn('id',explode(",",$ids))->delete();
+        return response()->json(['success'=>"Products Deleted successfully."]);
+    }
+}
+ Step 4: In this step, we will Add blade files. For this, we will create product.blade.php file. For the delete all and delete function, we will write the below code of jquery. Now we will create product.blade.php file and then put the following code. resources/views/products.blade.php 
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Delete Multiple records with checkbox in Laravel 5 </title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.5/bootstrap-confirmation.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+</head>
+<body>
+
+<div class="container">
+    <h3> Delete Multiple records with checkbox in Laravel 5 </h3>
+    <button style="margin-bottom: 10px" class="btn btn-primary delete_all" data-url="{{ url('myproductsDeleteAll') }}">Delete All Selected</button>
+    <table class="table table-bordered">
+        <tr>
+            <th width="50px"><input type="checkbox" id="master"></th>
+            <th width="80px">No</th>
+            <th>Product Name</th>
+            <th>Product Details</th>
+            <th width="100px">Action</th>
+        </tr>
+        @if($products->count())
+            @foreach($products as $key => $product)
+                <tr id="tr_{{$product->id}}">
+                    <td><input type="checkbox" class="sub_chk" data-id="{{$product->id}}"></td>
+                    <td>{{ ++$key }}</td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->details }}</td>
+                    <td>
+                         <a href="{{ url('myproducts',$product->id) }}" class="btn btn-danger btn-sm"
+                           data-tr="tr_{{$product->id}}"
+                           data-toggle="confirmation"
+                           data-btn-ok-label="Delete" data-btn-ok-icon="fa fa-remove"
+                           data-btn-ok-class="btn btn-sm btn-danger"
+                           data-btn-cancel-label="Cancel"
+                           data-btn-cancel-icon="fa fa-chevron-circle-left"
+                           data-btn-cancel-class="btn btn-sm btn-default"
+                           data-title="Are you sure you want to delete ?"
+                           data-placement="left" data-singleton="true">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+        @endif
+    </table>
+</div> <!-- container / end -->
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#master').on('click', function(e) {
+         if($(this).is(':checked',true))  
+         {
+            $(".sub_chk").prop('checked', true);  
+         } else {  
+            $(".sub_chk").prop('checked',false);  
+         }  
+        });
+
+        $('.delete_all').on('click', function(e) {
+
+            var allVals = [];  
+            $(".sub_chk:checked").each(function() {  
+                allVals.push($(this).attr('data-id'));
+            });  
+
+            if(allVals.length <=0)  
+            {  
+                alert("Please select row.");  
+            }  else {  
+
+                var check = confirm("Are you sure you want to delete this row?");  
+                if(check == true){  
+
+                    var join_selected_values = allVals.join(","); 
+
+                    $.ajax({
+                        url: $(this).data('url'),
+                        type: 'DELETE',
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        data: 'ids='+join_selected_values,
+                        success: function (data) {
+                            if (data['success']) {
+                                $(".sub_chk:checked").each(function() {  
+                                    $(this).parents("tr").remove();
+                                });
+                                alert(data['success']);
+                            } else if (data['error']) {
+                                alert(data['error']);
+                            } else {
+                                alert('Whoops Something went wrong!!');
+                            }
+                        },
+                        error: function (data) {
+                            alert(data.responseText);
+                        }
+                    });
+
+                  $.each(allVals, function( index, value ) {
+                      $('table tr').filter("[data-row-id='" + value + "']").remove();
+                  });
+                }  
+            }  
+        });
+
+        $('[data-toggle=confirmation]').confirmation({
+            rootSelector: '[data-toggle=confirmation]',
+            onConfirm: function (event, element) {
+                element.trigger('confirm');
+            }
+        });
+
+        $(document).on('confirm', function (e) {
+            var ele = e.target;
+            e.preventDefault();
+
+            $.ajax({
+                url: ele.href,
+                type: 'DELETE',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                success: function (data) {
+                    if (data['success']) {
+                        $("#" + data['tr']).slideUp("slow");
+                        alert(data['success']);
+                    } else if (data['error']) {
+                        alert(data['error']);
+                    } else {
+                        alert('Whoops Something went wrong!!');
+                    }
+                },
+                error: function (data) {
+                    alert(data.responseText);
+                }
+            });
+
+            return false;
+        });
+    });
+</script>
+
+</html>
+ Now our above code is ready to run. In order to run the above code quickly, we will use the following command: 
+php artisan serve
+ Now we can use our browser to open the below url: http://localhost:8000/myproducts After open this, we can see the following output: Next TopicImport and Export CSV file in Laravel 5.8 ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

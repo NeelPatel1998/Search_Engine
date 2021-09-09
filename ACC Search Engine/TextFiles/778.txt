@@ -1,0 +1,84 @@
+https://www.javatpoint.com/jquery-closest-method
+jQuery closest() method - javatpoint
+jQuery closest() method - javatpoint ? Home jQuery jQuery UI JavaScript C Java PHP HTML CSS XML JSON Node.js SQL Interview Q Training jQuery Tutorial jQuery Introduction What is jQuery jQuery History jQuery Example jQuery Selectors jQuery Effects jQuery Effects jQuery hide() jQuery show() jQuery toggle() jQuery fadeIn() jQuery fadeOut() jQuery fadeToggle() jQuery fadeTo() jQuery slideDown() jQuery slideUp() jQuery slideToggle() jQuery animate() jQuery delay() jQuery HTML/CSS jQuery html() jQuery text() jQuery val() jQuery css() jQuery before() jQuery prepend() jQuery after() jQuery insertAfter() jQuery append() jQuery appendTo() jQuery clone() jQuery remove() jQuery empty() jQuery detach() jQuery scrollTop() jQuery attr() jQuery prop() jQuery offset() jQuery position() jQuery addClass() jQuery hasClass() jQuery toggleClass() jQuery width() jQuery height() jQuery innerWidth() jQuery innerHeight() jQuery outerWidth() jQuery outerHeight() jQuery wrap() jQuery wrapInner() jQuery wrapAll() jQuery unwrap() jQuery Form jQuery serialize() jQuery serializeArray() jQuery Events jQuery Events jQuery click() jQuery bind() jQuery unbind() method jQuery blur() jQuery focus() jQuery select() jQuery change() jQuery submit() jQuery keydown() jQuery keypress() jQuery keyup() jQuery mouseenter() jQuery mouseleave() jQuery hover() jQuery mousedown() jQuery mouseup() jQuery mouseover() jQuery mouseout() jQuery load() jQuery unload() jQuery delegate() jQuery Misc jQuery ajax() method jQuery children() method jQuery data() method jQuery each() method jQuery eq() method jQuery extend() method jQuery filter() method jQuery find() method jQuery get() method jQuery grep() method jQuery length property jQuery is() method jQuery not() method jQuery param() method jQuery radio button jQuery read more/read less jQuery star rating :enabled selector :disabled selector noConflict() method :nth-child selector parent() method post() method ready() function removeAttr() method replaceWith() method resize() method siblings() method stop() method trigger() method trim() method jQuery getJSON() method jQuery replaceAll() method jQuery on() method jQuery off() method jQuery first() method jQuery last() method jQuery isNumeric() method jQuery :reset selector jQuery size() method jQuery contains() method jQuery ajaxSend() method jQuery ajaxError() method jQuery :lang() selector jQuery :lt() selector jQuery :gt() selector jQuery map() function jQuery next() method jQuery nextUntil() method jQuery error() method jQuery now() method jQuery parseJSON() method jQuery inArray() method jQuery dblclick() method jQuery $.proxy() method jQuery has() method jQuery index() method jQuery insertBefore() method jQuery merge() method jQuery nth-of-type() selector jQuery prev() method jQuery prevAll() method jQuery scroll() method jQuery scrollLeft() method jQuery slice() method jQuery contents() method jQuery nextAll() method jQuery offsetParent() method jQuery parents() method jQuery parentsUntil() method globalEval() method undelegate() method triggerHandler() method toArray() method removeProp() method removeData() method queue() method prependTo() method noop() method makeArray() method keypress() method isPlainObject() method isFunction() method isEmptyObject() method isArray() method focusout() method focusin() method event.preventDefault() method clearQueue() method andSelf() method andBack() method jQuery dequeue() method jQuery end() method jQuery even() method jQuery :file selector jQuery :hidden selector jQuery isWindow() method jQuery odd() method jQuery parseXML() method jQuery :password selector jQuery.unique() method jQuery.uniqueSort() method jQuery :visible selector jQuery.isXMLDoc() method jQuery add() method jQuery closest() method jQuery Questions How to change the background image using jQuery How to Detect a Mobile Device offset vs position in jQuery Checkbox validation in jQuery Use of moment JS to change date format in jquery jQuery Redirect to Another Page After 5 Seconds JQuery Validation jQuery get Difference between two Dates in days Dynamic Drag and Drop table rows using JQuery Ajax Miscellaneous jQuery vs AngularJS jQuery MCQ jQuery MCQ jQuery UI 50+ jQuery UI Interview Questions jQuery Questions next ? ? prev jQuery closest() method The closest() method in jQuery selects the first ancestor of the given selector. An ancestor can be a parent, grandparent, and so on. It is an inbuilt method in jQuery. For searching the first ancestor, the closest() method traverse upwards from the current element. If it doesn't match, the searching will carry on parent by parent until it finds an element matching the specified expression. This method returns the first ancestor of the selected element. It is similar to the parents() method as both travels up to the DOM tree. The parents() method starts with the parent element and returns all ancestors matching the specified expression. Unlike the parents() method, the closest() method begins with the current element and returns the first ancestor that matches the specified expression. Syntax To return the first ancestor 
+$(selector).closest(selector);
+ To return the first ancestor using a DOM context 
+$(selector).closest(selector, context);
+ The parameter values of the closest() method are defined as follows: Parameter values selector: It is the required parameter that specifies a selector expression, element or jQuery object. This value filters the elements and narrows down the ancestor search. context: It is a DOM element in which a matching element may be found. It is optional to use. Let's understand the closest() method using some illustrations. Example1 In this example, we are not using the context parameter, i.e., we are not passing the DOM context. Here, there are two div elements along with an ul element, a heading h2, and a paragraph element. We are searching for the first div ancestor of a paragraph element. Although the closest ancestor of the paragraph is h2, as we are finding the div, so the h2 element is skipped, and searching is carry on the next ancestor, and it will continue until it finds the specified element. We have to click the given button to get the first ancestor of the paragraph element. If we use the parents() method instead of using closest() method, it will return both div ancestors. 
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.main * { 
+  display: block;
+  font-size: 20px;
+  position: relative;
+  border: 2px solid black;
+  color: black; 
+  padding: 10px;
+  margin: 17px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+function fun(){
+$(document).ready(function(){
+  $("p").closest("div").css({ "font-size": "30px", "color": "blue", "border": "6px dashed blue"});
+});
+}
+</script>
+</head>
+
+<body class = "main"> body
+  <div> div1
+  <div> div2
+    <ul> ul 
+      <h2> Heading h2
+          <p> Paragraph element </p>
+      </h2>
+    </ul>   
+	</div>
+  </div>
+<button onclick = "fun()"> click me </button>
+  </body>
+</html>
+ Test it Now Output After the execution of the above code, the output will be - After clicking the given button, the output is - Example2 In this example, we are passing the DOM context. It means that searching is done within the DOM context. Here, there are two div elements. The id of the first div element is demo. We are using this div as the context and searching for the first div ancestor of a paragraph element. On clicking the button, the second div will be highlighted as the first ancestor of the paragraph because it comes under the context. If the id of the ul element is demo, which is the child element of div, then the div element will not be highlighted because, in this case, the corresponding div element is outside the context. 
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.main * { 
+  display: block;
+  font-size: 20px;
+  position: relative;
+  border: 2px solid black;
+  color: black; 
+  padding: 10px;
+  margin: 17px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+function fun(){
+$(document).ready(function(){
+var context = document.getElementById("dom");
+  $("p").closest("div", context).css({ "font-size": "30px", "color": "blue", "border": "6px dashed blue"});
+});
+}
+</script>
+</head>
+
+<body class = "main"> body
+  <div  id = "dom"> div1
+  <div> div2
+    <ul> ul 
+      <h2> Heading h2
+          <p> Paragraph element </p>
+		  </h2>
+      </ul>   
+	</div>
+  </div>
+<button onclick = "fun()"> click me </button>
+  </body>
+</html>
+ Test it Now Output After the execution of the above code, the output will be - After clicking the given button, the output is - Next TopicHow to change the background image using jQuery ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

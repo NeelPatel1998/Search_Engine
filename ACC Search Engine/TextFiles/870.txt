@@ -1,0 +1,39 @@
+https://www.javatpoint.com/java-string-encoding
+Java String Encoding - Javatpoint
+Java String Encoding - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Java String Encoding In Java, when we deal with String sometimes it is required to encode a string in a specific character set. Encoding is a way to convert data from one format to another. String objects use UTF-16 encoding. The problem with UTF-16 is that it cannot be modified. There is only one way that can be used to get different encoding i.e. byte[] array. The way of encoding is not suitable if we get unexpected data. In this section, we will learn how to encode a string in Java. Note: It is not possible to encode a string in UTF-8. So, use either ByteBuffer or call an array on it to get a byte[]. Before moving ahead in this section, we have to understand character encoding. Let's have a quick look. Let's understand why we need to encode a string. Character encoding is a technique to convert text data into binary numbers. We can assign unique numeric values to specific characters and convert those numbers into binary language. These binary numbers later can be converted back to original characters based on their values. Problem Suppose, we have German string Tschüss and it is required to encode it. Consider the following code snippet: 
+String str = "Tschüss"; 
+byte[] bytesOfString = str.getBytes(); 
+String encoded_String = new String(bytesOfString, StandardCharsets.US_ASCII); assertNotEquals(encoded_String, str);
+ If we encode the string by using the US_ASCII, it gives the Tsch?ss because the US_ASCII encoding does not understand the non-ASCII character (ü). When we convert an ASCII encoded string to UTF-8, we get the same string. 
+String str = "GoodBye"; 
+byte[] bytesOfString = str.getBytes(); 
+String asciiEncondedEnglishString = new String(bytesOfString, StandardCharsets.US_ASCII); 
+assertEquals(encoded_String, str);
+ If a byte[] array contains non-Unicode text, we can convert the text into Unicode with String constructor. Conversely, we can also convert a String object into a byte[] array of non-Unicode characters with the String.getBytes() method. Let's encode the string by using the getBytes() method. Using String.getBytes() Method Java String class provides the getBytes() method that is used to encode s string into UTF-8. The method converts the string into a sequence of bytes and stores the result into an array. Syntax: 
+public byte[] getBytes(String charsetName) throws UnsupportedEncodingException
+ It parses charsetName as a parameter and returns the byte array. It throws the UnsupportedEncodingException if the named charset is not supported. Let's create a Java program that converts a string into UTF-8 encoding. StringEncodingExample.java 
+public class StringEncodingExample 
+{
+public static void main(String args[]) throws Exception
+{
+//string to encode    
+String str = "Google Cloud";
+//invokes the getBytes() method and stores an array of bytes into array[]
+byte array[] = str.getBytes("UTF8");
+System.out.println("Encoded String: ");
+//enhanced for loop that iterates over the array
+for (byte x: array) 
+{
+//prints the sequence of bytes    
+System.out.print(x+" ");
+}
+}
+}
+ Output: 
+Encoded String: 
+71 111 111 103 108 101 32 67 108 111 117 100
+ Using StandardCharsets Class We can also use the StandardCharset class to encode the string. There are two steps to encode the string. First, decode the string into bytes and then encode it into UTF-8. For example, consider the following code: 
+String str = " Tschüss"; 
+ByteBuffer buffer = StandardCharsets.UTF_8.encode(str); 
+String encoded_String = StandardCharsets.UTF_8.decode(buffer).toString(); assertEquals(str, encoded_String);
+ Another way to encode a string is to use the Base64 encoding. We will discuss the Base64 encoding and decoding in the coming section. Next TopicPrim's algorithm Java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

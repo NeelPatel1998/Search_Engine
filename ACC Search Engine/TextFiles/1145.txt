@@ -1,0 +1,94 @@
+https://www.javatpoint.com/angular-material-icons
+Angular Material Icons - Javatpoint
+Angular Material Icons - Javatpoint ? Home Angular Material AngularJS Angular 8 Angular 7 AWS IoT Control System HTML CSS Aptitude Selenium Kotlin JavaScript Projects Interview Q Comment Forum Angular Material Angular Material Tutorial Angular Material Installation Angular Material Icons Angular Material Inputs Angular Material Widgets Angular Material Buttons Angular Material Checkbox Angular Material Sort Header Angular Material Divider Angular Material List Angular Material Tree Angular Material Dialog next ? ? prev Angular Material Icons An Angular Material icon is a component for showing vector-based icons in applications. It also supports icon fonts and SVG icons in addition to using Google content icons. The following table lists the parameters and descriptions of different features of md-icon. Sr.No Parameters Description 1 * md-font-icon The CSS icon's string is associated with the font-face, which is used to render the icon. It requires the fonts and named CSS styles to be loaded. 2 * md-font-set The CSS style name is associated with the font library specified as a class for the font-icon. This value can also be used to look for a classname; Use $ mdIconProvider.fontSet to determine the style name. 3 * md-svg-src The String URL (or expression) is used to load, cache, and display any external SVG. 4 * md-svg-icon The string name is used to search for icons from the internal cache; Projected strings or expressions can also be used here. Specific set names can be used with the syntax : . To use the icon set, developers pre-register the set using the $ mdIconProvider service. 5 aria-label It labels an icon for accessibility. The icon will be hidden from the access layer with aria-hidden = "true" if an empty string is provided. If there is no Ari-label on the icon nor the label on the parent element, a warning will be logged on the console. 6 alt It labels an icon for accessibility. If an empty string is provided, the icon will be hidden from the accessibility layer with aria-hidden = "true." If there is no alt on the icon on the parent element, a warning will pop up on the console. Font icons Some fonts are designed to display icons using ligature by presenting the text as a as a home image. To use the ligature icon, insert text into the content of the matte-icon component. By default, <mat-icon> expects the content icon font. Font icons with CSS Fonts can also display icons by defining a CSS class for each icon graph, which precedes the selector icon. If we want to use such font, set the font input to the font's CSS class and set the font icon input for the class to show the specific icon. You can specify the default font class to be used when the font set is not explicitly set by saying MatIconRegistry.setDefaultFontSetClass for both types of font icons. SVG icons <mat-icon> displays the SVG icon by inserting SVG content into the DOM as its own child. This approach provides an advantage over the <img> tag or CSS background-image as it allows SVG to be styled with CSS. The default color of SVG content is the CSS currentColor value. The SVG icon has the same color as the surrounding text and allows to change the color by setting the color style on the matte-icon element. To avoid XSS vulnerabilities, any SVG URL and HTML strings passed in MatIconRegistry must be marked as trusted using the Angular's DomSanitizer service. Named Icons Use the AddSvgIconLiteralInNamespace methods of AddSvgIcon, addSvgIconInNamespace, addSvgIconLiteral or MatSconRegistry to associate an icon with an icon URL. Use the name directly in default namespace. But in a non-default namespace, use the format [namespace]: [name]. Icon Sets Icon sets allow many icons to be grouped into a single SVG file. This is done by creating a single root <svg> tag that contains some nested <svg> tags in its <defs> section. Each nested tags is identified with an ID attribute. The ID is used as the name of the icon. To display icons from the icon set, use SVG icon input in the same way as for registered icons. Many icon sets also can registered in the same namespace. Theming Icons uses the current font color (currentColor). The color is changed to match the colors of the current theme using the color attribute. It can be changed to 'Primary,' 'Pronunciation' or 'Warning'. Accessibility An icon alone does not provide any useful information for the screen-reader user such as the <img> element. The user of <mat-icon> should provide additional information about the use of the icon. In accessibility, there are three categories: An icon alone does not provide any useful information for the screen-reader user such as the <img> element. The user of <mat-icon> should provide additional information about the use of the icon. In accessibility, there are three categories: Decorative Icon It has no real semantic meaning and it is purely cosmetic. When an icon is cosmetic and conveys no real semantic meaning, the <mat-icon> element is marked with aria-hidden="true". Interactive Icon In interactive icon, a user will click or interact with the icon to perform some action. Symbols alone are not interactive elements for screen-reader users. The <mat-icon> element must be a child of the <button> or <a> element. The parent <button> or <a> must be direct text content, aria-label or meaningful label provided by aria-label. Indicator Icon It conveys some information, such as a status. It uses the icon in place of text inside of a large message. When an icon gives the user some information, whether inbuilt as an indicator or in a block of text, that information can be made available to screen-readers. Add a <span> with the text as the closest sibling to the <mat-icon> element, which conveys the exact information as the icon. It makes the message invisible but still available to screen-reader users. Animated icons The animation reflects the action performs in a way that adds and delight. The animation of each icon is aligned with the visual design. Transitions Link Transitions connect animated icons between two visual states. Transitioning between two icons signifies that they are linked with each other and pressing the first icon makes the other icon. Transition shows the connection between two icons in a single icon. Transitions have toggle icons between on and off states. Example The example shows the use of md-icons directive and also the uses of icons. am_icons.htm 
+<html lang = "en">
+   <head>
+      <link rel = "stylesheet"
+         href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+      <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+      <style>
+         .iconDemo .glyph {
+            border-bottom: 1px dotted #ccc;
+            padding: 10px 0 20px;
+            margin-bottom: 20px; 
+         }
+         .iconDemo .preview-glyphs {
+            display: flex;
+            flex-direction: row; 
+         }
+         .iconDemo .step {
+            flex-grow: 1;
+            line-height: 0.5; 
+         }
+         .iconDemo .material-icons.md-18 {
+            font-size: 18px; 
+         }
+         .iconDemo .material-icons.md-24 {
+            font-size: 24px; 
+         }
+         .iconDemo .material-icons.md-36 {
+            font-size: 36px; 
+         }
+         .iconDemo .material-icons.md-48 {
+            font-size: 48px; 
+         }
+         .iconDemo .material-icons.md-dark {
+            color: rgba(0, 0, 0, 0.54); 
+         }
+         .iconDemo .material-icons.md-dark.md-inactive {
+            color: rgba(0, 0, 0, 0.26); 
+         }
+         .iconDemo .material-icons.md-light {
+            color: white; 
+         }
+         .iconDemo .material-icons.md-light.md-inactive {
+            color: rgba(255, 255, 255, 0.3); 
+         }
+      </style>
+      <script language = "javascript">
+         angular
+            .module('firstApplication', ['ngMaterial'])
+            .controller('iconController', iconController);
+         function iconController ($scope) {
+            var iconData = [
+               {name: 'accessibility'  , color: "#777" },
+               {name: 'question_answer', color: "rgb(89, 226, 168)" },
+               {name: 'backup'         , color: "#A00" },
+               {name: 'email'          , color: "#00A" }
+            ];
+            $scope.fonts = [].concat(iconData);            
+            $scope.sizes = [
+               {size:"md-18",padding:0},
+               {size:"md-24",padding:2},
+               {size:"md-36",padding:6},
+               {size:"md-48",padding:10}
+            ];
+         }                 
+      </script>     	  
+   </head>
+   <body ng-app = "firstApplication"> 
+      <div id = "iconContainer" class = "iconDemo"
+         ng-controller = "iconController as ctrl" ng-cloak>
+         <div class = "glyph" ng-repeat = "font in fonts" layout = "row">
+            <div ng-repeat = "it in sizes" flex layout-align = "center center"
+               style = "text-align: center;" layout = "column">
+            <div flex></div>
+               <div class = "preview-glyphs">
+                  <md-icon ng-style = "{color: font.color}"
+                     aria-label = "{{ font.name }}"
+                     class = "material-icons step"
+                     ng-class = "it.size">
+                     {{ font.name }}
+                  </md-icon>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
+ Test it Now Output: Next TopicAngular Material Inputs ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,138 @@
+https://www.javatpoint.com/how-to-add-two-lists-in-python
+How to add two lists in Python - Javatpoint
+How to add two lists in Python - Javatpoint ? Home Python If Else For Loop Function Array String Regex List Set Tuple Dictionary Lambda Function Modules Programs Tkinter Numpy Interview Questions Python Tutorial Python Tutorial Python Features Python History Python Applications Python Install Python Example Python Variables Python Data Types Python Keywords Python Literals Python Operators Python Comments Python If else Python Loops Python For Loop Python While Loop Python Break Python Continue Python Pass Python Strings Python Lists Python Tuples Python List Vs Tuple Python Sets Python Dictionary Python Functions Python Built-in Functions Python Lambda Functions Python Files I/O Python Modules Python Exceptions Python Date Python Regex Python Sending Email Read CSV File Write CSV File Read Excel File Write Excel File Python Assert Python List Comprehension Python Collection Module Python Math Module Python OS Module Python Random Module Python Statistics Module Python Sys Module Python IDEs Python Arrays Command Line Arguments Python Magic Method Python Stack & Queue PySpark MLlib Python Decorator Python Generators Web Scraping Using Python Python JSON Python Itertools Python Multiprocessing Python OOPs Python OOPs Concepts Python Object Class Python Constructors Python Inheritance Abstraction in Python Python MySQL Environment Setup Database Connection Creating New Database Creating Tables Insert Operation Read Operation Update Operation Join Operation Performing Transactions Python MongoDB Python MongoDB Python SQLite Python SQLite Python Questions How to install Python in Windows How to reverse a string in Python How to read CSV file in Python How to run Python Program How to take input in Python How to convert list to string in Python How to append element in the list How to compare two lists in Python How to convert int to string in Python How to create a dictionary in Python How to create a virtual environment in Python How to declare a variable in Python How to install matplotlib in Python How to install OpenCV in Python How to print in same line in Python How to read JSON file in Python How to read a text file in Python How to use for loop in Python Is Python scripting language How long does it take to learn Python How to concatenate two strings in Python How to connect Database in Python How to convert list to dictionary in Python How to declare a global variable in Python How to reverse a number in Python What is an object in Python Which is the fastest implementation of Python How to clear Python shell How to create a DataFrames in Python How to develop a game in Python How to install Tkinter in Python How to plot a graph in Python How to print pattern in Python How to remove an element from a list in Python How to Round number in Python How to sort a dictionary in Python Strong Number in Python How to Convert Text to Speech in Python Bubble Sort in Python Logging in Python Insertion Sort in Python Binary Search in Python Linear Search in Python Python vs Scala Queue in Python Stack in Python Heap Sort in Python Palindrome program in python Program of Cumulative sum in python Merge Sort in Python Python Matrix Python Unit Testing Forensics & Virtualization Best Books to Learn Python Best Books to Learn Django GCD of two number in python Python Program to generate a Random String How to One Hot Encode Sequence Data in Python How to write square root in Python Pointer in Python Python 2D array Python Memory Management Python Libraries for Data Visualization How to call a function in Python Git Modules in Python Top Python Frameworks for Gaming Python Audio Modules Wikipedia Module in Python Python random randrange() Permutation and Combination in Python Getopt module in Python Merge two Dictionaries in Python Multithreading in Python 3 Static in Python How to get the current date in Python argparse in Python Python tqdm Module Caesar Cipher in Python Tokenizer in Python How to add two lists in Python Shallow Copy and Deep Copy in Python Atom Python Contains in Python Label Encoding in Python Django vs. Node JS Python Frameworks How to create a vector in Python using NumPy Pickle Module of Python How to convert Bytes to string in Python Python Program to Find Anagram How to convert List to Set Python vs JavaScript Python Holidays Module FuzzyWuzzy Python Library Dask Python Python Tkinter (GUI) Python Tkinter Tkinter Button Tkinter Canvas Tkinter Checkbutton Tkinter Entry Tkinter Frame Tkinter Label Tkinter Listbox Tkinter Menubutton Tkinter Menu Tkinter Message Tkinter Radiobutton Tkinter Scale Tkinter Scrollbar Tkinter Text Tkinter Toplevel Tkinter Spinbox Tkinter PanedWindow Tkinter LabelFrame Tkinter MessageBox Python Web Blocker Introduction Building Python Script Script Deployment on Linux Script Deployment on Windows Python MCQ Python MCQ Related Tutorials NumPy Tutorial Django Tutorial Flask Tutorial Pandas Tutorial Pytorch Tutorial Pygame Tutorial Matplotlib Tutorial OpenCV Tutorial Openpyxl Tutorial Python CGI Python Design Pattern Python Programs Python Programs next ? ? prev How to add two lists in Python In this topic, we will learn how we can add two lists in Python. But before going through the topic, we need to understand the term List in Python. Python list is used to store multiple items in a variable. Items in the list can be any ordered, changeable, and allow to store duplicate values. Each item of the list has an appropriate indexed value where the first index of the list starts with {0}, and the length index of the list must be n-1. Each item of the list is separated by a comma (,) symbol and enclosed within square brackets []. Syntax 
+L1 = ["Apple", 10, "NEW York"] # different data type elements
+L2 = [1, 2, 4, 5] # same data type elements
+ Here L1 and L2 are the two lists containing the same or different data type elements in a list. The List L1 contains the int and string data type elements, whereas the List L2 contains only int data type elements. Let's consider a program to print the list in Python. programList.py 
+List1 = ["Rose", "Lotus", 24, "Gold", "USA" ] # define the list
+# define the Department Dept2 list
+Dept2 = ["Web Designing", 40, 20]
+# define the HR_CS
+HR_CS = [58, "Ms Wiley"]
+List2 = [1, 2, 4, 5, 6] # integer list
+print (" Display the List1", List1)
+print (" Display the List2", List2)
+print (" Display the Department List", Dept2)
+print (" Display the CS Department ", HR_CS)
+ Output: 
+Display the List1 ['Rose', 'Lotus', 24, 'Gold', 'USA']
+Display the List2 [1, 2, 4, 5, 6]
+Display the Department List ['Web Designing', 40, 20]
+Display the CS Department [58, 'Ms Wiley']
+ Let's discuss the various method to add two lists in Python Program. Method 1: Add two lists using the Naive Method: It is a simple method that adds the two lists in Python using the loop and appends method to add the sum of lists into the third list. A for loop performs the addition of both lists with the same index number and continuously iterates the elements until the end of the list. After that append method, insert the added elements to the third list. Let's consider a program to add the two list in Python using the Naïve Method. naivePro.py 
+# initialize the Python lists
+lt1 = [5, 10, 15, 20, 25, 30]
+lt2 = [2, 4, 6, 8, 10, 12]
+
+# print the original list element
+print ( " Python Original list 1: " + str (lt1))
+print ( "Python Original list 2: " + str (lt2))
+
+# use naive method to add two list.
+res_lt = [] # declaration of the list
+for x in range (0, len (lt1)):
+    res_lt.append( lt1[x] + lt2[x])
+
+# Display the sum of two list in Python
+print ( " Addition of the list lt1 and lt2 is: " + str (res_lt))
+ Output: 
+Python Original list 1: [5, 10, 15, 20, 25, 30]
+Python Original list 2: [2, 4, 6, 8, 10, 12]
+ Addition of the list lt1 and lt2 is: [7, 14, 21, 28, 35, 42]
+ Method 2: Add two list using the Comprehension List It is a shorthand technique of the Naive method in Python. The comprehension technique is much faster to type and retrieve the addition of the two lists. Therefore, it is used in Python programming to perform these types of tasks. Let's consider a program to add the two list in Python using the Naïve Method. comprehension.py 
+# initialize the Python lists
+lt1 = [2, 4, 6, 8, 10, 30]
+lt2 = [2, 4, 6, 8, 10, 12]
+
+# print the original list element
+print ( " Python list 1 : " + str (lt1))
+print ( "Python list 2 : " + str (lt2))
+
+# use list comprehension to add two lists.
+res_lt = [ lt1[x] + lt2[x] for x in range (len (lt1))]
+
+
+# Display the sum of two list in Python
+print ( " Addition of the list lt1 and lt2 is: " + str (res_lt))    
+ Output: 
+Python list 1 : [2, 4, 6, 8, 10, 30]
+Python list 2 : [2, 4, 6, 8, 10, 12]
+ Addition of the list lt1 and lt2 is: [4, 8, 12, 16, 20, 42]
+ Method 3: Add two list in Python using the map() function with add operator: In Python, a map() function is used to add two lists bypassing the list variables (lt1, lt2) and add as parameters. Inside the map() function, an added parameter acts like an additional operator to add lists and returns the sum. Consider a program to add two lists in Python using the map() function with the add operator. AddMap.py 
+from operator import add # import the add operator from the operator module
+# initialize the lt1 and lt2 as the Python list' element
+lt1 = [4, 8, 12, 16, 20, 24]
+lt2 = [2, 4, 6, 8, 10, 12]
+
+# display the original items of the lists lt1 and lt2
+print ("Display the elements of List 1 " + str(lt1))
+print ("Display the elements of List 2 " + str(lt2))
+
+# use map() function with add operator to add the elements of the lists lt1 and lt2
+res_lt = list( map (add, lt1, lt2)) # pass the lt1, lt2 and add as the parameters
+
+# Display the sum of the two list
+print (" Sum of the list 1 and list 2 is : " + str(res_lt))
+ Output: 
+Display the elements of List 1 [4, 8, 12, 16, 20, 24]
+Display the elements of List 2 [2, 4, 6, 8, 10, 12]
+ Sum of the list 1 and list 2 is: [6, 12, 18, 24, 30, 36]
+ Method 4: Accepts the list element from the user and joins the two lists. In this program, we input the user's list elements and insert them into the list using For loop. After that, perform the addition of the two lists in the Python program. Let's consider a program to take the input list element from the user and add them. Accept.py 
+# Declaration of the lt1, lt 2 and lt3 lists
+lt1 = []
+lt2 = []
+lt3 = []
+
+# Takes a numeric number from the user to define the total size of the list
+items = int (input (" Enter the total number of the list elements: "))
+
+# Enter the list elements from the user one by one.
+print (" Enter the items into List 1 : ")
+for i in range(1, items + 1):
+    num = int ( input (" Enter the value of %d index is :" %i))
+    lt1.append(num) # insert the items into the list1
+
+# Enter the list elements from the user one by one.
+print (" Enter the items into the List 2 : ")
+for i in range(1, items + 1):
+    num = int ( input (" Enter the value of %d index is :" %i))
+    lt2.append(num) # insert the items into the list2
+    
+for j in range(items):
+    lt3.append (lt1[j] + lt2[j]) # add the list items of both list lt1 and lt2 into the lt3   
+print ("\n Addition of the two lists is ", lt3)
+ Output: 
+Enter the total number of the list elements: 5
+ Enter the items into the List 1:
+ Enter the value of 1 index is: 3
+ Enter the value of 2 index is: 6
+ Enter the value of 3 index is: 9
+ Enter the value of 4 index is: 12
+ Enter the value of 5 index is: 15
+ Enter the items into the List 2:
+ Enter the value of 1 index is: 2
+ Enter the value of 2 index is: 4
+ Enter the value of 3 index is: 6
+ Enter the value of 4 index is: 8
+ Enter the value of 5 index is: 10
+
+ The addition of the two list is [5, 10, 15, 20, 25]
+ Method 5: Add two list using the zip() function with sum() function: The sum() function is used to add two lists using the index number of the list elements grouped by the zip() function. A zip() function is used in the sum() function to group list elements using index-wise lists. Let's consider a program to add the list elements using the zip function and sum function in Python. zipSum.py 
+# initializing of the lists lt1 and lt2
+lt1 = [6, 12, 18, 3, 6, 9]
+lt2 = [4, 8, 12, 2, 4, 6]
+
+# display the original items of the lists lt1 and lt2
+print ("Display the elements of List 1 " + str(lt1))
+print ("Display the elements of List 2 " + str(lt2))
+
+# use the zip() function and sum() function to group the lists add the lists' lt1 and lt2 with index #wise. 
+result_lt = [sum(i) for i in zip(lt1, lt2 )]
+
+# Display the sum of the two list
+print (" Sum of the list 1 and list 2 is : " + str(result_lt))
+ Output: 
+Display the elements of List 1 [6, 12, 18, 3, 6, 9]
+Display the elements of List 2 [4, 8, 12, 2, 4, 6]
+ Sum of the list 1 and list 2 is : [10, 20, 30, 5, 10, 15]
+ Next TopicShallow Copy and Deep Copy in Python ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

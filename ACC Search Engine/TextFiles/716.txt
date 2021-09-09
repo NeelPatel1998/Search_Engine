@@ -1,0 +1,275 @@
+https://www.javatpoint.com/javascript-calculator
+JavaScript Calculator - javatpoint
+JavaScript Calculator - javatpoint ? Home JavaScript C C++ Java PHP HTML CSS Bootstrap jQuery \ Node.js SQL Android Quiz Projects Interview Q Comment Forum Training JavaScript Tutorial JavaScript Introduction JavaScript Example External JavaScript JavaScript Basics JS Comment JS Variable JS Global Variable JS Data Types JS Operators JS If Statement JS Switch JS Loop JS Function JavaScript Objects JS Object JS Array JS String JS Date JS Math JS Number JS Boolean JavaScript BOM Browser Objects 1) Window Object 2) History Object 3) Navigator Object 4) Screen Object JavaScript DOM 5) Document Object getElementById GetElementsByClassName() getElementsByName getElementsByTagName JS innerHTML property JS innerText property JavaScript Validation JS form validation JS email validation JavaScript OOPs JS Class JS Object JS Prototype JS constructor Method JS static Method JS Encapsulation JS Inheritance JS Polymorphism JS Abstraction JavaScript Cookies JS Cookies Cookie Attributes Cookie with multiple Name Deleting Cookies JavaScript Events JavaScript Events JavaScript addEventListener() JS onclick event JS dblclick event JS onload event JS onresize event Exception Handling JS Exception Handling JavaScript try-catch JavaScript Misc JS this Keyword JS Debugging JS Hoisting JS Strict Mode JavaScript Promise JS Compare dates JavaScript array.length JavaScript alert() JavaScript eval() function JavaScript closest() JavaScript continue statement JS getAttribute() method JS hide elements JavaScript prompt() removeAttribute() method JavaScript reset JavaScript return JS String split() JS typeof operator JS ternary operator JS reload() method JS setAttribute() method JS setInterval() method JS setTimeout() method JS string includes() method Calculate current week number in JavaScript Calculate days between two dates in JavaScript JavaScript String trim() JavaScript timer Remove elements from array JavaScript localStorage JavaScript offsetHeight Confirm password validation Static vs Const How to Convert Comma Separated String into an Array in JavaScript Calculate age using JavaScript JavaScript label statement JavaScript String with quotes How to create dropdown list using JavaScript How to disable radio button using JavaScript JavaScript Advance JS TypedArray JS Set JS Map JS WeakSet JS WeakMap JavaScript callback JavaScript closures JavaScript date difference JavaScript date format JS date parse() method JavaScript defer JavaScript redirect JavaScript scope JavaScript scroll JavaScript sleep JavaScript void JavaScript Form Differences jQuery vs JavaScript JavaScript vs PHP Questions How to add JavaScript to html How to enable JavaScript in my browser difference between Java and JavaScript How to call JavaScript function in html How to write a function in JavaScript Is JavaScript case sensitive How does JavaScript Work How to debug JavaScript How to Enable JavaScript on Android What is a promise in JavaScript What is hoisting in JavaScript What is Vanilla JavaScript How to add a class to an element using JavaScript How to calculate the perimeter and area of a circle using JavaScript How to create an image map in JavaScript How to find factorial of a number in JavaScript How to get the value of PI using JavaScript How to make a text italic using JavaScript What are the uses of JavaScript How to get all checked checkbox value in JavaScript How to open JSON file Random image generator in JavaScript How to add object in array using JavaScript JavaScript Window open method JavaScript Window close method How to check a radio button using JavaScript JavaScript Const JavaScript function to check array is empty or not JavaScript multi-line String JavaScript Anonymous Functions Implementing JavaScript Stack Using Array JavaScript classList JavaScript Code Editors JavaScript let keyword Random String Generator using JavaScript JavaScript Queue Event Bubbling and Capturing in JavaScript How to select all checkboxes using JavaScript JavaScript change Event JavaScript focusout event Traverse array object using JavaScript JavaScript create and download CSV file How to make beep sound in JavaScript How to add a WhatsApp share button in a website using JavaScript JavaScript Execution Context JavaScript querySelector Shallow Copy in JavaScript How to Toggle Password Visibility in JavaScript Removing Duplicate From Arrays JavaScript insertBefore JavaScript Select Option Get and Set Scroll Position of an Element Getting Child Elements of a Node in JavaScript JavaScript scrollIntoView JavaScript String startsWith JS First Class Function JavaScript Default Parameters JavaScript Recursion in Real Life JavaScript removeChild Remove options from select list in JavaScript JavaScript Calculator Palindrome in JavaScript JavaScript Call Stack MCQ JavaScript MCQ Interview Questions JavaScript I/Q next ? ? prev JavaScript Calculator As we know, the Calculator is a portable device used in our daily life to perform various mathematical functions such as addition, subtraction, multiplication, division, root, etc. However, we have scientific or sophisticated calculators used to solve complex tasks such as trigonometry functions, degrees, exponential operators, log functions, hyperbolic functions, square root, and so on. In this topic, we will create a calculator program in JavaScript. Example 1: Create a JavaScript Calculator using the JavaScript, HTML and CSS programming languages. Build.html 
+<!-- Create a simple Program to build the Calculator in JavaScript using with HTML and CSS web languages. -->
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<title> JavaScript Calculator </title>
+
+<style>
+h1 {
+	text-align: center;
+	padding: 23px;
+	background-color: skyblue;
+	color: white;
+	}
+
+#clear{
+width: 270px;
+border: 3px solid gray;
+	border-radius: 3px;
+	padding: 20px;
+	background-color: red;
+}
+
+.formstyle
+{
+width: 300px;
+height: 530px;
+margin: auto;
+border: 3px solid skyblue;
+border-radius: 5px;
+padding: 20px;
+}
+
+
+
+input
+{
+width: 20px;
+background-color: green;
+color: white;
+border: 3px solid gray;
+	border-radius: 5px;
+	padding: 26px;
+	margin: 5px;
+	font-size: 15px;
+}
+
+
+#calc{
+width: 250px;
+border: 5px solid black;
+	border-radius: 3px;
+	padding: 20px;
+	margin: auto;
+}
+
+</style>
+
+</head>
+<body>
+<h1> Calculator Program in JavaScript </h1>
+<div class= "formstyle">
+<form name = "form1">
+	
+	<!-- This input box shows the button pressed by the user in calculator. -->
+  <input id = "calc" type ="text" name = "answer"> <br> <br>
+  <!-- Display the calculator button on the screen. -->
+  <!-- onclick() function display the number prsses by the user. -->
+  <input type = "button" value = "1" onclick = "form1.answer.value += '1' ">
+  <input type = "button" value = "2" onclick = "form1.answer.value += '2' ">
+  <input type = "button" value = "3" onclick = "form1.answer.value += '3' ">
+   <input type = "button" value = "+" onclick = "form1.answer.value += '+' ">
+  <br> <br>
+  
+  <input type = "button" value = "4" onclick = "form1.answer.value += '4' ">
+  <input type = "button" value = "5" onclick = "form1.answer.value += '5' ">
+  <input type = "button" value = "6" onclick = "form1.answer.value += '6' ">
+  <input type = "button" value = "-" onclick = "form1.answer.value += '-' ">
+  <br> <br>
+  
+  <input type = "button" value = "7" onclick = "form1.answer.value += '7' ">
+  <input type = "button" value = "8" onclick = "form1.answer.value += '8' ">
+  <input type = "button" value = "9" onclick = "form1.answer.value += '9' ">
+  <input type = "button" value = "*" onclick = "form1.answer.value += '*' ">
+  <br> <br>
+  
+  
+  <input type = "button" value = "/" onclick = "form1.answer.value += '/' ">
+  <input type = "button" value = "0" onclick = "form1.answer.value += '0' ">
+    <input type = "button" value = "." onclick = "form1.answer.value += '.' ">
+	<!-- When we click on the '=' button, the onclick() shows the sum results on the calculator screen. -->
+  <input type = "button" value = "=" onclick = "form1.answer.value = eval(form1.answer.value) ">
+  <br> 
+  <!-- Display the Cancel button and erase all data entered by the user. -->
+  <input type = "button" value = "Clear All" onclick = "form1.answer.value = ' ' " id= "clear" >
+  <br> 
+  
+</form>
+</div>
+</body>
+</html>
+ Test it Now Output When the above program is executed on any browser, it shows the below image. Here we have created a Calculator program using the JavaScript language, including HTML and CSS web programming. In this Calculator, we can perform basic operations like addition, multiplication, subtraction, and division. Now we perform some operation in the JavaScript program, as shown below. We performed addition and subtraction operations in the above image by clicking on the numeric button and then addition & subtraction operations. After this, click on the '=' (equal) button to get the operation result. In the given below image, we can see the results of the numbers. Note: If we want to remove all existing data from the Calculator, click on the Clear All button. Create a JavaScript Calculator using If... Else...If statement and display using the prompt dialog box. Result.html 
+<html>
+<body>
+<script>
+
+// program to create a simple calculator using the if...else...if in JavaScript.
+// take the operator from the user through prompt box in JavaScript.
+const operator = prompt('Enter operator to perform the calculation ( either +, -, * or / ): ');
+
+// accept the number from the user through prompt box
+const number1 = parseFloat(prompt ('Enter the first number: '));
+const number2 = parseFloat(prompt ('Enter the second number: '));
+
+let result; // declaration of the variable.
+
+// use if, elseif and else keyword to define the calculator condition in JavaScript.
+if (operator == '+') { // use + (addition) operator to add two numbers
+    result = number1 + number2;
+}
+else if (operator == '-') { // use -  (subtraction) operator to subtract two numbers
+    result = number1 - number2;
+}
+else if (operator == '*') { // use * (multiplication) operator to multiply two numbers
+    result = number1 * number2;
+}
+else {
+    result = number1 / number2; // use / (division) operator to divide two numbers
+}
+
+// display the result of the Calculator
+window.alert(" Result is" + result);
+</script>
+<body>
+</html>
+ Test it Now Output When we execute the above programming code, it produces the below Output: As we can see in the above image, it asks for an operator to perform the calculation by selecting an operator like as +, -, *, or /. In this image, we select an add (+) operator and then click the OK button, as shown below. After clicking on the OK button, it shows the below image to take the first number from the user. We again click on the OK button, it shows the below image to take the second number from the user. Finally, click on the OK button to get the addition of the two numbers, as shown below. Similarly, we can perform the subtraction, multiplication, and division of the number in JavaScript Calculator. Example 3: Dynamic JavaScript Calculator using the HTML, CSS and JavaScript. Calc.html 
+<!-- Write a program to build the Calculator in JavaScript. -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Calculator Program in JavaScript
+</title>
+
+<!-- Begins the JavaScript Code -->
+<script>
+
+// Use insert() function to insert the number in textview.
+function insert(num) 
+{
+document.form1.textview.value = document.form1.textview.value + num;
+}
+
+// Use equal() function to return the result based on passed values.
+function equal()
+{
+var exp = document.form1.textview.value;
+if(exp)
+{
+document.form1.textview.value = eval(exp)
+}
+}
+
+/* Here, we create a backspace() function to remove the number at the end of the numeric series in textview. */
+function backspace()
+{
+var exp = document.form1.textview.value;
+document.form1.textview.value = exp.substring(0, exp.length - 1); /* remove the element from total length ? 1 */
+}
+
+
+</script>
+
+<!-- Start the coding for CSS -->
+<style>
+/* Create the Outer layout of the Calculator. */
+.formstyle
+{
+width: 300px;
+height: 330px;
+margin: 20px auto;
+border: 3px solid skyblue;
+border-radius: 5px;
+padding: 20px;
+text-align: center;
+background-color: grey;
+}
+
+/* Display top horizontal bar that contain some information. */
+h1 {
+	text-align: center;
+	padding: 23px;
+	background-color: skyblue;
+	color: white;
+	}
+input:hover
+{
+background-color: green;
+}
+	
+*{
+margin: 0;
+padding: 0;
+}
+
+/* It is used to create the layout for calculator button. */
+.btn{
+width: 50px;
+height: 50px;
+font-size: 25px;
+margin: 2px;
+cursor: pointer;
+background-color: red;
+color: white;
+
+}
+
+/* It is used to display the numbers, operations and results. */
+.textview{
+width: 223px;
+margin: 5px;
+font-size: 25px;
+padding: 5px;
+background-color: lightgreen;
+}	
+	
+</style>
+</head>
+<body>
+<h1> Calculator Program in JavaScript </h1>
+ <div class= "formstyle">
+ <form name = "form1">
+ <input class= "textview" name = "textview">
+ </form>
+ <center>
+ <table >
+ <tr> 
+	<td> <input class = "btn" type = "button" value = "C" onclick = "form1.textview.value = ' ' " > </td>
+	<td> <input  class = "btn" type = "button" value = "B" onclick = "backspace()" > </td>
+	<td> <input  class = "btn" type = "button" value = "/" onclick = "insert('/')" > </td>
+	<td> <input class = "btn" type = "button" value = "x" onclick = "insert('*')" > </td>
+	</tr>
+	
+	 <tr> 
+	<td> <input class = "btn" type = "button" value = "7" onclick = "insert(7)" > </td>
+	<td> <input class = "btn" type = "button" value = "8" onclick = "insert(8)" > </td>
+	<td> <input class = "btn" type = "button" value = "9" onclick = "insert(9)" > </td>
+	<td> <input class = "btn" type = "button" value = "-" onclick = "insert('-')" > </td>
+	</tr>
+	
+	 <tr> 
+	<td> <input class = "btn" type = "button" value = "4" onclick = "insert(4)" > </td>
+	<td> <input class = "btn" type = "button" value = "5" onclick = "insert(5)" > </td>
+	<td> <input class = "btn" type = "button" value = "6" onclick = "insert(6)" > </td>
+	<td> <input class = "btn" type = "button" value = "+" onclick = "insert('+')" > </td>
+	</tr>
+	
+	 <tr> 
+	<td> <input class = "btn" type = "button" value = "1" onclick = "insert(1)" > </td>
+	<td> <input class = "btn" type = "button" value = "2" onclick = "insert(2)" > </td>
+	<td> <input class = "btn" type = "button" value = "3" onclick = "insert(3)" > </td>
+	<td rowspan = 5> <input class = "btn" style = "height: 110px" type = "button" value = "=" onclick = "equal()"> </td>
+	</tr>
+	<tr>
+	<td colspan = 2> <input class = "btn" style = "width: 106px" type = "button" value = "0" onclick = "insert(0)" > </td>
+	<td> <input class = "btn" type = "button" value = "." onclick = "insert('.')"> </td>
+	</tr>
+	</table>
+	</center>
+ </div>
+ </body>
+ </html>
+ Test it Now Output When the above program is executed on any browser, it shows the below image. Now we perform multiple operations in JavaScript Calculator by pressing the numeric button, as shown: After performing the operations, click on the '=' (equal) button to return the JavaScript Calculator' Display result. Furthermore, we can remove the displayed result or wrong number one by one at the back end by clicking on the B (Back) button. If we want to remove the completely visible number, press the C (Cancel) button from the Calculator. Next TopicPalindrome in JavaScript ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

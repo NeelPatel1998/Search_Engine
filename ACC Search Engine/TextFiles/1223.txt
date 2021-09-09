@@ -1,0 +1,162 @@
+https://www.javatpoint.com/delete-multiple-rows-using-checkbox-in-codeigniter3
+Delete Multiple Rows using Checkbox in CodeIgniter3 - javatpoint
+Delete Multiple Rows using Checkbox in CodeIgniter3 - javatpoint ? Home C Java PHP MySQL WordPress CodeIgniter HTML CSS Bootstrap JavaScript jQuery jQuery UI XML Ajax SQL Quiz Projects Interview Q Comment Forum Training CodeIgniter Tutorial CodeIgniter Tutorial What is CodeIgniter CodeIgniter License CodeIgniter versions CodeIgniter Feature CodeIgniter Installation CodeIgniter File System CodeIgniter Architecture CodeIgniter MVC Models Views Controller CodeIgniter Example CodeIgniter First Example CodeIgniter URL CodeIgniter Create a site CodeIgniter Methods CodeIgniter Helper CodeIgniter Library CodeIgniter URL Routing CodeIgniter Hooks CI Passing Parameters CodeIgniter Driver CodeIgniter Database CodeIgniter Database CI Database Insert CI Database select CI Login Form CI Database Login Form CodeIgniter Security CI Security Class CI CSRF Misc. Delete Multiple Rows using Checkbox in Codeigniter 3 CodeIgniter Interview CI Interview Questions next ? ? prev Delete Multiple Rows using Checkbox in Codeigniter 3 In this section, we are going to learn the use of the CodeIgniter application to delete multiple rows using the checkbox. We can delete more than one row in Codeigniter by using jquery ajax. We always use our listing page to delete the button. But delete records will be very difficult for us if we add wrong data in some rows among the thousands of records in the database table. In this case, if we try to delete one by one row, it will take a lot of time and effort. If we want to make it easy, we can add or delete multiple records by the checkbox. This will help us to select checkboxes and delete records at a time. In our following example, we are going to create an "Item" table, which will contain the title and description column. After that, we will enter some dummy records by running mysql query. Then we will add two routers. The first router will be created for listening items. The second router will be created for ajax requests. All the items will be displayed on the listening page with the checkbox. After that, we will put the code to remove the selected items. When the delete all button is clicked by the user, they will get ids of the selected checkbox and pass it in ajax methods. Then we will use these ids and delete all records in the ajax request. For this, we should follow step by step process, which is described as follows: Step 1: In this step, we will Create an item table. In order to do this, we will create one database, and then we will use our database and create a new table, "Item". We can create the "Item" table by using the SQL query, which is described as follows: Item Table: 
+CREATE TABLE IF NOT EXISTS `items` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+ After successfully creating the table, we will enter some dummy records. Step 2: In the second step, we will Add routers. For this, we will create new routers so that we can list items and send ajax requests. For this, we will open the router.php file and then add the code, which is shown below: application/config/routes.php 
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+$route['default_controller'] = 'welcome';
+$route['404_override'] = '';
+$route['translate_uri_dashes'] = FALSE;
+
+$route['item'] = "item";
+$route['itemDelete']['post'] = "item/deleteAll";
+ Step 3: In the third step, we will Create Item Controller. We will create this controller with deleteAll() and index(). For this, we will create an item.php file and then add the code, which is described as follows: application/controllers/Item.php 
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+ 
+class Item extends CI_Controller {
+ 
+    /**
+     * Using this method, we will get all data.
+     *
+     * It will return Response
+    */
+    public function __construct() {
+       parent::__construct();
+       $this->load->database();
+    }
+ 
+    /**
+     * Using this method, we will get all data.
+     *
+     * It will return Response
+    */
+    public function index()
+    {
+        $data['data'] = $this->db->get("items")->result();
+        $this->load->view('item', $data);
+    }
+ 
+     /**
+     * Using this method, we will get all data.
+     *
+     * It will return Response
+    */
+    public function deleteAll()
+    {
+        $ids = $this->input->post('ids');
+ 
+        $this->db->where_in('id', explode(",", $ids));
+        $this->db->delete('items');
+ 
+        echo json_encode(['success'=>"Item Deleted successfully."]);
+    }
+ 
+}
+ Step 4: In the fourth step, we will Create View file. In order to do this, item.php view file will be created. This file is used to show all items with checkbox. After that, we will write jqery ajax code, which is described as follows: application/views/item.php 
+<!DOCTYPE html>
+<html>
+<head>
+    <title> CodeIgniter 3 - Delete Multiple records with checkbox </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+            <h2> CodeIgniter 3 - Delete Multiple records with checkbox </h2>
+        </div>
+    </div>
+</div>
+ 
+<button style="margin-bottom: 10px" class="btn btn-primary delete_all" data-url="/itemDelete">Delete All Selected</button>
+ 
+<table class="table table-bordered" style="margin-top:20px">
+ 
+  <thead>
+      <tr>
+          <th width="50px"><input type="checkbox" id="master"></th>
+          <th>Title</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+ 
+  <tbody>
+   <?php foreach ($data as $item) { ?>      
+      <tr>
+          <td><input type="checkbox" class="sub_chk" data-id="<?php echo $item->id; ?>"></td>
+          <td><?php echo $item->title; ?></td>
+          <td><?php echo $item->description; ?></td>
+      </tr>
+   <?php } ?>
+  </tbody>
+ 
+</table>
+</div>
+ 
+<script type="text/javascript">
+    $(document).ready(function () {
+ 
+        $('#master').on('click', function(e) {
+         if($(this).is(':checked',true))  
+         {
+            $(".sub_chk").prop('checked', true);  
+         } else {  
+            $(".sub_chk").prop('checked',false);  
+         }  
+        });
+ 
+        $('.delete_all').on('click', function(e) {
+ 
+            var allVals = [];  
+            $(".sub_chk:checked").each(function() {  
+                allVals.push($(this).attr('data-id'));
+            });  
+ 
+            if(allVals.length <=0)  
+            {  
+                alert("Please select row.");  
+            }  else {  
+ 
+                var check = confirm("Are you sure you want to delete this row?");  
+                if(check == true){  
+ 
+                    var join_selected_values = allVals.join(","); 
+ 
+                    $.ajax({
+                        url: $(this).data('url'),
+                        type: 'POST',
+                        data: 'ids='+join_selected_values,
+                        success: function (data) {
+                          console.log(data);
+                          $(".sub_chk:checked").each(function() {  
+                              $(this).parents("tr").remove();
+                          });
+                          alert("Item Deleted successfully.");
+                        },
+                        error: function (data) {
+                            alert(data.responseText);
+                        }
+                    });
+ 
+                  $.each(allVals, function( index, value ) {
+                      $('table tr').filter("[data-row-id='" + value + "']").remove();
+                  });
+                }  
+            }  
+        });
+    });
+</script>
+ 
+</body>
+</html>
+ The above code is ready to run. After executing this code, we are able to see the following output: Next TopicCodeIgniter Tutorial ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

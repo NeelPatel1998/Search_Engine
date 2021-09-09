@@ -1,0 +1,190 @@
+https://www.javatpoint.com/bootstrap-4-pagination
+Bootstrap 4 Pagination - Javatpoint
+Bootstrap 4 Pagination - Javatpoint ? Home Bootstrap 4 Bootstrap HTML JavaScript jQuery jQuery UI CSS XML JSON C Java PHP Ajax Quiz Projects Interview Q Bootstrap 4 Tutorial Bootstrap 4 Tutorial Environment setup Bootstrap 4 Layout Bootstrap 4 Buttons Bootstrap 4 Dropdown Bootstrap 4 Spinners Bootstrap 4 Badges Bootstrap 4 Progress Bars Bootstrap 4 Jumbotron Bootstrap 4 Text Bootstrap 4 Pagination Bootstrap 4 Carousel Bootstrap 4 Scrollspy next ? ? prev Bootstrap 4 - Pagination When there are many pages in a website and the user wants to add page numbers, then pagination in Bootstrap is used. There are basically different types of Pagination that can be observed in Bootstrap 4, the list is given below: Basic Pagination Active State Pagination Disabled State Pagination Sizing in Pagination Alignment in Pagination Basic Pagination: In order to create a basic pagination, the user has to include the .pagination class to an <ul> element. After that, the user will have to add the .page-item to each <li> element and a .page-link class to each link inside <li>. For Example: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Basic Pagination</h2>                 
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous Page</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 1</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 2</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 4</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next Page</a></li>
+  </ul>
+</div>
+</body>
+</html>
+ Test it Now The Output will be: Active State Pagination: In order to make the active state pagination, the .active class can be used to highlight the current page. For Example: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Active State Pagination</h2>
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous Page</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 1</a></li>
+    <li class="page-item active"><a class="page-link" href="#">Page 2</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 4</a></li>    
+    <li class="page-item"><a class="page-link" href="#">Next Page</a></li>
+  </ul>
+</div>
+</body>
+</html>
+ Test it Now The Output will be: Disabled State Pagination: The disabled state is used for the purpose of creating an unclickable links. The class used in this case is .disabled class. For Example: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Disabled State Pagination</h2>
+  <ul class="pagination">
+    <li class="page-item disabled"><a class="page-link" href="#">Previous Page</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 1</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 2</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 4</a></li>
+    <li class="page-item"><a class="page-link" href="#">Go to Next Page</a></li>
+  </ul>
+</div>
+</body>
+</html>
+ Test it Now The Output will be: Sizing in Pagination: The sizes of different pagination can be changed. In order words, pagination blocks can also be sized to a larger or a smaller size. For Example: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Sizing in Pagination</h2>
+  <p>Large:</p>
+  <ul class="pagination pagination-lg">
+    <li class="page-item"><a class="page-link" href="#">Previous Page</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 1</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 2</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 4</a></li>
+    <li class="page-item"><a class="page-link" href="#">Go to Next Page</a></li>
+  </ul>
+  <p>Default:</p>
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous Page</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 1</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 2</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 4</a></li>
+    <li class="page-item"><a class="page-link" href="#">Go to Next Page</a></li>
+  </ul>
+  <p>Small:</p>
+  <ul class="pagination pagination-sm">
+    <li class="page-item"><a class="page-link" href="#">Previous Page</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 1</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 2</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Page 4</a></li>
+    <li class="page-item"><a class="page-link" href="#">Go to Next Page</a></li>
+  </ul>
+</div>
+</body>
+</html>
+ Test it Now The Output will be: Alignment in Pagination: The alignment in pagination uses the utility classes to change the alignment of the pagination. For Example: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Alignment in Pagination</h2>                 
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous Page</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Page 1</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Page 2</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Page 3</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Page 4</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Go to Next Page</a></li>
+  </ul>
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous Page</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Page 1</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Page 2</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Page 3</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Page 4</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Go to Next Page</a></li>
+  </ul>
+  <ul class="pagination justify-content-end">
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous Page</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Page 1</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Page 2</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Page 3</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Page 4</a></li>
+    <li class="page-item"><a class="page-link" href="javascript:void(0);">Go to Next Page</a></li>
+  </ul>
+</div>
+</body>
+</html>
+ Test it Now The Output will be: Breadcrumb in Bootstrap 4 Breadcrumb in Bootstrap 4 can be used to show hierarchy-based information for a website and specifies the location of the current page inside of a navigational hierarchy. A user has to use .breadcrumb class in order to define the list into breadcrumb. This class also adds a separator with the help of CSS to the list. In order words, a breadcrumb can be defined as a navigation scheme that shows the current location to the user in a website. The Breadcrumb navigation is very useful as it helps in improving the accessibility of a website that consists of many pages or has a complex navigational hierarchy. In addition to that, a user can also create static breadcrumbs layouts with Bootstrap by simply using the class .breadcrumb on the ordered lists. Example for Breadcrumb is listed below: 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h2>Breadcrumb in Bootstrap 4</h2>                 
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Main Page</a></li>
+    <li class="breadcrumb-item"><a href="#">JavaTpoint</a></li>
+    <li class="breadcrumb-item"><a href="#">Bootstrap 4</a></li>
+    <li class="breadcrumb-item active">Disabled Link</li>
+  </ul>
+</div>
+</body>
+</html>
+ Test it Now The Output will be: Note: In Breadcrumb, the default breadcrumb separator is "/". However, a user can modify it with the help of adding some custom CSS. Next TopicBootstrap 4 Carousel ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

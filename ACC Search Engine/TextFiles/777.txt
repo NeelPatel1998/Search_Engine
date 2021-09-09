@@ -1,0 +1,65 @@
+https://www.javatpoint.com/caesar-cipher-in-python
+Caesar Cipher in Python - Javatpoint
+Caesar Cipher in Python - Javatpoint ? Home Python If Else For Loop Function Array String Regex List Set Tuple Dictionary Lambda Function Modules Programs Tkinter Numpy Interview Questions Python Tutorial Python Tutorial Python Features Python History Python Applications Python Install Python Example Python Variables Python Data Types Python Keywords Python Literals Python Operators Python Comments Python If else Python Loops Python For Loop Python While Loop Python Break Python Continue Python Pass Python Strings Python Lists Python Tuples Python List Vs Tuple Python Sets Python Dictionary Python Functions Python Built-in Functions Python Lambda Functions Python Files I/O Python Modules Python Exceptions Python Date Python Regex Python Sending Email Read CSV File Write CSV File Read Excel File Write Excel File Python Assert Python List Comprehension Python Collection Module Python Math Module Python OS Module Python Random Module Python Statistics Module Python Sys Module Python IDEs Python Arrays Command Line Arguments Python Magic Method Python Stack & Queue PySpark MLlib Python Decorator Python Generators Web Scraping Using Python Python JSON Python Itertools Python Multiprocessing Python OOPs Python OOPs Concepts Python Object Class Python Constructors Python Inheritance Abstraction in Python Python MySQL Environment Setup Database Connection Creating New Database Creating Tables Insert Operation Read Operation Update Operation Join Operation Performing Transactions Python MongoDB Python MongoDB Python SQLite Python SQLite Python Questions How to install Python in Windows How to reverse a string in Python How to read CSV file in Python How to run Python Program How to take input in Python How to convert list to string in Python How to append element in the list How to compare two lists in Python How to convert int to string in Python How to create a dictionary in Python How to create a virtual environment in Python How to declare a variable in Python How to install matplotlib in Python How to install OpenCV in Python How to print in same line in Python How to read JSON file in Python How to read a text file in Python How to use for loop in Python Is Python scripting language How long does it take to learn Python How to concatenate two strings in Python How to connect Database in Python How to convert list to dictionary in Python How to declare a global variable in Python How to reverse a number in Python What is an object in Python Which is the fastest implementation of Python How to clear Python shell How to create a DataFrames in Python How to develop a game in Python How to install Tkinter in Python How to plot a graph in Python How to print pattern in Python How to remove an element from a list in Python How to Round number in Python How to sort a dictionary in Python Strong Number in Python How to Convert Text to Speech in Python Bubble Sort in Python Logging in Python Insertion Sort in Python Binary Search in Python Linear Search in Python Python vs Scala Queue in Python Stack in Python Heap Sort in Python Palindrome program in python Program of Cumulative sum in python Merge Sort in Python Python Matrix Python Unit Testing Forensics & Virtualization Best Books to Learn Python Best Books to Learn Django GCD of two number in python Python Program to generate a Random String How to One Hot Encode Sequence Data in Python How to write square root in Python Pointer in Python Python 2D array Python Memory Management Python Libraries for Data Visualization How to call a function in Python Git Modules in Python Top Python Frameworks for Gaming Python Audio Modules Wikipedia Module in Python Python random randrange() Permutation and Combination in Python Getopt module in Python Merge two Dictionaries in Python Multithreading in Python 3 Static in Python How to get the current date in Python argparse in Python Python tqdm Module Caesar Cipher in Python Tokenizer in Python How to add two lists in Python Shallow Copy and Deep Copy in Python Atom Python Contains in Python Label Encoding in Python Django vs. Node JS Python Frameworks How to create a vector in Python using NumPy Pickle Module of Python How to convert Bytes to string in Python Python Program to Find Anagram How to convert List to Set Python vs JavaScript Python Holidays Module FuzzyWuzzy Python Library Dask Python Python Tkinter (GUI) Python Tkinter Tkinter Button Tkinter Canvas Tkinter Checkbutton Tkinter Entry Tkinter Frame Tkinter Label Tkinter Listbox Tkinter Menubutton Tkinter Menu Tkinter Message Tkinter Radiobutton Tkinter Scale Tkinter Scrollbar Tkinter Text Tkinter Toplevel Tkinter Spinbox Tkinter PanedWindow Tkinter LabelFrame Tkinter MessageBox Python Web Blocker Introduction Building Python Script Script Deployment on Linux Script Deployment on Windows Python MCQ Python MCQ Related Tutorials NumPy Tutorial Django Tutorial Flask Tutorial Pandas Tutorial Pytorch Tutorial Pygame Tutorial Matplotlib Tutorial OpenCV Tutorial Openpyxl Tutorial Python CGI Python Design Pattern Python Programs Python Programs next ? ? prev Caesar Cipher in Python In this tutorial, we will explore one of the encryption methods called Caesar Cipher. It is a part of Cryptography. Introduction In this technique, each character is substituted by a letter certain fixed number position it's later or before the alphabet. For example - Alphabet B is replaced by two positions down D. D would become F and so on. This method is named after popular frictional characters Julius Caesar, who used it to communicate with officials. There is an algorithm used to implement it. Let's understand the following. Feature of Caesar Cipher Algorithm This algorithm consists of a few features that are given below. This technique is quite simple to apply encryption. Each text is replaced by the fixed number of position down or up with the alphabet. It is a simple type of substitute cipher. There is an integer value required to define each latter of the text that has been moved down. This integer value is also known as the shift. We can represent this concept using modular arithmetic by first transmuting the letter into numbers, according to the schema, A = 0, B = 1, C = 2, D = 3…….. Z = 25. The following mathematical formula can be used to shift n letter. How to decrypt? The decryption is the same as encryption. We can create a function that will accomplish shifting in the opposite path to decrypt the original text. However, we can use the cyclic property of the cipher under the module. Cipher(n) = De-cipher(26-n) The same function can be used for decryption. Instead, we will modify the shift value such that shifts = 26 - shift. Let's understand the following example - Example - 
+def encypt_func(txt, s):
+    result = ""
+
+
+# transverse the plain txt
+    for i in range(len(txt)):
+        char = txt[i]
+        # encypt_func uppercase characters in plain txt
+
+        if (char.isupper()):
+            result += chr((ord(char) + s - 64) % 26 + 65)
+        # encypt_func lowercase characters in plain txt
+        else:
+            result += chr((ord(char) + s - 96) % 26 + 97)
+    return result
+# check the above function
+txt = "CEASER CIPHER EXAMPLE"
+s = 4
+
+print("Plain txt : " + txt)
+print("Shift pattern : " + str(s))
+print("Cipher: " + encypt_func(txt, s))
+ Output: 
+Plain txt : CEASER CIPHER EXAMPLE
+Shift pattern : 4
+Cipher: HJFXJWsHNUMJWsJCFRUQJ
+ The above code has traversed the character at a time a time. It transferred the each character as per rule depending on the procedure of encryption and decryption of the text. We have defined few specific set of position that generated a cipher text. Breach in Caesar Cipher Algorithm We can hack the cipher text in various ways. One of the ways is Brute Force Technique, which involves trying every possible decryption key. This technique is not so hard and doesn't require much effort. Let's understand the following example. Example - 
+msg = 'rGMTLIVrHIQSGIEWIVGIEWIV' #encrypted msg
+LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+for k in range(len(LETTERS)):
+   transformation = ''
+   for s in msg:
+      if s in LETTERS:
+         n = LETTERS.find(s)
+         n = n - k
+         if n < 0:
+            n = n + len(LETTERS)
+         transformation = transformation + LETTERS[n]
+
+      else:
+         transformation = transformation + s
+print('Hacking k #%s: %s' % (k, transformation))
+ Output: 
+Hacking k #25: rHNUMJWrIJRTHJFXJWHJFXJW
+ Transposition Cipher Transposition cipher algorithm is a technique where the alphabet order in the plaintext is rearranged to form a cipher text. This algorithm doesn't support the actual plain text alphabets. Let's understand this algorithm using an example. Example - We will take the simple example called columnar transposition cipher where we write the each character in the pain text in horizontal with specified alphabet width. The vertically written texts are cipher, which create a completely unlike cipher text. Let's take a plain text, and apply the simple columnar transposition technique as shown below. We placed the plain text horizontally and the cipher text is created with vertical format as: hotnejpt.lao.lvi. To decrypt this, the receiver must use the same table to decrypt the cipher text to plain text. Code - Let's understand the following example. 
+def split_len(sequence, length):
+   return [sequence[i:i + length] for i in range(0, len(sequence), length)]
+def encode(k, plaintxt):
+   order = {
+      int(val): n for n, val in enumerate(k)
+   }
+ciphertext = ''
+
+for index in sorted(order.ks()):
+   for part in split_len(plaintxt, len(k)):
+      try:ciphertext += part[order[index]]
+    except IndexError:
+            continue
+   return ciphertext
+print(encode('3214', 'HELLO'))
+ Explanation - In the above code, we have created a function named split_len(), which spitted the pain text character, placed in columnar or row format. The encode() method created the cipher text with a key specifying the number of columns, and we have printed each cipher text by reading through each column. Note - The transposition technique is meant to be a significant improvement in crypto security. Cryptanalyst observed that re-encrypting the cipher text using same transposition cipher shows better security. Next TopicTokenizer in Python ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,58 @@
+https://www.javatpoint.com/jquery-add-method
+jQuery add() method - javatpoint
+jQuery add() method - javatpoint ? Home jQuery jQuery UI JavaScript C Java PHP HTML CSS XML JSON Node.js SQL Interview Q Training jQuery Tutorial jQuery Introduction What is jQuery jQuery History jQuery Example jQuery Selectors jQuery Effects jQuery Effects jQuery hide() jQuery show() jQuery toggle() jQuery fadeIn() jQuery fadeOut() jQuery fadeToggle() jQuery fadeTo() jQuery slideDown() jQuery slideUp() jQuery slideToggle() jQuery animate() jQuery delay() jQuery HTML/CSS jQuery html() jQuery text() jQuery val() jQuery css() jQuery before() jQuery prepend() jQuery after() jQuery insertAfter() jQuery append() jQuery appendTo() jQuery clone() jQuery remove() jQuery empty() jQuery detach() jQuery scrollTop() jQuery attr() jQuery prop() jQuery offset() jQuery position() jQuery addClass() jQuery hasClass() jQuery toggleClass() jQuery width() jQuery height() jQuery innerWidth() jQuery innerHeight() jQuery outerWidth() jQuery outerHeight() jQuery wrap() jQuery wrapInner() jQuery wrapAll() jQuery unwrap() jQuery Form jQuery serialize() jQuery serializeArray() jQuery Events jQuery Events jQuery click() jQuery bind() jQuery unbind() method jQuery blur() jQuery focus() jQuery select() jQuery change() jQuery submit() jQuery keydown() jQuery keypress() jQuery keyup() jQuery mouseenter() jQuery mouseleave() jQuery hover() jQuery mousedown() jQuery mouseup() jQuery mouseover() jQuery mouseout() jQuery load() jQuery unload() jQuery delegate() jQuery Misc jQuery ajax() method jQuery children() method jQuery data() method jQuery each() method jQuery eq() method jQuery extend() method jQuery filter() method jQuery find() method jQuery get() method jQuery grep() method jQuery length property jQuery is() method jQuery not() method jQuery param() method jQuery radio button jQuery read more/read less jQuery star rating :enabled selector :disabled selector noConflict() method :nth-child selector parent() method post() method ready() function removeAttr() method replaceWith() method resize() method siblings() method stop() method trigger() method trim() method jQuery getJSON() method jQuery replaceAll() method jQuery on() method jQuery off() method jQuery first() method jQuery last() method jQuery isNumeric() method jQuery :reset selector jQuery size() method jQuery contains() method jQuery ajaxSend() method jQuery ajaxError() method jQuery :lang() selector jQuery :lt() selector jQuery :gt() selector jQuery map() function jQuery next() method jQuery nextUntil() method jQuery error() method jQuery now() method jQuery parseJSON() method jQuery inArray() method jQuery dblclick() method jQuery $.proxy() method jQuery has() method jQuery index() method jQuery insertBefore() method jQuery merge() method jQuery nth-of-type() selector jQuery prev() method jQuery prevAll() method jQuery scroll() method jQuery scrollLeft() method jQuery slice() method jQuery contents() method jQuery nextAll() method jQuery offsetParent() method jQuery parents() method jQuery parentsUntil() method globalEval() method undelegate() method triggerHandler() method toArray() method removeProp() method removeData() method queue() method prependTo() method noop() method makeArray() method keypress() method isPlainObject() method isFunction() method isEmptyObject() method isArray() method focusout() method focusin() method event.preventDefault() method clearQueue() method andSelf() method andBack() method jQuery dequeue() method jQuery end() method jQuery even() method jQuery :file selector jQuery :hidden selector jQuery isWindow() method jQuery odd() method jQuery parseXML() method jQuery :password selector jQuery.unique() method jQuery.uniqueSort() method jQuery :visible selector jQuery.isXMLDoc() method jQuery add() method jQuery closest() method jQuery Questions How to change the background image using jQuery How to Detect a Mobile Device offset vs position in jQuery Checkbox validation in jQuery Use of moment JS to change date format in jquery jQuery Redirect to Another Page After 5 Seconds JQuery Validation jQuery get Difference between two Dates in days Dynamic Drag and Drop table rows using JQuery Ajax Miscellaneous jQuery vs AngularJS jQuery MCQ jQuery MCQ jQuery UI 50+ jQuery UI Interview Questions jQuery Questions next ? ? prev jQuery add() method The add() method in jQuery adds an element to the set of existing elements. We can use this method to add the elements inside the context elements if the context parameter is specified, or can use it to add elements in the entire document. Do not assume that the add() method is used to append the elements to the set of existing elements. This method does not work similar to the append() method. It should not be compared with the append() method. Syntax 
+$(selector).add(element,context)
+ This method accepts two parameters in which one is mandatory and the other is optional. The parameter values of the add() method are defined as follows: element: It is a mandatory parameter. It can be a jQuery object, a selector expression, an HTML snippet, an element or the set of elements to be added to the set of existing elements. context: It is an optional parameter. It indicates the point in the document at which the selector starts matching. Let's understand the add() method using some illustrations. Example1 It is a simple example of using the add() method. Here we are using the add() method to add the same CSS style for both p and span elements. Here, there are some p elements and some span elements, and both get styled on clicking the given button. 
+<!DOCTYPE html>
+<html>
+<head>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+<script>
+$(document).ready(function(){
+$("button").click(function(){
+  $("p").add("span").css({"background-color": "yellow", "border": "5px dashed blue"});
+});
+});
+</script>
+</head>
+<body>
+
+<h2> Welcome to the javaTpoint.com </h2>
+<h3> It is an example of using the jQuery add() method. </h3>
+<p> This is a paragraph element </p>
+<p> This is another paragraph element </p>
+<h4> Click the following button to see the effect. </h4>
+<button> Click me </button> </br> </br>
+<span> This is a span element </span> </br> </br>
+<span> This is another span element </span> </br> </br>
+
+</body>
+</html>
+ Test it Now Output After the execution of the above code, the output will be - After clicking the given button, the output will be - Example2 It is another example of using the add() method. Here, we are using the appendTO() method as well as the add() method in order to specify the comparison between them. There are two buttons named as appendTo and add. When we click the appendTo button, a new element will be inserted, while on clicking the add button, no element will insert. On every click of the appendTo button, a new paragraph element will be added after the div element. 
+<!DOCTYPE html>
+<html>
+<head>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+<script>
+$(document).ready(function(){
+$("#b1").click(function(){
+  $("<p> Paragraph Element. </p>").appendTo("div");
+});
+$("#b2").click(function(){
+  $("<p> Paragraph Element. </p>").add("div");
+});
+});
+</script>
+</head>
+<body>
+
+<h2> Welcome to the javaTpoint.com </h2>
+<h3> It is an example to show the comparison between jQuery appendTo() method and jQuery add() method. </h3>
+<p> On clicking the appendTo button, a new element will be inserted, while on clicking the add button nothing will happen. </p>
+<button id = "b1"> appendTo </button> 
+<button id = "b2"> add </button>
+</br></br>
+<div> This is div element </div>
+</body>
+</html>
+ Test it Now Output After the execution of the above code, the output will be - After clicking the appendTo button, the output will be - Next TopicjQuery closest() method ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

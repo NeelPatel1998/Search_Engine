@@ -1,0 +1,265 @@
+https://www.javatpoint.com/argparse-in-python
+The argparse in Python - Javatpoint
+The argparse in Python - Javatpoint ? Home Python If Else For Loop Function Array String Regex List Set Tuple Dictionary Lambda Function Modules Programs Tkinter Numpy Interview Questions Python Tutorial Python Tutorial Python Features Python History Python Applications Python Install Python Example Python Variables Python Data Types Python Keywords Python Literals Python Operators Python Comments Python If else Python Loops Python For Loop Python While Loop Python Break Python Continue Python Pass Python Strings Python Lists Python Tuples Python List Vs Tuple Python Sets Python Dictionary Python Functions Python Built-in Functions Python Lambda Functions Python Files I/O Python Modules Python Exceptions Python Date Python Regex Python Sending Email Read CSV File Write CSV File Read Excel File Write Excel File Python Assert Python List Comprehension Python Collection Module Python Math Module Python OS Module Python Random Module Python Statistics Module Python Sys Module Python IDEs Python Arrays Command Line Arguments Python Magic Method Python Stack & Queue PySpark MLlib Python Decorator Python Generators Web Scraping Using Python Python JSON Python Itertools Python Multiprocessing Python OOPs Python OOPs Concepts Python Object Class Python Constructors Python Inheritance Abstraction in Python Python MySQL Environment Setup Database Connection Creating New Database Creating Tables Insert Operation Read Operation Update Operation Join Operation Performing Transactions Python MongoDB Python MongoDB Python SQLite Python SQLite Python Questions How to install Python in Windows How to reverse a string in Python How to read CSV file in Python How to run Python Program How to take input in Python How to convert list to string in Python How to append element in the list How to compare two lists in Python How to convert int to string in Python How to create a dictionary in Python How to create a virtual environment in Python How to declare a variable in Python How to install matplotlib in Python How to install OpenCV in Python How to print in same line in Python How to read JSON file in Python How to read a text file in Python How to use for loop in Python Is Python scripting language How long does it take to learn Python How to concatenate two strings in Python How to connect Database in Python How to convert list to dictionary in Python How to declare a global variable in Python How to reverse a number in Python What is an object in Python Which is the fastest implementation of Python How to clear Python shell How to create a DataFrames in Python How to develop a game in Python How to install Tkinter in Python How to plot a graph in Python How to print pattern in Python How to remove an element from a list in Python How to Round number in Python How to sort a dictionary in Python Strong Number in Python How to Convert Text to Speech in Python Bubble Sort in Python Logging in Python Insertion Sort in Python Binary Search in Python Linear Search in Python Python vs Scala Queue in Python Stack in Python Heap Sort in Python Palindrome program in python Program of Cumulative sum in python Merge Sort in Python Python Matrix Python Unit Testing Forensics & Virtualization Best Books to Learn Python Best Books to Learn Django GCD of two number in python Python Program to generate a Random String How to One Hot Encode Sequence Data in Python How to write square root in Python Pointer in Python Python 2D array Python Memory Management Python Libraries for Data Visualization How to call a function in Python Git Modules in Python Top Python Frameworks for Gaming Python Audio Modules Wikipedia Module in Python Python random randrange() Permutation and Combination in Python Getopt module in Python Merge two Dictionaries in Python Multithreading in Python 3 Static in Python How to get the current date in Python argparse in Python Python tqdm Module Caesar Cipher in Python Tokenizer in Python How to add two lists in Python Shallow Copy and Deep Copy in Python Atom Python Contains in Python Label Encoding in Python Django vs. Node JS Python Frameworks How to create a vector in Python using NumPy Pickle Module of Python How to convert Bytes to string in Python Python Program to Find Anagram How to convert List to Set Python vs JavaScript Python Holidays Module FuzzyWuzzy Python Library Dask Python Python Tkinter (GUI) Python Tkinter Tkinter Button Tkinter Canvas Tkinter Checkbutton Tkinter Entry Tkinter Frame Tkinter Label Tkinter Listbox Tkinter Menubutton Tkinter Menu Tkinter Message Tkinter Radiobutton Tkinter Scale Tkinter Scrollbar Tkinter Text Tkinter Toplevel Tkinter Spinbox Tkinter PanedWindow Tkinter LabelFrame Tkinter MessageBox Python Web Blocker Introduction Building Python Script Script Deployment on Linux Script Deployment on Windows Python MCQ Python MCQ Related Tutorials NumPy Tutorial Django Tutorial Flask Tutorial Pandas Tutorial Pytorch Tutorial Pygame Tutorial Matplotlib Tutorial OpenCV Tutorial Openpyxl Tutorial Python CGI Python Design Pattern Python Programs Python Programs next ? ? prev The argparse in Python In this article, we will learn the argparse module in Python. We will explore its working and functionalities. It is a very important topic for the fundamental developer, engineer, and computer scientist. As we all familiar, Python is popular for containing and rich library. If the developer writes the script for the command line, he/she is also required to pass the command-line argument that we can create using the argparse library. In this article, we will explore the following topics related to argparse. What is the command-line interface? What is argparse in Python? How to implement Python argparse library to create a command-line interface? Types of Arguments in Command-line Interface Python argparse Positional Argument Python argparse Positional Argument Default Values Using a short name for Optional Arguments Combining Optional and Positional Arguments with argparse Conclusion Let's understand what is argparse is and how we can implement it. What is command line interface? The command-line interface is also known as the CLI, which interacts with a command-line script. Python provides many libraries that allow us to work with the CLI, but Python argparse is the most suitable library in the current scenario. How does the command line interface work? Before getting deep down into this topic, we need to understand how the command line interface works? So open the command line terminal and type the ls command to get the entire list of files available in the system. 
+C:\Users\DEVANSH SHARMA>ls
+ Output: 
+face.png
+Favorites
+file1.txt
+file2.txt
+flower.jpg
+forest.jpg
+Gow-0.8.0.exe
+gradients.jpg
+hadoop-2.8.0
+hadoop-2.8.0.tar.gz
+hello_fullstack
+highway.mp4
+IBA_IOAPDATA
+innocentcat
+IntelGraphicsProfiles
+international-cricket-players-data.zip
+Iris.csv
+iris.zip
+java_error_in_pycharm_6408.log
+java_error_in_pycharm_6684.log
+jtp_logo.png
+linear_reg
+linear_reg.zip
+Links
+Local Settings
+main_image.jpg
+mario.png
+metastore_db
+MicrosoftEdgeBackups
+Music
+My Documents
+mycus
+9c409ba1dd3f}.TMContainer00000000000000000001.regtrans-ms
+NTUSER.DAT{42939bbc-edb6-11ea-9c24-9c409ba1dd3f}.TMContainer00000000000000000002.regtrans-ms
+ntuser.ini
+PySpark DataFrame.ipynb
+PySpark RDD.ipynb
+PySpark SQL.ipynb
+PySpark UDF.ipynb
+tesseract-3.02.02-win32-lib-include-dirs
+tesseract-3.02.02-win32-lib-include-dirs.zip
+ As we can see in the above output, the ls command returns many files that are available in the current directory. Now, we will run the ls command by adding option -l to the command line. 
+C:\Users\DEVANSH SHARMA>ls -l
+ Output: 
+total 717704
+drw-rw-rw-   2 DEVANSH SHARMA 0         0 2020-04-07 13:25 __pycache__
+dr--r--r--   2 DEVANSH SHARMA 0         0 2020-09-03 13:42 3D Objects
+drw-rw-rw-   2 DEVANSH SHARMA 0         0 2014-01-03 15:37 8235702-a50f7c449c41b6dc8eb87d8d393eeff62121b392
+drw-rw-rw-  20 DEVANSH SHARMA 0     32768 2020-12-07 16:20 Anaconda3
+drw-rw-rw-   5 DEVANSH SHARMA 0         0 2020-09-03 13:02 AppData
+drw-rw-rw-   2 DEVANSH SHARMA 0      8192 2021-02-11 21:39 Application Data
+-rw-rw-rw-   1 DEVANSH SHARMA 0       224 2019-11-13 14:38 array.mat
+-rw-rw-rw-   1 DEVANSH SHARMA 0     69548 2019-12-03 14:18 ballon.jpg
+-rw-rw-rw-   1 DEVANSH SHARMA 0     69548 2019-12-03 14:20 baloon.jpg
+-rw-rw-rw-   1 DEVANSH SHARMA 0      1857 2019-10-15 12:16 binary.png
+-rw-rw-rw-   1 DEVANSH SHARMA 0         5 2020-04-01 16:46 binfile.bin
+-rw-rw-rw-   1 DEVANSH SHARMA 0     13911 2019-10-16 11:52 blob.jpg
+-rw-rw-rw-   1 DEVANSH SHARMA 0    244879 2019-10-14 14:19 book1.jpg
+-rw-rw-rw-   1 DEVANSH SHARMA 0     10064 2020-04-07 16:35 calculation.py
+-rw-rw-rw-   1 DEVANSH SHARMA 0     23073 2019-12-06 15:30 calibresult.jpg
+-rw-rw-rw-   1 DEVANSH SHARMA 0       336 2019-11-29 15:11 cat.jpeg
+-rw-rw-rw-   1 DEVANSH SHARMA 0         0 2019-12-05 12:34 cat.jpg
+-rw-rw-rw-   1 DEVANSH SHARMA 0     13001 2019-10-13 17:22 cat_16x9.jpg
+-rw-rw-rw-   1 DEVANSH SHARMA 0    249726 2019-10-13 15:02 cat1.jpg
+-rw-rw-rw-   1 DEVANSH SHARMA 0      5633 2019-12-04 11:16 coin.jpg
+-rw-rw-rw-   1 DEVANSH SHARMA 0      8652 2019-12-04 11:23 coin1.png
+-rw-rw-rw-   1 DEVANSH SHARMA 0     59918 2020-03-02 11:22 comic.png
+dr--r--r--   2 DEVANSH SHARMA 0         0 2020-09-03 13:42 Contacts
+ What is argparse in Python? Python argparse is a command-line parsing module that is recommended to work with the command line argument. This module was released as a part of the standard library with Python on 20th February 2011. It is similar to the getopt module, but it is slightly hard to use and requires more code lines to perform the same task. However, the argparse module is the better replacement of the Python getopt and optparse module. It provides a few important features that are given below. It allows us to use to positional argument. It allows us to customize the prefix chars. It supports variable numbers of parameters for a single option. It supports subcommands. How to implement the argparse library to create a command-line interface? Let's see the following simple example to understand the working of the argparse module in Python. Example - In the following example, we create a simple Python program to perform the add operation using the argparse module. We will pass the argument through the command-line interface. 
+# importing argparse module
+import argparse
+parser = argparse.ArgumentParser()
+
+# creating two variables using the add_argument method
+parser.add_argument("num1", help = "first number")
+parser.add_argument("num2", help = "second number")
+parser.add_argument("operation", help = "operation")
+ We have imported the argparse module and created a simple parser that will use throughout the program. We have called the add_argument() method and pass two arguments - num1 and help. We have saved the above code in the file named code.py. To run this program, we open the command-line interface and run the above file. Command 
+C:\Users\DEVANSH SHARMA\PycharmProjects\Elasticsearch>python code.py
+ When we press enter, it will show the following output. Output: 
+usage: code.py [-h] num1 num2 operation
+code.py: error: the following arguments are required: num1, num2, operation
+ As we can see, it shows error because we didn't pass the required argument. Now, we will pass the optional argument - h which is basically used for help. Command 
+C:\Users\DEVANSH SHARMA\PycharmProjects\Elasticsearch>python code.py -h
+ It will show the following output. 
+usage: code.py [-h] num1 num2 operation
+
+positional arguments:
+  num1        first number
+  num2        second number
+  operation   operation
+
+optional arguments:
+  -h, --help  show this help message and exit
+ We get all the arguments list which we have defined in our Python program. Now, we will print both arguments and the operation by adding the following operation. When we execute the .parse_args(), we get a Namespace object containing a simple property of each input argument received from the command line. 
+args = parser.parse_args()
+
+print(args.num1)
+print(args.num2)
+print(args.operation)
+ We print the argument to the console using the args variable. By default, it takes input as so we need to typecast into integer. 
+n1 = int(args.num1)
+n2 = int(args.num2)
+ To add these two numbers, we define the add operation in our code. 
+result = n1 + n2
+print("The Result is : ",result)
+ 
+C:\Users\DEVANSH SHARMA\PycharmProjects\Elasticsearch>python code.py 20 30 add
+20
+30
+add
+The Result is :  50
+ Example - 1 Simple Calculator Program using argparse 
+# importing argparse module
+import argparse
+parser = argparse.ArgumentParser()
+
+# creating two variables using the add_argument method
+parser.add_argument("num1", help = "first number")
+parser.add_argument("num2", help = "second number")
+parser.add_argument("operation", help = "operation")
+
+
+args = parser.parse_args()
+
+print(args.num1)
+print(args.num2)
+print(args.operation)
+
+n1 = int(args.num1)
+n2 = int(args.num2)
+
+
+if args.operation == "add":
+    result = n1 + n2
+    print("The Result is : ",result)
+
+elif args.operation == "sub":
+    result = n1 - n2
+
+elif args.operation == "mul":
+    result = n1 * n2
+elif args.operation == "div":
+    result = n1 / n2
+else:
+    print("Unmatched Argument")
+
+print("result is : ",result)
+ Output: Types of Argument in Command Line Interface There are two arguments that we can add to the command-line interface. Positional Argument Optional Argument Let's understand the both arguments. Positional Argument - Positional arguments are the types of argument that we use in command to operate. We pass the argument to the command and perform some operations. Their position defines by their function. That's why they are called a positional argument. By default, the positional arguments are treated as String, however we can typecast in other data types. In the previous example, we have used positional arguments to perform the add operation between the two numbers. Let's understand the following code. Example - 1 
+import argparse
+
+parser = argparse.ArgumentParser()
+
+# By default, it treats input number as string
+parser.add_argument('num', help="Enter nmber to get square of it.")
+args = parser.parse_args()
+print(args.num**2)
+ Output: We have passed 15 and it returned 1515 because argparse treated as string. We can correct this using the type attribute. Example - 
+import argparse
+
+parser = argparse.ArgumentParser()
+
+
+parser.add_argument('num', help="Enter number to get square of it.", type = int)
+args = parser.parse_args()
+print(args.num**2)
+ Output: Now, we get the desired result. Optional Argument - Optional Argument are not mandatory. We will not get the error if not passed to the script. These types of arguments are started with the - single dash or "--" double dash prefix. We need to call the .add_parse() to pass the optional arguments. Let's understand the following example. Example - 
+# importing argparse module
+import argparse
+parser = argparse.ArgumentParser()
+
+# creating two variables using the add_argument method
+parser.add_argument("--num1", help = "first number")
+parser.add_argument("--num2", help = "second number")
+parser.add_argument("--operation", help = "operation")
+
+
+args = parser.parse_args()
+
+print(args.num1)
+print(args.num2)
+print(args.operation)
+
+n1 = int(args.num1)
+n2 = int(args.num2)
+
+
+if args.operation == "add":
+    result = n1 + n2
+    print("The Result is : ",result)
+
+elif args.operation == "sub":
+    result = n1 - n2
+
+elif args.operation == "mul":
+    result = n1 * n2
+elif args.operation == "div":
+    result = n1 / n2
+else:
+    print("Unmatched Argument")
+
+print("result is : ",result)
+ When we run the above code without passing any arguments, it will show the following output. Output: As we can see in the above code, we ran the script without passing any optional argument and instead of returning error it returns none. The help message and data types for optional parameters are same as in positional parameters. Python argparse Positional Argument Sometimes, we need the arguments that are mandatory to be passed in the script on execution. Let's see an example it not passed. Example - 
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("example")
+args = parser.parse_args()
+
+if args.example == 'Hello Python':
+    print('Welcome to Javatpoint')
+else:
+    print("Didn't make it!")
+ When we run the above code with the different parameter, it will show the following argument. Output: We can show the error if the argument is not passed in the command line terminal. Python argparse Positional Argument Default Values We can provide the default value to a variable or argument using the argparse module. In the previous example, positional argument value is empty when not provided. Let's understand the following example. Example - 
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("example", default = "Hello How are you")
+args = parser.parse_args()
+
+if args.example == 'Hello':
+    print('Welcome to Javatpoint')
+else:
+    print("Didn't make it!")
+ Output: Using Short Name for Optional Argument Passing the many optional can make our Python script long. So we can assign the short name to the parameters as well. We can give the abbreviation name to parameters; it will help us to keep our Python script short. Let's understand the following example. Example - 
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-tut', '--tutorial', help="Best Tutorial ")
+parser.add_argument('-w', '--writer', help="Technical Content")
+args = parser.parse_args()
+
+if args.tutorial == 'Javatpoint':
+    print('Congratulation|| You made it!')
+
+if args.writer == 'Devansh':
+    print('Technical Writer.')
+ Output: 
+C:\Users\DEVANSH SHARMA\PycharmProjects\Elasticsearch>python code.py -w Devansh
+Technical Writer.	
+ In the above code, we have assigned the short to both optional arguments. We can access it by using its short name. Combining Optional and Positional Arguments with argparse We can combine both optional and position arguments using the argparse as follows. Let's understand the following example. Example - 
+import argparse
+
+parser = argparse.ArgumentParser()
+# positionl Argument
+parser.add_argument('tutorial', help="Best Tutorial ")
+# optional argument 
+parser.add_argument('-w', '--writer', help="Technical Content")
+args = parser.parse_args()
+
+if args.tutorial == 'Javatpoint':
+    print('You made it!')
+
+if args.writer == 'Devansh':
+    print('Technical Writer.')
+ Output: 
+C:\Users\DEVANSH SHARMA\PycharmProjects\Elasticsearch>python code.py Javatpoint -w Devansh
+You made it!
+Technical Writer.
+ We have passed both types of argument to the command-line and get the above output. Conclusion So far, we have discussed all-important concept of the argparse Python module. We have learned how we can create them and how we can use them through the command-line interface. We have also learned what the argparse module is and why it is important to write command-line scripts in Python. This module helps us create self-explanatory programs and provide users with a means of interacting with our application. Next TopicPython tqdm Module ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

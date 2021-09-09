@@ -1,0 +1,77 @@
+https://www.javatpoint.com/java-pair
+Java Pair - Javatpoint
+Java Pair - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Java Pair Java Pair class stores value in the key-value pair combination. It is useful for getting two values. This key-value combination is known as tuples. The pairs are useful when we want two values to be returned from a method. For example, if we have a method that calculates the square root of a number and we want to print the number with its square root. Thus, we can print the output in a combination of numbers and its square root (e.g., (5, 25)) using the pair class. Java provides an inbuilt Pair class from Java 8. In this section, we will see how to use the Pair class in Java. Further, we will create our customized Pair class. Pair Class in Java Since Java 8, Java provides a Pair class to store the values in key pair combinations. To store the value in pair combination, we need to use the parameterized constructor provided by the javafx.util.Pair class. The Pair class is useful while storing the value in a tree data structure. While performing the recursion operation on a tree data structure, it is easy to pass value from one node to another node using the Pair class. These values can be minimum and maximum node values up to that node. This would prevent the pointer from revisiting certain codes repeatedly. In Java, the Maps are used to store the value in the form of a key pair combination. They store the value as tuples and operate them as a single object. To implement the Pair class, we need to import its parent package: 
+import javafx.util.Pair;
+ Inbuilt pair class uses the following notation of Key and Value just like the Map in Java to store a pair: 
+<Key, Value>
+ Declaration: The Pair class object is declared as follows: 
+Pair<Integer, String> p = new Pair<>(5 ,"Five");
+ The above syntax will create an object of the type <Integer, String> and the constructor will take the value 5 and "Five" and store them in the Pair class. Pair Class Methods The following methods are provided by the Java Pair class: getKey() It gets the key for the given pair and returns the key for the specified pair. It is declared as follows: 
+public K getKey()
+ getValue() It gets the value for the given pair and returns the value of the pair. It is declared as follows: 
+public V getValue()
+ hashCode() It generates the hash code for the pair; this hashcode is calculated using both the name and value of the pair. It overrides the HashCode class and returns the hash code for the pair. It is declared as follows: 
+public int hashCode()
+ equals() It is used to test the pair for equality with the other pair. If the object is not specified for the testing or is null, then it will return false. The given two pairs will be considered as equal if and only if their names and values are the same. It is declared as follows: 
+public boolean equals(Object o)
+ It takes the "-o" arguments object to test for the equality with the pair. It overrides the equals in the class Objects and returns true if the given pair is equal; otherwise, it will return false. toString() It is used to represent the pair as String. In toString() method the default name/value delimiter=' is always used. It overrides the toString in class Object and returns the String value of the pair. It is declared as follows: 
+public String toString()
+ Pair Class Constructor The Pair class constructor creates a new pair. It takes the key and pair values as an argument. It is declared as follows: 
+public Pair(K key,
+            V value)
+ Types of Pair Classes There are two types of Pair classes in Java, which are as follows: Immutable Pair Class: The Immutable Pair classes are such classes in which the value of the object cannot be changed if once defined; that means we cannot use the setters method to alter the defined values. Generally, the value will remain constant if it is defined. Mutable Pair Class: The mutable classes allows us to alter the value anytime in the program. We can use getters and setters methods to access and alter the value of an object. We could change the values later in the program even if we defined them in the beginning. The pair.setValue(a,b) and pair.getValue() methods are used to set and access the object value. Why do We Need Pair Class The pair class is used to get the value in a key pair combination. In other terms, we can say that the pair class provides methods that return two values together. There may be lots of reasons why we use the Pair class. The following are few cases when we need to use the Pair class: Suppose we want to return multiple values. However, we can do so by using some data structures like Arrays and HashMap, but when we are dealing with a cluster of variables together, then returning both of them may be complicated. In such cases, the Pair class will be very helpful. If we want to perform a mathematical operation and we want to display the number along with its output, then we do so easily by using the Pair class. If we want to perform an operation on a tree data structure. Example of Pair Class Let's understand it with a basic example: Pair class is a part of the JavaFX, so we need to create and configure a JavaFX project. See How to create a JavaFX project in Eclipse. Now, create a class file under the src folder. We are creating a TestPair class. TestPair.java: 
+import javafx.util.Pair;
+public class TestPair {
+public static void main(String[] args)
+{
+Pair<Integer, String> p = new Pair<>(5,"Five");
+System.out.println("The key is :" + p.getKey());
+System.out.println("The Pair value is :" + p.getValue());
+}
+}
+ In the above program, we are taking a pair value that holds an integer key value and a String pair value. We are declaring a Pair class using its standard syntax and printing its value using the getKey() and getValue() method of the pair class. It will display the following output: Output: 
+The key is :5
+The Pair value is :Five
+ Customized Pair Class If you don't want to use the inbuilt Pair class, you can customize a Pair class using Generics. Consider the below example: CustomizedPair.java: 
+public class CustomizedPair {
+        int key;
+        String value;
+        public CustomizedPair(int key, String value) //Constructor of the class
+        {
+            this.key = key;
+            this.value = value;
+        }
+        public void print(){
+            System.out.println("< "+key+", "+value+ " >");
+        }
+        public static void main(String[] args){
+            CustomizedPair a = new CustomizedPair(1,"Hello");
+            a.print();
+        }
+}
+ From the above code, we have created a Customized Pair class and store two values in a single variable and print it. Output: 
+< 1, Hello >
+ Hence, using generics methods, we can take the benefits of a Pair class without using the JavaFX. Let's understand its behavior with functions: Pair Class with Functions We can use a Pair class to return two values using a function. To perform this process, the return type of function must be a pair. Consider the below example: TestPair2.java: 
+import java.util.Scanner; 
+public class TestPair2 {       
+public static void main(String[] args) {
+Scanner s = new Scanner(System.in);
+CustomizedPair a = func(s);
+a.print();
+}
+public static CustomizedPair func (Scanner s){
+System.out.println("Enter Value");
+String key = s.next();
+System.out.println("Enter Key");
+int value = s.nextInt();
+CustomizedPair a = new CustomizedPair(value, key);
+return a;
+}
+}
+ Output: 
+Enter Value
+Five
+Enter Key
+5
+< 5, Five >
+ Conclusion: Pair Classes are very useful for improving code efficiency. One useful case of the Pair class is to store the value in the tree data structure. We can use inbuilt Pair classes or customize our classes. If they are used properly, they will be very helpful. Next TopicJava Profilers ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

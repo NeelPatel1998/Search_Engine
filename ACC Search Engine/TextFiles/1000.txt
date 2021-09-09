@@ -1,0 +1,121 @@
+https://www.javatpoint.com/bucket-sort-in-java
+Bucket Sort in Java - Javatpoint
+Bucket Sort in Java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Bucket Sort in Java Bucket sort is a sorting technique in which elements are first uniformly divided into several groups called buckets. After that, elements are sorted by any sorting algorithm, and finally, it gathered the elements in a sorted manner. In this section, we will learn how bucket sort works, its algorithm, complexity, example, and its implementation in a Java program. Bucket Sort Bucket sort or bin sort is a sorting algorithm that works by distributing the elements into a number of buckets, homogenously. Each bucket is then sorted individually. In order to sort the bucket, we use the sort() method of the Arrays class. It is usually used to sort floating-point numbers. The basic idea to perform the bucket sort is: Partition the range into a fixed number of buckets. Toss each element into its appropriate bucket. Sort each bucket individually using insertion sort. Concatenate all the sorted buckets. Pros It is asymptotically fast because of uniform distribution. It reduces the number of comparisons. It is fast in comparison to bubble sort. Cons It is not an in-place sorting because we need some extra space to sort the buckets. It may or may not be the stable sorting algorithm. It is not useful if we have large array because it increases the cost. Let's see the algorithm. Algorithm Bucket Sort(A[]) Let B[0….n-1] be a new array n=length[A] for i=0 to n-1 make B[i] an empty list for i=1 to n do insert A[i] into list B[n a[i]] for i=0 to n-1 do sort list B[i] with insertion-sort Concatenate lists B[0], B[1],..……, B[n-1] together in order Complexity Time Complexity Worst Case O(n2) Best Case O(n+k) Average Case O(n+k) Bucket Sort Example Sort the following array in ascending order by using the bucket sort. arr[]=22, 45, 12, 8, 10, 6, 72, 81, 33, 18, 50, 14 Total number of elements in the given array (N) = 12 Max element in array = 81 Min element in array = 6 We need 10 buckets to sort the array. Suppose, these 10 buckets are represented as B. After that, we need to find a divider that will be used to put the elements in the bucket. In order to determine the divider, we use the following formula: Let's put the values in the above formula, we get: Hence, bucket = 10, divider = 9 Let's put the element arr[i] in the correct bucket, we will use the following formula: Let's see how it works by putting elements in the buckets. We will start from the first index. For i=0: We will insert the zeroth element (22) in the 2nd bucket and increment the array index (i) by 1. For i=1: We will insert the first element (45) in the 5th bucket and increment the array index (i) by 1. For i=2: We will insert the second element (12) in the 1st bucket and increment the array index (i) by 1. For i=3: We will insert the third element (8) in the 0th bucket and increment the array index (i) by 1. For i=4: We will insert the fourth element (10) in the 1st bucket and increment the array index (i) by 1. For i=5: We will insert the fifth element (6) in the 0th bucket and increment the array index (i) by 1. For i=6: We will insert the sixth element (72) in the 8th bucket and increment the array index (i) by 1. For i=7: We will insert the seventh elements (81) in the 8th bucket and increment the array index (i) by 1. For i=8: We will insert the eighth element (33) in the 3rd bucket and increment the array index (i) by 1. For i=9: We will insert the ninth elements (18) in the 2nd bucket and increment the array index (i) by 1. For i=10: We will insert the tenth elements (50) in the 5th bucket and increment the array index (i) by 1. For i=11: We will insert the eleventh elements (14) in the 1st bucket and increment the array index (i) by 1. Now, will perform insertion sort on the individual buckets to sort the elements. Let's start from the first bucket (0th). Is ? Yes, swap their positions. Now, move to the next bucket (1st) and compare each element to the other. Is ? Yes, swap their positions and compare the next pair. Is ? No, elements are already in a sorted manner, so we will not swap their positions. Now, move to the next bucket (2nd) and compare their elements. Is ? Yes, swap their positions. Now, we will move to the next bucket. Here, a point to note that the bucket that has only one element is already sorted and the bucket that has no element, we will skip them. Therefore, we will move to the fifth bucket and compare their elements. Is ? No, elements are already sorted. Similarly, trace the buckets until we reach the last bucket. So, we will stop here as we have got a sorted array. At last, we will take out all the elements from each bucket. Therefore, we get a sorted array. We have understood the logic of the bucket sort. Let's implement the logic in a Java program and perform bucket sorting over an array. Bucket Sort Java Program BucketSortExample1.java 
+import java.util.*;
+public class BucketSortExample1 
+{
+//user-defined method to sort array
+private static void binSort(int[] array, int bucketSize)
+{
+//creating a list of buckets for storing lists
+List<Integer>[] buckets = new List[bktSize];
+// Linked list with each bucket array index
+// as there may be hash collision 
+for(int i = 0; i < bktSize; i++)
+{
+buckets[i] = new LinkedList<>();
+}
+//calculate the hash and assigns elements to the proper bucket
+for(int num : array)
+{
+buckets[hash(num, bktSize)].add(num);
+}
+//iterate over the buckets and sorts the elements
+for(List<Integer> bucket : buckets)
+{
+//sorts the bucket    
+Collections.sort(bucket);
+}
+int index = 0;
+//gethered the buckets after sorting
+for(List<Integer> bucket : buckets)
+{
+for(int num : bucket)
+{
+array[index++] = num;
+}
+}
+}
+//distributing elements 
+private static int hash(int num, int bucketSize)
+{
+return num/bucketSize;
+}
+public static void main(String args[]) 
+{
+//array to be sort    
+int[] array = {22, 45, 12, 8, 10, 6, 72, 81, 33, 18, 50, 14, 55, 0, 12, 55};
+System.out.println("Unsorted Array: " + Arrays.toString(array));
+//calling the user-defined method to sort the array
+binSort(array, 10);
+System.out.println("Sorted Array: " + Arrays.toString(array));
+}
+}
+ Output: 
+Unsorted Array: [22, 45, 12, 8, 10, 6, 72, 81, 33, 18, 50, 14, 55, 0, 12, 55]
+Sorted Array: [0, 6, 8, 10, 12, 12, 14, 18, 22, 33, 45, 50, 55, 55, 72, 81]
+ Let's create another Java program that generates array elements randomly and sorts them by using bucket sort. BucketSortExample2.java 
+import java.util.*;
+public class BucketSortExample2
+{
+//user-defined method that sorts the array elements    
+static int[] bucketSort(int[] array, int maxValue) 
+{
+//createsa buckets array
+int[] Bucket = new int[maxValue + 1];
+//creating an array for storing the sorted elements
+int[] sorted_array = new int[array.length];
+for (int i = 0; i < array.length; i++)
+Bucket[array[i]]++;
+int outPos = 0;
+for (int i = 0; i < Bucket.length; i++)
+for (int j = 0; j < Bucket[i]; j++)
+sorted_array[outPos++] = i;
+//returns sorted array
+return sorted_array;
+} 
+//method that prins the array elements 
+static void printArray(int[] sorted_array) 
+{
+for (int i = 0; i < sorted_array.length; i++)
+System.out.print(sorted_array[i] + " ");
+}
+//method finds the maximum elements of the array and returns the same
+static int maxValue(int[] array) 
+{
+int maxValue = 0;
+for (int i = 0; i < array.length; i++)
+if (array[i] > maxValue)
+maxValue = array[i];
+return maxValue;
+}
+//driver code
+public static void main(String args[]) 
+{
+System.out.println("Sorted array after performing bucket sort:");
+Random random = new Random();
+//the number of elements to be randomly generate
+int N = 12;
+//creating an array of randomly generated numbers (N)
+int[] array = new int[N];
+for (int i = 0; i < N; i++)
+//generates random numbers within specified range i.e. 40
+array[i] = Math.abs(random.nextInt(40));
+//determines the maximum value in the array
+int maxValue = maxValue(array);
+System.out.println("\nUn-sorted Array: ");
+//prints un-sorted array
+printArray(array);
+System.out.println("\nSorted Array: ");
+//prints sorted array
+printArray(bucketSort(array, maxValue));
+}
+}
+ Output: 
+Sorted array after performing bucket sort:
+
+Un-sorted Array: 
+16, 1, 0, 6, 14, 4, 22, 19, 37, 34, 17, 39
+Sorted Array: 
+0, 1, 4, 6, 14, 16, 17, 19, 22, 34, 37, 39
+ Next TopicAutomorphic Number Program in Java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

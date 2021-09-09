@@ -1,0 +1,102 @@
+https://www.javatpoint.com/prims-algorithm-java
+Prim's algorithm Java - Javatpoint
+Prim's algorithm Java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Prim's algorithm Java Prim's algorithm in Java is one of the most used algorithms for Minimum Spanning Tree. Prim's algorithm starts with a spanning tree having no vertices. In prim's algorithm, we maintain two sets of vertices in which first contains those vertices that are present in the MSP and the second one contains those vertices that are not present in the MSP. At each step, it considers all edges that combine the two sets and selects the minimum weight edge from these edges. After selecting an edge, it sets the other end of the edge that contains the MST. Prim's Algorithm Create any collection that contains only unique elements keeps track of vertices already included in MST. For all the vertices of the input graph, assign a key-value pair and set the value to infinite. In order to pick the first vertex, we set its key value as 0. Select a vertex u that is not present in the setOfMST and having a minimum key value. Add vertex u to the setOfMST. Change the key value of all adjacent vertices of u. Note: In order to update the key-value of the adjacent vertices v, if the weight of edge u-v is less than the previous key value of v, change the key value as the weight of u-v. Repeat steps 3, 4, and 5 until the setOfMST doesn't contain all vertices. Let's implement the code of Prim's algorithm in Java. MinimumSpanningTreeExample.java 
+//import required classes and packages
+import java.lang.*; 
+import java.util.*; 
+import java.io.*; 
+
+//creating MinimumSpanningTreeExample class to implement Prim's algorithm in Java   
+class MinimumSpanningTreeExample { 
+    // Define the count of vertices available in the graph
+    private static final int countOfVertices = 9; 
+  
+    // create findMinKeyVertex() method for finding the vertex v that has minimum key-value and that is not added MST yet
+    int findMinKeyVertex(int keys[], Boolean setOfMST[]) 
+    { 
+        // Initialize min value and its index
+        int minimum_index = -1; 
+        int minimum_value = Integer.MAX_VALUE;
+		
+        //iterate over all vertices to find minimum key-value vertex
+        for (int vertex = 0; vertex < countOfVertices; vertex++) 
+            if (setOfMST[vertex] == false && keys[vertex] < minimum_value) { 
+                minimum_value = keys[vertex]; 
+                minimum_index = vertex; 
+            } 
+  
+        return minimum_index; 
+    } 
+  
+    // create showMinimumSpanningTree for printing the constructed MST stored in mstArray[] 
+    void showMinimumSpanningTree(int mstArray[], int graphArray[][]) 
+    { 
+        System.out.println("Edge \t\t Weight"); 
+        for (int j = 1; j < countOfVertices; j++) 
+            System.out.println(mstArray[j] + " <-> " + j + "\t \t" + graphArray[j][mstArray[j]]); 
+    } 
+  
+    // create designMST() method for constructing and printing the MST. The graphArray[][] is an adjacency matrix that defines the graph for MST.
+    void designMST(int graphArray[][]) 
+    { 
+        // create array of size total number of vertices, i.e., countOfVertices for storing the MST
+        int mstArray[] = new int[countOfVertices]; 
+  
+        // create keys[] array for selecting an edge having minimum weight in cut 
+        int keys[] = new int[countOfVertices]; 
+  
+        // create setOfMST array of type boolean for representing the set of vertices included in MST 
+        Boolean setOfMST[] = new Boolean[countOfVertices]; 
+  
+        // set the value of the keys to infinite 
+        for (int j = 0; j < countOfVertices; j++) { 
+            keys[j] = Integer.MAX_VALUE; 
+            setOfMST[j] = false; 
+        } 
+  
+        // set value 0 to the 1st vertex because first vertes always include in MST. 
+        keys[0] = 0; // it select as first vertex 
+        mstArray[0] = -1; // set first value of mstArray to -1 to make it root of MST 
+  
+        // The vertices in the MST will be equal to the countOfVertices 
+        for (int i = 0; i < countOfVertices - 1; i++) { 
+            // select the vertex having minimum key and that is not added in the MST yet from the set of vertices 
+            int edge = findMinKeyVertex(keys, setOfMST); 
+  
+            // Add the selected minimum key vertex to the setOfMST 
+            setOfMST[edge] = true; 
+  
+            // change the key value and the parent index of all the adjacent vertices of the selected vertex. The vertices that are not yet included in Minimum Spanning Tree are only considered. 
+            for (int vertex = 0; vertex < countOfVertices; vertex++) 
+  
+                // The value of the graphArray[edge][vertex] is non zero only for adjacent vertices of m setOfMST[vertex] is false for vertices not yet included in Minimum Spanning Tree 
+                // when the value of the graphArray[edge][vertex] is smaller than key[vertex], we update the key
+                if (graphArray[edge][vertex] != 0 && setOfMST[vertex] == false && graphArray[edge][vertex] < keys[vertex]) { 
+                    mstArray[vertex] = edge; 
+                    keys[vertex] = graphArray[edge][vertex]; 
+                } 
+        } 
+  
+        // print the constructed Minimum Spanning Tree 
+        showMinimumSpanningTree(mstArray, graphArray); 
+    } 
+	//main() method start
+    public static void main(String[] args) 
+    { 
+        
+        MinimumSpanningTreeExample mst = new MinimumSpanningTreeExample(); 
+        int graphArray[][] = new int[][]{{ 0, 4, 0, 0, 0, 0, 0, 8, 0 }, 
+					{ 4, 0, 8, 0, 0, 0, 0, 11, 0 }, 
+					{ 0, 8,	0, 7, 0, 4, 0, 0, 2 }, 
+					{ 0, 0,	7, 0, 9, 14, 0, 0, 0 }, 
+					{ 0, 0, 0, 9, 0, 10, 0,	0, 0 },
+					{ 0, 0, 4, 14, 10, 0, 2, 0, 0 },
+					{ 0, 0, 0, 0, 0, 2, 0, 1, 6 },
+					{ 8, 11, 0, 0, 0, 0, 1, 0, 7 },
+					{ 0, 0, 2, 0, 0, 0, 6, 7, 0 }}; 
+  
+        // Print the Minimum Spanning Tree solution 
+        mst.designMST(graphArray); 
+    } 
+}
+ Output Next TopicQuartz scheduler java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

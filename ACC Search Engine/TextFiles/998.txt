@@ -1,0 +1,183 @@
+https://www.javatpoint.com/java-callback-function
+Java callback function - Javatpoint
+Java callback function - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Java callback function In C and C++ programming language, the process of calling a function from another function is referred to as callback. The function's memory address is represented as the function pointer. In C and C++ languages, we achieve the callback bypassing the function pointer to another function. Unlike C and C++ language, Java doesn't have the concept of the callback function. Java doesn't use the concept of the pointer, due to which callback functions are not supported. However, we can create a callback function by passing an interface that refers to the location of the function instead of passing the function's memory address. The syntax of the callback function in Java using the interface is given below: 
+public interface interfaceA {
+public String callA() ;
+}
+ How does the Java callback function work? The callback function in Java works in the following manner: Create an interface X having a single method A(). Create a method method1() with A as a method parameter. Call the A() method inside of the method1(). For calling method1(), we pass the instance of X and override the A(). Use arrow notation as an alternative to keyword news so that the code is clear. Let's take an example and understand a scenario in which we can use callback function in Java, Example: We implement the tax calculator that calculates the tax(total tax) for the state. For a state, tax can be more than one but for our example, let's assume that we have only two taxes, i.e., state tax and central tax. In both the taxes, the central tax will be the same for all states, but state tax may be different for states. 
+static void calculateTax(address of stateTax() function)
+{
+    central_tax = 2500.0
+    state_tax = get based on the address of the interface method
+    total_tax = central_tax + state_tax;
+}
+ In the above code, the address or the reference of the stateTax() method is passed for calculating the sum of taxes in the calculateTax() method. The state code varies from state to state, so we declare the stateTax() method as an abstract method in the interface. 
+interface StateTax
+{
+     double stateTax();
+}
+ Below is the implementation of the stateTax() method for Haryana and Utter Pradesh state: 
+class Haryana implements StateTax{
+    public double stateTax(){
+    	return 1500.0;
+     }
+} 
+class UP implements StateTax{
+    public double stateTax(){
+    	return 2500.0;
+     }
+}
+ CallbackExample1.java 
+//import required classes and packages
+import java.util.Scanner;
+
+//create interface StateTax having abstract method stateTax()
+interface StateTax {
+	//declare abstract method
+    double stateTax();
+}
+ 
+// implement the StateTax interface for Haryana 
+class Haryana implements StateTax {
+    public double stateTax()
+    {
+        return 1500.0;
+    }
+}
+ 
+// implement the StateTax interface for Utter Pradesh
+class UP implements StateTax {
+    public double stateTax()
+    {
+        return 2500.0;
+    }
+}
+
+// create CallbackExample1 to calculate total tax
+class CallbackExample1 {
+	
+	//main() method start
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException	//handling exceptions
+    {
+        //create an instance of the Scanner class to take user input
+		Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the state name");
+        
+		//get state name from the user
+		String state = sc.next();
+ 
+        // store the state name in an object obj
+        Class obj = Class.forName(state);
+ 
+        // Create a new object of the obj class that reference by the StateTax
+        StateTax refer = (StateTax)obj.newInstance();
+ 
+        //call the calculateTax() method by passing the reference of the StateTax  to calculate total tax
+		calculateTax(refer);
+    }
+	
+    static void calculateTax(StateTax data)
+    {
+        //central tax will be same for all state
+        double central_Tax = 3500.0;
+ 
+        // get the state_Tax for the user entered state and find the total tax
+        double state_Tax = data.stateTax();
+        double total_Tax = state_Tax + central_Tax;
+ 
+        // show the result 
+        System.out.println("The total Tax of the state is =" + total_Tax);
+    }
+}
+ Output: CallbackExample2.java 
+//Create an interface to handle click event for the callback method
+interface ClickHandler {
+	//create abstract method, i.e., clickEventHandler() that will act as callback 
+	public void clickEventHandler();
+}
+
+//Create a class that handle the callback and implements the ClickHandler
+class Handler implements ClickHandler {
+	//define the clickEventHandler()method
+	public void clickEventHandler() {
+		System.out.println("Button is clicking");
+	}
+}
+//Create a class that generate the event
+class ButtonClass {
+	public void onClickEvent(ClickHandler obj)
+	{
+		obj.clickEventHandler();
+	}
+}
+//create CallbackExample2 class 
+public class CallbackExample2 {
+	//main() method starts
+	public static void main(String[] args) {
+		//create an object of the ButtonClass
+		ButtonClass button = new ButtonClass();
+		
+		//create an object of the Handler class
+		Handler hndlrObj = new Handler();
+		
+		//pass the object of ClickHandler for performing the default operation
+		button.onClickEvent(hndlrObj);
+
+		//create another object of ButtonClass
+		ButtonClass newButton = new ButtonClass();
+		
+		//pass the interface to implement own operation
+		newButton.onClickEvent(new ClickHandler() {
+
+			@Override
+			//overriding the clickEventHandler() that shows output on clicking
+			public void clickEventHandler() {
+				System.out.println("A button is clicked");
+			}	
+		});
+	} 
+}
+ Output: CallbackExample3.java 
+//create class CallbackExample3 for callback() method
+public class CallBackExample3 {
+	//main method start
+	public static void main(String args[]) {
+		//function that passes interface name as parameter
+		
+		//create a method and pass the interface as parameter
+		callbackMethod(new interfaceX()
+		{
+			//create callMethodX() 
+			public String callMethodX()
+			{
+				return	"It is the first callback";
+			}
+		});
+		
+		// create a method and pass the interface as parameter
+		callbackMethod(new interfaceX()
+		{
+			//create callMethodX() 
+			public	String	callMethodX() {
+				return	"It is the second callback";
+			}
+		});
+		
+		callbackMethod(() ->
+		{
+			return "It is the third callback";
+		});
+	}
+	
+	//define callbackMethod()
+	public static void callbackMethod(interfaceX obj)
+	{	
+		//print callback messages
+		System.out.println(obj.callMethodX());
+	}
+	//create an interface
+	public interface interfaceX {
+		public String callMethodX();
+	}
+}
+ Output: Next TopicJava 8 vs Java 11 ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

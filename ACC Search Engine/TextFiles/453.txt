@@ -1,0 +1,82 @@
+https://www.javatpoint.com/what-is-truncation-in-java
+What is truncation in Java - Javatpoint
+What is truncation in Java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev What is truncation in Java? The English meaning of truncate is to trim or prune, or cut something and the process of trimming is called truncation. In the computer science field, the term is often used in reference to data-types or variables (like String, floating-point numbers, etc.). It is a way of approximation. Let's discuss what is truncation in Java and how can we truncate a floating or double-type number through a Java program. Truncation In Java programming, truncation means to trim some digits of a float or double-type number or some characters of a string from the right. We can also truncate the decimal portion completely that makes it an integer. Remember that after truncation, the number will not be round to its nearest value. Hence, truncation is a way of approximation. It is usually used in computing (especially in database and programming) when division is done with integers and the results must be an integer. Note: Truncation and rounding are two completely different concepts. It is not the same as Math.floor(), Math.ceil(), and Math.round() function of the Math class. Now we have clearly understood the concept of truncation. Let's see some approaches to truncate floating or double-type numbers and string too. Example Suppose, a double-type number num=19.87874548973101 is given. It is required that there must be only 3 digits after the decimal point. In such cases, we apply truncation. After truncating the rest digits, we get 19.878. If we truncate all the digits coming after decimal-point, it becomes 19. If the number has been rounded to the nearest integer it becomes 20. Now we have clearly understood truncation. Let's see some approaches to truncate floating or double-type numbers and string too. Approaches There are two approaches to truncate a number: Using Mathematical Logic Using String Matching Using Mathematical Logic We can truncate the number by using the following steps: Move the decimal of the specified number (n) to the given decimal place (dp) by multiplying the number 10dp. Determine the floor value of the resultant value (that we get from step 1). Divide the floor value by 10dp. The value that we get from step 3, is a truncated value. If we represent the steps above in terms of math, we get: n = n*pow(10,decimalplace); n = floor(n); n = n / pow(10,decimalplace); Example: Truncate 1.231 up to 2 decimal places. n=1.231*pow(10,2) n=1.231*100 =123.100 n=floor(123.100) = 123 n=123/pow(10,2) n=123/100 = 1.23 Let's implement the above logic in a Java program. TruncationExample1.java 
+import java.io.*; 
+public class TrunctionExample1
+{ 
+//driver code
+public static void main(String args[]) 
+{ 
+//the number to truncate    
+double num = 19.87874548973101; 
+//number of digits to take after decimal
+int digits = 5; 
+System.out.println("The number before truncation is: "+num); 
+//calling user-defined method that truncates a number
+truncateNumber(num, digits); 
+}
+//user-defined method to truncate a number    
+static void truncateNumber(double n, int decimalplace) 
+{ 
+//moves the decimal to the right 
+n = n* Math.pow(10, decimalplace); 
+//determines the floor value
+n = Math.floor(n); 
+//dividing the floor value by 10 to the power decimalplace
+n = n / Math.pow(10, decimalplace); 
+//prints the number after truncation
+System.out.println("The number after truncation is: "+n); 
+} 
+}
+ Output: 
+The number before truncation is: 19.87874548973101
+The number after truncation is: 19.87874
+ Using String Matching Convert the double or float type into String Find the decimal point in the string. Increment the variable (count) until we get the decimal point. Store the new string and pass it to the parseDouble() method. The method returns the double value represented by the string. The value that we get from step 4, is a truncated value. Let's implement the above steps in a Java program. TruncationExample2.java 
+import java.io.*; 
+public class TruncationExample2 
+{ 
+public static void main(String args[]) 
+{ 
+//the number to truncate        
+double num = 556.9871233986399; 
+//number of digits to take after decimal
+int decimalplaces = 3; 
+//converting a double type value to String type
+String strnum = "" + num; 
+//stores the truncated string
+String strval = ""; 
+int count = -1; 
+//loop iterates over the string until the condition becomes false
+for (int i = 0; i < strnum.length(); ++i) 
+{ 
+//if the condition returns true, it breaks the execution
+if (count > decimalplaces) 
+{ 
+break; 
+} 
+//if the above condition returns false else block is executed
+else
+//compares each character of the strnum with decimal
+//if returns true variable by 1
+if (strnum.charAt(i) == '.') 
+{ 
+count = 1; 
+} 
+else if (count >= 1) 
+{ 
+//increments the count variable by 1    
+++count; 
+} 
+//converting the number into string 
+strval = strval + strnum.charAt(i); 
+} 
+System.out.println("The number before truncation is: "+num); 
+//returns double value represented by the string argument
+double truncatedvalue = Double.parseDouble(strval); 
+System.out.println("The number after truncation is: "+truncatedvalue); 
+} 
+}
+ Output: 
+The number before truncation is: 556.9871233986399
+The number after truncation is: 556.987
+ We can also trim a string in Java. For this Java String class provides the trim() method. Next TopicPeterson Number in Java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

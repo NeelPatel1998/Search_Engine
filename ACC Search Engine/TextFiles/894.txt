@@ -1,0 +1,84 @@
+https://www.javatpoint.com/java-closure
+Java Closure - Javatpoint
+Java Closure - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Java Closure So far, we have focused on objects in Java. Since Java 8, more importance is given to the functional aspects of programming. JavaSoft people realized that doing everything using objects is becoming cumbersome and using functions can be more efficient in certain cases. Lambda expression is the most important feature that brings revolutionary change to the way programming is done in Java. In this section, we will discuss closure in a lambda expression, its declaration, implementation, and example. Before moving to the Java closure let's understand lambda expression in Java. Lambda Expression A lambda expression is a method without a name, access specifier, and return value declaration. Such methods are known as the anonymous method or closure. Basically, it represents the instance of the functional interface. Remember that an anonymous class is a class that does not have a name but for which an object can be created. Similarly, a lambda expression is a method without a name but can be used to perform a task. We can also define it as a parameter. To understand the concept of the lambda expression, consider the following method. 
+public void show()
+{
+System.out.println("Java");
+}
+ To convert the above method into a lambda expression, we will remove access specifier public, return type void, the name of the method show. After that write the method as it is. 
+() -> {
+System.out.println("Java");
+}
+ Observe the empty parentheses. They represent that the method does not have any parameters. After that, we have used an arrow symbol (->) that separates the method header from the method body. We can also write the above lambda expression in a single line: 
+() -> { System.out.println("Java"); }
+ Suppose, we have to perform the sum of two numbers by using the lambda expression. The lambda expression for the operation will be: 
+(int a, int b) -> { System.out.println("sum= " (a+b)); }
+ Lambda expressions are divided into two categories. OPEN Expression: In this expression, some symbols are not bound. It means that some symbols occurring in them are free and they have required some external information. CLOSED Expression: They are the expressions that are self-contained. It means they do not require any surrounding context to be evaluated. It is also known as combinators. Closure A closure is a function (or method) that refers to free variables in their lexical context. The function is a block of code with parameters. It may produce a result value (return type). A free variable is an identifier used but not defined by the closure. It can be used without being a method or a class. It means that closure can access variables that are not defined in the parameter list and also assigned to a variable. We can also parse the closure as a parameter. In other words, a lambda expression becomes a closure when it is able to access the variables that are outside of this scope. It means a lambda can access its outer scope. Note: Java does not support closures. Goal The primary goal of closure is it concise the function literals without the pain of anonymous instance and interoperate with existing APIs. We can also perform functional and aggregate operations using Java closure. It helps to protect data and provides currying. Declaration The declaration of Java closure is the same as lambada expression. If we want to declare closure in Java, we should use the following syntax. Syntax: 
+(argument_list) -> {function_body}
+ Java Closure Example Let's understand the closure in lambda expression through a Java program. First, we will create an interface with the name Operation. Operation.java 
+package com.javatpoint;
+@FunctionalInterface
+public interface Operation 
+{
+void operate(int n);
+}
+ ClosureExample.java
+package com.javatpoint;
+public class ClosureExample
+{
+public static void main(String args[])
+{
+int x=20;
+int y=90;
+//the method parses two parameters i.e. x and the operate() method of the Operation interface
+//implementation of closure in lambda expression
+doSum(x, new Operation()
+{
+//overrides the operate() method	
+@Override
+public void operate(int n)
+{	
+//prints the result	
+System.out.println("Sum is: "+(n+y));
+}
+});
+}
+private static void doSum(int i, Operation op)
+{
+op.operate(i);
+}
+}
+ Let's run the above Java program. Output: 
+Sum is: 110
+ Now, we will try to change the value of y inside the operate() method. Let's see what happens. 
+@Override
+public void operate(int n)
+{	
+//prints the result	
+Y=50;
+System.out.println("Sum is: "+(n+y));
+}
+ After making the above changes in the program, again compile and run. It gives a compilation error. Note that we have not declared the variable y as final but still, the compiler assuming it as a final variable (final int y=90;). So, this concept has been changed in JDK 1.8. Let's run the above program with JDK 1.7. For changing the compiler in Eclipse IDE, follow the steps given below. Right-click on the project that you have created. Click on the Properties menu (at the bottom) or press Alt + Enter Click on the Java Compiler option presented in the left pane. Uncheck the option presented under the JDK Compliance Change the Compiler compliance level to 7. After that, click on the Apply and Close button. Again, run the above program. It shows the following compilation error. In order to run the program, make the variable y as final. 
+final int y=90;
+ After that, run the program again. Output: 
+Sum is: 110
+ Therefore, in Java 8 we need not to make the variable final. Java compiler automatically assumes it as a final variable. This concept is called closure in the lambda expression. Let's write the above program using the lambda expression. ClosureExample.java 
+package com.javatpoint;
+public class ClosureExample
+{
+public static void main(String args[])
+{
+int x=20;
+int y=90;
+//here x and n are two variables
+//implementation of lambda expression
+doSum(x, n->System.out.println(n+y));
+}
+private static void doSum(int i, Operation op)
+{
+op.operate(i);
+}
+}
+ Output: 
+110
+ Closure Vs. Lambda Java lambda expression is a way to define a function inline rather than the standard method of declaration. It provides a concise way to represent a function. While closure is a function that encompasses its surrounding state by referencing fields that are external to its body. Note that both are functions but not all closures are lambdas and not all lambdas are closures. The difference between closure and lambda is quite equivalent to the distinction between a class and an instance of the class. A class exists only in source code. it doesn't exist at runtime. What exists at runtime are objects of the class type. Closures are to lambdas as objects are to classes. The following table describes the key differences between closure and lambda. Next TopicJava String Encoding ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

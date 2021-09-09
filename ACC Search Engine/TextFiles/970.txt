@@ -1,0 +1,100 @@
+https://www.javatpoint.com/python-program-to-find-anagram
+Python Program to Find Anagram - Javatpoint
+Python Program to Find Anagram - Javatpoint ? Home Python If Else For Loop Function Array String Regex List Set Tuple Dictionary Lambda Function Modules Programs Tkinter Numpy Interview Questions Python Tutorial Python Tutorial Python Features Python History Python Applications Python Install Python Example Python Variables Python Data Types Python Keywords Python Literals Python Operators Python Comments Python If else Python Loops Python For Loop Python While Loop Python Break Python Continue Python Pass Python Strings Python Lists Python Tuples Python List Vs Tuple Python Sets Python Dictionary Python Functions Python Built-in Functions Python Lambda Functions Python Files I/O Python Modules Python Exceptions Python Date Python Regex Python Sending Email Read CSV File Write CSV File Read Excel File Write Excel File Python Assert Python List Comprehension Python Collection Module Python Math Module Python OS Module Python Random Module Python Statistics Module Python Sys Module Python IDEs Python Arrays Command Line Arguments Python Magic Method Python Stack & Queue PySpark MLlib Python Decorator Python Generators Web Scraping Using Python Python JSON Python Itertools Python Multiprocessing Python OOPs Python OOPs Concepts Python Object Class Python Constructors Python Inheritance Abstraction in Python Python MySQL Environment Setup Database Connection Creating New Database Creating Tables Insert Operation Read Operation Update Operation Join Operation Performing Transactions Python MongoDB Python MongoDB Python SQLite Python SQLite Python Questions How to install Python in Windows How to reverse a string in Python How to read CSV file in Python How to run Python Program How to take input in Python How to convert list to string in Python How to append element in the list How to compare two lists in Python How to convert int to string in Python How to create a dictionary in Python How to create a virtual environment in Python How to declare a variable in Python How to install matplotlib in Python How to install OpenCV in Python How to print in same line in Python How to read JSON file in Python How to read a text file in Python How to use for loop in Python Is Python scripting language How long does it take to learn Python How to concatenate two strings in Python How to connect Database in Python How to convert list to dictionary in Python How to declare a global variable in Python How to reverse a number in Python What is an object in Python Which is the fastest implementation of Python How to clear Python shell How to create a DataFrames in Python How to develop a game in Python How to install Tkinter in Python How to plot a graph in Python How to print pattern in Python How to remove an element from a list in Python How to Round number in Python How to sort a dictionary in Python Strong Number in Python How to Convert Text to Speech in Python Bubble Sort in Python Logging in Python Insertion Sort in Python Binary Search in Python Linear Search in Python Python vs Scala Queue in Python Stack in Python Heap Sort in Python Palindrome program in python Program of Cumulative sum in python Merge Sort in Python Python Matrix Python Unit Testing Forensics & Virtualization Best Books to Learn Python Best Books to Learn Django GCD of two number in python Python Program to generate a Random String How to One Hot Encode Sequence Data in Python How to write square root in Python Pointer in Python Python 2D array Python Memory Management Python Libraries for Data Visualization How to call a function in Python Git Modules in Python Top Python Frameworks for Gaming Python Audio Modules Wikipedia Module in Python Python random randrange() Permutation and Combination in Python Getopt module in Python Merge two Dictionaries in Python Multithreading in Python 3 Static in Python How to get the current date in Python argparse in Python Python tqdm Module Caesar Cipher in Python Tokenizer in Python How to add two lists in Python Shallow Copy and Deep Copy in Python Atom Python Contains in Python Label Encoding in Python Django vs. Node JS Python Frameworks How to create a vector in Python using NumPy Pickle Module of Python How to convert Bytes to string in Python Python Program to Find Anagram How to convert List to Set Python vs JavaScript Python Holidays Module FuzzyWuzzy Python Library Dask Python Python Tkinter (GUI) Python Tkinter Tkinter Button Tkinter Canvas Tkinter Checkbutton Tkinter Entry Tkinter Frame Tkinter Label Tkinter Listbox Tkinter Menubutton Tkinter Menu Tkinter Message Tkinter Radiobutton Tkinter Scale Tkinter Scrollbar Tkinter Text Tkinter Toplevel Tkinter Spinbox Tkinter PanedWindow Tkinter LabelFrame Tkinter MessageBox Python Web Blocker Introduction Building Python Script Script Deployment on Linux Script Deployment on Windows Python MCQ Python MCQ Related Tutorials NumPy Tutorial Django Tutorial Flask Tutorial Pandas Tutorial Pytorch Tutorial Pygame Tutorial Matplotlib Tutorial OpenCV Tutorial Openpyxl Tutorial Python CGI Python Design Pattern Python Programs Python Programs next ? ? prev Python Program to Find Anagram In this tutorial, we will learn how we can detect if given strings are anagram. But first we should familiar with the anagram's concept. What is Anagram? An Anagram is a condition where one string or number is rearranged in that manner; each character of the rearranged string or number must be a part of another string or number. In other words, a string is said to be an anagram of another if the second is a simple rearrangement of the first string. For example -The python and yphton are anagrams; Java and avaJ are anagrams as well. We will solve this problem before approaching the solution. Let's understand the problem description. Problem Description Get the string inputs from the user and store them in separate variables. Use the sort() method to sort both the strings into lists. Check both lists if they are forming anagram or not Print the result. Exit Program - 
+def anagramCheck2(str1,str2):
+    # Convert string into lists
+    list1 = list(str1)
+    list2 = list(str2)
+    # Sort the list value
+    list1.sort()
+    list2.sort()
+
+    position = 0
+    matches = True
+
+    while position < len(str1) and matches:
+        if list1[position]==list2[position]:
+            position = position + 1
+        else:
+            matches = False
+
+    return matches
+
+print(anagramCheck2('python','ythonp'))
+ Output: 
+True
+ Explanation - In the above code, we have declared the anagramCheck() method, which takes two strings as an argument. These strings are converted into a list to sort. Then, we defined the position variable and assigned it zero. In each iteration of the while loop, the string length is compared to the position value. Each element of both lists compared to each other and increased the position value by one. Once the position value became greater than the string length, the loop will be terminated, and it returns true; otherwise, it will return false. Example of Anagram Program in Python There are few techniques and example which we can use to find the anagram in Python. These techniques are given below. 1. Counter Technique In this technique, we calculate the count of each character in both the given strings. If the count of a given string matches another string, then the corresponding word is an anagram of another word. Let's understand the following example. Example - 
+from collections import Counter, defaultdict
+def checking_anagram(keywords):
+    agrms = defaultdict(list)
+    for i in keywords:
+        hist = tuple(Counter(i).items())
+        agrms[hist].append(i)
+    return list(agrms.values())
+keywords = ("python","yphotn")
+print(checking_anagram(keywords))
+ Output: 
+[['python'], ['yphotn']]
+ Explanation - We have imported the collection module and its Count and defaultdict method to check the string's anagram in the above code. We have defined the checking_anagram() method to count and record each character using the counter function. Each count is resorted in a list and kept on track. This process is accomplished for all the characters in the first string than the second string. If the count of both strings is matched, it means both the strings are Anagrams. Sort Techniques In this technique, both the strings are sorted and check whether both values are the matching for each other. Let's understand the following example. Example - 
+def Anogram_check(str1, str2):
+    # Strings are sorted and check whether both are matching or not
+    if(sorted(str1)== sorted(str2)):
+        print("Both strings are an Anagram.")
+    else:
+        print("Both strings are not an Anagram.")
+       
+string1 ="python"
+string2 ="ythopn"
+print( "String value1 : ", str1 )
+print( "String value2 : ", str2 )
+Anogram_check(string1, str2)
+ Output: 
+String value1 :  python
+String value2 :  ythopn
+Both strings are an Anagram.
+ Explanation - In the above code, we have defined the checking_anagram() method and passed the two strings. In the checking_anagram() method, we stored the string in a specific variables. We compared each string after the sorting. If the comparison between strings matched, the given string form as anagram; else, they returned as Both strings are not anagrams. This method is relatively easy and effective. It cuts the code complexity to a very significant level. 2. Reverse Anagram Check We can apply this technique as follows. Example - 
+words_list = ["cat", "tac", "Play", "ay"]
+anagrams = {}
+for w in words_list:
+    reverse_word=w[::-1]
+    if reverse_word in words_list:
+         anagrams[w] = (words_list.pop(words_list.index(reverse_word)))
+         print(anagrams)
+ Output: 
+{'cat': 'tac'}
+ Explanation - In the above code, we have used this technique to comparing anagrams among the reversed string. Here, we have formed two different strings. This technique is similar to palindromes, where we reversed one among the string and checked with other strings. If they are matched, the strings have formed an anagram; if they don't match, they are not notified as not anagrams. 3. Position Verification Technique In this method, a position level compares to check anagram. We can achieve this by verifying first string's positional character with each positional character string in the other string. If first string holds a similar match with the other string, it is declared an anagram. Let's understand the following example. Example - 
+def checking_anagram(str1,str2):
+    chk_var = True
+    if len(str1) != len(str2):
+        chk_var = False
+        list1 = list(str2)
+    pos_string1 = 0
+    while pos_string1 < len(str1) and chk_var:
+        pos_string2 = 0
+        found = False
+    while pos_string2 < len(list1) and not found:
+        if str1[pos_string1] == list1[pos_string2]:
+            found = True
+        else:
+            pos_string2 = pos_string2 + 1
+    if found:
+        list1[pos_string2] = None
+    else:
+        chk_var = False
+        pos_string1 = pos_string1 + 1
+    return chk_var
+
+
+str1 = "ythopn"
+str2 = "python"
+print("String value1 : " , str1)
+print("String value2 : " , str2)
+Boolean_out = checking_anagram('ythopn','python')
+if Boolean_out:
+    print( "Both words are Alogram " )
+else:
+    print( "Both words are not Alogram " )
+ Output: 
+String value1 :  ythopn
+String value2 :  python
+ Explanation: In this, another technique to get the anagram of the two strings. Here we have also used the comparison. In the nested while loop, we pass the string into these loops for the verification process. The outer while loop is used for processing one of the strings, and the inner loop is used for the other string. One string's character is compared to each character's other string, and this process is continued on every letter in the first string. If all the first string characters are matched with the other string, then both strings are meant to be an anagram. This technique is a very stable process because it works on the algorithm technique, precisely judging the strings. Next TopicHow to convert List to Set ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

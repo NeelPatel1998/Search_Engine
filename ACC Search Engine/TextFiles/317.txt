@@ -1,0 +1,142 @@
+https://www.javatpoint.com/import-and-export-csv-file-in-laravel-5-8
+Import and Export CSV file in Laravel 5.8 - Javatpoint
+Import and Export CSV file in Laravel 5.8 - Javatpoint ? Home PHP Laravel Magento 2 HTML CSS Java MySQL Bootstrap JavaScript jQuery C XML Quiz Interview Q Comment Forum Training Laravel Tutorial Laravel Tutorial Features of Laravel History of Laravel Installation on Windows XAMPP Installation Composer Installation Git Installation Creating First Laravel Project Laravel Application Structure Laravel Routing Laravel Basic Routing Routing Parameters Laravel Named Routes Laravel Middleware Laravel Route Groups Laravel Controllers Laravel Controllers Routing Controllers Resource Controllers Controller Middleware Laravel Views Laravel Views Passing data to views Laravel Blade Template Blade Template Template Inheritance Laravel Forms Laravel Migration Laravel Migration Migration Structure Generating Migrations Migration Commands Laravel Database Laravel Database Laravel Eloquent Laravel Relationship Laravel Tinker Laravel Crud Misc. Laravel Validation Laravel File Upload Laravel Sessions Laravel vs CodeIgniter Laravel vs Django Laravel vs Symfony Laravel vs WordPress Install and Use Font Awesome Icons in Laravel Delete Multiple Records using Checkbox in Laravel Import and Export CSV file in Laravel 5.8 Generate PDF from html view file and download using dompdf in Laravel Implement Flash Message with Laravel 5.7 Laravel VueJS File Upload Using Vue-dropzone Example Interview Questions Laravel Interview Questions next ? ? prev Import and Export CSV file in Laravel 5.8 In this section, we are going to use Laravel 5.8 to import and export CSV files. When creating the admin project, the primary requirement is to export-import CSV or excel files from the database. We will use maatwebsite/excel version 3 to import, and export excel files or CSV files in the application of Laravel 5.8. In order to perform the import and export task, we will use maatwebsite/excel composer package. maatwebsite/excel uses the database model so that it can provide an easy way to export and import. By using excel or maatwebsite updated version 3, we can easily export or import the required data form database. In our section, we provide step by step process to perform the export and import, which is described as follows: Step 1: In this step, we will Install Laravel 5.8 application. For this, we will use the following command. So we will open our CMD or terminal in our system and then run the following command: 
+composer create-project --prefer-dist laravel/laravel blog
+ Step 2: In the second step, we are going to Install Maatwebsite package. For this, we will use Composer package manager. For this, we will open our terminal and run the following command: 
+composer require maatwebsite/excel
+ Now we will open our file named as config/app.php. Then we will add aliased and service provider. config/app.php 
+'providers' => [
+	....
+	Maatwebsite\Excel\ExcelServiceProvider::class,
+],
+'aliases' => [
+	....
+	'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+],
+ Step 3: In the third step, we are going to Create dummy records. In order to do this, we need a "users" table, which will contain some dummy records. After that, we can easily do import and export. Laravel provides us some default migration. To do import and export, we require that migration. So we will run migration by using the following command: 
+php artisan migrate
+ Now we need to add some dummy records. So we will run the below command and add some records to the user file. 
+php artisan tinker
+factory(App\User::class, 20)->create();
+ Step 4: In the fourth step, we are going to Add Routers. For this, we will create a route of export and import file. So we will open our file named "routes/web.php". After that, we will add the following route: routes/web.php 
+Route::get('export', 'MyController@export')->name('export');
+Route::get('importExportView', 'MyController@importExportView');
+Route::post('import', 'MyController@import')->name('import');
+ Step 5: In the fifth step, we are going to Create an import class. In order to do this, we will use maatwebsite 3 version, which is used to build the import class. We will use controller to use it. When we create a new Import class by using this way, we will realize that it is a great way for import class creation. For this, we will run the following code: 
+php artisan make:import UsersImport --model=User
+ Now we open our file named app/Import/UsersImport.php, and we will do some change in that fie, which is described as follows: app/Imports/UsersImport.php 
+<?php
+   
+namespace App\Imports;
+   
+use App\User;
+use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+    
+class UsersImport implements ToModel, WithHeadingRow
+{
+    /**
+    * @param array $row
+    *
+    * It will return \Illuminate\Database\Eloquent\Model|null
+    */
+    public function model(array $row)
+    {
+        return new User([
+            'name'     => $row['name'],
+            'email'    => $row['email'], 
+            'password' => \Hash::make($row['password']),
+        ]);
+    }
+}
+ Step 6: In the sixth step, we are going to Create Export class. In order to do this, we will use maatwebsite 3 version, which is used to build the export class. We will use controller to use it. When we create a new Export class by using this way, we will realize that it is a great way for export class creation. For this, we will run the following code: 
+php artisan make:export UsersExport --model=User
+ Now we open our file named app/Export/UsersExport.php, and we will make some change in that file, which is described as follows: app/Exports/UsersExport.php 
+<?php
+  
+namespace App\Exports;
+  
+use App\User;
+use Maatwebsite\Excel\Concerns\FromCollection;
+  
+class UsersExport implements FromCollection
+{
+    /**
+    * It will return \Illuminate\Support\Collection
+    */
+    public function collection()
+    {
+        return User::all();
+    }
+}
+ Step 7: In the seventh step, we are going to Create Controller. We will use the path "app/Http/Controllers/MyController.php" to create a new controller as MyController. The view of importExport request, and return response of import and export can be easily managed by this controller. For this, we will add the following content in the controller file, which is described as follows: app/Http/Controllers/MyController.php 
+<?php
+   
+namespace App\Http\Controllers;
+  
+use Illuminate\Http\Request;
+use App\Exports\UsersExport;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
+  
+class MyController extends Controller
+{
+    /**
+    * It will return \Illuminate\Support\Collection
+    */
+    public function importExportView()
+    {
+       return view('import');
+    }
+   
+    /**
+    * It will return \Illuminate\Support\Collection
+    */
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
+   
+    /**
+    * It will return \Illuminate\Support\Collection
+    */
+    public function import() 
+    {
+        Excel::import(new UsersImport,request()->file('file'));
+           
+        return back();
+    }
+}
+ Step 8: The eighth step is the last step, which is used to Create Blade File. For this, we will create import.blade.php for layout. For this, we will write some code which is described as follows: resources/views/import.blade.php 
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Import and Export Excel data to database Using Laravel 5.8 </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+</head>
+<body>
+   
+<div class="container">
+    <div class="card bg-light mt-3">
+        <div class="card-header">
+            Import and Export Excel data to database Using Laravel 5.8
+        </div>
+        <div class="card-body">
+            <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="file" class="form-control">
+                <br>
+                <button class="btn btn-success">Import User Data</button>
+                <a class="btn btn-warning" href="{{ route('export') }}">Export User Data</a>
+            </form>
+        </div>
+    </div>
+</div>
+   
+</body>
+</html>
+ Using the above code, we can easily export and import the required data into a CSV file in Laravel 5.8. In order to run the above code, we need to start the server of Laravel 5.8. For this, we will open our terminal or command prompt and run the following command: 
+php artisan serve
+ Using the above command, we are able to start the Laravel server. It will provide us base url of the Laravel application. We will open our browser and write the following url to test the operation of import and export data. 
+http://127.0.0.1:8000/import-excel
+ After entering the above url, we will see the following output: Now we have to select the excel file so that it can be upload. Before selecting the file, we have to create an excel file like this: Now we will select the sample.csv file like this: Now, we will click on the Import File option. In the above image, we can see that our Sample file is successfully imported. Next TopicGenerate PDF from html view file and download using dompdf in Laravel ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

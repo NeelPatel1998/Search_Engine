@@ -1,0 +1,139 @@
+https://www.javatpoint.com/using-advanced-coreml
+Using Advanced CoreML - Javatpoint
+Using Advanced CoreML - Javatpoint ? Home Java Swift iOS Development OS C PHP HTML CSS Bootstrap JavaScript jQuery jQuery UI Projects Interview Q Comment Forum Training iOS Development iOS Development using Swift Introduction to XCode IDE iPhone History & Versions Views & View Controllers Storyboard & interface builder Creating First iOS Application iOS UI Controls iOS: Label iOS: Button iOS: TextField iOS: DatePicker iOS: Slider iOS: Stepper iOS: Switch iOS: Segment Control iOS Container Views iOS: UIView iOS: TableView iOS: CollectionView iOS: ScrollView iOS Content Views iOS: ActivityIndicatorView iOS: ImageView iOS: PickerView iOS: ProgressView iOS: WebView iOS: MapView iOS View Controllers iOS: UIViewController iOS: Table View Controller iOS: Collection View Controller iOS: PageViewController iOS: Split View Controller Tab Bar Interface iOS: Tab Bar Controller iOS: Tab Bar iOS: Tab Bar Item Navigation Interface Navigation Controller Navigation Bar Navigation Item Architecture Pattern Model View Controller Model View View-Model Model View Presenter Install Libraries Setting Up Cocoapods for XCode Projects Using Cocoapods for XCode Projects Web Request & Parsing Alamofire Library Fetching data through Get Request Parsing JSON Response Image Caching Pull to Refresh functionality iOS UserDefaults Saving Data in UserDefaults Getting Data from UserDefaults CoreData & Database CoreData Managed Object Model Persistent Object Coordinator Multithreading in Swift Multithreading in Swift Concurrency in swift Handling Background Tasks Misc Firebase Crashalytics iOS Swift IOS app lifecycle What is Jailbreaking in iOS Why is iOS better than Android Features of iOS 14 Getting user location in iOS Push Notifications in iOS Sign-in with Apple using swift SSL Pinning in Swift XCode 12 Features Facebook Login Integration in iOS Google Sign-in integration in iOS How to capture the image using the iOS app How to make a phone call in the iOS app Paytm SDK Integration in iOS Razorpay Integration in iOS UIAlertController in Swift Using SQLite in iOS app Creating a real-time chat application using Firebase Using Realm database in iOS app iOS: machine learning What is CoreML Using Advanced CoreML Access Control in Swift iOS Memory Management in iOS applications Protocol Oriented Programming in iOS Swift Initialization in Swift Parsing a Static JSON file in iOS application Sending Email using the iOS application Using AVAudioPlayer to play sounds in iOS applications next ? ? prev Using Advanced CoreML As we have already discussed, we can use CoreML to perform image recognition with a ready-made MLModel by adding it to our XCode project. In this tutorial, we will move one step further and see how we can convert a pre-trained Caffe model to MLModel format. The Caffe model we will be using in this tutorial is already trained for thousands of images. We can use our dataset with the pre-trained Caffe model and convert it to the MLModel to use this with XCode and Swift classes. Apple has released open-source tools in python that allows us to convert any pre-trained model trained using Caffe, Keras, Turi, etc. to MLModel format. In this tutorial, we are going to build a flower recognition app that is going to recognize the kind of flower captured using the app. It will work in the scenario of no internet connection as well. For this project, we will use a model that has been trained on Oxford 102 flower dataset. Let's start the python configuration to convert the Caffe model to MLModel. Install CoreML Tools using Python PIP First, we need to install Python PIP which is a package management system that is used to install and manage packages that are written in python. In other words, we can say that it is like CocoaPods for Python packages. We need to have python 2 or python 3 installed on our mac to install PIP. To check which python version is installed on our mac, use the following command on the terminal. $ python -v However, we can also have python 2 and python 3 both installed on our mac. However, we need to mention version 3 while using python 3 on the terminal. Use the following command to use python 3. $ python3 To install PIP on mac, first, securely download get-pip.py and then run the following command on the terminal. $ python get-pip.py This will successfully install the latest version of PIP on the mac. Now, we need to install coremltools using pip on the terminal. For this purpose, use the following command. $ pip3 install -U coremltools This will download and install the coremltools on our mac. Converting a Caffe model into MLModel We are going to use this model (flower classification) in this tutorial. Once we download and unzip the model downloaded using the given link, we will find three files, as shown below. Click Here to Download Project To convert this model into MLModel, we need to create a python script. For this purpose, we'll use sublime-text as the editor to create the script. Open Sublime Text and drag the Flower Classifier folder into it to open this in the editor. Now, create a file as convert-script.py in sublime-text, which contains the following python code. 
+import coremltools
+ 
+caffe_model = ('oxford102.caffemodel', 'deploy.prototxt')
+ 
+labels = 'flower-labels.txt'
+ 
+coreml_model = coremltools.converters.caffe.convert(
+caffe_model,
+class_labels = labels,
+image_input_names = 'data'
+)
+ 
+coreml_model.save('FlowerClassifier.mlmodel')
+ Once we save this code, open the terminal and navigate to the directory where the above code resides. We also need to ensure that all the Caffe model files exist in the same directory. To run the above python script, run the following command. 
+$ python convert-script.py
+ This will produce the following output on the terminal. If we look into the directory, we will see a newly created FlowerClassfier.mlmodel file in the finder, as shown below. Using MLModel in XCode Project As we have converted our Caffe model to our MLModel, now we will start creating our iOS app using the newly created FlowerClassifier.mlmodel. For this purpose, let's create a new project as FlowerApp in XCode. Firstly, we need to import our FlowerClassfier.mlmodel file into the XCode project, as shown below. Now, in main.storyboard, embed the ViewController in NavigationController, and add a bar button item to the navigation bar in ViewController to tap it to open the iOS device camera. We will also add an imageview to the ViewController to show the captured image to the user. The main.storyboard will contain the following design. We will also create an action outlet in ViewController.swift to trigger the user event. We will also use UIImagePickerController to use the camera functionality in our iOS app. The ViewController contains the following code once we implement UIImagePickerController in the project. 
+import UIKit
+
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+
+    @IBOutlet weak var imgView: UIImageView!
+    let imagePicker = UIImagePickerController()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = false
+        
+    }
+
+
+    @IBAction func tappedCamera(_ sender: Any) {
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    if let img = info[UIImagePickerController.InfoKey.originalImage] as?
+    UIImage {
+          self.imgView.image = img
+          self.dismiss(animated: true, completion: nil)
+     
+     }
+    }
+}
+ This will open the device's camera once we tap on the camera bar button item. Now, our task is to detect the captured image using our mlmodel. For this purpose, we will convert our captured image to CIImage. Add the following code to convert just after when we dismiss our image picker controller in the delegate method. 
+guard let ciImage = CIImage(image: img) else{
+            debugPrint("Can't convert image to CIImage")
+            return
+        }
+ Now, we need to write code to detect the image. For this purpose, we will add detect() method in ViewController. This will use the mlmodel object to create a VNCoreMLRequest and fetch the result from that. The detect() method will contain the following code. 
+func detect(image:CIImage){
+        guard let model = try? VNCoreMLModel(for: FlowerClassifier().model) else{
+            debugPrint("Can't convert model to VNCoreMLModel")
+            return
+        }
+        let request = VNCoreMLRequest(model: model) { (request, error) in
+            guard let result = request.results as? [VNClassificationObservation] else{
+                debugPrint("")
+                return
+            }
+            debugPrint(result)
+            if let firstResult = result.first{
+                self.navigationItem.title = firstResult.identifier
+            }
+        }
+            let handler = VNImageRequestHandler(ciImage:image)
+            do{
+                try handler.perform([request])
+            }catch{
+                debugPrint(error)
+            }
+        
+    }
+ We need to call the detect() method inside the delegate method just after we are creating CIImage. However, our ViewController.swift will contain the following code. 
+import UIKit
+import CoreML
+import Vision
+
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    @IBOutlet weak var imgView: UIImageView!
+    let imagePicker = UIImagePickerController() 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = false
+    }
+
+
+    @IBAction func tappedCamera(_ sender: UIBarButtonItem) {
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+       if let img = info[UIImagePickerController.InfoKey.originalImage] as?
+       UIImage {
+             self.imgView.image = img
+             self.dismiss(animated: true, completion: nil)
+        guard let ciImage = CIImage(image: img) else{
+            debugPrint("Can't convert image to CIImage")
+            return
+        }
+        detect(image: ciImage)
+          }
+          else {
+             print("error")
+          }
+       }
+    func detect(image:CIImage){
+        guard let model = try? VNCoreMLModel(for: FlowerClassifier().model) else{
+            debugPrint("Can't convert model to VNCoreMLModel")
+            return
+        }
+        let request = VNCoreMLRequest(model: model) { (request, error) in
+            guard let result = request.results as? [VNClassificationObservation] else{
+                debugPrint("")
+                return
+            }
+            debugPrint(result)
+            if let firstResult = result.first{
+                self.navigationItem.title = firstResult.identifier
+            }
+        }
+            let handler = VNImageRequestHandler(ciImage:image)
+            do{
+                try handler.perform([request])
+            }catch{
+                debugPrint(error)
+            }
+        
+    }
+}
+ Next TopicAccess Control in Swift iOS ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

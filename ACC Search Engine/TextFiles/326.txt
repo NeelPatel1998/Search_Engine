@@ -1,0 +1,701 @@
+https://www.javatpoint.com/kivy
+Kivy Tutorial - javatpoint
+Kivy Tutorial - javatpoint ? Home Java Kivy Jupyter Notebook HTML Python JavaScript SQL Android Cloud Servlet JSP Struts2 Spring Interview Q Comment Forum Kivy Tutorial Kivy Tutorial Kivy Tutorial Kivy tutorial provides basic and advances concepts of Kivy. Our Kivy tutorial is designed for beginners as well as working professionals. Kivy is a multi-platform application development framework for Python. It allows us to develop multi-platform applications on various platforms such as Windows, Linux, Android, macOS, iOS, and Raspberry Pi. In our Kivy tutorial, we will discuss the following topics - What is Kivy Features of Kivy Advantages & Disadvantages of Kivy Kivy Architecture Kivy Installation on Windows Create a Hello World program in Kivy Add image in Kivy Kivy Buttons Kivy Widgets Kivy Layouts Create popup window in Kivy Crete Sign in Window in Kivy What is Kivy? Kivy is an open-source and Graphical User Interface (GUI) development platform for Python. It helps us to develop mobile applications and multi-touch application software with a NUI (Natural User Interface) It allows developers to build an application once and use it across all devices. It can also access mobile APIs to manipulate things such as the camera on a phone, GPS tracking, vibrator, and so on. It contains various components for creating an application such as: A graphical library OpenGL ES 2. An extensive range of widgets that support multi-touch. An intermediate Kv language to design custom widgets. An extensive support for input devices such as a mouse, keyboard, TUIO, as well as OS-specific multi touches events. Features of Kivy There are the following cool features of Kivy - 1. Video Kivy includes various modules to play video files and streams. Kivy Video player also supports some common requirements related to videos such as play, pause, stop buttons, text that can be used as a subtitle, display messages to the user on videos, and more. Example: pygame video provider supports MPEG1 on Linux. 2. Multi-touch and gestures Kivy uses a wide range of widgets that support multi-touch and gestures. Kivy developers provide a gesture library to record the user's gesture. There are the following three gestures that we can record - Left to right horizontal line Right to left horizontal line Bottom to top vertical line 3. UI features Kivy comes with a number of widgets and controls to make our mobile interface more attractive and beautiful. It is also used to improve one-handed usability, navigate gestures, create new icons or design elements, dark mode, and new animations. 4. Visual effects and OpenGL Kivy uses PyGame for easily creating new games. PyGame comes with various modules to drawing shapes, dealing with colors, and playing music. 5. Flexible Kivy is more flexible because it can run on a variety of devices, including Linux, mobile phones, windows, tablets, iOS, and Raspberry Pi. Kivy is flexible so it can adapt to new technologies quickly. 6. Free Kivy framework is completely free to use. To work with Kivy, you must have 1 GHz 32 bit (x86), or 64 bit (x64) CPU, 1 GB of RAM, 128 MB of graphical memory, and Python installed on your system. Advantages and Disadvantages of Kivy Advantages A list of advantages of Kivy is given below - Kivy helps us to design innovative user interfaces with multi-touch functionalities. It can smoothly work with various platforms such as Windows, Android, Linux, iOs, macOS, and Raspberry Pi. It helps us to run code on all supported platforms. It provides well-documented APIs. It offers a better representation of programs, including classes, widget configuration, and inherited classes. It performs better than HTML 5. Disadvantages Kivy uses kV language, which is not suitable for us to compile our code alone. It is not always up-to-date with the latest Android APIs. It takes a lot of time for building and compiling mobile applications. The sizes of the package are unnecessarily huge. It has a lack of community support. Kivy Architecture The below screenshot shows the Kivy Architecture - Kivy Architecture contains the following components - 1. Core Providers and Input Providers Kivy Providers mainly abstract the various core tasks includes opening a window, displaying images and text, playing audio, spelling correction, fetching images from a camera, and so on. An input provider is a piece of code that helps us to add support for a specific input device such as TUIO, mouse emulator, or Apple's trackpads. We can also add support for new input devices by providing a new class that reads our input data from our device and transform them into Kivy events. 2. Graphics Kivy Graphics APIs have the ability to automatically optimize the drawing commands. 3. Core Core provides the following features - Clock A clock is used to schedule the timer events. Clock supported both one-shot timers and periodic timers. Cache In Kivy, the cache is used to store python objects. We can control the cache in the following two ways - Object limit Timeout Note: We can also create a new cache in the Kivy with the limit of 10 objects and a timeout of 5 seconds. Gesture Detection Kivy uses a simple gesture detection, which is used to detect various types of strokes, circles, rectangles, or squares. Kivy Language Kivy language is used to describe user interfaces more quickly and easily. Properties In Kivy, properties classes are used to link our widget code to the user interface description. 4. UIX The UIX module commonly contains Widgets and Layouts to quickly create a user interface. Widgets Widgets are the user interface components that we add to our program to provide some kind of functionality. Example: file browser, buttons, lists, sliders, and more. Layouts Layouts are used to arrange widgets. 5. Modules Modules are the classes that can be loaded on the Kivy when we start the Kivy application. The config file is used to manage the loading of modules. Note: In Kivy, we can also write our own modules. 6. Input Events Kivy Input events are an essential part of the kivy Architecture. Kivy abstract contains different input events such as touches, mice, TUIO, Mouse, MTDev, and HIDInput. We can also add 2D onscreen-position with any individual input event. All input types are characterized by an instance of the touch () class. A touch () class instance can be one of the following three states. Down Move Up 7. Widgets and Input Dispatching The term Widgets are most frequently used in GUI programming to describe that part of the program which interacts with a user. In kivy, widgets are works as an object that receives input events. All widgets are arranged in the form of a widget tree. One widget may contain any number of child or none child. Whenever new data is available, Kivy sends one per touch. Every event is first received by the root widget of the widget tree. Kivy Installation on Windows To install the kivy on Windows, first, we need to install Python and Anaconda on our system. Follow the below steps to install Python - Step 1: Copy-paste the below link on any browser or you just simply click on the below link - https://www.python.org/ Step 2: The following page appears on the screen, in which click on the Downloads and select Windows from the drop-down menu. Step 3: Select the Python Releases version for windows. Step 4: Double click on the downloaded file, the below window appears on the screen in which click on Install Now. Step 5: The below screenshot shows that Python installation is in progress. Step 6: The below screenshot shows that the setup is installed successfully. You just simply click on the Close button. Now, follow the below steps to download the Anaconda - Step 1: Click on the below link to install Anaconda https://www.anaconda.com/products/individual Step 2: The following page appears on the screen. Scroll down the window and click on 64-bit Graphical Installer (446 MB) at the bottom of the screen. Step 3: You can see that Anaconda Graphical Installer is to started download. Once the file is downloaded, double click on that executable file. The following window appears on the screen in which click on the Next. Step 4: A License Agreement window appears on the screen, in which click on the I Agree. Step 5: In Installer type, select Install for Just Me (recommended). Step 6: Browse the location where you want to install Anaconda and click on the Next. Step 7: An Advanced Installation Options window appears on the screen, tick on Register Anaconda3 as my default Python 3.7. And click on the Install. Step 8: The below screenshot shows that Anaconda Installation is in progress. Step 9: Once the Installation process is completed, click on the Next button. Step 10: The following window appears on the screen in which click on the Next. Step 11: A completing Anaconda set up window appears on the screen, simply click on the Finish on that window. Install Kivy Once you installed the Anaconda, now we are able to install kivy. There are the following steps to install kivy - Step 1: Go to the Anaconda Prompt. Step 2: Before installing kivy, first update the pip by using the following command. 
+python -m pip install - -upgrade pip wheel setuptools
+ Step 3: Install the Dependencies There are the following 3 dependencies that we need to install while installing the Kivy. 
+Python -m pip install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew
+ 
+python -m pip install kivy.deps.gstreamer
+ 
+python -m pip install kivy.deps.angle
+ Step 4: Install Kivy Use the following command to install Kivy. 
+python -m pip install kivy
+ Create a Hello World program in Kivy There are the following steps to create a Hello World program in Kivy - Step 1: Open any text editor (Notepad or Notepad++) Step 2: Write the following code on the Editor. 
+import kivy  # import kivy module
+from kivy.app import App # import Kivy App module to create a Kivy interface
+from kivy.uix.label import Label # import Label Module
+  
+kivy.require('1.11.1')  # version required to run Kivy Application  
+  
+ 
+class MyKivyApp(App): # Create a class MyKivyApp
+      
+    
+    def build(self): 
+          
+        return Label(text ="Hello World !") #return a Label with text Hello World ! as a root widget       
+  
+  
+ 
+MyKivyApp().run()  # Class MyKivyApp is initialized and run () method is called to run the App.
+ Step 3: Save the file with .py extension for example Javatpoint.py Step 4: Open the Anaconda Prompt and provide the valid path where your kivy program is saved. Step 5: To run program, use the flowing command and press Enter. 
+python file_name.py (Ex: python javatpoint.py) 
+ When you run the command following output appears on the screen. Add image widget in Kivy Kivy image widget uses kivy.uix.image module to display image. There are the following two ways to add images in Kivy. From System From system, image widget is used to load images from the system. The below code is used to add an image widget in Kivy. 
+import kivy  # import kivy module
+from kivy.app import App # import Kivy App module to create a Kivy interface
+from kivy.uix.image import Image # import image Module
+  
+kivy.require('1.11.1')  # version required to run Kivy Application  
+  
+ 
+class MyKivyApp(App): # Create a class MyKivyApp
+      
+    
+    def build(self): 
+          
+       return Image(source ="G:\Office\Images\Kivy\download.jpg") #return an Image as a root widget       
+  
+  
+ 
+MyKivyApp().run()  # Class MyKivyApp is initialized and run () method is called to run the App.
+ When we run code, the following output will appear on the screen. Asynchronous Loading The asynchronous loading e image widget is used to load images from the external web server. We can use the following code to add an image from the external web server. 
+import kivy  # import kivy module
+from kivy.app import App # import Kivy App module to create a Kivy interface
+from kivy.uix.image import AsyncImage # import image Module
+  
+kivy.require('1.11.1')  # version required to run Kivy Application  
+  	
+ 
+class MyKivyApp(App): # Create a class MyKivyApp
+      
+    
+    def build(self): 
+          
+       return AsyncImage(source ="https://media.gettyimages.com/photos/stack-of-books-picture-id157482029?s=612x612") #return an Image as a root widget       
+  
+      #Copy the image link address.
+ 
+MyKivyApp().run()  # Class MyKivyApp is initialized and run () method is called to run the App.
+ The below screenshot shows that an image is added from the external web server. Kivy Buttons Buttons are an essential part of every application. It performs some specific tasks when we click on the button. The main advantage of a button is that it allows users to interact with the software and application directly. To create a button in Kivy, we need to import Button form kivy.uix.button. 
+import kivy 
+from kivy.app import App 
+from kivy.uix.button import Button #import Button
+kivy.require("1.9.1") 
+ 
+class kivyButtonApp(App): 
+      
+    def build(self): 
+          
+        btn = Button(text = "Press Me!") 
+        return btn 
+  
+  
+root = kivyButtonApp() 
+root.run()
+ Output: Create a stylish button In Kivy, we can also design a stylish button using various different background colors, size_hint, and pos. 
+import kivy 
+from kivy.app import App 
+from kivy.uix.button import Button #import Button
+kivy.require("1.9.1") 
+ 
+class kivyButtonApp(App): 
+      
+    def build(self): 
+          
+        btn = Button(text = "Press Me!", size_hint = (.2,.2), pos = (300,250)) 
+        return btn 
+  	
+  
+root = kivyButtonApp() 
+root.run()
+ The below screenshot shows the output of a stylish button. Add an image in the button Kivy allows us to add an image in the button to make the button more effective and attractive. To add an image in the button, we need to import the following module: 
+from kivy.uix.button import Button
+from kivy.config import Config
+ Code: 
+import kivy    
+kivy.require("1.9.1")  
+from kivy.app import App    
+from kivy.uix.button import Button 
+from kivy.config import Config   
+Config.set('graphics', 'resizable', True) 
+    
+class Button_Demo(App):  
+         
+    def build(self):  
+   
+          	
+        btn = Button(text ="Click ME", 
+                     color =(1, 0, .65, 1), 
+                     background_normal = 'G:\Office\Images\Kivy\download.jpg', 
+                     
+                     size_hint = (.4, .4), 
+                     pos_hint = {"x":0.39, "y":0.3} 
+                   )  
+      
+        return btn  
+             
+     
+  
+root = Button_Demo()  
+     
+
+root.run()
+ Output: Kivy Widgets Kivy Widgets are used to develop GUI interfaces in kivy. Kivy widgets allow us to create Labels, Canvas, drop-down menu, and more. 1. Label Widgets Label widget is used for rendering the text. To make labels more attractive, we can add font size, color, and text color in the label. To create label, we need to import from kivy.uix.label import Label module. Code: 
+import kivy  
+from kivy.app import App 
+from kivy.uix.label import Label  #import Label Module
+  
+ 
+class Label_Demo(App): 
+    def build(self): 
+       
+        label1 = Label(text ="javaTpoint", font_size = 120) #Disply label on the screen
+        return label1 
+  
+root=Label_Demo()
+root.run()
+ Output: The below screenshot shows the output of the label. 3. Checkbox Checkbox is also referred to as a selection box, tick box, and checkmark. It is used in the forms to make forms options easier to read and answer. Code: 
+import kivy   
+from kivy.app import App  
+from kivy.uix.widget import Widget 
+from kivy.uix.label import Label  
+from kivy.uix.gridlayout import GridLayout 
+from kivy.uix.checkbox import CheckBox  
+
+class checkboxDemo(GridLayout): 
+  
+    def __init__(self, **kwargs): 
+         
+        super().__init__() 
+  
+         
+        self.cols = 2
+  
+      
+        self.add_widget(Label(text ='Python')) #add checkbox
+        self.check = CheckBox(active = True) 
+        self.add_widget(self.check) 
+  
+        self.add_widget(Label(text ='C')) 
+        self.check = CheckBox(active = False) 
+        self.add_widget(self.check) 
+  
+        self.add_widget(Label(text ='C++')) 
+        self.check= CheckBox(active = False) 
+        self.add_widget(self.check)
+		
+		
+        self.add_widget(Label(text ='Java')) 
+        self.check = CheckBox(active = True) 
+        self.add_widget(self.check) 
+  
+        self.add_widget(Label(text ='Other')) 
+        self.check = CheckBox(active = False) 
+        self.add_widget(self.check)
+ 
+class CheckBox_App(App): 
+    def build(self):       
+        return checkboxDemo()
+		
+root= CheckBox_App()
+root.run()
+ The below screenshot shows the output of checkbox: Slider Slider is used to handle a specific numeric value within a range (minimum to maximum values). Mostly, Sliders are used in mobile phones to increase and decrease the volume as well as the brightness of the mobile phone. To create the slider, first, we have to import from kivy.uix.slider import Slider Module. In Kivy, we use the below code to create the Range Slider: Code: 
+from kivy.app import App
+from kivy.uix.slider import Slider
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.label import Label
+ 	
+class Slider_Demo(GridLayout):
+    def __init__(self):
+        super().__init__()
+ 
+        self.cols = 2
+ 
+        self.slider = Slider(min = 0, max = 100)
+        self.add_widget(self.slider)
+        self.slider.bind(value = self.on_value_change)
+ 
+        self.label = Label(text = "0")
+        self.add_widget(self.label)
+ 
+    def on_value_change(self, instance, value):
+        self.label.text = "Value Is : {} ".format(int(value))
+ 
+ 
+class SliderWindow(App):
+    def build(self):
+ 
+        return Slider_Demo()
+ 
+ 
+ 
+root = SliderWindow()
+root.run()
+ The below screenshot shows the output of the slider. Note: Kivy also supports normalized slider, which contains minimum value 0 and maximum value 1. Switch Widget Switch widget contains only two states (On or OFF). To create a Switch widget, we need to import from kivy.uix.switch import Switch module. Code: 
+import kivy    
+from kivy.app import App   
+kivy.require('1.9.0') 
+from kivy.uix.switch import Switch #import switch Module 
+from kivy.uix.gridlayout import GridLayout   
+from kivy.uix.label import Label 
+  
+class SimpleSwitch(GridLayout): 
+  
+     
+     def __init__(self, **kwargs): 
+  
+          
+          super(SimpleSwitch, self).__init__(**kwargs) 
+  
+          
+          self.cols = 2
+  
+      
+          self.add_widget(Label(text ="Switch")) 
+  
+          
+          self.settings_sample = Switch(active = False) 
+  
+         
+          self.add_widget(self.settings_sample) 
+  
+          
+          self.settings_sample.bind(active = switch_callback)        
+  
+ 
+def switch_callback(switchObject, switchValue): 
+      
+   
+    if(switchValue): 
+        print('Switch is ON:):):)') 
+    else: 
+        print('Switch is OFF:(:(:(') 
+  
+   
+
+class SwitchApp(App): 
+     
+     def build(self): 
+          
+          return SimpleSwitch() 
+  
+   
+
+if __name__ == '__main__': 
+     SwitchApp().run()
+ Output: The below screenshot shows the output of the Switch Widget. Progress Bar Progress Bar in one of the most important graphical control element, which is used to analyze the progress of operation such as downloading progress, file transfer progress, loading app, saving updates, and installation progress. To create a progress bar, fist import the below module: from kivy.uix.progressbar import ProgressBar 
+import kivy
+from kivy.app import App
+from kivy.uix.widget import Widget
+from kivy.uix.button import Button
+from kivy.uix.progressbar import ProgressBar
+from kivy.uix.boxlayout import BoxLayout
+from kivy.clock import Clock
+from time import sleep
+ 
+class MainMenu(BoxLayout):
+    def __init__(self):
+        super().__init__()
+        self.orientation = 'vertical'
+       
+        btn = Button(text="Start")
+        btn.bind(on_release=self.trigger)
+        self.add_widget(btn)
+       
+        self.MyList = ('My', 'first', 'Progress', 'Bar')
+        self.i = 0
+        self.pb = ProgressBar(max = len(self.MyList), value = 0)    
+        self.add_widget(self.pb)
+               
+    def trigger(self, *args):
+      self.i = 0
+      self.pb.value = 0
+     
+      Clock.schedule_interval(self.heavyFunc,0.1)
+   
+    def heavyFunc(self, dt):
+        sleep(0.5)
+        print(self.MyList[self.i])
+        self.i += 1
+        self.pb.value +=1
+        if self.i >= len(self.MyList):
+            Clock.unschedule(self.heavyFunc)
+            print('unscheduled')
+ 
+class TestApp(App):
+    def build(self):
+        return MainMenu()
+ 
+root = TestApp()
+root.run()
+ Output: When we click on the Start, the below progress bar appears on the screen. Kivy Layouts Layout is the most important term in graphics design. It is used to arrange elements for a better look. There are the following different types of layout that we generally use in the Kivy. 1. GridLayout GridLayout is designed to arrange the components in the form of a rectangular grid. In GridLayout, every rectangular grid is exactly the same in size. To create Grid layout in Kivy, first, we need to import the following GridLayout module - 
+from kivy.uix.gridlayout import GridLayout
+ Implement Grid Layout: 
+import kivy  #import kivy    
+from kivy.app import App   
+from kivy.uix.button import Button
+from kivy.uix.gridlayout import GridLayout #import GridLayout
+class Grid_LayoutApp(App):   
+    def build(self):  
+        layout = GridLayout(cols = 3) #define number of columns
+  
+        layout.add_widget(Button(text = 'java')) #first row 
+        layout.add_widget(Button(text = 'T'))
+        layout.add_widget(Button(text = 'point'))		
+  
+        layout.add_widget(Button(text = 'Python')) #second row
+        layout.add_widget(Button(text = '+'))
+        layout.add_widget(Button(text = 'Kivy'))
+		
+        return layout 
+		
+root = Grid_LayoutApp() 
+
+root.run()
+ The below screenshot shows the output of the Grid Layout. 2. BoxLayout BoxLayout is used to arrange the component based on the axis's [along X-axis (horizontally) and along Y-axis (Vertically)]. To import BoxLayout, we need to import BoxLayout using below module: 
+from kivy.uix.boxlayout import BoxLayout.
+ Implement Box Layout: 
+import kivy
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+
+class Box_LayoutApp(App):
+
+    def build(self):
+
+        superBox        = BoxLayout(orientation='vertical')
+
+        horizontalBox   = BoxLayout(orientation='horizontal')
+
+        button1         = Button(text = "Python")
+
+        button2         = Button(text = "Pygame")
+
+        horizontalBox.add_widget(button1)
+
+        horizontalBox.add_widget(button2)
+
+        verticalBox     = BoxLayout(orientation = 'vertical')
+
+        button3         = Button(text = "Jupyter")
+
+        button4         = Button(text = "OpenGL")
+
+        verticalBox.add_widget(button3)
+
+        verticalBox.add_widget(button4)
+	    
+        button1         = Button(text = "Kivy")
+
+        horizontalBox.add_widget(button1)
+
+        superBox.add_widget(horizontalBox)
+
+        superBox.add_widget(verticalBox)
+
+        return superBox
+
+root= Box_LayoutApp()
+root.run()
+ The below screenshot shows the output of the Box Layout: 3. FloatLayout FloatLayout is used to place element according to the size of the current window (in terms of height and width of window). FloatLayout contains pos_hint and size_hint, which are the properties of its children. Note 1: FloatLayout is mostly used in the Mobile Applications. Note 2: By default, size_hint is (1,1) for all widgets. To create FloatLayout, we need to import the below module: 
+from kivy.uix.floatlayout import FloatLayout
+ Implement FloatLayout: 
+import kivy 
+from kivy.app import App   
+from kivy.uix.button import Button 
+from kivy.uix.floatlayout import FloatLayout # import FloatLayout
+class Float_LayoutApp(App): 
+  
+    def build(self): 
+  
+       
+        Layout = FloatLayout(size = (300,300))  
+        btn = Button(text ='Kivy', 
+		size_hint = (.3, .5), 
+        background_color = (.6, .7, .7, 1), 
+        pos_hint = {'x':.4, 'y':.3 }) 
+  
+         
+        Layout.add_widget(btn) 
+  
+        
+        return Layout 
+  
+root=Float_LayoutApp()
+root.run()
+ The below screenshot shows the output of the FloatLayout: 4. AnchorLayout AnchorLayout is used to align the border top, bottom, left, right, or center. AnchorLayout is initialized using the below parameters: anchor_x = (Parameter can be passed: "left", "right", and "center") anchor_y = (Parameter can be passed: "top", "bottom", and "center") We can implement Anchor Layout using the following module: 
+from kivy.uix.anchorlayout.AnchorLayout
+ The below code is used to create AnchorLayout. 
+import kivy 
+from kivy.app import App 
+from kivy.uix.anchorlayout import AnchorLayout  # import AnchorLayout
+from kivy.uix.boxlayout import BoxLayout 
+from kivy.uix.button import Button 
+  
+class Anchor_LayoutDemo(App): 
+      
+    def build(self):
+
+        # Anchor1 (anchor_x = Left, anchor_y = center)
+
+        anchorLayout1 = AnchorLayout(anchor_x = 'left', anchor_y = 'center')
+
+        button1       = Button(text ='Python', size_hint = (0.4, 0.4), 
+		                       background_color = (.6,1.0,.7,1))
+
+        anchorLayout1.add_widget(button1)
+
+        # Anchor2 (anchor_x = center, anchor_y = top)
+
+        anchorLayout2    = AnchorLayout()
+
+        anchorLayout2 = AnchorLayout(anchor_x = 'center', anchor_y = 'top')
+
+        button2       = Button(text = 'Kivy', size_hint = (0.2, 0.2), 
+		                       background_color = (.6,1.0,.7,1))
+
+        anchorLayout2.add_widget(button2)
+		 
+		
+		# Anchor3 (anchor_x = right anchor_y = center)
+
+        anchorLayout3    = AnchorLayout()
+
+        anchorLayout3 = AnchorLayout(anchor_x = 'right', anchor_y = 'center')
+
+        button3       = Button(text = 'OpenGL', size_hint = (0.4, 0.4), 
+		                       background_color = (.6,1.0,.8,1))
+
+        anchorLayout3.add_widget(button3)
+
+        boxLayout = BoxLayout() # crete boxLayout
+
+        # Add the anchor layouts to the box layout
+
+        boxLayout.add_widget(anchorLayout1)
+
+        boxLayout.add_widget(anchorLayout2)
+
+        boxLayout.add_widget(anchorLayout3)
+
+        return boxLayout
+
+root = Anchor_LayoutDemo()
+root.run()
+ Output: 5. StackLayout StackLayout helps us to arrange buttons vertically and horizontally. In StackLayout, it is not compulsory that the sizes of all buttons are the same, so we can arrange buttons according to our requirement. To create StackLayout, we need to import the below module: 
+from kivy.uix.stacklayout import StackLayout 
+ Code: 
+import kivy   
+kivy.require("1.9.1")    
+from kivy.app import App   
+from kivy.uix.button import Button  
+from kivy.uix.stacklayout import StackLayout 
+
+class StackLayout_Demo(App):  
+        
+    def build(self): 
+           
+        SL = StackLayout(orientation ='lr-tb') # Different orientation ['lr-tb', 'tb-lr', 'rl-tb', 'tb-rl', 'lr-bt', 'bt-lr', 'rl-bt', 'bt-rl']
+       
+         
+        button1 = Button(text ="1", 
+                      font_size = 18, 
+                      size_hint =(.1, .1)) 
+        button2 = Button(text ="2", 
+                      font_size = 18, 
+                      size_hint =(.1, .1)) 
+        button3 = Button(text ="3", 
+                      font_size = 18, 
+                      size_hint =(.1, .1)) 
+        button4 = Button(text ="4", 
+                      font_size = 18, 
+                      size_hint =(.1, .1)) 
+        button5 = Button(text ="5", 
+                      font_size = 18, 
+                      size_hint =(.1, .1)) 
+        button6 = Button(text ="6", 
+                      font_size = 18, 
+                      size_hint =(.1, .1)) 
+        button7 = Button(text ="7", 
+                      font_size = 18, 
+                      size_hint =(.1, .1)) 
+        button8 = Button(text ="8", 
+                      font_size = 18, 
+                      size_hint =(.1, .1)) 
+        button9 = Button(text ="9", 
+                      font_size = 18, 
+                      size_hint =(.1, .1)) 
+        button0 = Button(text ="0", 
+                      font_size = 18, 
+                      size_hint =(.1, .1)) 
+		
+        button11 = Button(text ="11", 
+                      font_size = 18, 
+                      size_hint =(.1, .1))
+        # adding widgets 
+        SL.add_widget(button1) 
+        SL.add_widget(button2) 
+        SL.add_widget(button3) 
+        SL.add_widget(button4) 
+        SL.add_widget(button5) 
+        SL.add_widget(button6) 
+        SL.add_widget(button7) 
+        SL.add_widget(button8) 
+        SL.add_widget(button9) 
+        SL.add_widget(button0) 
+	
+        return SL 
+root = StackLayout_Demo()
+root.run()
+ The output of the StackLayout is shown below: Create a Popup Window in Kivy Popup window is a type of window that suddenly pops up on the screen. Generally, a popup window appears to users when they visit a page or closes a window. In Kivy, we create a popup window using the below code: 
+import kivy
+from kivy.app import App
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.popup import Popup
+from kivy.uix.gridlayout import GridLayout
+
+class Popup_Demo(App):
+
+    def build(self):
+
+        layout = GridLayout(cols = 1, padding = 10)
+
+        self.button = Button(text="Click Here to view Popup",
+		                     size_hint = (0.8, 0.2),
+                             pos_hint = {"x":0.1, "y":0.1})
+
+        layout.add_widget(self.button)
+
+        self.button.bind(on_press = self.onButtonPress) 
+
+        return layout
+
+    def onButtonPress(self, button):
+
+        layout      = GridLayout(cols = 1, padding = 10)
+
+        popupLabel  = Label(text  = "Welcome User")
+
+        closeButton = Button(text = "Close the pop-up window")
+
+        layout.add_widget(popupLabel)
+
+        layout.add_widget(closeButton)       
+
+        popup = Popup(title = 'Demo Popup',
+
+                      content = layout)  
+
+                 
+
+        popup.open()   
+
+        closeButton.bind(on_press = popup.dismiss)   
+
+root = Popup_Demo()
+root.run()
+ Output: The below screenshot shows the output of popup window - When we click on the popup window, the following screen appears on the screen. Create a Sign in Window in Kivy Now, we are going to create a simple sign in page using Kivy. To create a sign in page in kivy, we need to create the following two files - .py file - .py file is a script file which is written in Python. It can be created in any text editor but requires a Python interpreter to run. .kv file - .kv file is same as css file in the HTML. Note: Here, we are using .kv file to create Sign in window. .py file 
+import kivy
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+
+class SigninWindow(BoxLayout):
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def validate_user(self):
+        user = self.ids.username_field
+        pwd = self.ids.pwd_field
+        info = self.ids.info
+
+        uname = user.text
+        passwd = pwd.text
+
+        if uname == '' or passwd == '':
+            info.text = '[color=#FF0000]username and password are required[/color]'
+        else:
+            if uname == 'admin' and passwd == 'admin':
+                info.text = '[color=#00FF00]Logged In successfully!!![/color]'
+            else:
+                info.text = '[color=#FF0000]Invalid Username and Password[/color]'
+
+
+
+class SigninApp(App):
+    def build(self):
+	    return SigninWindow()
+	
+	
+root = SigninApp()
+root.run()
+ .kv file 
+<FlatButton@ButtonBehavior+Label>:
+    font_sixe: 16
+<SigninWindow>:
+    id: main_win
+    orientation: "vertical"
+	spacing: 10
+	space_x: self.size[0]/3
+	canvas.before:
+	    Color:
+		    rgba: (255, 255, 255, 255)
+		Rectangle:
+		    size: self.size
+			pos: self.pos
+	
+	BoxLayout:
+	    size_hint_y: None
+		height: 100
+		canvas.before:
+	        Color:
+		        rgba: (128, 0, 0, 1)
+		    Rectangle:
+		        size: self.size
+			    pos: self.pos
+	    Label:
+		    text: "Login Page"
+			bold: True
+			size_hint_x: .9
+			FlatButton:
+			    text: "x"
+				size_hint_x: .1
+		
+	BoxLayout:
+	    orientation: 'vertical'
+		padding: main_win.space_x, 10
+		spacing: 20
+		size_hint_y: None
+		height: 500
+	    BoxLayout:
+	        orientation: "vertical"
+			spacing: 10
+			size_hint_y: None
+			height: 80
+			Label
+			    id: info
+				text: ''
+				markup: True
+	        TextInput:
+			    id: username_field
+		        hint_text: "Username"
+				multiline: False
+				focus: True
+				on_text_validate: pwd_field.focus= True
+				size_hint_y: None
+				height: 30
+				
+		    TextInput:
+			    id: pwd_field
+		        hint_text: "Password"
+				multiline: False
+				password: True #for * pattern password
+				on_text_validate: root.validate_user()
+				size_hint_y: None
+				height: 30
+		Label:
+		    id: sp
+			size_hint_y: None
+			height: 20
+	    Button:
+		    text: "Sign In" 
+            size_hint_y: None
+            height: 40
+            background_color: (.06,.06,.06,1)
+            background_normal: ''
+            on_release: root.validate_user()			
+        Label:
+		    id: sp2
+ When we run the code, the following window appears on the screen. Case1: If the username and the password are empty, then the following screen appears on the screen. Case 2: If we enter an invalid username and password, the following screen appears on the screen. Case 3: If we enter username admin and password is admin then the following screen appears on the screen Prerequisite Before learning Kivy, you must have the fundamental knowledge of Python so that you can understand the Kivy concepts easily. Audience Our Kivy tutorial is designed for beginners and working professionals. Problem We assure you that you will not find any difficulty while learning our Kivy tutorial. Buts if there any mistake, kindly posts the problem in the contact form. For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

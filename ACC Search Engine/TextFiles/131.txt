@@ -1,0 +1,81 @@
+https://www.javatpoint.com/js-first-class-function
+JS First Class Function - javatpoint
+JS First Class Function - javatpoint ? Home JavaScript C C++ Java PHP HTML CSS Bootstrap jQuery \ Node.js SQL Android Quiz Projects Interview Q Comment Forum Training JavaScript Tutorial JavaScript Introduction JavaScript Example External JavaScript JavaScript Basics JS Comment JS Variable JS Global Variable JS Data Types JS Operators JS If Statement JS Switch JS Loop JS Function JavaScript Objects JS Object JS Array JS String JS Date JS Math JS Number JS Boolean JavaScript BOM Browser Objects 1) Window Object 2) History Object 3) Navigator Object 4) Screen Object JavaScript DOM 5) Document Object getElementById GetElementsByClassName() getElementsByName getElementsByTagName JS innerHTML property JS innerText property JavaScript Validation JS form validation JS email validation JavaScript OOPs JS Class JS Object JS Prototype JS constructor Method JS static Method JS Encapsulation JS Inheritance JS Polymorphism JS Abstraction JavaScript Cookies JS Cookies Cookie Attributes Cookie with multiple Name Deleting Cookies JavaScript Events JavaScript Events JavaScript addEventListener() JS onclick event JS dblclick event JS onload event JS onresize event Exception Handling JS Exception Handling JavaScript try-catch JavaScript Misc JS this Keyword JS Debugging JS Hoisting JS Strict Mode JavaScript Promise JS Compare dates JavaScript array.length JavaScript alert() JavaScript eval() function JavaScript closest() JavaScript continue statement JS getAttribute() method JS hide elements JavaScript prompt() removeAttribute() method JavaScript reset JavaScript return JS String split() JS typeof operator JS ternary operator JS reload() method JS setAttribute() method JS setInterval() method JS setTimeout() method JS string includes() method Calculate current week number in JavaScript Calculate days between two dates in JavaScript JavaScript String trim() JavaScript timer Remove elements from array JavaScript localStorage JavaScript offsetHeight Confirm password validation Static vs Const How to Convert Comma Separated String into an Array in JavaScript Calculate age using JavaScript JavaScript label statement JavaScript String with quotes How to create dropdown list using JavaScript How to disable radio button using JavaScript JavaScript Advance JS TypedArray JS Set JS Map JS WeakSet JS WeakMap JavaScript callback JavaScript closures JavaScript date difference JavaScript date format JS date parse() method JavaScript defer JavaScript redirect JavaScript scope JavaScript scroll JavaScript sleep JavaScript void JavaScript Form Differences jQuery vs JavaScript JavaScript vs PHP Questions How to add JavaScript to html How to enable JavaScript in my browser difference between Java and JavaScript How to call JavaScript function in html How to write a function in JavaScript Is JavaScript case sensitive How does JavaScript Work How to debug JavaScript How to Enable JavaScript on Android What is a promise in JavaScript What is hoisting in JavaScript What is Vanilla JavaScript How to add a class to an element using JavaScript How to calculate the perimeter and area of a circle using JavaScript How to create an image map in JavaScript How to find factorial of a number in JavaScript How to get the value of PI using JavaScript How to make a text italic using JavaScript What are the uses of JavaScript How to get all checked checkbox value in JavaScript How to open JSON file Random image generator in JavaScript How to add object in array using JavaScript JavaScript Window open method JavaScript Window close method How to check a radio button using JavaScript JavaScript Const JavaScript function to check array is empty or not JavaScript multi-line String JavaScript Anonymous Functions Implementing JavaScript Stack Using Array JavaScript classList JavaScript Code Editors JavaScript let keyword Random String Generator using JavaScript JavaScript Queue Event Bubbling and Capturing in JavaScript How to select all checkboxes using JavaScript JavaScript change Event JavaScript focusout event Traverse array object using JavaScript JavaScript create and download CSV file How to make beep sound in JavaScript How to add a WhatsApp share button in a website using JavaScript JavaScript Execution Context JavaScript querySelector Shallow Copy in JavaScript How to Toggle Password Visibility in JavaScript Removing Duplicate From Arrays JavaScript insertBefore JavaScript Select Option Get and Set Scroll Position of an Element Getting Child Elements of a Node in JavaScript JavaScript scrollIntoView JavaScript String startsWith JS First Class Function JavaScript Default Parameters JavaScript Recursion in Real Life JavaScript removeChild Remove options from select list in JavaScript JavaScript Calculator Palindrome in JavaScript JavaScript Call Stack MCQ JavaScript MCQ Interview Questions JavaScript I/Q next ? ? prev JS First Class Function JavaScript is a dynamic scripting language that allows us to use it in the form of an object-oriented style or functional style. In the same way, one such feature of JavaScript is the First class function. In this section, we will discuss the first class function, what it is, what the use is, and will also look at some of its practical implementations to understand its usage and work in a more précised manner. What is JS First Class Function The first class functions are the first class citizens and are treated as the first-class object which can be stored in variables, passed as an argument in functions, returned from other functions, have their own properties. It further means that these first class functions support all the operations which are allowed to other JavaScript objects. Thus, JS first class functions support the following described operations: Can be stored as a value in a variable Can be returned by another function Can be passed as a function's argument Can be stored in an array, stack, or queue Can have its own properties and methods. We will see the implementation of these operations and will try to understand the usage of the first class method in a better way. Storing in a Variable The below example code is the implementation of storing a first class function in a variable: 
+function add(x, y) {
+    return x + y;
+}
+let sum = add;
+ In the above code: We have created a function and passed two parameters in it. After that, we have assigned the function to a variable where we have not defined it as a function (i.e., not used the parenthesis) as we have done until now. So, the question arises here that how it is going to work. The answer to this is that just we need to invoke the variable or the function itself in the following described way: let result = add(10, 20); Here, we have assigned the add () function to a variable and passed two arguments in it. It is one way. let result = sum(10,20); Here, as we have already assigned the add () function to the sum variable so we can further assign the sum variable to the result and use it instead of using the add () function. It is because both sum and add points to the same address. The complete code is as follows: 
+<html>
+<body>
+<script>
+function add(x, y) {
+    return x + y;
+}
+let sum = add;
+let result = sum(10, 20);
+console.log(result); 
+</script>
+</body>
+</html>
+ Test it Now After executing the code, we got the following output: Passing the first class function as an argument to another function As we have discussed that these first class functions can be stored in a variable which means that these functions behave like values also. Thus we can pass them as an argument to other functions too. Let' s see the below example to understand the working and how we can pass it as other function's argument: 
+<html>
+<body>
+<script>
+function sum(x, y) {
+    return x + y;
+}
+
+let assign= sum;
+
+function avg(x,y, z) {
+    return z(x, y) / 2;
+}
+let res = avg(10, 20, assign);
+console.log(res);
+
+</script>
+</body>
+</html>
+ Test it Now We got the following output after executing the code: In the above code, We can see that we have created the sum () function and assigned the function to a new variable, 'assign'. Then, we have created an avg () function where we have passed three variables x, y, z, and z is the used for passing the sum () function as an argument to the function avg (). In this way, we can pass the first class function as an argument to another function. Returning functions from functions The first-class functions are the values only so we can also return it from a function. Let's see the below example code: 
+<html>
+<body>
+<script>
+function test() {
+   return function() {
+      console.log("JavaTpoint");
+   }
+}
+const callFunc = test(); //for invoking the anonymous function
+callFunc(); 
+</script>
+</body>
+</html>
+ Test it Now Output: In the above code, We have created a function test () under which we have further returned a function that is defined under it. Thus, we can return a first class function from another function. The function test () is known as the Higher-Order function. A higher-order function is a function that makes a first class function be returned from it as a value. Also, the function which is being returned is the anonymous function. Thus, we need to invoke this anonymous function, and for doing so, we have two following described methods: Method 1: Using a Variable In the above code we have used this method for invoking the anonymous function and in addition to it, we have the below example code that will help us to understand it: 
+<html>
+<body>
+<script>
+const test = function() {
+   return function() {
+      console.log("JavaTpoint");
+   }
+}
+const callFunc = test(); //to invoke the anonymous function
+callFunc();
+</script>
+</body>
+</html>
+ Test it Now Output: In this, we have simply created a constant variable callFunc, and to it, we have assigned the anonymous function. Then we have invoked the constant function with parenthesis. Note: In calling such a function, we need to use another variable to which it should be assigned. Otherwise, it will not return the function which it is returning. If we return it without storing it in another variable, it would get returned directly. Method 2: Using Double Parenthesis The below code example will let you understand it: 
+<html>
+<body>
+<script>
+function test() {
+   return function() {
+      console.log("JavaTpoint");
+   }
+}
+test ()();
+</script>
+</body>
+</html>
+ Test it Now Output: In the above code, for invoking the function, we have used double parenthesis, which is similar to storing the function to another variable and then invoking the variable with single parenthesis as we have done in Method 1. So, it is all about First class functions, and we have better described its usage and its implementations. Next TopicJavaScript Default Parameters ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,90 @@
+https://www.javatpoint.com/java-constructor-interview-questions
+Java Constructor Interview Questions - javatpoint
+Java Constructor Interview Questions - javatpoint ? Home Interview Questions Java C SQL Android HTML XML JavaScript Ajax Cloud Python Web Services Quiz Projects Comment Forum Training All Interview Interview Tips JOB/HR Interview Competency Interview Business Analyst Behavioral Interview Company Interview Company Interview IBM Interview Infosys Interview Capgemini Interview Cognizant Interview Wipro Interview Accenture Interview iGate Interview TCS Interview HCL Interview Adobe Interview Microsoft Interview DXC Technology Interview Ericsson Interview EXL Service Interview IndiaMART Interview Intuit Interview SpaceX Interview Sapient Interview Amazon Interview Technical Interview C Interview C++ Interview Data Structure Interview Linux Interview Unix Interview Shell Scripting Networking Interview CCNA Interview Android Interview Cloud Computing Hadoop Interview Testing/QTP Interview Selenium Interview Web Services Interview OS Interview Excel Interview SEO Interview Digital Marketing Python Interview Django Interview Pascal Interview Ruby Interview Ruby on Rails Interview Memcached Interview Go Interview OpenStack Interview Scala Interview Control Systems Electrical Machines Power System Digital Electronics Robotics Interview TypeScript Interview Swift Interview Blockchain Interview Bitcoin Interview AWS Interview Informatica Interview QA Interview React Interview GIT Interview J2EE Interview Deep Learning Salesforce Interview TestNG Interview Agile Interview Machine Learning API Testing Algorithm Java Design Pattern Teradata TensorFlow LINQ Mainframe Laravel JIRA JCL Pytorch ETL Testing Linked List DataStage Tableau SAP ABAP DAA Computer Graphics Data Science Software Engineering Power BI Xamarin Ansible Data Warehouse Ionic Devops React Native Python Pandas HTTP Interview Kali Linux Interview PowerShell Interview SharePoint Interview Talend Interview Microsoft Azure Interview R Interview Flutter Interview MATLAB Interview ES6 Interview RPA Interview Desktop Support Interview Angular 8 Interview GraphQL Interview Vue.js Interview Automation Anywhere Interview AI Interview UiPath Interview Blue Prism Interview SSIS Interview Mobile Computing Interview ITIL Interview SAS Interview Elasticsearch Interview Entity Framework Interview RxJS Interview Accounting Interview Electron.js Interview Knockout JS Interview Top Angular Interview IAS Interview Question Array Interview Questions in Java Banking Interview Interview Questions for Freshers PowerPoint Interview BPO Interview Civil Engineering Interview Apache Spark Interview Data Mining Interview Java Support Interview Kubernetes Interview Web API Interview Scrum Master Interview System Design Interview SSB Interview Questions Teachers Interview Questions Web Interview HTML Interview CSS Interview JavaScript Interview jQuery Interview AngularJS Interview Angular Interview Angular 7 Interview Node.js Interview AJAX Interview XML Interview Dojo Interview Backbone.js Interview Ember.js Interview XHTML Interview XSLT Interview XPath Interview XQuery Interview XForms Interview SASS Interview CoffeeScript Interview LESS Interview Perl Interview Pure.CSS Interview Materialize Interview Framework7 Interview SVG Interview PHP Interview PHP Interview Wordpress Interview Joomla Interview Drupal Interview Magento Interview CodeIgniter Interview Phalcon Interview .Net Interview .Net Interview C# Interview ASP.NET Interview ADO.NET Interview WCF Interview WPF Interview Silverlight Interview F# Interview Java Interview Java 1 Interview Java 2 Interview Exception & String Multithreading Collections Interview JDBC Interview Servlet Interview JSP Interview EJB Interview Struts Interview Hibernate Interview Spring Interview Spring Boot Interview Spring MVC Interview JPA Interview Maven Interview JUnit Interview JSF Interview PrimeFaces Interview RichFaces Interview GWT Interview JDB Interview JOGL Interview jBPM Interview Jenkins Interview Java Constructor Interview Questions Java Technical Architect Interview Questions Database Interview DBMS Interview SQL Interview PL/SQL Interview Oracle Interview MySql Interview SQL Server Interview MongoDB Interview Cassandra Interview DB2 Interview Access Interview SQLite Interview CouchDB Interview Neo4j Interview MariaDB Interview PouchDB Interview Redis Interview Java Constructor Interview Questions A constructor is an integral part of a Java program. It is one of the important topics of core Java. So, in every Java-based interview, there is a possibility that the interviewer may ask few questions from the Java constructor. In this article, we are going to discuss some commonly asked interview questions on constructors. 1) Define Constructor? Java constructor is a unique method that initializes the objects, which is called when an instance of the class is created. The memory for the object is allocated when we call the constructor. Basically, a constructor is a block of code. When we create an object of the class using the new() keyword, at least one constructor is called, and it initializes the objects and allocates memory to them. If we do not specify any constructor, it will call the default constructor of the class. However, it is not necessary to specify an explicit constructor because the Java compiler provides a default constructor for every Java class. 2) How many types of Constructors are in Java? There are two types of constructors in Java: Default Constructor (Non-parameterized Constructor) Parameterized Constructor The syntax for the default constructor is as follows: 
+<class name>() {}
+ Example: 
+Employee()
+{
+//some code
+}
+ The syntax for the parameterized constructor is as follows: 
+<class name>(arg1, arg2) {}
+ Example: 
+Employee(int i, String n)
+{    
+    id = i;  
+    name = n;  
+}
+ 3) Do we have a copy constructor in Java? Unlike C++, there is no explicit copy constructor in Java. However, we can achieve the functionality of a copy constructor in Java by copying the values from one object to another, just like the copy constructor. The following are some methods to copy the values from one object to another: By constructor By assigning the values of one object to another By clone() method of Object class 4) Write a Java Program to Copy the values from one object to another Object. Below Java program copies the values from one object to another object: ConstructorDemo.java: 
+class ConstructorDemo{  
+    int id;  
+    String name;  
+    //constructor to initialize integer and string  
+    ConstructorDemo(int i,String n){  
+    id = i;  
+    name = n;  
+    }  
+    //constructor to initialize another object  
+    ConstructorDemo(ConstructorDemo c){  
+    id = c.id;  
+    name =c.name;  
+    }  
+    void display(){System.out.println(id+" "+name);}  
+    public static void main(String args[]){  
+    	ConstructorDemo c1 = new ConstructorDemo(100,"Joy");  
+    	ConstructorDemo c2 = new ConstructorDemo(c1);  
+    c1.display();  
+    c2.display();  
+   }  
+}  
+ Output: 
+100 Joy
+100 Joy
+ In the above example, we have created two instances of the ConstructorDemo and passed the first object value into the second constructor. This way, we can use a copy constructor in Java. 5) Is there any method to call a sub-class constructor from a superclass constructor? The subclass constructor has its own private data members, so Java does not provide any way to access the sub-class constructor from a super class constructor. However, we can call a superclass constructor from a sub-class constructor by using the super keyword. 6) Can we have a constructor in the Interface? No, we cannot have constructors in the Java interface. 7) Explain Constructor Chaining? Constructor Chaining is a way to call one constructor from another constructor with respect to the current object. It can be achieved in the following two ways: From base class: We can use the super keyword to call a constructor from the base class. Within the same class: We can call a constructor within the same class by using this() keyword. Below is an example of constructor chaining: 
+class TestSuper
+{
+    public TestSuper(int i)
+    {
+        System.out.println("Super Class Constructor");
+    }
+}
+ 
+class TestSub extends TestSuper
+{
+    public TestSub()
+    {
+        this(10);      //Calling same class constructor
+    }
+ 
+    public TestSub(int i)
+    {
+        super(i);      //Calling super class constructor
+    }
+}
+ 8) What happens if we provide a return type to a constructor? If we provide a return type to a constructor, it will function as a general method. But, the compiler will display a warning message, "This method has a Constructor name". Consider the below example: 
+public class TestConstructor {
+	int TestConstructor()
+	{
+		return 0;
+	}
+ The above program will be compiled gracefully, but it displays below warning message: 9) What is a private constructor? Like methods, we can have the private constructors in Java. To make or create a constructor as private, use the private keyword while declaring it. It can only be accessed within that class. The following are some usage scenarios when we need a private constructor: Internal Constructor chaining Singleton class design pattern Below is an example of the private constructor: PrivateConstructor.java: 
+class SingletonDemo {
+   private SingletonDemo() {
+      System. out.println("In a private constructor");
+   }
+   public static SingletonDemo getObject() {
+      // we can call this constructor
+      if (ref == null)
+         ref = new SingletonDemo();
+      return ref;
+   }
+   private static SingletonDemo ref;
+}
+public class PrivateConstructor {
+   public static void main(String args[]) {
+      SingletonDemo sObj = SingletonDemo.getObject();
+   }
+}
+ Output: 
+In a private constructor
+ 10) Why constructors in Java cannot be static? The constructors cannot be static in Java. When we declare a method as static, it means the method belongs to the class and not to a specific object. But the constructor is always invoked to the reference of objects. So, there is no sense in making a constructor static. 11) Can we make a constructor final? No, we cannot make a constructor final. If we made a constructor final, it would throw a compile-time error "modifier final not allowed". 12) Can we make a constructor abstract? a body, which really makes no sense. It is automatically called at the time of object creation. So, it cannot be a block without a body. 13) what will happen when a constructor is declared as protected? Generally, when we declare a method as protected, other classes can access that method in a different package by using inheritance only. But, when we declare a constructor protected, it behaves slightly differently than a method. The protected constructor can only be accessed by using a super keyword according to Java language standards. 14) Why constructor name is similar to the class name? When we create an object of a class using a new keyword, it should have information about that particular class. That is why the constructor's name must be similar to the class name. 15) Why return type is not allowed for the constructor? The return type is not allowed in the constructor because if we provide a return type in the constructor, it will act as the normal method. So, to differentiate between constructor and method block, the return type is not allowed in constructors. Interview Tips Job/HR Interview Questions Company Interview Questions & Procedure JavaScript Interview Questions Java Basics Interview Questions Java OOPs Interview Questions Servlet Interview Questions JSP Interview Questions Spring Interview Questions Hibernate Interview Questions PL/SQL Interview Questions SQL Interview Questions Oracle Interview Questions Android Interview Questions jQuery Interview Questions MySQL Interview Questions Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

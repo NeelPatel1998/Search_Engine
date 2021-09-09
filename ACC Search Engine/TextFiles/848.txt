@@ -1,0 +1,248 @@
+https://www.javatpoint.com/initialization-in-swift-ios
+Initialization in Swift - Javatpoint
+Initialization in Swift - Javatpoint ? Home Java Swift iOS Development OS C PHP HTML CSS Bootstrap JavaScript jQuery jQuery UI Projects Interview Q Comment Forum Training iOS Development iOS Development using Swift Introduction to XCode IDE iPhone History & Versions Views & View Controllers Storyboard & interface builder Creating First iOS Application iOS UI Controls iOS: Label iOS: Button iOS: TextField iOS: DatePicker iOS: Slider iOS: Stepper iOS: Switch iOS: Segment Control iOS Container Views iOS: UIView iOS: TableView iOS: CollectionView iOS: ScrollView iOS Content Views iOS: ActivityIndicatorView iOS: ImageView iOS: PickerView iOS: ProgressView iOS: WebView iOS: MapView iOS View Controllers iOS: UIViewController iOS: Table View Controller iOS: Collection View Controller iOS: PageViewController iOS: Split View Controller Tab Bar Interface iOS: Tab Bar Controller iOS: Tab Bar iOS: Tab Bar Item Navigation Interface Navigation Controller Navigation Bar Navigation Item Architecture Pattern Model View Controller Model View View-Model Model View Presenter Install Libraries Setting Up Cocoapods for XCode Projects Using Cocoapods for XCode Projects Web Request & Parsing Alamofire Library Fetching data through Get Request Parsing JSON Response Image Caching Pull to Refresh functionality iOS UserDefaults Saving Data in UserDefaults Getting Data from UserDefaults CoreData & Database CoreData Managed Object Model Persistent Object Coordinator Multithreading in Swift Multithreading in Swift Concurrency in swift Handling Background Tasks Misc Firebase Crashalytics iOS Swift IOS app lifecycle What is Jailbreaking in iOS Why is iOS better than Android Features of iOS 14 Getting user location in iOS Push Notifications in iOS Sign-in with Apple using swift SSL Pinning in Swift XCode 12 Features Facebook Login Integration in iOS Google Sign-in integration in iOS How to capture the image using the iOS app How to make a phone call in the iOS app Paytm SDK Integration in iOS Razorpay Integration in iOS UIAlertController in Swift Using SQLite in iOS app Creating a real-time chat application using Firebase Using Realm database in iOS app iOS: machine learning What is CoreML Using Advanced CoreML Access Control in Swift iOS Memory Management in iOS applications Protocol Oriented Programming in iOS Swift Initialization in Swift Parsing a Static JSON file in iOS application Sending Email using the iOS application Using AVAudioPlayer to play sounds in iOS applications next ? ? prev Initialization in Swift In object-oriented programming languages, we need to instantiate the classes to use their properties and functions. In Swift, initialization can be defined as preparing the instance of a class, structure, and Enums. It allows us to set up the initial value for each stored property. We can place the code which is required at the time of initialization. We can perform initialization by defining initializers which can be defined as the special methods called to instantiate the particular type. In Swift, initializers don't return a value. We can also implement the deinitializers, which can be used to place any cleanup code before the instance is deallocated. Initial Values for Stored Properties Initializers in Swift become more important due to the aspect that we cannot have stored properties in intermediate states. We must set all the stored properties to the initial values within the initializer or assigning a default value at the time of declaration. Initializers As we have already discussed in this article, the initializers are used to create a new instance of a particular type. An initializer can be defined using the init keyword as shown below. 
+init(){
+    //perform initialization here
+}
+ Let's consider the following example, which defines a class Employee with a property name and initializer, which is used to initialize the name. 
+class Employee{
+    var name:String
+    init() {
+        name = "John"
+    }
+}
+var emp = Employee()
+debugPrint(emp.name)
+ We can provide a default value to the class properties at the time of declaration. In the above example, instead of writing an initializer, we could have initialized the name property at the time of declaration, as shown below. 
+class Employee{
+    var name:String = "John"
+}
+var emp = Employee()
+debugPrint(emp.name)
+ We can also customize the initialization by providing the initialization parameters at the time of object creation. Initialization parameters are similar to function and method parameters in terms of capabilities. Let's consider the following example, which creates a Student class. A student can have a name, id, and age. We are initializing the properties of a student at the time of student creation. 
+class Student{
+    var name:String
+    var age:Int
+    var id:Int
+    init(name:String, age:Int, id:Int ) {
+        self.name = name
+        self.age = age
+        self.id = id
+    }
+}
+
+
+var student = Student(name: "John", age: 18, id: 01)
+debugPrint("name: \(student.name), id: \(student.id), age: \(student.age)")
+ Output: 
+"name: John, id: 1, age: 18"
+ We can define parameters with parameter names to be used inside the initializer's body. There can also be an argument label that will be used when the initializer is to be called. Here, we must notice that initializers don't have any specific name, unlike methods and functions; therefore, the parameter names and argument labels play an important role in identifying which initializer is being called. However, argument labels are required to call an initializer. Let's consider the following example. 
+struct APIStructure{
+    var url:String
+    var method:String
+    var param:[String:Any]
+    init(url:String, method:String) {
+        self.url = url
+        self.method = method
+        self.param = [:]
+    }
+    init(param:[String:Any]) {
+        self.url = "https://www.javatpoint.com/"
+        self.param = param
+        self.method = "POST"
+    }
+}
+
+
+var api = APIStructure(param: ["name" : "John"])
+debugPrint("URL: \(api.url), param: \(api.param), method: \(api.method)")
+
+
+var api2 = APIStructure(url: "https://www.google.com", method: "GET")
+debugPrint("URL: \(api2.url), param: \(api2.param), method: \(api2.method)")
+ Output: 
+"URL: https://www.javatpoint.com/, param: [\"name\": \"John\"], method: POST"
+"URL: https://www.google.com, param: [:], method: GET"
+ However, like method calls, Swift allows us to use underscore (_) if we don't want to provide any argument label explicitly. Let consider the example in which we are using underscore (_) as an argument label. 
+class Employee{
+    var name:String
+    init(_ name:String) {
+        self.name = name
+    }
+}
+
+
+var emp = Employee("John")
+debugPrint("name : " + emp.name)
+ Optional Properties It is possible that our class has a property that may or may not has a value, i.e., we cannot set its value during initialization. In this scenario, we need to define such properties as optional. Optional properties are initialized to nil by default. Consider the following example in which the class department may or may not have an employee associated with it. Such properties are set optional during initialization. 
+class Employee{
+    var name:String
+    init(name:String) {
+        self.name = name
+    }
+}
+class Department{
+
+
+    var name:String
+
+
+    var emps:Array<Employee>?
+
+
+    init(name:String) {
+
+
+        self.name = name
+
+
+    }
+
+
+}
+var emp1 = Employee(name: "John")
+var emp2 = Employee(name: "David")
+var dep = Department(name: "IT")
+dep.emps = [emp1, emp2]
+
+
+for emp in dep.emps ?? []{
+    debugPrint(emp.name)
+}
+ This will print the following output on the console. 
+"John"
+"David"
+ Initializing Constant Properties The value of the constant properties can't be changed once they get initialized. However, we can define a constant property with no value, but we have to set the value for that property using initialization in the class only. We can't change the value for that property later on in the app. Consider the following example. 
+class Department{
+
+
+    let name:String
+
+
+    init(name:String) {
+
+
+        self.name = name
+
+
+    }
+
+
+}
+var dep = Department(name: "It")
+dep.name = "CS"
+ This will give the following error in console. 
+error: cannot assign to property: 'name' is a 'let' constant
+dep.name = "CS"
+~~~~^~~~
+
+
+MyPlaygroundInit.playground:11:5: note: change 'let' to 'var' to make it mutable
+    let name:String
+    ^~~
+    var
+ Default Initialization We can use Default Initializers in swift to initialize any structure and class. Default initializers are used to provide default values for all of their properties. We can use default initializers when there is no initializer in the class. In other words, we can say that the default initializer creates the new instance with all of its properties set to their default values. Consider the following example. 
+class Department{
+    var name:String?
+    var id = 0
+    var category = "Computer"
+
+
+}
+var dep = Department()
+ As all properties of the Department class are set to their default values, therefore, it gets the automatic implementation of a default initializer that creates the new instance of the Department with their default values. In the example, the name property is set to nil by default as it is an optional property. Memberwise Initializers for Structure Types If we have observed structure types, we notice that the structure types have a memberwise initializer if they don't have any custom initializer. The structure type provides a default initializer where it doesn't default values of its properties. Consider the following example, in which we have a structure named Color, which has three members Red, Green, and Blue. We can provide their values while instantiating the Color Structure. 
+struct Color{
+    var red:Float
+    var green:Float
+    var blue:Float
+}
+
+var black = Color(red: 0, green: 0, blue: 0)
+ When the structure properties have the default values, we may or may not pass the value for the already initialized value in the membership initializer, as shown in the following example. 
+struct Color{
+    var red:Float = 0.345
+    var green:Float
+    var blue:Float
+}
+
+var color = Color(green: 0.2, blue: 0.1)
+ In the above example, we could have also passed the value for the red color to overwrite its default value. Initializer Delegation for Value Types We can call the initializers from another initializer for reusing them to initialize the values. This process is known as initializer delegation to avoid duplicate code for initializing values. Initializer delegation works differently for both value types and instance types. The value type doesn't support Inheritance; therefore, the process for initializer delegation is straightforward for value type. In Value types, initializers can only delegate to another initializer that they provide themselves. For value types, we can use self.init to refer to other initializers in the same value type. However, we must notice that self.init can only be called within an initializer itself. If we define a custom initializer for any value type, we can't access the default initializer for that type. Let's consider the following example, in which there's a Structure called Item, which refers to two supporting structures as Color to define an Item's color and its size. 
+struct Size{
+    var width = 0.0
+    var height = 0.0
+}
+
+
+struct Color{
+    var red = 0.0
+    var green = 0.0
+    var blue = 0.0
+}
+ However, we can define the three initializers for Item structure in the following three ways, either by using the default values for the Item properties or by setting the specific properties. 
+struct Item{
+    var name:String = "Laptop"
+    var size = Size()
+    var color = Color()
+    init() {
+    }
+    init(name:String,size:Size,color:Color) {
+        self.name = name
+        self.color = color
+        self.size = size
+    }
+    init(name:String,red:Color,size:Size) {
+        let red = red
+        let blue = red.red - red.green
+        let green = red.red - red.blue
+        self.init(name: name, size: size, color: Color(red: red.red, green: green, blue: blue))
+    }
+}
+ The first Item initializer, init() works like a default initializer for the structure, assigning the default values for Item properties. If we use init(){ } to assign the default values for the Item structure as shown below. 
+var item1 = Item()
+debugPrint(item1.color)
+debugPrint(item1.name)
+debugPrint(item1.size)
+ The second initializer, init(name:color:size), is similar to the memberwise initializer that the structure has when it doesn't have its custom initializer. 
+var item2 = Item(name: "Computer", size: Size(width: 24, height: 12), color: Color(red: 0.2, green: 0.3, blue: 0.5))
+ The Third initializer, init(name:red:size), is a bit complex than the previous ones. It receives a red color used to decide the other color factor, i.e., green and blue. Once we calculate the color, we can call init(name:red:size) from the initializer. 
+var item3 = Item(name: "Mac", red: Color(), size: Size(width: 13, height: 13))
+ Initialization in Reference Types We need to ensure that all of the stored properties of a class, including the properties it inherits, are assigned an initial value during initialization. For this purpose, Swift provides two types of Initializers which help class types to ensure that all properties are assigned to an initial value. The types of class Initializers are given as follows. Designated Initializers A designated Initializer is used as the primary initializer for a class. The designated initializer initializes all of the properties of a class and calls the appropriate superclass initializer to continue with the initialization. Designated Initializer is seen as a starting point through which the initialization process gets started. The classes generally don't have multiple initializers. However, every class must have at least one designated initializer. The syntax for declaring Designated Initializer is given below. 
+init(<#parameters#>) {
+        <#statements#>
+    }
+ Convenience Initializers Convenience Initializers are secondary initializers for a class and work as supporting initializers to Designated Initializers. We can have Convenience Initializer in a class that calls a designated initializer from the same class. We can also use the Convenience Initializer to instantiate a class for some specific use case or input type. However, we don't need to use convenience initializers in the class if it doesn't require one. The syntax to declare the convenience initializer is given as follows. 
+convenience init(<#parameters#>){
+        <#statements#>
+    }
+ Initializer Delegation in Class Swift provides the following three simple rules to define the relationship between Designated and Convenience Initializers. A designated initializer must call another designated initializer defined in its immediate superclass. A convenience initializer must call another initializer defined in the same class. A convenience initializer must call a designated initializer either through a chain of convenience initializers or directly. In other words, we can say that the convenience initializer always delegates across the class level, whereas the designated initializer delegates up the class level. Let's consider the following example, which uses the Convenient and Designated Initializers to initialize the stored properties in a class. 
+class Person{
+    var name:String
+    init(name:String) {
+        self.name = name
+    }
+    convenience init(){
+        self.init(name:"[Unnamed]")
+    }
+}
+ In the above example, class Person has one designated initializer and one convenience initializer. The class Person can be instantiated using a specific argument called name, as shown below. 
+var person = Person(name: "John")
+ Here, the designated initializer from the Person class ensures that all the stored properties are fully initialized. However, the Person class also provides a convenience initializer to instantiate the Person class by not providing a name. The init() initializer calls the designated init with a default name ("Unnamed") and assigns the Person name with a value. 
+var unonymous = Person()
+ Now, let's define another class in the hierarchy, which is the Employee class. It adds two more properties to the hierarchy, i.e., salary and id. It also defines two initializers to initialize the stored properties. 
+class Employee:Person{
+    var salary:Float
+    var id:Int
+    init(name:String,salary:Float,id:Int) {
+        self.salary = salary
+        self.id = id
+        super.init(name:name)
+    }
+    override convenience init(name:String) {
+        self.init(name:name,salary:5000,id:0)
+    }
+}
+ The Employee class has one designated initializer, which can be used to set all the properties of a new instance. In the designated initializer, the salary and id are initialized first, and then the designated init of the superclass is called. This is called Two-Phase Initialization, which will be discussed in this article. However, The Employee class also contains a convenience initializer that can instantiate the Employee class using name only. It provides default values for the salary and id of the Employee. It's more convenient to create an Employee class using a convenient initializer because we don't need to provide the values for salary and Id at the time of object creation. Here, we must also notice that the Convenience Initializer used in the Employee class takes the same parameter name as the Designated Initializer from the Person class. This convenience initializer overrides a designated initializer from its superclass. The Employee class can be instantiated using the following three ways. 
+var emp = Employee()
+var emp1 = Employee(name: "David")
+var emp2 = Employee(name: "Mike", salary: 12900, id: 0)
+ Next TopicParsing a Static JSON file in iOS application ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,156 @@
+https://www.javatpoint.com/bootstrap-4-buttons
+Bootstrap 4 Buttons - Javatpoint
+Bootstrap 4 Buttons - Javatpoint ? Home Bootstrap 4 Bootstrap HTML JavaScript jQuery jQuery UI CSS XML JSON C Java PHP Ajax Quiz Projects Interview Q Bootstrap 4 Tutorial Bootstrap 4 Tutorial Environment setup Bootstrap 4 Layout Bootstrap 4 Buttons Bootstrap 4 Dropdown Bootstrap 4 Spinners Bootstrap 4 Badges Bootstrap 4 Progress Bars Bootstrap 4 Jumbotron Bootstrap 4 Text Bootstrap 4 Pagination Bootstrap 4 Carousel Bootstrap 4 Scrollspy next ? ? prev Bootstrap 4 - Buttons In Bootstrap 4, users can also add buttons to their web pages. There are various different types of buttons that can be applied to the web pages. Those buttons are listed below: Basic Button Primary Button Secondary Button Success Button Information Button Warning Button Danger Button Dark Button Light Button Link Button The Sample Code to display all these button styles is given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>The different Types of Button Styles observed in Bootstrap 4</h1>
+  <button type="button" class="btn">Basic Button</button>
+  <button type="button" class="btn btn-primary">Primary Button</button>
+  <button type="button" class="btn btn-secondary">Secondary Button</button>
+  <button type="button" class="btn btn-success">Success Button</button>
+  <button type="button" class="btn btn-info">Info Button</button>
+  <button type="button" class="btn btn-warning">Warning Button</button>
+  <button type="button" class="btn btn-danger">Danger Button</button>
+  <button type="button" class="btn btn-dark">Dark Button</button>
+  <button type="button" class="btn btn-light">Light Button</button>
+  <button type="button" class="btn btn-link">Link Button</button>      
+</div>
+</body>
+</html>
+ Test it Now The Output of the above given sample code will be: Buttons with Elements: In addition to that, these buttons can sometimes be used with the elements such as <a> for links, <input> for input buttons, and so on. For example: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Button Elements in Bootstrap 4</h1>
+  <a href="#" class="btn btn-info" role="button">Link Button</a>
+  <button type="button" class="btn btn-info">Button</button>
+  <input type="button" class="btn btn-info" value="Input Button">
+  <input type="submit" class="btn btn-info" value="Submit Button">
+</div>
+</body>
+</html>
+ Test it Now The Output for this example will be: Buttons with Outlines: In Bootstrap 4, a user can also add only the outlines to the buttons. There is total 8 types of buttons with outline currently available with Bootstrap 4. Upon hovering on these buttons, the user will see the color of the outline inside the button. The different types of outline buttons are given below: Primary Outline Button Secondary Outline Button Success Outline Button Information Outline Button Warning Outline Button Danger Outline Button Dark Outline Button Light Outline Button The Sample Code to display these outline buttons is given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Different styles of Button Outline</h1>
+  <button type="button" class="btn btn-outline-primary">Primary Button</button>
+  <button type="button" class="btn btn-outline-secondary">Secondary Button</button>
+  <button type="button" class="btn btn-outline-success">Success Button</button>
+  <button type="button" class="btn btn-outline-info">Information Button</button>
+  <button type="button" class="btn btn-outline-warning">Warning Button</button>
+  <button type="button" class="btn btn-outline-danger">Danger Button</button>
+  <button type="button" class="btn btn-outline-dark">Dark Button</button>
+  <button type="button" class="btn btn-outline-light text-dark">Light Button</button>
+</div>
+</body>
+</html>
+ Test it Now The Output of this sample code will be: Different Sizes of Buttons: A user can also resize the size of buttons with the help of using class .btn-large for enlarging the size of the button and class .btn-sm for reducing the size of the button. For Example: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>The different sizes of Button in Bootstrap 4</h1>
+  <button type="button" class="btn btn-primary btn-lg">Large Button</button>
+  <button type="button" class="btn btn-primary btn-md">Default Button</button>    
+  <button type="button" class="btn btn-primary btn-sm">Small Button</button>
+</div>
+</body>
+</html>
+ Test it Now The Output of the above given code will be: Active Buttons or Disabled Buttons: In Bootstrap 4, a button can be displayed as active (that appears to be pressed) or disabled (that appears to be unclickable) state. For active button, the class .active is used to make a button appear pressed, and the disabled attribute makes a button unclickable. However, the <a> elements do not support the disabled attribute and must therefore use the .disabled class to make it visually appear disabled. The Sample Class for Active Buttons or Disabled Buttons will be: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>The Active or Disable Button States in Bootstrap 4</h1>
+  <button type="button" class="btn btn-primary">Primary Button</button>
+  <button type="button" class="btn btn-primary active">Active Primary Button</button>
+  <button type="button" class="btn btn-primary" disabled>Disabled Primary Button</button>
+  <a href="#" class="btn btn-primary disabled">Disabled Link Button</a>
+</div>
+</body>
+</html>
+ Test it Now The Output of the above given code will be: Spinner Buttons: A user can add spinners in buttons as well in Bootstrap 4. The Sample Code for Spinner Buttons is given below: 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Spinner Buttons in Bootstrap 4</h1>
+  <p>This can be used to add spinners to buttons:</p>
+                                        
+  <button class="btn btn-primary">
+    <span class="spinner-border spinner-border-sm"></span>
+  </button>
+  <button class="btn btn-primary">
+    <span class="spinner-border spinner-border-sm"></span>
+    Loading..
+  </button>  
+  <button class="btn btn-primary" disabled>
+    <span class="spinner-border spinner-border-sm"></span>
+    Loading..
+  </button> 
+  <button class="btn btn-primary" disabled>
+    <span class="spinner-grow spinner-grow-sm"></span>
+    Loading..
+  </button>
+</div>
+</body>
+</html>
+ Test it Now The Output of the above given code will be: Next TopicBootstrap 4 Dropdowns ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

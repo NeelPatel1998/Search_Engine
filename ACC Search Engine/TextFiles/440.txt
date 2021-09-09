@@ -1,0 +1,118 @@
+https://www.javatpoint.com/how-to-convert-number-to-words-in-excel
+How to Convert Number to Words in Excel - javatpoint
+How to Convert Number to Words in Excel - javatpoint ? Home Excel MS Word PowerPoint C C# Java PHP HTML SQL PL/SQL Python Web Services Quiz Projects Interview Q Comment Forum Training MS Excel Tutorial Excel Tutorial Workbook Window Create & Open Workbooks MS Excel Online Excel vs Google Sheets Office Button Ribbon and Tabs Features of Tabs Quick Access Toolbar Mini Toolbar Title, Help, Zoom, View Excel Worksheet Worksheet, Row, Column Moving on Worksheet Enter Data Select Data Delete Data Move Data Copy Paste Data Spell Check Insert Symbols Excel Calculation Addition Sigma Addition Subtraction Calculate Average Sigma Average Excel Fill Handle Fill Handle Fill Handle with Text Text with Numbers Fill Handle with Dates Excel Formula Create Formula Fill Handle in Formula Relative Referencing Absolute Referencing Instruction for Typing Quick Excel Functions Excel IF If Function If with Calculations Excel COUNTIF Advanced If Excel Advanced Excel Macros Excel sumif Excel vlookup What is Pivot Table Excel ISNA Find & Remove Duplicates Create drop-down List Merge cells in Excel Misc How to enable macros in excel How to calculate age in Excel How to create a Pivot Table in excel How to enable the Developer Tab in Excel How to Calculate Standard Deviation in Excel How to Calculate Time Difference in Excel How to Freeze Cells in Excel What-if Analysis in Excel How To Insert Checkbox in MS Excel How To Insert PDF in MS Excel How to change the Date Format in Excel How to compare two Excel sheet How To Apply Filter In Excel How To Move Columns In Excel How to add or remove Hyperlink in Excel How to calculate Mean in Excel How to Separate text in Excel How to recover a macro in Excel How to recover a Corrupted Excel file How to recover an Excel file How to remove comma in Excel How to sum a column in Excel How to remove the filter in Excel How to remove gridlines in Excel How To Convert Excel To CSV How To Create Table in Excel How to Calculate IRR in Excel How to Count Characters in Excel How to Make an Excel Sheet How to Replace Words in Excel How to Sort by Date in Excel How to hide formulas in Excel How to subtract in excel How to use the IF function in Excel How To Create A Graph In Excel How to use concatenate in Excel How to spell check in Excel How to Change Lowercase to Uppercase in Excel How to Create a Dashboard in Excel How to Delete Duplicate Rows in Excel How to use sumifs formula in Excel How to add page break in Excel How to remove the page break in Excel How to Convert Columns to Rows in Excel How to Convert Number to Words in Excel How to Make a Table in Excel How to Put Tick Mark in Excel How to Remove Passwords from Excel File How to Wrap Text in Excel How to insert comments in Excel How to add/remove Password from Excel How to use MS Excel How to sort in Excel How to record a macro in Excel How Many Rows and Columns in Excel 2007 How to Search in Excel How to add a text box in Excel How to save Excel document How to set background image in Excel How to use COUNTIF function in Excel How to import the data from CSV file in Excel How to unlock scroll lock in Excel What is a cell in Excel Uses of MS Excel Shortcut Keys Excel Shortcut Keys Interview Questions Excel Interview HR Interview SQL Interview PL/SQL Interview next ? ? prev How to Convert Number to Words in Excel? Initially, Microsoft Excel was developed to process large data arrays. However, it also created accounting records like invoices, evaluations, or balance sheets quickly and effectively. In more or fewer payment documents, it is necessary to duplicate numeric values with their word form. Excel doesn't have a default function that displays numbers as English words in a worksheet. Still, you can add this capability by pasting the following SpellNumber function code into a VBA (Visual Basic for Applications) module. This function lets you convert dollar and cent amount to words with a formula. For example, 25.50 would read as Twenty Five Dollars and Fifty Cents. This can be very useful if you're using Excel as a template to print checks. So what you need is not just convert numbers to words in Excel (123.45 to one hundred and twenty three, forty five), but spell out dollars and cents ($29.95 to twenty nine dollars and ninety nine cents), pounds and pence for GBP, Euros, and Eurocents for EUR, etc. If you want to convert numeric values to text format without displaying them as words, use the TEXT function as an alternative. Even Excel 2016 doesn't have a built-in tool for spelling numbers, not to mention earlier versions. But that is when Excel is really good. You can always improve its functionality using formulas in all their combinations, VBA macros, or third-party add-ins. If you are looking for the number to text conversion, which means you want Excel to see your number as text, it's a bit different. Usually, you need to change the cell format in Excel, do the following things: Select your range with numbers. Press Ctrl+1on the Number tab and select "Text" in the Category How to Convert Numbers to Words Using SpellNumber VBA Macro Microsoft didn't want to add a tool for the number to words conversion. But they created and published the special VBA macro on their website. You can find the macro mentioned as "spellnumber formula". However, it is not a formula but a macro function or an Excel User-defined function (UDF). The SpellNumber option can write dollars and cents. If you need a different currency, you can change "dollar" and "cent" with your choice. Below you will find a VBA code and follow the following steps, such as: Step 1: Open the workbook where you need to spell the numbers into words. Step 2: Press Alt + F11 to open the Visual Basic Editor window. If you have several books opened, check that the needed workbook is active using the list of projects in the upper left corner of the editor, or one of the workbook elements is highlighted with blue. Step 3: In the editor menu, go to the Insert tab and click on the Module button. Step 4: You will see a window named Module1. Please select all of the code in the frame below and paste it to this window. 
+Option Explicit
+'Main Function
+Function SpellNumber(ByVal MyNumber)
+    Dim Dollars, Cents, Temp
+    Dim DecimalPlace, Count
+    ReDim Place(9) As String
+    Place(2) = " Thousand "
+    Place(3) = " Million "
+    Place(4) = " Billion "
+    Place(5) = " Trillion "
+ 
+    MyNumber = Trim(Str(MyNumber))
+    DecimalPlace = InStr(MyNumber, ".")
+    If DecimalPlace > 0 Then
+        Cents = GetTens(Left(Mid(MyNumber, DecimalPlace + 1) & _
+                  "00", 2))
+        MyNumber = Trim(Left(MyNumber, DecimalPlace - 1))
+    End If
+    Count = 1
+    Do While MyNumber <> ""
+        Temp = GetHundreds(Right(MyNumber, 3))
+        If Temp <> "" Then Dollars = Temp & Place(Count) & Dollars
+        If Len(MyNumber) > 3 Then
+            MyNumber = Left(MyNumber, Len(MyNumber) - 3)
+        Else
+            MyNumber = ""
+        End If
+        Count = Count + 1
+    Loop
+    Select Case Dollars
+        Case ""
+            Dollars = "No Dollars"
+        Case "One"
+            Dollars = "One Dollar"
+         Case Else
+            Dollars = Dollars & " Dollars"
+    End Select
+    Select Case Cents
+        Case ""
+            Cents = " and No Cents"
+        Case "One"
+            Cents = " and One Cent"
+              Case Else
+            Cents = " and " & Cents & " Cents"
+    End Select
+    SpellNumber = Dollars & Cents
+End Function
+ 
+Function GetHundreds(ByVal MyNumber)
+    Dim Result As String
+    If Val(MyNumber) = 0 Then Exit Function
+    MyNumber = Right("000" & MyNumber, 3)
+    ' Convert the hundreds place.
+    If Mid(MyNumber, 1, 1) <> "0" Then
+        Result = GetDigit(Mid(MyNumber, 1, 1)) & " Hundred "
+    End If
+    ' Convert the tens and one's place.
+    If Mid(MyNumber, 2, 1) <> "0" Then
+        Result = Result & GetTens(Mid(MyNumber, 2))
+    Else
+        Result = Result & GetDigit(Mid(MyNumber, 3))
+    End If
+    GetHundreds = Result
+End Function
+ 
+Function GetTens(TensText)
+    Dim Result As String
+    Result = "" ' Null out the temporary function value.
+    If Val(Left(TensText, 1)) = 1 Then   ' If value between 10-19...
+        Select Case Val(TensText)
+            Case 10: Result = "Ten"
+            Case 11: Result = "Eleven"
+            Case 12: Result = "Twelve"
+            Case 13: Result = "Thirteen"
+            Case 14: Result = "Fourteen"
+            Case 15: Result = "Fifteen"
+            Case 16: Result = "Sixteen"
+            Case 17: Result = "Seventeen"
+            Case 18: Result = "Eighteen"
+            Case 19: Result = "Nineteen"
+            Case Else
+        End Select
+    Else ' If value between 20-99...
+        Select Case Val(Left(TensText, 1))
+            Case 2: Result = "Twenty "
+            Case 3: Result = "Thirty "
+            Case 4: Result = "Forty "
+            Case 5: Result = "Fifty "
+            Case 6: Result = "Sixty "
+            Case 7: Result = "Seventy "
+            Case 8: Result = "Eighty "
+            Case 9: Result = "Ninety "
+            Case Else
+        End Select
+        Result = Result & GetDigit _
+            (Right(TensText, 1))  ' Retrieve ones place.
+    End If
+    GetTens = Result
+End Function
+ 
+Function GetDigit(Digit)
+    Select Case Val(Digit)
+        Case 1: GetDigit = "One"
+        Case 2: GetDigit = "Two"
+        Case 3: GetDigit = "Three"
+        Case 4: GetDigit = "Four"
+        Case 5: GetDigit = "Five"
+        Case 6: GetDigit = "Six"
+        Case 7: GetDigit = "Seven"
+        Case 8: GetDigit = "Eight"
+        Case 9: GetDigit = "Nine"
+        Case Else: GetDigit = ""
+    End Select
+End Function
+ Step 5: Press Ctrl + S to save the updated worksheet. You will need to resave your workbook. When you try to save the workbook with a macro, you'll get the message, "The following features cannot be saved in macro-free workbook". Step 6: A VB project dialog box appears. Click on the No button. Step 7: You can save your file as an Excel Macro-Enabled Workbook (.xlsm) to keep your file in its current format. Click on the File tab. Select the Save As option. Click the Save as typedrop-down menu. And in the save as type field, choose the "Excel macro-enabled workbook" file type. Step 8: And click on the Save button to save the file. Disadvantages of Using Macro to SpellNumber in Excel First, you must know VBA to modify the code according to your needs. It is necessary to paste the code for each workbook where you plan to change it. Otherwise, you will need to create a template file with macros and configure Excel to load this file at each start. The main disadvantage of using a macro is if you send the workbook to somebody else, this person will not see the text unless the macro is built into the workbook. And even if it's built-in, they will get an alert that there are macros in the workbook. Next TopicHow to Make a Table in Excel ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,207 @@
+https://www.javatpoint.com/angular-material-tree
+Angular Material Tree - Javatpoint
+Angular Material Tree - Javatpoint ? Home Angular Material AngularJS Angular 8 Angular 7 AWS IoT Control System HTML CSS Aptitude Selenium Kotlin JavaScript Projects Interview Q Comment Forum Angular Material Angular Material Tutorial Angular Material Installation Angular Material Icons Angular Material Inputs Angular Material Widgets Angular Material Buttons Angular Material Checkbox Angular Material Sort Header Angular Material Divider Angular Material List Angular Material Tree Angular Material Dialog next ? ? prev Angular Material-Tree The mat-tree provides the content design, style, tree that is used to display hierarchical data. The tree builds on the CDK tree's foundations and uses the same interface for its data source inputs and templates, except its element and attribute selectors will be prefixed with the material instead of CDs. There are two types of trees: flat trees and nested trees. Flat tree In the flat tree, the hierarchy is flattened; nodes are inside each other, rather they are presented as siblings in sequence. 
+<mat-tree>
+  <mat-tree-node> parent node </mat-tree-node>
+  <mat-tree-node> -- child node1 </mat-tree-node>
+  <mat-tree-node> -- child node2 </mat-tree-node>
+</mat-tree>
+ app.component.html 
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+    {{node.name}}
+  </mat-tree-node>
+
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+    <button mat-icon-button matTreeNodeToggle
+            [attr.aria-label]="'Toggle ' + node.name">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+    {{node.name}}
+  </mat-tree-node>
+</mat-tree>
+ app.module.ts 
+import {FlatTreeControl} from '@angular/cdk/tree';
+import {Component} from '@angular/core';
+import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+interface FoodNode {
+  name: string;
+  children?: FoodNode[];
+}
+const TREE_DATA: FoodNode[] = [
+  {
+    name: 'Fruit',
+    children: [
+      {name: 'Apple'},
+      {name: 'Banana'},
+      {name: 'Fruit loops'},
+    ]
+  }, {
+    name: 'Vegetables',
+    children: [
+      {
+        name: 'Green',
+        children: [
+          {name: 'Broccoli'},
+          {name: 'Brussels sprouts'},
+        ]
+      }, {
+        name: 'Orange',
+        children: [
+          {name: 'Pumpkins'},
+          {name: 'Carrots'},
+        ]
+      },
+    ]
+  },
+];
+
+/** Flat node with expandable and level information */
+interface ExampleFlatNode {
+  expandable: boolean;
+  name: string;
+  level: number;
+}
+
+/**
+ * @title Tree with flat nodes
+ */
+@Component({
+  selector: 'tree-flat-overview-example',
+  templateUrl: 'tree-flat-overview-example.html',
+  styleUrls: ['tree-flat-overview-example.css'],
+})
+export class TreeFlatOverviewExample {
+  private _transformer = (node: FoodNode, level: number) => {
+    return {
+      expandable: !!node.children && node.children.length > 0,
+      name: node.name,
+      level: level,
+    };
+  }
+
+  treeControl = new FlatTreeControl<ExampleFlatNode>(
+      node => node.level, node => node.expandable);
+
+  treeFlattener = new MatTreeFlattener(
+      this._transformer, node => node.level, node => node.expandable, node => node.children);
+
+  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+
+  constructor() {
+    this.dataSource.data = TREE_DATA;
+  }
+
+  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+}
+ Output: Flat trees are usually easy to style and observe. They are also more suited to scrolling variations, such as infinite or virtual scrolling. Nested Tree In the nested tree, children are placed inside their parent node in their DOM. The parent node has an outlet for all children to have a node. 
+<mat-tree>
+   <mat-nested-tree-node>
+     parent node
+     <mat-nested-tree-node> -- child node1 </mat-nested-tree-node>
+     <mat-nested-tree-node> -- child node2 </mat-nested-tree-node>
+   </mat-nested-tree-node>
+</mat-tree>
+ app.component.html 
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+  <!-- This is the tree node template for leaf nodes -->
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+    <li class="mat-tree-node">
+      <!-- use a disabled button to provide padding for tree leaf -->
+      <button mat-icon-button disabled></button>
+      {{node.name}}
+    </li>
+  </mat-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+    <li>
+      <div class="mat-tree-node">
+        <button mat-icon-button matTreeNodeToggle
+                [attr.aria-label]="'Toggle ' + node.name">
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+        {{node.name}}
+      </div>
+      <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+        <ng-container matTreeNodeOutlet></ng-container>
+      </ul>
+    </li>
+  </mat-nested-tree-node>
+</mat-tree>
+ app.component.ts 
+import {NestedTreeControl} from '@angular/cdk/tree';
+import {Component} from '@angular/core';
+import {MatTreeNestedDataSource} from '@angular/material/tree';
+
+/**
+ * Food data with nested structure.
+ * Each node has a name and an optional list of children.
+ */
+interface FoodNode {
+  name: string;
+  children?: FoodNode[];
+}
+
+const TREE_DATA: FoodNode[] = [
+  {
+    name: 'Fruit',
+    children: [
+      {name: 'Apple'},
+      {name: 'Banana'},
+      {name: 'Fruit loops'},
+    ]
+  }, {
+    name: 'Vegetables',
+    children: [
+      {
+        name: 'Green',
+        children: [
+          {name: 'Broccoli'},
+          {name: 'Brussels sprouts'},
+        ]
+      }, {
+        name: 'Orange',
+        children: [
+          {name: 'Pumpkins'},
+          {name: 'Carrots'},
+        ]
+      },
+    ]
+  },
+];
+
+/**
+ * @title Tree with nested nodes
+ */
+@Component({
+  selector: 'tree-nested-overview-example',
+  templateUrl: 'tree-nested-overview-example.html',
+  styleUrls: ['tree-nested-overview-example.css'],
+})
+export class TreeNestedOverviewExample {
+  treeControl = new NestedTreeControl<FoodNode>(node => node.children);
+  dataSource = new MatTreeNestedDataSource<FoodNode>();
+
+  constructor() {
+    this.dataSource.data = TREE_DATA;
+  }
+
+  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
+}
+ app.component.CSS 
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+ Output: Nested trees are easier to work with hierarchical relationships, which is difficult to accomplish with flat nodes. Features <mat-tree> itself relates to the rendering of only one tree structure. Additional features can be built above the tree by adding behavior inside the node template (e.g., padding and toggles). The table's data source will propagate interactions affecting intermittent data (such as expansion/collapse). TreeControl TreeControl controls the state of expansion/collapse of tree nodes. Users can recursively expand/collapse a tree node through tree control. For a nested tree node, the GetChildren function needs to be passed to NestedTreeControl to work smoothly. The getChildren function can return an overview of children for a given node or an array of children. FlatTreeControl needs to be passed for the flattened tree node to make the gatelevel and issandable functions recursive. Toggle To increase or collapse the tree node, a MatTreeNodeToggle will be added to the tree node. The toggle collapse serves the tree control and can extend the tree node by setting [matTreeNodeToggleRecursive] to correct. Nested trees do not require padding as padding can be easily added to the structure of the DOM. Accessibility Trees without text or labels must be given a meaningful label via the area-label. Aria-read-only default to true if it is not set. Mat-Tree does not manage any focus keyboard interactions on its own. Users can add desired keyboard interactions to their applications. Next TopicAngular Material Dialog ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

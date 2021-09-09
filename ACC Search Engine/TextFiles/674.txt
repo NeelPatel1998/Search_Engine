@@ -1,0 +1,127 @@
+https://www.javatpoint.com/typedef-vs-define-in-c
+Difference between typedef and define in C - javatpoint
+Difference between typedef and define in C - javatpoint ? Home C C++ C# Java SQL HTML CSS JavaScript XML Ajax Android Cloud Design Pattern Quiz Projects Interview Q Comment Forum C/C++ Training C Tutorial What is C Language History of C Features of C How to install C First C Program Compilation Process in C printf scanf Variables in C Data Types in c Keywords in c C Identifiers C Operators C Comments C Format Specifier C Escape Sequence ASCII value in C Constants in C Literals in C Tokens in C C Boolean Static in C Programming Errors in C Compile time vs Runtime Conditional Operator in C Bitwise Operator in C 2s complement in C C Fundamental Test C Control Statements C if-else C switch if-else vs switch C Loops C do-while loop C while loop C for loop Nested Loops in C Infinite Loop in C C break C continue C goto Type Casting C Control Statement Test C Functions What is function Call: Value & Reference Recursion in c Storage Classes C Functions Test C Array 1-D Array 2-D Array Return an Array in C Array to Function C Array Test C Pointers C Pointers C Pointer to Pointer C Pointer Arithmetic Dangling Pointers in C sizeof() operator in C const Pointer in C void pointer in C C Dereference Pointer Null Pointer in C C Function Pointer Function pointer as argument in C C Pointers Test C Dynamic Memory Dynamic memory C Strings String in C C gets() & puts() C String Functions C strlen() C strcpy() C strcat() C strcmp() C strrev() C strlwr() C strupr() C strstr() C String Test C Math C Math Functions C Structure Union C Structure typedef in C C Array of Structures C Nested Structure Structure Padding in C C Union C Structure Test C File Handling C File Handling C fprintf() fscanf() C fputc() fgetc() C fputs() fgets() C fseek() C rewind() C ftell() C Preprocessor C Preprocessor C Macros C #include C #define C #undef C #ifdef C #ifndef C #if C #else C #error C #pragma C Preprocessor Test C Command Line Command Line Arguments C Misc C Expressions Data Segments Flow of C Program Classification of Programming Languages Enum in C What is getch() in C What is the function call in C typedef vs define in C C Programming Test C Programming Test C Programs Top 10+ C Programs Fibonacci Series Prime Number Palindrome Number C program to compare the two strings Strings Concatenation in C Factorial Armstrong Number Sum of digits Count the number of digits in C Reverse Number Swap Number Print "Hello" without ; Assembly code in C C program without main Matrix Multiplication Decimal to Binary Number in Characters Alphabet Triangle Number Triangle Fibonacci Triangle Hexadecimal to Binary Hexadecimal to Decimal Octal to Hexadecimal in C Strong number in C Star Program in C itoa Function in C Extra Long Factorials in C Leap year program in C Perfect Number Program in C Variables vs Constants Round Robin Program in C with Output C Program to find the roots of quadratic equation Type Casting vs Type Conversion How to run a C program in Visual Studio Code Modulus Operator in C/C++ Sum of first N natural numbers in C MCQ C language MCQ Math Prime Numbers List Composite Numbers List Square Numbers List Binary Numbers List Fibonacci Numbers List Ounces in a Cup Ounces in a Pound Ounces in a Gallon Ounces in a Liter Ounces in a Pint Ounces in a Quart Ounces in a Tablespoon C Interview C Interview Questions next ? ? prev Difference between typedef and define in C In this topic, we will discuss the difference between typedef and define in C programming language. typedef: A typedef is a keyword used in C programming to define a new name for exiting data types. But it cannot provide a new data type to the predefined data type. Instead, it provides a meaning full names to an already existing data type (int, char, float, etc.). It is defined outside the main() function in a program. In other words, a typedef is used to redefine the names of existing data types in C programming. Syntax 
+typedef data_type newName
+or typedef <existing_name> <alias_name>
+ In the above syntax, the existing _name defines the predefined data types or variable name. The 'alias _name' or newName defines the new name for exiting data type or variable name in the C program. Example 1: Consider a program to use the typedef keyword in C. Type.c 
+#include <stdio.h>
+typedef int Length; // typedef provide the int data type to a new name as Length 
+int main()
+{
+Length num1, num2, sum; // here Length variable is treated as the int data type
+printf(" Enter the first number:");
+scanf(" %d", & num1);
+printf(" Enter the second number:");
+scanf(" %d", & num2);
+sum = num1 + num2;
+printf(" The sum of the two numbers is: %d", sum);
+return 0;
+}
+ Output: 
+Enter the first number: 20
+Enter the second number: 10
+The sum of the two numbers is: 30
+ Example 2: Let's consider another program to use the typedef in unsigned char of C. program.c 
+#include <stdio.h>
+#include <conio.h>
+typedef unsigned char Bit;
+int main()
+{
+Bit B1, B2;
+B1 = 'D';
+B2 = 'E';
+printf( " Demonstrate the use of typedef Keyword ");
+printf (" Print a single Byte: %c", B1);
+printf (" Print a single Byte: %c", B2);
+return 0;
+}
+ Output: 
+Demonstrate the use of typedef Keyword
+Print a single Byte: D
+Print a single Byte: E
+ Use of typedef keyword in Structure Let's consider a program to use the typedef keyword in structure to provide a new name to the struct and initialize the structure variables, as follow: Struct.c 
+#include <stdio.h>
+#include <string.h>
+ 
+typedef struct Students {
+   int roll_no;
+   char name[50];
+   char Subject[60];
+   char teacher_name[80];
+} Stud;
+ 
+int main( ) {
+
+   Stud S1;
+   S1.roll_no = 30;
+   strcpy( S1.name, "Lockie Ferguson");
+   strcpy( S1.Subject, "Mathematics"); 
+   strcpy( S1.teacher_name, "Jasmine");
+   
+ 
+   printf( "Student Roll No: %d\n", S1.roll_no);
+   printf( "Student Name: %s\n", S1.name);
+   printf( "Student Subject: %s\n", S1.Subject);
+   printf( "Student Teacher Name: %s\n", S1.teacher_name);
+
+   return 0;
+}
+ Output: 
+Student Roll No: 30
+Student name: Lockie Fergusion
+Student Subject: Mathematics
+Student Teacher Name: Jasmine
+ In the above program, we use the typedef keyword to define a new name for the struct data type is Students and initialize the variables using it. define A #define is the pre-processor used to represents the constant aliases for various data. It is used to define the constant variable for different data types in C. It is defined outside of the main program. Syntax 
+#define token value
+ In the above syntax, #define is a pre-processor that defines the token as a constant variable name, and the value represents the token value. After initializing the constant variable in the pre-processor, we can use the value using the variable in a program. Example 1: Consider a program to use the #define pre-processor in C. Define.c 
+#include <stdio.h>
+#include <conio.h>
+#define PI 3.14 // define the constant variable 
+void main()
+{
+printf (" Display the PI Constant value using the #define is: %f", PI);
+getch();
+}
+ Output: 
+Display the PI Constant value using the #define is: 3.14
+ Example 2: Consider a program to get the area of a circle in C using the #define pre-processor. Area.c 
+# include <stdio.h>
+#include <conio.h>
+#define PI 3.14 // define the constant variable 
+void main()
+{
+int r, area;
+printf (" Enter the radius of the circle: ");
+scanf ("%d", &r);
+area = PI * r * r;
+printf (" The area of the circle is: %d", area);
+getch();
+}
+ Output: 
+Enter the radius of the circle : 5
+The area of the circle is: 78
+ In the above program, we use PI as a continuous variable using the #define pre-processor. And when the program is executed, the PI value automatically calls in a program. Example 3: Consider a program to demonstrate the importance of typedef over the #define for data types. Pgrm.c 
+#include <stdio.h>
+#include <conio.h>
+typedef char* ptr;
+#define PTR char
+int main()
+{
+ptr x, y, z;
+PTR p, q, r;
+printf (" sizeof x : %d\n", sizeof(x) );
+printf (" sizeof y : %d\n", sizeof(y) );
+printf (" sizeof z : %d\n", sizeof(z) );
+printf (" sizeof p : %d\n", sizeof(p) );
+printf (" sizeof q : %d\n", sizeof(q) );
+printf (" sizeof r : %d\n", sizeof(r) );
+return 0;
+}
+ Output: 
+Sizeof x:8
+Sizeof y:8
+Sizeof z:8
+Sizeof p:8
+Sizeof q:1
+Sizeof r:1
+ Difference between the typedef and the #define in C Following are the differences of the typedef and the #define, as follows: SN Typedef #define 1. Typedef is a keyword in the C programming language. #define is a pre-processor and used as macro used in C programming. 2. It is a keyword used to provide an alternate name to the existing data types only. And that name can be used to initialize the variables in a program. A #define is used to define an alias for values. 3. The compiler performs it. The pre-processor performs it. 4. It uses a semicolon to terminate the statement. It does not use a semicolon to terminate the statement. 5. It defines the actual definition of a new data type. A #define is used to just copy-paste the define values where it calls or uses. 6. It follows the scope rule that defines if a new data type is in scope (inside a function), the new type name will only be visible till the scope of the data type. When the #define pre-processor encounters in a program, it replaces all the occurrence of the variables with the defined values; after that, no scope is followed. 7. Define outside of the main() function. Define outside of the main() function. Next Topic# ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

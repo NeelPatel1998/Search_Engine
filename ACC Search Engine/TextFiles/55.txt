@@ -1,0 +1,143 @@
+https://www.javatpoint.com/java-http-proxy-server
+Java HTTP Proxy Server - Javatpoint
+Java HTTP Proxy Server - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Java HTTP Proxy Server In today's corporate development environment, we have to deal with proxies, usually as system administrators. In most cases, the application will be configured to the system's default setting, but if you want very tight control over your application like proxy setting, for such cases, Java allows APIs. The proxy server is like an intermediate system between the client-side application and other servers. In an enterprise application, which is used to provide control over the user's content across network boundaries. The below image demonstrates the behavior of the proxy server: In this topic, we will understand how to connect through proxy servers in Java. We will follow two approaches to create a connection along with proxy servers in Java. The first approach is an older approach that is JVM-wide and configured with system properties. It is used globally by many developers. The second approach is by using the Proxy class, which provides more control by allowing configuration on the basis of per connection. The Proxy API is available since Java 5.0. However, the old approaches are still valid and can be used with our projects. But the Proxy class approach is more effective and customizable. Advantages of Using Proxy Servers The proxy servers are useful in the following cases: To capture the traffic between a client and server. To control and limit the uploading/downloading the bandwidth to discover the loading of the website with slow connections. To analyze the system reaction when there is trouble in your network. To update the content of a client/server. To create statistics about traffic. System Properties Java supports proxy handlers for different protocols such as FTP, HTTP, HTTPS, and SOCKs. We can define an individual proxy for an individual handler as the hostname and port number. The following system properties are available in Java proxy configuration: proxyHost: It defines the hostname for the HTTP proxy server. proxyPort: It defines the port number for the HTTP proxy server The port property is an optional property it will be set to defaults to 80 if not provided. nonProxyHosts : It defines a pipe-delimited ("|") for the available host patterns for which we want to bypass the proxy. It can be applied to both the HTTP and HTTPS handlers. SocksProxyHost: It defines the SOCKS proxy server's hostname. SocksProxyPort: It defines the SOCKS proxy server's port number. Note: We may start or end a host pattern using a wildcard character ("*") in the case of nonProxyHosts. But on the Windows platform, it is necessary to remove the "|" delimiter. The list of all available proxy system properties can be found Here. Using a Global Setting Java provides several system properties that we have discussed above to configure the JVM-wide behavior. These properties are easy to implement for a particular use case. We can also set the necessary properties using the command line while invoking the JVM. There is an alternative way to do so, and they can be set by calling the System.setProperty() method at runtime. Let's understand how to set them using the command line: Set Proxy Using the Command Line We can also set the proxy properties using the command line arguments. To define the proxies using the command line, pass the settings as system properties as follows: 
+java -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=3020 com.javatpoint.networking.proxies.CommandLineProxyDemo
+ By starting process in this way, we can use openConnection() method on the URL without doing any further effort as follows: 
+URL url = new URL(RESOURCE_URL);
+URLConnection con = url.openConnection();
+ Set Proxy Using the System.setProperty() Method If we face difficulty while using the command line, there is an alternative way to do so by using the System.setProperty() method. To set the Proxy using this method, define it within our program as follows: 
+System.setProperty("http.proxyHost", "127.0.0.1");
+System.setProperty("http.proxyPort", "3020");
+URL url = new URL(RESOURCE_URL);
+URLConnection con = url.openConnection();
+// ...
+ Later, we can unset the system properties, and if we want, then they will be removed from our application. To unset the system property, make it null by defining it within our program as follows: 
+System.setProperty("http.proxyHost", null);
+ The Global setting has some limitations; here, the concept of Proxy API came into the picture. Let's discuss the limitations of the Global setting: Limitations of Global Configuration Approach The Global Configuration approach is the simplest way to define the proxy, but this approach has some limitations. This approach provides the implementation on the JVM-wide, so the settings define for a particular protocol are active for the life of the JVM or until we unset them manually. To get over this limitation, it may be attractive to flip the settings on and off, if needed. But, it would be necessary to ensure the measures to protect against concurrency issues in a multi-threaded program. So, as an alternative, the Proxy API is more efficient and provides more control over proxy configuration. Set Proxy Using the Proxy API The Java Proxy class provides a convenient way to configure proxies on the basis of the connection. If we set the proxy using the Proxy class, it will override the existing JVM-wide proxy setting. There are three types of proxies that can be defined by using Proxy.Type() method of Proxy class: HTTP proxy (using the HTTP protocol) SOCKS proxy (using the SOCKS protocol) DIRECT proxy ( It is an explicitly configured direct connection without a proxy). Let's understand these proxies: 1) HTTP Proxy To use an HTTP proxy, wrap the SocketAddress instance with proxy and provide type as Proxt.Type.HTTP. Now, we can simply pass the proxy instance to URLConnection.openConnection(). Consider the below code: 
+URL weburl = new URL(URL_STRING);
+Proxy webProxy 
+  = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 3020));
+HttpURLConnection webProxyConnection 
+  = (HttpURLConnection) weburl.openConnection(webProxy);
+ Now, we'll connect to URL_STRING but then route that connection through a proxy server hosted at 127.0.0.1:3020. 2) DIRECT Proxy The Direct Proxy is useful for connecting directly to a host. In this case, we have to explicitly bypass a proxy that may be configured globally by using the static "proxy.NO_PROXY" instance. Internally, the Proxy API creates a new proxy instance using the Proxy.Type.Direct type. Consider the below code: 
+HttpURLConnection directConnection 
+  = (HttpURLConnection) weburl.openConnection(Proxy.NO_PROXY);
+ Basically, if there is no globally configured proxy, then this will work the same as calling openConnection() with no arguments. 3) Socks Proxy The Socks proxy works in a similar way to HTTP variant while dealing with URLConnection. In Socks proxy, first we wrap a SocketAddress instance with a Proxy using the Proxy.Type.SOCKS type. After that, the Proxy instance is passed to URLConnection.openConnection. Consider the below code: 
+Proxy socksProxy 
+  = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("127.0.0.1", 1080));
+HttpURLConnection socksConnection 
+  = (HttpURLConnection) weburl.openConnection(socksProxy);
+ We can also use a SOCKs proxy when connecting to a TCP socket. In order to do so, we need to use the Proxy instance to create a Socket. After that, the destination SocketAddress instance is passed to Socket.connect() method. Consider the below code: 
+Socket proxySocket = new Socket(socksProxy);
+InetSocketAddress socketHost 
+  = new InetSocketAddress(SOCKET_SERVER_HOST, SOCKET_SERVER_PORT);
+proxySocket.connect(socketHost);
+ Java Program to Create a Simple Proxy Server TestProxyServer.java: 
+import java.io.*;
+import java.net.*;
+public class TestProxyServer {
+  public static void main(String[] args) throws IOException {
+    try {
+      String host = "Proxy Server";
+      int remoteport = 1025;
+      int localport = 1026;
+      // Printing a start-up message
+      System.out.println("Starting proxy for " + host + ":" + remoteport
+          + " on port " + localport);
+      // And start running the server
+      runServer(host, remoteport, localport); // never returns
+    } 
+    catch (Exception e) 
+    {
+      System.err.println(e); //Prints the standard errors
+    }
+  }
+
+  /**
+   * It will run a single-threaded proxy server on
+   * the provided local port.
+   */
+  public static void runServer(String host, int remoteport, int localport)
+      throws IOException {
+    // Creating a ServerSocket to listen for connections with
+    ServerSocket s = new ServerSocket(localport);
+    final byte[] request = new byte[1024];
+    byte[] reply = new byte[4096];
+    while (true) {
+      Socket client = null, server = null;
+      try {
+        // It will wait for a connection on the local port
+        client = s.accept();
+        final InputStream streamFromClient = client.getInputStream();
+        final OutputStream streamToClient = client.getOutputStream();
+
+        // Create a connection to the real server.
+        // If we cannot connect to the server, send an error to the
+        // client, disconnect, and continue waiting for connections.
+        try {
+          server = new Socket(host, remoteport);
+        } catch (IOException e) {
+          PrintWriter out = new PrintWriter(streamToClient);
+          out.print("Proxy server cannot connect to " + host + ":"
+              + remoteport + ":\n" + e + "\n");
+          out.flush();
+          client.close();
+          continue;
+        }
+
+        // Get server streams.
+        final InputStream streamFromServer = server.getInputStream();
+        final OutputStream streamToServer = server.getOutputStream();
+
+        // a thread to read the client's requests and pass them
+        // to the server. A separate thread for asynchronous.
+        Thread t = new Thread() {
+          public void run() {
+            int bytesRead;
+            try {
+              while ((bytesRead = streamFromClient.read(request)) != -1) {
+                streamToServer.write(request, 0, bytesRead);
+                streamToServer.flush();
+              }
+            } catch (IOException e) {
+            }
+
+            // the client closed the connection to us, so close our
+            // connection to the server.
+            try {
+              streamToServer.close();
+            } catch (IOException e) {
+            }
+          }
+        };
+
+        // Start the client-to-server request thread running
+        t.start();
+        // Read the server's responses
+        // and pass them back to the client.
+        int bytesRead;
+        try {
+          while ((bytesRead = streamFromServer.read(reply)) != -1) {
+            streamToClient.write(reply, 0, bytesRead);
+            streamToClient.flush();
+          }
+        } catch (IOException e) {
+        }
+        // The server closed its connection to us, so we close our
+        // connection to our client.
+        streamToClient.close();
+      } catch (IOException e) {
+        System.err.println(e);
+      } finally {
+        try {
+          if (server != null)
+            server.close();
+          if (client != null)
+            client.close();
+        } catch (IOException e) {
+        }
+      }
+    }
+  }
+}
+ Output: Next TopicJava Static Constructor ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

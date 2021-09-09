@@ -1,0 +1,191 @@
+https://www.javatpoint.com/angular-material-dialog
+Angular Material Dialog - Javatpoint
+Angular Material Dialog - Javatpoint ? Home Angular Material AngularJS Angular 8 Angular 7 AWS IoT Control System HTML CSS Aptitude Selenium Kotlin JavaScript Projects Interview Q Comment Forum Angular Material Angular Material Tutorial Angular Material Installation Angular Material Icons Angular Material Inputs Angular Material Widgets Angular Material Buttons Angular Material Checkbox Angular Material Sort Header Angular Material Divider Angular Material List Angular Material Tree Angular Material Dialog next ? ? prev Angular Material Dialog The MatDialog service is used to open dialogs with content design, styling, and animations. MatDialogRef provides a handle to the open dialog. 
+let dialogRef = dialog.open(UserProfileComponent, {
+  height: '400px',
+  width: '600px',
+});
+ It is used to close the dialog and receive notifications to close the dialog. Any notification observatory will be completed when the dialogue closes. 
+dialogRef.afterClosed().subscribe(result => {
+  console.log(`Dialog result: ${result}`); // Pizza!
+});
+
+dialogRef.close('Pizza!');
+ Components created by MatDialog can inject MatDialogRef and close the dialog where they are contained. Anoptional result value can be provided when closing. The result is forwarded as further observation. 
+@Component({/* ... */})
+export class YourDialog {
+  constructor(public dialogRef: MatDialogRef<YourDialog>) { }
+  closeDialog() {
+    this.dialogRef.close('Pizza!');
+  }
+}
+ Configuring Dialog Content via entryComponents MatDialog installs components at run-time, but the Angular compiler needs additional information to create the components required for your dialog component. To load any component into a dialog, you should include the component class in your NgModule definition in the computer list. Hence, the Angular compiler knows that how to create a component for NgModule. 
+@NgModule({
+  imports: [
+// ...
+    MatDialogModule
+  ],
+  declarations: [
+    AppComponent,
+    ExampleDialogComponent
+  ],
+  entryComponents: [
+    ExampleDialogComponent
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+ Specifying Global Configuration Defaults Default dialog options are specified by providing an instance of MatDialogConfig for mat_dialog_default_optionsin the root module. 
+@NgModule({
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ]
+})
+ If you are using a template dialog (TemplateRef), the data will be available in the template: 
+<ng-template let-data>
+  Hello, {{data.name}}
+</ng-template>
+ app.component.html 
+<buttonmat-button (click)="openDialog()">Open dialog</button>
+ app.component.ts 
+import {Component, Inject} from'@angular/core';
+import {MatDialog, MAT_DIALOG_DATA} from'@angular/material/dialog';
+exportinterface DialogData {
+animal: 'panda' | 'unicorn' | 'lion';
+}
+/**
+ * @title Injecting data when opening a dialog
+ */
+@Component({
+selector: 'dialog-data-example',
+templateUrl: 'dialog-data-example.html',
+})
+exportclassDialogDataExample{
+constructor(public dialog: MatDialog) {}
+
+openDialog() {
+this.dialog.open(DialogDataExampleDialog, {
+data: {
+animal: 'panda'
+      }
+    });
+  }
+}
+
+@Component({
+selector: 'dialog-data-example-dialog',
+templateUrl: 'dialog-data-example-dialog.html',
+})
+exportclassDialogDataExampleDialog{
+constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+}
+ dialog-data-example-dialog.html 
+<h1mat-dialog-title>Favourite Animal</h1>
+<divmat-dialog-content>
+  My favourite animal is:
+<ul>
+<li>
+<span *ngIf="data.animal === 'panda'">?</span> Panda
+</li>
+<li>
+<span *ngIf="data.animal === 'unicorn'">?</span> Unicorn
+</li>
+<li>
+<span *ngIf="data.animal === 'lion'">?</span> Lion
+</li>
+</ul>
+</div>
+ Output: When we click on the Open dialog button it shows the following dialog box. Dialog content Some directives are available to make easier the dialog content: Name Description <mat-dialog-title> Dialog title is applied on a heading element (for example <h1>, <h2>) <mat-dialog-content> It is the primary scrollable content of the dialog. <mat-dialog-actions> Container for the action button at the bottom of the dialog. For example: 
+<h2 mat-dialog-title>Delete all elements?</h2>
+<mat-dialog-content>It will delete all elements that are on the page and cannot be undone.</mat-dialog-content>
+<mat-dialog-actions>
+<button mat-button mat-dialog-close>Cancel</button>
+<!-- The mat-dialog-close directive accepts a value as a result for the dialog.>
+<button mat-button [mat-dialog-close]="true">Delete</button>
+</mat-dialog-actions>
+ Once a dialog opens the dialog focus on the tabular element. We can control the element with the tab index attribute. 
+<button mat-button tabindex="-1">Not Tabbable</button>
+ Accessibility By default, each dialog has a role = "dialog" on the parent element. When opening, the role can be changed to alertdialog via MatDialogConfig. The attributes described by aria-labeled, aria-labelledby, and aria can all be set to the dialog element via MatDialogConfig as well. Each dialog has been a label set via aria-labeled. The content dialog uses a focus trap to prevent users from tabbing into background elements. Once a dialog is closed, it will focus on the focused element before the dialog opens. Focus management The first table element within the dialog will gain focus in the open. The tabbing through the dialog elements will focus on the dialog element, returning to the first tubular element when the tab reaches the end of the sequence. Focus restoration The dialogue focuses on the element that was focused on the opening of the dialogue. The pre-centered element is not present in the DOM, such as menu items. You can then manually focus on subscribing after the observation on MatDialogRef. 
+const dialogRef = this.dialog.open(DialogFromMenuExampleDialog, {restoreFocus: false});
+dialogRef.afterClosed().subscribe(() => this.menuTrigger.focus());
+ Keyboard Interaction By default pressing the escape key will close the dialog. User should generally refrain from doing while this behaviour can be turned off via the disable option, so because it breaks the expected interaction patterns for screen-reader users. Let's see an example. app.component.html 
+<ol>
+<li>
+<mat-form-field>
+<mat-label>What's your name?</mat-label>
+<inputmatInput [(ngModel)]="name">
+</mat-form-field>
+</li>
+<li>
+<buttonmat-raised-button (click)="openDialog()">Pick one</button>
+</li>
+<li *ngIf="animal">
+    You chose: <i>{{animal}}</i>
+</li>
+</ol>
+ app.component.ts 
+import {Component, Inject} from'@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from'@angular/material/dialog';
+
+exportinterface DialogData {
+animal: string;
+  name: string;
+}
+
+/**
+ * @title Dialog Overview
+ */
+@Component({
+selector: 'dialog-overview-example',
+templateUrl: 'dialog-overview-example.html',
+})
+exportclassDialogOverviewExample{
+
+animal: string;
+  name: string;
+
+constructor(public dialog: MatDialog) {}
+
+  openDialog(): void {
+const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+width: '250px',
+data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+console.log('The dialog was closed');
+this.animal = result;
+    });
+  }
+
+}
+
+@Component({
+selector: 'dialog-overview-example-dialog',
+templateUrl: 'dialog-overview-example-dialog.html',
+})
+exportclassDialogOverviewExampleDialog{
+
+constructor(
+public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+this.dialogRef.close();
+  }
+
+}
+ dialog-overview-example-dialog.html 
+<h1mat-dialog-title>Hi {{data.name}}</h1>
+<divmat-dialog-content>
+<p>What's your favorite animal?</p>
+<mat-form-field>
+<mat-label>Favorite Animal</mat-label>
+<inputmatInput [(ngModel)]="data.animal">
+</mat-form-field>
+</div>
+<divmat-dialog-actions>
+<buttonmat-button (click)="onNoClick()">No Thanks</button>
+<buttonmat-button [mat-dialog-close]="data.animal"cdkFocusInitial>Ok</button>
+</div>
+ Output: Next Topic# ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,148 @@
+https://www.javatpoint.com/fuzzywuzzy-python-library
+FuzzyWuzzy Python Library - Javatpoint
+FuzzyWuzzy Python Library - Javatpoint ? Home Python If Else For Loop Function Array String Regex List Set Tuple Dictionary Lambda Function Modules Programs Tkinter Numpy Interview Questions Python Tutorial Python Tutorial Python Features Python History Python Applications Python Install Python Example Python Variables Python Data Types Python Keywords Python Literals Python Operators Python Comments Python If else Python Loops Python For Loop Python While Loop Python Break Python Continue Python Pass Python Strings Python Lists Python Tuples Python List Vs Tuple Python Sets Python Dictionary Python Functions Python Built-in Functions Python Lambda Functions Python Files I/O Python Modules Python Exceptions Python Date Python Regex Python Sending Email Read CSV File Write CSV File Read Excel File Write Excel File Python Assert Python List Comprehension Python Collection Module Python Math Module Python OS Module Python Random Module Python Statistics Module Python Sys Module Python IDEs Python Arrays Command Line Arguments Python Magic Method Python Stack & Queue PySpark MLlib Python Decorator Python Generators Web Scraping Using Python Python JSON Python Itertools Python Multiprocessing Python OOPs Python OOPs Concepts Python Object Class Python Constructors Python Inheritance Abstraction in Python Python MySQL Environment Setup Database Connection Creating New Database Creating Tables Insert Operation Read Operation Update Operation Join Operation Performing Transactions Python MongoDB Python MongoDB Python SQLite Python SQLite Python Questions How to install Python in Windows How to reverse a string in Python How to read CSV file in Python How to run Python Program How to take input in Python How to convert list to string in Python How to append element in the list How to compare two lists in Python How to convert int to string in Python How to create a dictionary in Python How to create a virtual environment in Python How to declare a variable in Python How to install matplotlib in Python How to install OpenCV in Python How to print in same line in Python How to read JSON file in Python How to read a text file in Python How to use for loop in Python Is Python scripting language How long does it take to learn Python How to concatenate two strings in Python How to connect Database in Python How to convert list to dictionary in Python How to declare a global variable in Python How to reverse a number in Python What is an object in Python Which is the fastest implementation of Python How to clear Python shell How to create a DataFrames in Python How to develop a game in Python How to install Tkinter in Python How to plot a graph in Python How to print pattern in Python How to remove an element from a list in Python How to Round number in Python How to sort a dictionary in Python Strong Number in Python How to Convert Text to Speech in Python Bubble Sort in Python Logging in Python Insertion Sort in Python Binary Search in Python Linear Search in Python Python vs Scala Queue in Python Stack in Python Heap Sort in Python Palindrome program in python Program of Cumulative sum in python Merge Sort in Python Python Matrix Python Unit Testing Forensics & Virtualization Best Books to Learn Python Best Books to Learn Django GCD of two number in python Python Program to generate a Random String How to One Hot Encode Sequence Data in Python How to write square root in Python Pointer in Python Python 2D array Python Memory Management Python Libraries for Data Visualization How to call a function in Python Git Modules in Python Top Python Frameworks for Gaming Python Audio Modules Wikipedia Module in Python Python random randrange() Permutation and Combination in Python Getopt module in Python Merge two Dictionaries in Python Multithreading in Python 3 Static in Python How to get the current date in Python argparse in Python Python tqdm Module Caesar Cipher in Python Tokenizer in Python How to add two lists in Python Shallow Copy and Deep Copy in Python Atom Python Contains in Python Label Encoding in Python Django vs. Node JS Python Frameworks How to create a vector in Python using NumPy Pickle Module of Python How to convert Bytes to string in Python Python Program to Find Anagram How to convert List to Set Python vs JavaScript Python Holidays Module FuzzyWuzzy Python Library Dask Python Python Tkinter (GUI) Python Tkinter Tkinter Button Tkinter Canvas Tkinter Checkbutton Tkinter Entry Tkinter Frame Tkinter Label Tkinter Listbox Tkinter Menubutton Tkinter Menu Tkinter Message Tkinter Radiobutton Tkinter Scale Tkinter Scrollbar Tkinter Text Tkinter Toplevel Tkinter Spinbox Tkinter PanedWindow Tkinter LabelFrame Tkinter MessageBox Python Web Blocker Introduction Building Python Script Script Deployment on Linux Script Deployment on Windows Python MCQ Python MCQ Related Tutorials NumPy Tutorial Django Tutorial Flask Tutorial Pandas Tutorial Pytorch Tutorial Pygame Tutorial Matplotlib Tutorial OpenCV Tutorial Openpyxl Tutorial Python CGI Python Design Pattern Python Programs Python Programs next ? ? prev FuzzyWuzzy Python Library In this tutorial, we will learn how we can match the string using the Python built-in fuzzyWuzzy library and determine how they are similar using various examples. Introduction Python provides a few methods to compare two strings. A few main methods are given below. Using Regex Simple Compare Using dfflib But there is another method that can be effectively used for comparison, known as fuzzywuzzy. This method is quite effective in differentiating the two strings referring to the same thing, but they are written slightly differently. Sometimes we need a program that can automatically identify wrong spelling. It is a process of finding strings that match a given pattern. It uses Levenshtein Distance to calculate the difference between sequences. This library can help map databases that lack a common key, such as joining two tables by company name, and these appear differently in both tables. Example Let's see the following example. 
+Str1 = "Welcome to Javatpoint"
+Str2 = "Welcome to Javatpoint"
+Result = Str1 == Str2
+print(Result)
+ Output: 
+True
+ The above code returns true because strings are matched an exactly (100 %), what if we make the change in str2. 
+Str1 = "Welcome to Javatpoint"
+Str2 = "welcome to Javatpoint"
+Result = Str1 == Str2
+print(Result)
+ Output: 
+False
+ Here the above code returns the false, and strings are pretty identical to the human eyes, but not for the interpreter. However, we can solve this problem by converting both strings to lower case. 
+Str1 = "Welcome to Javatpoint"
+Str2 = "welcome to Javatpoint"
+Result = Str1.lower() == Str2.lower()
+print(Result)
+ Output: 
+True
+ But if we make changes in charset, we will get another problem. 
+Str1 = "Welcome to javatpoint."
+Str2 = "Welcome to javatpoint"
+Result = Str1.lower() == Str2.lower()
+print(Result) 
+ Output: 
+True
+ To resolve such types of problems, we need more effective tools to compare the strings. And fuzzywuzzy is the best tool to calculate the strings. The Levenshtein Distance The levenshtein distance is used to calculate the distance between two sequences of words. It calculates the minimum number edits that we need to change in the given string. These edits can be insertion, deletions or substitution. Example - 
+import numpy as np
+
+def levenshtein_distance (s1, t1, ratio_calculation = False):
+
+    # Initialize matrix of zeros
+    rows = len(s1)+1
+    cols = len(t1)+1
+    calc_distance = np.zeros((rows,cols),dtype = int)
+
+    # Populate matrix of zeros with the indeces of each character of both strings
+    for i in range(1, rows):
+        for k in range(1,cols):
+            calc_distance[i][0] = i
+            calc_distance[0][k] = k
+
+    for col in range(1, cols):
+        for row in range(1, rows):
+            if s1[row-1] == t1[col-1]:
+                cost = 0
+                if ratio_calculation == True:
+                    cost = 2
+                else:
+                    cost = 1
+            calc_distance[row][col] = min(calc_distance[row-1][col] + 1,      # Cost of deletions
+                                 calc_distance[row][col-1] + 1,          # Cost of insertions
+                                 calc_distance[row-1][col-1] + cost)     # Cost of substitutions
+    if ratio_calculation == True:
+        # Computation of the Levenshtein calc_distance Ratio
+        Ratio = ((len(s)+len(t)) - calc_distance[row][col]) / (len(s)+len(t))
+        return Ratio
+    else:
+        return "The strings are {} edits away".format(calc_distance[row][col])
+ We will use the above function in the earlier example where we were trying to compare "Welcome to javatpoint." to "Welcome to javatpoint". We can see both strings are likely to same because Levensthtein's length is small. 
+Str1 = "Welcome to Javatpoint"
+Str2 = "welcome to Javatpoint"
+Distance = levenshtein_distance(Str1,Str2)
+print(Distance)
+Ratio = levenshtein_distance(Str1,Str2,ratio_calc = True)
+print(Ratio)
+ The FuzzyWuzzy Package The name of this library something weird and funny, but it is advantageous. It has a unique way to compare both strings and returns the score out of 100 of how much string is matched. To work with this library, we need to install it in our Python environment. Installation We can install this library using the pip command. 
+pip install fuzzywuzzy
+ 
+Collecting fuzzywuzzy
+  Downloading fuzzywuzzy-0.18.0-py2.py3-none-any.whl (18 kB)
+Installing collected packages: fuzzywuzzy
+Successfully installed fuzzywuzzy-0.18.0
+ Now type the following command and press enter. 
+pip install python-Levenshtein
+ Let's understand the following methods of fuzzuwuzzy library Fuzz Module The fuzz module is used to compare the two given string at a time. It returns a score out of 100 after comparison using the different methods. Fuzz.ratio() It is one of the important methods of fuzz module. It compares the string and score on the basis of how much the given string are matched. Let's understand the following example. Example - 
+from fuzzywuzzy import fuzz
+Str1 = "Welcome to Javatpoint"
+Str2 = "welcome to javatpoint"
+Ratio = fuzz.ratio(Str1.lower(),Str2.lower())
+print(Ratio)
+ Output: 
+100
+ As we can see in the above code, the fuzz.ratio() method returned the score which means there is very slight difference between the strings. Fuzz.partial_ratio() The fuzzywuzzy library provides another powerful method - partial_ratio(). It is used to handle the complex string comparison such as substring matching. Let's see the following example. Example - 
+#importing the module from the fuzzywuzzy library
+from fuzzywuzzy import fuzz
+
+str1 = "Welcome to Javatpoint"
+str2 = "tpoint"
+Ratio = fuzz.ratio(str1.lower(),str2.lower())
+Ratio_partial = fuzz.partial_ratio(str1.lower(),str2.lower())
+print(Ratio)
+print(Ratio_partial)
+ Output: 
+44
+100
+ Explanation: The partial_ratio() method can detect the substring. Thus, it yields a 100% similarity. It follows the optimal partial logic where the short length string k and longer string m, the algorithm finds the best matching length k-substring. Fuzz.token_sort_ratio This method does not guarantee to get an accurate result because if we make the changes in the order of string. It may not give an accurate result. But fuzzywuzzy module provides the solution. Let's understand the following example. Example - 
+str1 = "united states v. nixon"
+str2 = "Nixon v. United States"
+Ratio = fuzz.ratio(str1.lower(),str2.lower())
+Ratio_Partial = fuzz.partial_ratio(str1.lower(),str2.lower())
+Ratio_Token = fuzz.token_sort_ratio(str1,str2)
+print(Ratio)
+print(Ratio_Partial)
+print(Ratio_Token)
+ Output: 
+59
+74
+100
+ Explanation: In the above code, we have used token_sort_ratio() method which provides an advantage over partial_ratio. In this method, string token sorted alphabetically and joined together. But there is another situation such as what if the strings are widely different in the length. Let's understand the following example. Example - 
+str1 = "The supreme court case of Democratic vs Congress"
+str2 = "Congress v. Democratic"
+Ratio = fuzz.ratio(str1.lower(),str2.lower())
+Partial_Ratio = fuzz.partial_ratio(str1.lower(),str2.lower())
+Token_Sort_Ratio = fuzz.token_sort_ratio(str1,str2)
+Token_Set_Ratio = fuzz.token_set_ratio(str1,str2)
+print(Ratio)
+print(Partial_Ratio)
+print(Token_Sort_Ratio)
+print(Token_Set_Ratio)
+ Output: 
+40
+64
+61
+95
+ In the above code, we have used another method called fuzz.token_set_ratio() that performs a set operation and takes out the common token and then makes ratio() pairwise comparison. The intersection of the sorted token is always the same because the substring or smaller string consists of larger chunks of the original string or remaining token is closer to each other. The fuzzywuzzy package provides the process module that allows us to calculate the string with the highest similarity. Let's understand the following example. Example - 
+from fuzzywuzzy import process
+strToMatch = "Hello Good Morning"
+givenOpt = ["hello","Hello Good","Morning","Good Evenining"]
+ratios = process.extract(strToMatch,givenOpt)
+print(ratios)
+# We can choose the string that has highest matching percentage
+high = process.extractOne(strToMatch,givenOpt)
+print(high)
+ Output: 
+[('hello', 90), ('Hello Good', 90), ('Morning', 90), ('Good Evenining', 59)]
+('hello', 90)
+ The above code will return the highest matching percentage of given string list. Fuzz.WRatio The process module also provides the WRatio, which gives a better result than the simple ratio. It handles lower and upper cases and some other parameters too. Let's understand the following example. Example - 
+from fuzzywuzzy import process
+fuzz.WRatio('good morning', 'Good Morning')
+fuzz.WRatio('good morning!!!','good Morning')
+ Output: 
+100
+ Conclusion In this tutorial, we have discussed how to match the string and determine how closely they are. We have illustrated the simple example but they are enough to clear that how computer treats the mismatched strings. Many real-life applications such as spell checking, bioinformatics to match, DNA sequence etc. are based on the fuzzy logic. Next TopicDask Python ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

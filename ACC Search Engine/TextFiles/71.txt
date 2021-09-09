@@ -1,0 +1,41 @@
+https://www.javatpoint.com/types-of-applets-in-java
+Types of Applets in Java - Javatpoint
+Types of Applets in Java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Types of Applets in Java A special type of Java program that runs in a Web browser is referred to as Applet. It has less response time because it works on the client-side. It is much secured executed by the browser under any of the platforms such as Windows, Linux and Mac OS etc. There are two types of applets that a web page can contain. Local Applet Remote Applet Let's understand both types of Applet one by one: Local Applet Local Applet is written on our own, and then we will embed it into web pages. Local Applet is developed locally and stored in the local system. A web page doesn't need the get the information from the internet when it finds the local Applet in the system. It is specified or defined by the file name or pathname. There are two attributes used in defining an applet, i.e., the codebase that specifies the path name and code that defined the name of the file that contains Applet's code. Specifying Local applet 
+<applet
+    codebase = "tictactoe"
+    code = "FaceApplet.class"
+    width = 120
+    height = 120>
+</applet>
+ Let's take an example of Local applet to understand how we can create it and embedded it into web page. First, we will create a Local Applet for embedding in a web page. After that, we will add that Local Applet to the web page. FaceApplet.java 
+//Import packages and classes
+import java.applet.*;
+import java.awt.*;
+import java.util.*;
+import java.awt.event.*;
+//Creating FaceApplet class that extends Applet
+public class FaceApplet extends Applet
+{
+	//paint() method starts
+	public void paint(Graphics g){
+		//Creating graphical object
+		g.setColor(Color.red);  
+		g.drawString("Welcome", 50, 50);  
+		g.drawLine(20, 30, 20, 300);  
+		g.drawRect(70, 100, 30, 30);  
+		g.fillRect(170, 100, 30, 30);  
+		g.drawOval(70, 200, 30, 30);  
+		g.setColor(Color.pink);  
+		g.fillOval(170, 200, 30, 30);  
+		g.drawArc(90, 150, 30, 30, 30, 270);  
+		g.fillArc(270, 150, 30, 30, 0, 180);   
+	} 
+}
+ Execute the above code by using the following commands: Remote Applet A remote applet is designed and developed by another developer. It is located or available on a remote computer that is connected to the internet. In order to run the applet stored in the remote computer, our system is connected to the internet then we can download run it. In order to locate and load a remote applet, we must know the applet's address on the web that is referred to as Uniform Recourse Locator(URL). Specifying Remote applet 
+<applet
+    codebase = "http://www.myconnect.com/applets/"
+    code = "FaceApplet.class"
+    width = 120
+    height =120>
+</applet>
+ Difference Between Local Applet and Remote Applet The following table describes the key differences between Local applet and Remote applet. Local Applet Remote Applet There is no need to define the Applet's URL in Local Applet. We need to define the Applet's URL in Remote Applet. Local Applet is available on our computer. Remote Applet is not available on our computer. In order to use it or access it, we don't need Internet Connection. In order to use it or access it on our computer, we need an Internet Connection. It is written on our own and then embedded into the web pages. It was written by another developer. We don't need to download it. It is available on a remote computer, so we need to download it to our system. Next TopicVisitor Design Pattern Java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

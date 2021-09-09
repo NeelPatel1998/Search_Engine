@@ -1,0 +1,63 @@
+https://www.javatpoint.com/bootstrap-4-jumbotron
+Bootstrap 4 Jumbotron - Javatpoint
+Bootstrap 4 Jumbotron - Javatpoint ? Home Bootstrap 4 Bootstrap HTML JavaScript jQuery jQuery UI CSS XML JSON C Java PHP Ajax Quiz Projects Interview Q Bootstrap 4 Tutorial Bootstrap 4 Tutorial Environment setup Bootstrap 4 Layout Bootstrap 4 Buttons Bootstrap 4 Dropdown Bootstrap 4 Spinners Bootstrap 4 Badges Bootstrap 4 Progress Bars Bootstrap 4 Jumbotron Bootstrap 4 Text Bootstrap 4 Pagination Bootstrap 4 Carousel Bootstrap 4 Scrollspy next ? ? prev Bootstrap 4 - Jumbotron What is meant by Jumbotron in Bootstrap 4? In Bootstrap 4, Jumbotron can be defined as a huge grey box that can be used to draw attention to the content or any special information. In other words, a Jumbotron is a light weighted and flexible component that can be used to showcase the important or essential information in a web page or website. In addition to that, a user can put any kind of valid HTML, that also includes the other Bootstrap elements or classes. In order to create a jumbotron, the class .jumbotron is used inside a <div>. Basic Jumbotron: A basic Jumbotron has a simple styling, the syntax for a Basic Jumbotron is given below: Syntax: 
+<div class="jumbotron">
+  <h1>Welcome to JavaTpoint</h1>
+  <p> The Best Portal to Learn Technologies </p>
+</div>
+ The Sample Code for a Basic Jumbotron is given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="jumbotron">
+<h1>Welcome to JavaTpoint</h1>      
+<p>JavaTpoint is one of the best portals to learn about various new and in - demand technologies.</p>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>      
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>      
+</div>
+</body>
+</html>
+ Test it Now The Output for the above sample code will be: Full - Width Jumbotron: When a user wants to create a full - width jumbotron. A user will need to add the .jumbotron-fluid and .container or .container-fluid classes which can be used to create a full-width jumbotron without rounded borders. The syntax of a full - width Jumbotron is given below. Syntax: 
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Welcome to JavaTpoint</h1>
+    <p> The Best Portal to Learn Technologies </p>
+  </div>
+</div>
+ The Sample Code for Full - Width Jumbotron is given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron jumbotron-fluid">
+<div class="container">
+<h1>Welcome to JavaTpoint</h1>      
+<p>JavaTpoint is one of the best portals to learn about various new and in - demand technologies.</p>
+</div>
+</div>
+<div class="container">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>      
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>      
+</div>
+</body>
+</html>
+ Test it Now The Output for the above sample code is given below: Next TopicBootstrap 4 Text ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

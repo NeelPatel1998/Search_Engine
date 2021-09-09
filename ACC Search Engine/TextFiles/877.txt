@@ -1,0 +1,224 @@
+https://www.javatpoint.com/bootstrap-4-progress-bars
+Bootstrap 4 Progress Bars - Javatpoint
+Bootstrap 4 Progress Bars - Javatpoint ? Home Bootstrap 4 Bootstrap HTML JavaScript jQuery jQuery UI CSS XML JSON C Java PHP Ajax Quiz Projects Interview Q Bootstrap 4 Tutorial Bootstrap 4 Tutorial Environment setup Bootstrap 4 Layout Bootstrap 4 Buttons Bootstrap 4 Dropdown Bootstrap 4 Spinners Bootstrap 4 Badges Bootstrap 4 Progress Bars Bootstrap 4 Jumbotron Bootstrap 4 Text Bootstrap 4 Pagination Bootstrap 4 Carousel Bootstrap 4 Scrollspy next ? ? prev Bootstrap 4 - Progress Bars What is meant by Progress Bars? In Bootstrap 4, Progress Bars can be used to display to the audience of the website that how far has the progress come in a certain process. Progress bars can be simply defined as a kind of bar that fills up in accordance to the percentage of progress made in completing or achieving a certain task. Therefore, it is given the name "progress bar." It is important because it shows the audience how much progress had been made in a task. There are various styles of Progress bars that can be applied to a web page, those styles are listed below: Basic Progress Bars Different heights in Progress Bars Labels in Progress Bars Different Colors in Progress Bars Striped Progress Bars Animated Progress Bars Stacked Progress Bars Basic Progress Bars: In order to create a basic progress bar, a user has to include a .progress class to a container element and also include the .progress-bar class to its child element. The Example for Basic Progress Bars will be: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h2>Basic Progress Bar</h2>
+<div class="progress">
+<div class="progress-bar" style="width:70%"></div>
+</div>
+</div>
+</body>
+</html>
+ Test it Now The Output for code given above will be: Different Heights of Progress Bars: In Bootstrap 4, the height of the progress bar is 16px by default. However, a user can utilize the CSS height property to modify the height. But at the same time, a user has to set the same height for the progress container and the progress bar. The Example for Different Heights of Progress Bars is given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h2>Different Heights of Progress Bar</h2>
+<div class="progress" style="height:10px">
+<div class="progress-bar" style="width:40%;height:10px"></div>
+</div>
+<br>
+<div class="progress" style="height:20px">
+<div class="progress-bar" style="width:50%;height:20px"></div>
+</div>
+<br>
+<div class="progress" style="height:30px">
+<div class="progress-bar" style="width:60%;height:30px"></div>
+</div>
+</div>
+</body>
+</html>
+ Test it Now The Output for the above code will be: Labels in Progress Bars: A user can also include some kind of text in the progress bars. The Example for Labels in Progress Bars is given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h2>Labels in Progress Bar</h2>
+<div class="progress">
+<div class="progress-bar" style="width:90%">90%</div>
+</div>
+</div>
+</body>
+</html>
+ Test it Now The Output for the above code will be: Different Colors in Progress Bars: The color of the progress bar in Bootstrap 4 by default is the color "blue". However, with the help of using contextual classes, the color of the progress bars can be modified for different purposes. The Example for Different Colors in Progress Bars is given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h2>Different Colors of Progress Bars</h2>
+ 
+<!-- Blue -->
+<div class="progress">
+<div class="progress-bar" style="width:10%"></div>
+</div><br>
+ 
+<!-- Green -->
+<div class="progress">
+<div class="progress-bar bg-success" style="width:20%"></div>
+</div><br>
+ 
+<!-- Turquoise -->
+<div class="progress">
+<div class="progress-bar bg-info" style="width:30%"></div>
+</div><br>
+ 
+<!-- Orange -->
+<div class="progress">
+<div class="progress-bar bg-warning" style="width:40%"></div>
+</div><br>
+ 
+<!-- Red -->
+<div class="progress">
+<div class="progress-bar bg-danger" style="width:50%"></div>
+</div><br>
+ 
+<!-- White -->
+<div class="progress border">
+<div class="progress-bar bg-white" style="width:60%"></div>
+</div><br>
+ 
+<!-- Grey -->
+<div class="progress">
+<div class="progress-bar bg-secondary" style="width:70%"></div>
+</div><br>
+ 
+<!-- Light Grey -->
+<div class="progress border">
+<div class="progress-bar bg-light" style="width:80%"></div>
+</div><br>
+ 
+<!-- Dark Grey -->
+<div class="progress">
+<div class="progress-bar bg-dark" style="width:90%"></div>
+</div>
+</div>
+</body>
+</html>
+ Test it Now The Output for the above code will be: Striped Progress Bars: In Bootstrap 4, a user can also create Striped Progress Bars. The class .progress-bar-striped can be used to add stripes to the progress bars. The Example for Striped Progress Bars is given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h2>Striped Progress Bars</h2> 
+<div class="progress">
+<div class="progress-bar progress-bar-striped" style="width:30%"></div>
+</div>
+<br>
+<div class="progress">
+<div class="progress-bar bg-success progress-bar-striped" style="width:40%"></div>
+</div>
+<br>
+<div class="progress">
+<div class="progress-bar bg-info progress-bar-striped" style="width:50%"></div>
+</div>
+<br>
+<div class="progress">
+<div class="progress-bar bg-warning progress-bar-striped" style="width:60%"></div>
+</div>
+<br>
+<div class="progress">
+<div class="progress-bar bg-danger progress-bar-striped" style="width:70%"></div>
+</div>
+</div>
+</body>
+</html>
+ Test it Now The Output for the above code will be: Animated Progress Bars: The .progress-bar-animated class can be used animate the progress bar. The animation enhances the look of the website. The Example for Animated Progress Bars is given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h2>Animation in Progress Bar</h2> 
+<div class="progress">
+<div class="progress-bar progress-bar-striped progress-bar-animated" style="width:40%"></div>
+</div>
+</div>
+</body>
+</html>
+ Test it Now The Output for the above code will be: Stacked Progress Bars: A user can also merge one or more progress bars in Bootstrap 4. The Example for Stacked Progress Bars is given below: 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h2>Stacked Progress Bars</h2> 
+<div class="progress">
+<div class="progress-bar bg-success" style="width:50%">
+Free Space
+</div>
+<div class="progress-bar bg-warning" style="width:10%">
+Used Space
+</div>
+<div class="progress-bar bg-danger" style="width:20%">
+Danger space
+</div>
+</div>
+</div>
+</body>
+</html>
+ Test it Now The Output for the above code will be: Next TopicBootstrap 4 Jumbotron ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

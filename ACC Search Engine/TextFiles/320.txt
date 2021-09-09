@@ -1,0 +1,147 @@
+https://www.javatpoint.com/find-unique-elements-in-array-java
+Find unique elements in array Java - Javatpoint
+Find unique elements in array Java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Find unique elements in array Java In Java, an array is a collection of elements of the same data type. An array doesn't restrict us from entering the same or repeated elements in it. So, many times we need to get the distinct elements from the array. In Java, there is more than one way to find unique elements from an array which are as follows: By storing all the elements to the hashmap's key. By using nested loop. By using sorting. By using hashing. By using hashmap's key In Java, the simplest way to get unique elements from the array is by putting all elements of the array into hashmap's key and then print the keySet(). The hashmap contains only unique keys, so it will automatically remove that duplicate element from the hashmap keySet. Let's take an example to understand how the hashmap's key is used to get the distinct element. UniqueElementsExample1.java 
+//import classes and packages
+import java.util.HashMap; 
+
+//create UniqueElementsExample1 class to get distinct element from the array
+class UniqueElementsExample1 { 
+	//main() method starts
+    public static void main(String args[]) 
+	{ 
+        //create an integer array having some duplicate elements 
+		int arrayWithDuplicates[] = { 10, 3, 5, 3, 9, 22, 4, 3, 1, 5, 6 };
+
+		//create a hashmap having integer type of key-value
+        HashMap<Integer,Integer> hashmap = new HashMap<Integer,Integer>(); 
+		
+		//use for loop to pull the elements of array to hashmap's key
+        for (int j = 0; j < arrayWithDuplicates.length; j++) { 
+            hashmap.put(arrayWithDuplicates[j], j); 
+        } 
+        // use hashmap.keySet() for printing all keys of hashmap using it's keySet() method 
+        System.out.println(hashmap.keySet()); 
+  
+    } 
+}
+ Output By using nested loop Another simple approach to getting distinct elements from the given array is by using the nested loop. The inner and outermost loop plays a very important role in this strategy. The outermost loop takes an element one by one from the leftmost side of the array. The innermost loop compares it with the right-side of this element. If it matches, we skip it else, print or store it into another array that contains the distinct element. Let's take an example to understand how this strategy works in Java: UniqueElementsExample2.java 
+//import classes and packages which are required 
+import java.io.*; 
+
+//create UniqueElementsExample1 class to get distinct element from the array  
+class UniqueElementsExample2 { 
+	//main() method starts
+    public static void main (String[] args)  
+    { 
+        //create an integer array having some duplicate elements 
+		int arrayWithDuplicates[] = { 10, 3, 5, 3, 9, 22, 4, 3, 1, 5, 6 };
+		
+        //calculate length of the arrayWithDuplicates array 
+		int len = arrayWithDuplicates.length; 
+		
+		//create an integer array to store distinct elements 
+		int[] distinctArray = new int[20];
+		
+		//integer variable to increment array index
+		int index = 0;
+		
+		// outermost loop to take element one by one from the leftmost side
+        for (int i = 0; i < len; i++) 
+        { 
+            int flag = 0;
+			//innermost loop to make comparision between elemnts and skip duplicate elements
+            for (int j = 0; j < i; j++){
+				if (arrayWithDuplicates[i] == arrayWithDuplicates[j]){ 
+					flag = 1;
+					break; 
+				}
+			}
+			//store or print the element if it is not present in the distinctArray
+			if (flag == 0){ 
+				distinctArray[index] = arrayWithDuplicates[i];
+				index++;	//increment index value
+			}
+		}
+		//print distinctArray 
+		for(int i = 0; i < index; i++)
+			System.out.print( distinctArray[i] + " "); 
+	}		
+    
+} 
+ Output By using sorting The solution we have discussed before has O(n2) time complexity, but we have another solution that has less complexity than the previous one. We can get the distinct elements from the array by performing a sorting algorithm. This solution has O(nLogn) time complexity. In order to get the distinct element from the array, we will first sort the array in ascending or descending order so that each element's occurrence becomes consecutive. After that, we will traverse that sorted array using the loop and skip all the consecutive repeated elements' index. Let's take an example to understand how we can get the distinct element from the array by using the sorting algorithm. UniqueElementsExample3.java 
+//import classes and packages which are required 
+import java.io.*; 
+import java .util.*; 
+
+//create UniqueElementsExample1 class to get distinct element from the array  
+class UniqueElementsExample3 { 
+	//main() method starts
+    public static void main (String[] args)  
+    { 
+        //create an integer array having some duplicate elements 
+		int arrayWithDuplicates[] = { 10, 3, 5, 3, 9, 22, 4, 3, 1, 5, 6 };
+		
+        //perform sorting to sort arrayWithDuplicates
+		Arrays.sort(arrayWithDuplicates);
+		
+		//calculate length of the sorted array
+		int len = arrayWithDuplicates.length;
+		
+		//create an integer array to store distinct elements 
+		int[] distinctArray = new int[20];
+		
+		//integer variable to increment array index
+		int index = 0;
+
+		
+		//use for loop to traverse the arrayWithDuplicates
+		for(int i = 0; i < len; i++){
+			//we will skip the index until there are duplicates ahead
+			 while (i < len - 1 && arrayWithDuplicates[i] == arrayWithDuplicates[i + 1]) 
+                i++;
+			
+			//store element in the distinctArray
+			distinctArray[index] = arrayWithDuplicates[i];
+			index++;
+		}
+		
+		//print distinctArray 
+		for(int i = 0; i < index; i++)
+			System.out.print( distinctArray[i] + " "); 
+	}		
+    
+} 
+ Output By using hashing There is another way to get the distinct element from the array, i.e., hashing. By using the hashing, we can get a distinct element in O(n). We traverse the array from which we want to get the distinct element. We perform traversing from left to right, and in the hash table, we keep the record of the visited element. Let's implement the code to understand how hashing is used to get the distinct element from the array. UniqueElementsExample4.java 
+//import classes and packages which are required
+import java.util.*; 
+
+//create UniqueElementsExample1 class to get distinct element from the array 
+class UniqueElementsExample4
+{ 
+
+    // main() method starts
+    public static void main (String[] args) 
+    { 
+        //create an integer array having some duplicate elements 
+		int arrayWithDuplicates[] = { 10, 3, 5, 3, 9, 22, 4, 3, 1, 5, 6 };
+			
+		//calculate length of the arrayWithDuplicates 
+		int len = arrayWithDuplicates.length;
+
+		// Creates an empty hashset to store distinct elements
+        HashSet<Integer> hashset = new HashSet<>(); 
+  
+        // travers the arrayWithDuplicates array to store elements in the hashset
+        for (int i = 0; i < len; i++) 
+        { 
+            // check whether the element is present in the hashset or not. If it is not present in the hashset, add in it. 
+            if (!hashset.contains(arrayWithDuplicates[i])) 
+            { 
+                hashset.add(arrayWithDuplicates[i]); 
+            } 
+        } 
+        //print hash set that contains distinct element
+        System.out.print(hashset); 
+	} 
+}
+ Output All the above-discussed methods are used to get the distinct elements from the array. All the methods have different time complexity to get the distinct element. All the methods play an important role in different scenarios. Next TopicHighest precedence in Java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

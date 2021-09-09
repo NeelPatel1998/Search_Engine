@@ -1,0 +1,53 @@
+https://www.javatpoint.com/multiple-file-upload-using-dropzone-js-in-php
+Multiple File Upload using Dropzone JS in PHP - javatpoint
+Multiple File Upload using Dropzone JS in PHP - javatpoint ? Home PHP MySQL Laravel WordPress Magento 2 CodeIgniter YII C Java HTML CSS JavaScript jQuery Quiz Projects Interview Q Comment Forum Training PHP Training PHP Tutorial PHP Tutorial Install PHP PHP Code PHP Echo PHP Print PHP Echo vs Print PHP Variable PHP Variable Scope PHP $ and $$ PHP Constants PHP Magic Constants PHP Data Types PHP Operators PHP Comments Control Statement PHP If else PHP Switch PHP For Loop PHP foreach loop PHP While Loop PHP Do While Loop PHP Break PHP Continue PHP Programs 20 PHP Programs PHP Functions PHP Functions Parameterized Function PHP Call By Value PHP Call By Reference PHP Default Arguments PHP Variable Arguments PHP Recursive Function PHP Arrays PHP Array PHP Indexed Array PHP Associative Array Multidimensional Array PHP Array Functions PHP Strings PHP String PHP String Functions PHP Math PHP Math Functions PHP Form PHP Form: Get Post PHP Include PHP include & require State Management PHP Cookie PHP Session PHP File PHP File Handling PHP Open File PHP Read File PHP Write File PHP Append File PHP Delete File Upload Download PHP File Upload PHP Download File PHP Misc require_once include_once MVC Architecture PHP vs. JavaScript PHP vs. HTML PHP vs. Node.js PHP vs Python PhpStorm PHP PDO Top 10 PHP frameworks phpMyAdmin Count All Array Elements Create Newline Get Current Page URL Remove First Element from Array Remove Last Element from Array Change Date Format Get IP Address PHP MySql Login System var_dump() function PHP Regular Expressions preg_match() function preg_replace() function isset() function print_r() function Types of Errors in PHP Display All Errors PHP error_reporting PHP header() PHP unset() function Get & Post Methods Form Validation Exception Handling in PHP PHP try-catch PHP Pagination What is a Website How to make a website How to cite a website in APA format How to cite a website in MLA format How to download video from the website PHP array_push break vs continue in PHP How to Install Composer on Windows PHPMyAdmin Login PHP alert Creation of custom php.ini file in CPanel Downgrade php 7.4 to 7.3 Ubuntu Multiple File Upload using Dropzone JS in PHP PHP Mail PHP Mail PHP MySQLi MySQLi CONNECT MySQLi CREATE DB MySQLi CREATE Table MySQLi INSERT MySQLi UPDATE MySQLi DELETE MySQLi SELECT MySQLi Order by PHP JSON PHP JSON Example PHP OOPs Concepts OOPs Concepts OOPs Abstract Class OOPs Abstraction OOPs Access Specifiers OOPs Const Keyword OOPs Constructor OOPs Destructor Abstract vs Class vs Interface Encapsulation Final Keyword OOPs Functions OOPs Inheritance OOPs Interface OOPs Overloading OOPs Type Hinting PHP Topics Compound Types PHP Float PHP Integer is_null() Function Special Types PHP Boolean Special Types Inheritance Task Special Types PHP Encryption Two-way Encryption Heredoc Syntax Related Tutorials MySQL Tutorial WordPress Tutorial CodeIgniter Tutorial YII Tutorial Laravel Tutorial Magento 2 Tutorial Interview Questions PHP Interview WordPress Interview Joomla Interview Drupal Interview next ? ? prev Multiple File Upload using Dropzone JS in PHP In this section, we are going to use Dropzone JS to upload more than one file. When we use our project or website, it always needs the function which can upload multiple images or make more than one file. It does not look good if we use multiple inputs which will upload the images. In fact, the user of our website also does not like it. So we must try to make it better. Now the days every website has the feature of image uploading. But if we use the framework of PHP like Yii, Codeigniter, Laravel, etc, or PHP, it will be great to use the Dropzone JS library. It is a JavaScript library, and it is open source. Using this library, we can easily drag and drop more than one file uploading. The use of the Dropzone JS library is very easy. This library provides us the facility of validation such as specific extensions, max file upload, etc. In the given example, we will explain the use of dropzone.js to upload more than one image and build more than one file. In our example, we will also build a better layout by using the bootstrap. The step to upload images and build files is as follows: Create a file named index.php Create a file named upload.php Create a folder named upload We can upload the image by using the given step-by-step process. We have described three steps, which are able to provide full knowledge of image upload. In our below example, we will import by using the dropzone.js cdn. If we want to download it, we can do it in our local. The steps to upload images are as follows: Step 1: In this step, we are going to create index.php file. We will use root folder to create this file. In order to perform this, we are going to use the following code and put it on index.php file. The CDN is used in this file for JS, JQuery, Bootstrap and Dropzone CSS, which is described as follows: index.php 
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Multiple Image upload using dropzone.js in PHP </title>
+	<script src="http://demo.javatpoint.com/plugin/jquery.js"></script>
+	<link rel="stylesheet" href="http://demo.javatpoint.com/plugin/bootstrap-3.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2> Multiple Image Upload using dropzone.js in PHP </h2>
+			<form action="upload.php" enctype="multipart/form-data" class="dropzone" id="image-upload">
+				<div>
+					<h3>Upload Multiple Image By Click On Box</h3>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	Dropzone.options.imageUpload = {
+        maxFilesize:1,
+        acceptedFiles: ".jpeg,.jpg,.png,.gif"
+    };
+</script>
+
+</body>
+</html>
+ Step 2: In this step, we are going to create upload.php file. We will use the root folder to create this file. This file will write the code of image upload, which is described as follows: upload.php 
+<?php
+
+$uploadDir = 'uploads';
+
+if (!empty($_FILES)) {
+ $tmpFile = $_FILES['file']['tmp_name'];
+ $filename = $uploadDir.'/'.time().'-'. $_FILES['file']['name'];
+ move_uploaded_file($tmpFile,$filename);
+}
+
+?>
+ Step 3: This is the last step, and in this step, we are going to create upload folder. In our example, we need to store images. That's why we will create an upload folder. Uploads can also have different names. We should also be careful to change on upload.php file. Now our above example is ready to run. So we will use our root folder to run the following command. 
+php -S localhost:8000
+ Now, we will use our browser and open the URL, which is described as follows: 
+http://localhost:8000
+ When we open this URL on our browser, we will get some output, which is described as follows: Next Topic# ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

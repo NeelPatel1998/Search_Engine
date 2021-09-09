@@ -1,0 +1,85 @@
+https://www.javatpoint.com/sunny-number-in-java
+Sunny Number in Java - Javatpoint
+Sunny Number in Java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Sunny Number in Java In this section, we will learn what is sunny numbers and how to create a Java program to find the sunny numbers. We will also create a Java program to find all the sunny numbers between the specified range. Sunny Number A number is called a sunny number if the number next to the given number is a perfect square. In other words, a number N will be a sunny number if N+1 is a perfect square. Let's understand it through an example. Sunny Number Example Suppose, we have to check if 80 is a sunny number or not. Given, N=80 then N+1 will be 80+1=81, which is a perfect square of the number 9. Hence 80 is a sunny number. Let's take another number 10. Given, N=10 then N+1 will be 10+1=11, which is not a perfect square. Hence 10 is not a sunny number. Steps to Find Sunny Number The logic is very simple. To find the sunny number, we need only to check whether N+1 is the perfect square or not. Read or initialize a number (num). Add 1 to the given number i.e. num+1. Find the square root of num+1. If the square root is an integer, the given number is sunny, else not a sunny number. Let's implement the above steps in a Java program. Sunny Number Java Program SunnyNumberExample1.java 
+import java.util.*; 
+public class SunnyNumberExample1
+{ 
+//driver code 
+public static void main(String args[]) 
+{ 
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter a number to check: ");
+//reading a number from the user
+int N=sc.nextInt();
+//calling user-defined function 
+isSunnyNumber(N); 
+}     
+//function checks whether the given is a perfect square or not 
+static boolean findPerfectSquare(double num) 
+{ 
+//finds the square root of the ggiven number
+double square_root = Math.sqrt(num); 
+//if square root is an integer 
+return((square_root - Math.floor(square_root)) == 0); 
+} 
+//function that checks whether the given number is Sunny or not
+static void isSunnyNumber(int N) 
+{ 
+//checks N+1 is perfect square or not
+if (findPerfectSquare(N + 1)) 
+{ 
+System.out.println("The given number is a sunny number."); 
+} 
+//executes if N+1 is not a perfect square
+else
+{ 
+System.out.println("The given number is not a sunny number."); 
+} 
+} 
+}
+ Output 1: 
+Enter a number to check: 80
+The given number is a sunny number.
+ Output 2: 
+Enter a number to check: 670
+The given number is not a sunny number.
+ Let's create another Java program and find all the sunny numbers between a given range. SunnyNumberExample2.java 
+import java.util.Scanner;
+public class SunnyNumberExample2
+{
+//user-defined function that determines all the sunny numbers
+public static boolean isSunnyNumber(int number) 
+{
+//determines the square root of number+1 using Math.sqrt() method
+if(Math.sqrt(number+1)%1 == 0)
+return true;
+else 
+return false;
+}
+//driver code
+public static void main(String args[]) 
+{
+//lr is lower range and ur is upper range
+int lr = 0, ur = 0;
+Scanner scan = new Scanner(System.in);
+System.out.print("Enter lower range: ");
+//reads an integer (lr) from the user
+lr = scan.nextInt();
+System.out.print("Enter upper range: ");
+//reads an integer (ur) from the user
+ur = scan.nextInt();
+System.out.println("The Sunny number from "+ lr + " to "+ ur+" are: ");
+for(int i=lr; i<=ur; i++) 
+{
+//calling user-defined number
+if(isSunny(i))
+System.out.print(i +" ");
+}
+}
+}
+ Output: 
+Enter lower range: 1
+Enter upper range: 1000
+The Sunny number from 1 to 1000 are: 
+3 8 15 24 35 48 63 80 99 120 143 168 195 224 255 288 323 360 399 440 483 528 575 624 675 728 783 840 899 960
+ Next TopicTech Number in Java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

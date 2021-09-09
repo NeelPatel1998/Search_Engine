@@ -1,0 +1,35 @@
+https://www.javatpoint.com/angular-material-installation
+Angular Material Installation - Javatpoint
+Angular Material Installation - Javatpoint ? Home Angular Material AngularJS Angular 8 Angular 7 AWS IoT Control System HTML CSS Aptitude Selenium Kotlin JavaScript Projects Interview Q Comment Forum Angular Material Angular Material Tutorial Angular Material Installation Angular Material Icons Angular Material Inputs Angular Material Widgets Angular Material Buttons Angular Material Checkbox Angular Material Sort Header Angular Material Divider Angular Material List Angular Material Tree Angular Material Dialog next ? ? prev Angular Material Installation Angular Material provides UI components that work in mobile, web, and desktop too. Angular Material is used to develop the process by reusability of common components like Cards, inputs, Data Tables, etc. We require the following to install Angular Node.js npm Angular CLI IDE for writing the code Node.js should be greater than 8.11, and npm should be greater than 5.6. Node.js Type node -v in the terminal to check the Node.js is installed on your system or not. It will help you to see the version of Node.js which is installed in our system. 
+C:\>node -v
+v8.11.3
+ If the command does not shows any result for the command., it means you have not installed Node. js correctly. To install Node.js, go through the link https://nodejs.org/en/download/ and download the version which is suitable for your OS. Install the package based on your Operating System. When nodejs is installed, npm will also get installed with it. Type npm -v in the terminal to check if npm is installed or not in our system. It displays the version of npm. 
+C:\>npm -v
+5.6.0
+ Angular installations are easy with the help of Angular CLI. Visit https://cli.angular.io/ to get the reference of the command. Type npm install -g @angular/cli to install Angular CLI on your system. Angular CLI provides the interface as shown above. We can also use IDE such as, WebStorm, Atom, Visual Studio Code, etc. Installing Angular Material Step 1: Install the Angular CLI Install the Angular CLI by using npm: 
+ npm install -g @angular/cli
+ Step 2: Create a workspace for Angular Project Create a workspace: 
+ng new angular-material-app
+ Step 3: Install Angular Material, Angular CDK, and Angular Animations 
+npm install @angular/material @angular/cdk @angular/animations --save
+ The add command will update by using the Angular CLI, perform configuration changes, and execute initialization code. 
+ng add @angular/material
+ Step 4: Configure animations 
+@NgModule({ imports: [BrowserAnimationsModule], }) export class AppModule { }
+ Step 5: Import the Angular Material component modules Import the component modules that are required for the application. Examples 
+import { MatAutocompleteModule, MatCheckboxModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatRadioModule, MatSelectModule, MatSlideToggleModule, MatSliderModule  } from '@angular/material'; @NgModule({ imports: [ MatAutocompleteModule, MatCheckboxModule, MatButtonModule, MatFormFieldModule, MatDatepickerModule, MatRadioModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatSlideToggleModule ]})
+ Examples: Checkbox 
+<mat-checkbox>Check </mat-checkbox>
+ Radio Button 
+<mat-radio-group> <mat-radio-button value="1">Male</mat-radio-button> <mat-radio-button value="2">Female</mat-radio-button> </mat-radio-group>
+ Input 
+<mat-form-field class="col-12"> <input matInput placeholder="Name" value="Tudip"> </mat-form-field>
+ Button 
+<button mat-raised-button>Click it</button>
+ Card 
+<mat-card>Material Card</mat-card> 
+ Output: Step 6: Gesture Support The components (mat-slider, matTooltip, mat-slide-toggle) believe on HammerJS for using gestures. 
+npm install hammerjs --save
+ Install HammerJS, then import it on the 'main.ts' file. 
+import 'hammerjs';
+ Next TopicAngular Material Icons ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,186 @@
+https://www.javatpoint.com/executor-framework-java
+Executor Framework Java - Javatpoint
+Executor Framework Java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Executor Framework Java A framework having a bunch of components that are used for managing worker threads efficiently is referred to as Executor Framework. The Executor API reduces the execution of the task from the actual task to be executed through the Executors. The executor framework is an implementation of the Producer-Consumer pattern. The java.util.concurrent.Executors class provides a set of methods for creating ThreadPools of worker threads. In order to use the executor framework, we have to create a thread pool for executing the task by submitting that task to that thread pool. Now, the question which comes to our mind is why we have to create such thread pools when we already have the java.lang.Thread class for creating an object and Runnable/Callable interface for achieving parallelism by implementing them. So, the reason for creating such thread pools are as follows: We need to create a large number of threads for adding a new thread without any throttling for each and every process. Due to which it requires more memory and cause wastage of resource. When each thread is swapped, the CPU starts to spend too much time. When we create a new thread for executing a new task cause overhead of thread creation. In order to manage this thread life-cycle, the execution time increase respectively. Types of Executors In Java, there are different types of executors available which are as follows: 1) SingleThreadExecutor The SingleThreadExecutor is a special type of executor that has only a single thread. It is used when we need to execute tasks in sequential order. In case when a thread dies due to some error or exception at the time of executing a task, a new thread is created, and all the subsequent tasks execute in that new one. 
+ExecutorService executor = Executors.newSingleThreadExecutor()
+ 2) FixedThreadPool(n) FixedThreadPool is another special type of executor that is a thread pool having a fixed number of threads. By this executor, the submitted task is executed by the n thread. In case when we need to execute more tasks after submitting previous tasks, they store in the LinkedBlockingQueue until previous tasks are not completed. The n denotes the total number of thread which are supported by the underlying processor. 
+ExecutorService executor = Executors.newFixedThreadPool(4);
+ 3) CachedThreadPool The CachedThreadPool is a special type of thread pool that is used to execute short-lived parallel tasks. The cached thread pool doesn't have a fixed number of threads. When a new task comes at a time when all the threads are busy in executing some other tasks, a new thread creates by the pool and add to the executor. When a thread becomes free, it carries out the execution of the new tasks. Threads are terminated and removed from the cached when they remain idle for sixty seconds. 
+ExecutorService executor = Executors.newCachedThreadPool();
+ 4) ScheduledExecutor The ScheduledExecutor is another special type of executor which we use to run a certain task at regular intervals. It is also used when we need to delay a certain task. 
+ScheduledExecutorService scheduledExecService = Executors.newScheduledThreadPool(1);
+ The scheduleAtFixedRate and scheduleWithFixedDelay are the two methods that are used to schedule the task in ScheduledExecutor. The scheduleAtFixedRate method executes the task with a fixed interval when the previous task ended. The scheduleWithFixedDelay method starts the delay count after the current task complete. The main difference between these two methods is their interpretation of the delay between successive executions of a scheduled job. Both the methods are used in the following way: 
+scheduledExecService.scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit)
+ 
+scheduledExecService.scheduleWithFixedDelay(Runnable command, long initialDelay, long period, TimeUnit unit)
+ Let's take an example to understand how executors are actually used to execute a task. We will simply create a task and try to execute it by the simple executor and ThreadPoolExecutor one by one. Task1.java 
+//creating Task1 class that implements the Runnable interface
+public class Task1 implements Runnable {
+	
+	//initialize threadNo variable 
+    private String threadNo;
+    
+	//using constructor to set value to the threadNo variable
+    public Task1(String no){
+        this.threadNo = no;
+    }
+	
+	//using run() method by overriding it
+    @Override
+    public void run() {
+		//printing thread information 
+        System.out.println(Thread.currentThread().getName()+" start execution. Thread No = "+threadNo);
+		
+		//calling processThread() method for processing thread
+        processThread();
+		
+		//printing a statement to show the end of the thread
+        System.out.println(Thread.currentThread().getName()+" stop execution.");
+    }
+	
+	//creating processThread() method to execute thread
+    private void processThread() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+	
+	//overriding toString() method 
+    @Override
+    public String toString(){
+        return this.threadNo;
+    }
+}
+ SimpleExecutor.java 
+//importing classes 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+//creating SimpleExecutor class
+public class SimpleExecutor {
+	//main() method start
+    public static void main(String[] args) {
+        //creating an object of ExecutorService with fixed thread pool 5
+		ExecutorService executorService = Executors.newFixedThreadPool(5);
+        for (int j = 0; j < 5; j++) {
+            //creating instance of the Task1 class and pass a value to its constructor 
+			Runnable task = new Task1("" + j);
+			
+			//executing task using execute() method of the executor
+            executorService.execute(task);
+          }
+		//closing executor
+        executorService.shutdown();
+        
+		while (!executorService.isTerminated()) {
+        }
+		System.out.println("Finished all threads");
+    }
+}
+ Output: Let's take an example of ThreadPoolExecutor to understand how it is different from the SimpleExecutor. RejectedExecutionHandlerDemo.java The RejectedExecutionHandlerDemo class is used for handling the jobs that are rejected from the worker queue. When the limit of the thread pool size reach, RejectedExecutionHandler handles those jobs that cannot fit in the worker thread. We will implement the RejectedExecutionHandler.java class in the following way: 
+//importing RejectedExecutionHandler, and ThreadPoolExecutor classes 
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
+
+//creating RejectedExecutionHandlerDemo class to handle rejected execution
+public class RejectedExecutionHandlerDemo implements RejectedExecutionHandler {
+
+    //defining abstract method of RejectedExecutionHandler class
+	@Override
+    public void rejectedExecution(Runnable runnableObject, ThreadPoolExecutor executorObjet) {
+        //printing the rejected thread
+		System.out.println(runnableObject.toString() + " is rejected");
+    }
+
+}
+ NewTask.java We create the NewTask.java class to create a thread that monitors the executor and prints its information at a certain time interval. There are several methods available in the ThreadPoolExecutor class that is used to get the current state of the executor, number of active threads, number of tasks, and pool size. We create the monitor thread in the following way: 
+//importing ThreadPoolExecutor class
+import java.util.concurrent.ThreadPoolExecutor;
+
+//creating NewTask class that implements the Runnable interface
+public class NewTask implements Runnable
+{
+    private ThreadPoolExecutor exe;//creating a private variable of type ThreadPoolExecutor
+    private int delay; //creating a private variable of type integer for delay
+    private boolean run = true; //creating a private boolean variable to determine whether 
+	
+	//using constructor to set the value to the exe and delay variable
+    public NewTask(ThreadPoolExecutor exe, int delay)
+    {
+		this.exe = exe;
+        this.delay = delay;
+    }
+	
+	//creating shutdown() method to update the value of the boolean variable run 
+    public void shutdown(){
+        this.run = false;
+    }
+	
+	//overriding the run() method of the Runnable interface
+    @Override
+    public void run()
+    {
+		//running task
+        while(run){
+                System.out.println(
+                    String.format("[monitor [%d/%d] Number of active threads = %d, Number of completed tasks = %d, Number of tasks = %d, Shutdown = %s, Terminated = %s",
+                        this.exe.getPoolSize(),
+                        this.exe.getCorePoolSize(),
+                        this.exe.getActiveCount(),
+                        this.exe.getCompletedTaskCount(),
+                        this.exe.getTaskCount(),
+                        this.exe.isShutdown(),
+                        this.exe.isTerminated()));
+                try {
+                    Thread.sleep(this.delay*1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+        }
+            
+    }
+}
+ ThreadPoolExecutorExample.java It is used to create the thread pool using the ThreadPoolExecutor. 
+//importing classes required for implementing ThreadPoolExecutor
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+//creating ThreadPoolExecutorExample to execute task
+public class ThreadPoolExecutorExample {
+	
+	//main method start
+    public static void main(String args[]) throws InterruptedException{
+        
+		//creating an instance of the RejectedExecutionHandlerExample class
+        RejectedExecutionHandlerDemo rejectionHandlerObj = new RejectedExecutionHandlerDemo();
+        
+		//creating an instance of the ThreadFactory class
+        ThreadFactory t1 = Executors.defaultThreadFactory();
+        
+		//creating an instance of the ThreadPoolExecutor class
+        ThreadPoolExecutor exePool = new ThreadPoolExecutor(2, 4, 10, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(2), t1, rejectionHandlerObj);
+        
+		//starting the NewTask thread
+		NewTask task = new NewTask(exePool, 3);
+        Thread th = new Thread(task);
+        th.start();
+        //submit job to the pool
+        for(int j=0; j<10; j++){
+            exePool.execute(new Task1("cmd"+j));
+        }
+        
+        Thread.sleep(30000);
+        //shutting down the job pool
+        exePool.shutdown();
+		
+        //shutting down the th thread
+        Thread.sleep(5000);
+        task.shutdown();
+        
+    }
+}
+ Output: Notice the change in the number of active threads, the number of the completed task, and the number of tasks. The shutdown() method is used to finish the execution of all the submitted tasks and terminate the thread pool. Next TopicGregorian calendar Java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

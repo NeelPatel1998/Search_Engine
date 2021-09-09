@@ -1,0 +1,130 @@
+https://www.javatpoint.com/quartz-scheduler-java
+Quartz scheduler java - Javatpoint
+Quartz scheduler java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Quartz scheduler java Scheduler plays an important role in building Java applications. QuartzJobScheduling is an open-source job scheduling library. It has a rich set of features that can integrate into our Java applications virtually. We can integrate it with either a stand-alone application or the largest e-commerce system. Quartz is used for creating complex schedules having tens-of-thousands of jobs. The quartz scheduler supports several enterprise-class features, including clustering and JTA transaction. If our Java application has some tasks that are required to occur at a specified time or if our system recurring maintenance jobs, Quartz may be our ideal solution. These are the following uses of the Quartz scheduler in Java: Quartz scheduler allows an enterprise to schedule a job at a specified date and time. It allows us to perform the operations to schedule or unschedule the jobs. It provides operations to start or stop or pause the scheduler. It also provides reminder services. It provides maintenance of the system every business day at 11:30 PM. Features of Quartz scheduler The Quartz scheduler has the following features which make it so useful to integrate into Java applications: 1) Runtime Environment We can run the Quartz embedded in another free-standing application and can be instantiated within the application server. As a cluster of stand-alone programs, it can also be run to execute the jobs. The Quartz can also participate in XA transactions. As a stand-alone application, the quarts can be run to use via RMI. 2) Job Scheduling Jobs scheduling is another feature of Quartz. We can schedule the jobs by using Quartz. We schedule the jobs to run when the specified trigger is fired. The jobs are added to the scheduler once, but they are registered with multiple triggers. 3) Job execution Any Java class that implements the Job interface is referred to as Job interface. These classes are executed by creating an instance of that Job class. The instance of that class can be instantiated by our application frameworks or Quartz. The scheduler notifies Java objects implementing TriggerListener and JobListener interfaces when a trigger is fired, and after the execution of the Jobs, these listeners are also notified. The Jobs returns the JobCompletionCode to notify the scheduler about the success or failure of the Job. 4) Job Persistence Quartz jobs are persistent because Quartz library has a JobStore interface, which is very helpful to store the jobs. It provides a list of mechanisms to store them in the database. Jobs and triggers that are configured as "non-volatile" are stored in the relational database by using JDBCJobStore. The Quartz library provides the RAMJobStore interface that stores all the triggers and jobs in RAM. 5) Transaction With the help of the JobStoreCMT, Quartz participates in the JTA transaction. It manages JTA transactions to automatically happens the work performed by the Job within a JTA transaction. 6) Clustering Load balancing. Fail-over. Let's take an example to understand how we can implement the scheduler application with Quartz. In our example, we fire a job that invokes a business-related task every time. The program starts the Quartz scheduler and schedule job to run every minute. In order to create the Quartz scheduler program, we have to add the following dependencies in our POM.xml file. 
+<!-- dependency for Quartz scheduler -->
+<dependency>
+        <groupId> org.quartz-scheduler </groupId>
+        <artifactId> quartz </artifactId>
+        <version> 2.2.1 </version>
+</dependency>
+<!-- dependency for log4j -->
+<dependency>
+      <groupId> log4j </groupId>
+      <artifactId> log4j </artifactId>
+      <version> 1.2.16 </version>
+</dependency>
+ CreateQuartzJob.java 
+//import package
+package JavaTpoint.JavaObjectToJSON;
+
+//import classes
+import org.apache.log4j.Logger;
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+
+//create CreateQuartzJob class that implements Job
+public class CreateQuartzJob implements Job{
+	
+	//Create instance of logger
+	private Logger log = Logger.getLogger(CreateQuartzJob.class);
+	
+	//execute Job by using execute() method of the Job interface
+	public void execute(JobExecutionContext jExeCtx) throws JobExecutionException {//handle JobExecutionException
+		
+		//debug message 
+		log.debug("CreateQuartzJob is running......");
+	}
+}
+ Now, in order to schedule a Job, we have to create a scheduler application or Quartz scheduler application. There are five steps to schedule a job to run the task every time. These steps are as follows: In the first step, we have to initialize the scheduler instance from Quartz by using StdSchedulerFactory() method. After that, we start the scheduler instance with the Quartz API start() method. Start the scheduler instance with Quartz API start() Next, we create a scheduler trigger by using the SimpleScheduleBuilder from the Quartz TriggerBuilder with an interval of 1 minute. For the CreateQuartzJob, we build an instance of JobDetail from the Quartz JobBuilder. In the last step, we schedule a job with the instance of the JobDetail and trigger created before. Let's follow the steps discussed above and implement the code to understand how the Quartz scheduler actually works. QuartzScheduler.java 
+package JavaTpoint.JavaObjectToJSON;
+
+import org.apache.log4j.BasicConfigurator;
+//import org.quartz.CronScheduleBuilder;
+import org.quartz.JobBuilder;
+import org.quartz.JobDetail;
+import org.quartz.Scheduler;
+import org.quartz.SimpleScheduleBuilder;
+import org.quartz.Trigger;
+import org.quartz.TriggerBuilder;
+import org.quartz.impl.StdSchedulerFactory;
+ 
+
+public class QuartzScheduler {
+ 
+    
+	private static final String NAME_OF_JOB = "Job1";
+	private static final String NAME_OF_GROUP = "group1";
+    private static final String NAME_OF_TRIGGER = "triggerStart";
+    
+    //create variable scheduler of type Scheduler
+    private static Scheduler scheduler;
+    
+    //main() method starts with exception handling 
+    public static void main(String args[]) throws Exception {
+    	
+    	BasicConfigurator.configure();
+    	
+    	//show message to know about the main thread 
+        System.out.println(" The name of the QuartzScheduler main thread is: " + Thread.currentThread().getName());
+        
+        //initialize scheduler instance from Quartz
+        scheduler = new StdSchedulerFactory().getScheduler();
+        
+        //start scheduler
+        scheduler.start();
+        
+        //create scheduler trigger based on the time interval
+        Trigger triggerNew =  createTrigger();
+        
+        //create scheduler trigger with a cron expression
+        //Trigger triggerNew = createCronTrigger();
+        
+        //schedule trigger
+        scheduleJob(triggerNew);
+ 
+    }
+    
+    //create scheduleJob() method to schedule a job
+    private static void scheduleJob(Trigger triggerNew) throws Exception {
+    	
+    	//create an instance of the JoDetails to connect Quartz job to the CreateQuartzJob
+        JobDetail jobInstance = JobBuilder.newJob(CreateQuartzJob.class).withIdentity(NAME_OF_JOB, NAME_OF_GROUP).build();
+        
+        //invoke scheduleJob method to connect the Quartz scheduler to the jobInstance and the triggerNew
+        scheduler.scheduleJob(jobInstance, triggerNew);
+ 
+    }
+    
+    //create createTrigger() method that returns a trigger based on the time interval
+    /*private static Trigger createCronTrigger() {
+    	
+    	//create cron expression
+        String CRON_EXPRESSION = "0 * * * * ?";
+        
+        //create a trigger to be returned from the method
+        Trigger triggerNew = TriggerBuilder.newTrigger().withIdentity(NAME_OF_TRIGGER, NAME_OF_GROUP)
+                .withSchedule(CronScheduleBuilder.cronSchedule(CRON_EXPRESSION)).build();
+        
+        //return triggerNew to schedule it in main() method
+        return triggerNew;
+    }
+    */
+    
+    //create createTrigger() method that returns a trigger based on the time interval
+    private static Trigger createTrigger() {
+ 
+        //initialize time interval
+    	int TIME_INTERVAL = 60;
+    	
+    	//create a trigger to be returned from the method
+        Trigger triggerNew = TriggerBuilder.newTrigger().withIdentity(NAME_OF_TRIGGER, NAME_OF_GROUP)
+                .withSchedule(
+                        SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(TIME_INTERVAL).repeatForever())
+                .build();
+        
+        // triggerNew to schedule it in main() method
+        return triggerNew;
+    }
+}
+ When we run the QuartzScheduler.java class, we will see the output like as: The CreateQuartzJob repeatedly runs every 60 seconds within a different thread. The QuartzScheduler schedules the Job and gives the respective result. Next TopicRed Black Tree Java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

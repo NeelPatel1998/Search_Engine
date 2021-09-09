@@ -1,0 +1,66 @@
+https://www.javatpoint.com/react-multiple-checkbox
+React Multiple Checkbox - javatpoint
+React Multiple Checkbox - javatpoint ? Home React Native ReactJS TypeScript JavaScript Framework7 COA HTML CSS Selenium Servlet JSP jQuery Quiz Projects Interview Q Comment ReactJS Tutorial ReactJS Tutorial React Introduction React Version React Installation create-react-app React Features Pros & Cons ReactJS vs AngularJS ReactJS vs ReactNative React vs Vue React JSX React Components React State React Props React Props Validation React State vs Props React Constructor React Component API Component Life Cycle React Forms Controlled vs Uncontrolled React Events Conditional Rendering React Lists React Keys React Refs React Fragments React Router React CSS React Animation React Bootstrap React Map React Table Higher-Order Components React Code Splitting React Context React Hooks React Flux Concept React Flux Vs MVC React Redux React Redux Example React Portals React Error Boundaries Misc. Loop Array in React JS React Axios Delete Request Example React Multiple Checkbox Interview Questions ReactJS Interview next ? ? prev React Multiple Checkbox In this section, we are going to learn the use of multiple checkboxes in React. We will see the use of ReachJS to get all checked values. In our below example, we will show that how we can get value from react multiple checkboxes. Sometimes we have to set multiple checkboxes on the basis of user requirements. We can set the options to select fruits, and users can select them according to their choices. If users want to select more than one option or multiple options from the list, they can also do this. In this case, we are required to put multiple checkboxes in ReactJS. For this, the following example will help us to understand the use of multiple checkboxes in react. In our below example, we are going to take an array of one category, which will contain React, Laravel, PHP, Angular, etc. We will show dynamic multiple checkboxes by using the map loop. We will make a variable named "checkedItems" to store the information of the checkbox, which is selected by the user. When the form is submitted by the user, they will get the values of all selected checkboxes. The example code to do this is as follows: Example Code: 
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+       
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      categories: [
+        {id: 1, value: "Angular"},
+        {id: 2, value: "React"},
+        {id: 3, value: "PHP"},
+        {id: 4, value: "Laravel"}
+      ],
+      checkedItems: new Map()
+    };
+  
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+     
+  handleChange(event) {
+        var isChecked = event.target.checked;
+        var item = event.target.value;
+         
+        this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked) }));
+  }
+     
+  handleSubmit(event) {
+    console.log(this.state);
+    event.preventDefault();
+  }
+     
+  render() {
+    return (
+      <div>
+        <h1> Examples of Multiple Checkbox in React </h1>
+  
+        <form onSubmit={this.handleSubmit}>
+           
+          {
+            this.state.categories.map(item => (
+              <li>
+                <label>
+                  <input
+                    type="checkbox"
+                    value={item.id}
+                    onChange={this.handleChange}
+                  /> {item.value}
+                </label>
+              </li>
+            ))
+          }
+           
+          <br/>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    );
+  }
+}
+   
+render(<App />, document.getElementById('root'));
+ When we execute the above code, we will get the following output: Next TopicReactJS Tutorial ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

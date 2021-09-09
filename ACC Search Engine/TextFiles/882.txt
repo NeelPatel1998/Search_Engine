@@ -1,0 +1,105 @@
+https://www.javatpoint.com/dropzone-image-upload-in-angular-9-or-8
+Dropzone Image Upload in Angular 9 or 8 - javatpoint
+Dropzone Image Upload in Angular 9 or 8 - javatpoint ? Home AngularJS Angular 7 C Java HTML CSS JavaScript jQuery Bootstrap PHP SQL PL/SQL Python Quiz Projects Interview Q Comment Forum Training AngularJS Tutorial AngularJS Tutorial What is AngularJS AngularJS MVC AngularJS First App AngularJS Data Binding AngularJS Expressions AngularJS Directives AngularJS Controllers AngularJS Modules AngularJS Scopes AngularJS Dependency AngularJS Filters AngularJS Tables AngularJS Select AngularJS DOM AngularJS Forms AngularJS Validation AngularJS AJAX AngularJS Animation Misc Angularjs Simple Datepicker directive Example Display Data from Json File in Angular Create Pagination using dirPagination directive in Angularjs Angular 7 Tutorial Angular 7 Tutorial Angular 7 Introduction Angular 7 Installation History & Versions Angular 7 First App Angular 7 Files Explanation Angular 7 with Bootstrap All CLI commands Angular 7 Libraries Angular 7 Architecture Angular 7 Components Angular 7 Directives Angular 7 Directives Angular 7 ngIf Directive Angular 7 ngStyle Directive Angular 7 Databinding Angular 7 Databinding Angular 7 String Interpolation Angular 7 Event Binding Angular 7 Property Binding Angular 7 Pipes Angular 7 Pipes Error Fixing Angular 7 Error Fixing Angular 7 Forms Angular 7 Forms Data Flow in Angular Forms Angular Reactive Forms Template-driven Forms Angular Misc Angular vs React Dynamically Add and Remove Form Fields in Angular Dropzone Image Upload in Angular 9/8 Angular 9/8 Select Dropdown Example Angular + Spring CRUD Example File Upload Example Login & Logout Example Search Field Example Interview Questions AngularJS Interview JavaScript Interview jQuery Interview Backbone.js Interview Ember.js Interview Neo4j Interview next ? ? prev Dropzone Image Upload in Angular 9/8 In this section, we are going to learn how to upload an image using dropzone in Angular 9 or angular 8. We will also see image upload using drag and drop. In our example, we will use ngx dropzone in angular 9/8. In our angular 9 application, we will use components of dropzone to upload multiple images simply. In order to do drag and drop image uploading, we are going to use a package of ngx-dropzone npm. In the below application, we will upload the images using the dropzone js. We will also use php to create web services. We can use API to upload one or more than one image or file on the serve0072. The step by step process to upload image is as follows: Step 1: In this step, we will Create New App. For this, we will use the following command to create our angular app. 
+ng new my-dropzone-app
+ Step 2: In the second step, we are going to Install ngx-dropsone package. In our example, we need angular js in angular. For this, we require to install the package of ngx-dropzone. The following command will be run to install it: 
+ npm install --save ngx-dropzone
+ Step 3: In the third step, we will Import module. In our below example, we will use the app.module.ts file, and then we will import the two modules for this file, i.e., NgxDropzone Module and HttpClientModule. We will import both by using the following code: src/app/app.module.ts 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+  
+import { AppComponent } from './app.component';
+  
+import { HttpClientModule } from '@angular/common/http';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+   
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    NgxDropzoneModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+ Step 4: In this step, we will Update View File. In order to update, we will use our html file. We will use our view file and simply create the component of the dropzone. For this, we will put the code, which is described as follows: src/app/app.component.html: 
+<h1> Example of Dropzone File Upload in Angular 9/8 </h1>
+    
+<ngx-dropzone (change)="onSelect($event)">
+  <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+  <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+    <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+  </ngx-dropzone-preview>
+</ngx-dropzone>
+ Step 5: In this step, we will Use Component ts file. We will use HttpClient and update a file named component.ts. After that, we will select the image by writing method. For this, we will use the url of our local api file that is 'http://localhost:8001/upload.php'. So we will update the following code. src/app/app.component.ts: 
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+   
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+    title = 'dropzone';
+  
+    files: File[] = [];
+  
+    constructor(private http: HttpClient) { }
+  
+    onSelect(event) {
+        console.log(event);
+        this.files.push(...event.addedFiles);
+  
+        const formData = new FormData();
+    
+        for (var i = 0; i < this.files.length; i++) { 
+          formData.append("file[]", this.files[i]);
+        }
+   
+        this.http.post('http://localhost:8001/upload.php', formData)
+        .subscribe(res => {
+           console.log(res);
+           alert('Uploaded Successfully.');
+        })
+    }
+  
+    onRemove(event) {
+        console.log(event);
+        this.files.splice(this.files.indexOf(event), 1);
+    }
+}
+ Now our above example is ready to run. We will use PHP so that we can create api file. In our example, we will use the upload folder to create an update.php file. After that, we will run it by using a different port and call it. The below command is used to create an upload.php file. upload.php: 
+<?php
+  
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT, GET, POST");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+   
+$folderPath = "upload/";
+$postdata = file_get_contents("php://input");
+$request = json_decode($postdata);
+   
+foreach ($request->fileSource as $key => $value) {
+   
+    $image_parts = explode(";base64,", $value);
+   
+    $image_type_aux = explode("image/", $image_parts[0]);
+   
+    $image_type = $image_type_aux[1];
+  
+    $image_base64 = base64_decode($image_parts[1]);
+  
+    $file = $folderPath . uniqid() . '.'.$image_type;
+  
+    file_put_contents($file, $image_base64);
+}
+ Now our both code is ready to run. We can run it by using the following command on our angular app. 
+ng serve
+ After that, we will run PHP API like this: 
+php -S localhost:8001
+ When we run this api, we will get the following output: Next TopicAngular 9/8 Select Dropdown Example ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

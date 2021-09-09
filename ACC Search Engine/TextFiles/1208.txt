@@ -1,0 +1,85 @@
+https://www.javatpoint.com/display-data-from-json-file-in-angular
+Display Data from JSON file in Angular - javatpoint
+Display Data from JSON file in Angular - javatpoint ? Home AngularJS Angular 7 C Java HTML CSS JavaScript jQuery Bootstrap PHP SQL PL/SQL Python Quiz Projects Interview Q Comment Forum Training AngularJS Tutorial AngularJS Tutorial What is AngularJS AngularJS MVC AngularJS First App AngularJS Data Binding AngularJS Expressions AngularJS Directives AngularJS Controllers AngularJS Modules AngularJS Scopes AngularJS Dependency AngularJS Filters AngularJS Tables AngularJS Select AngularJS DOM AngularJS Forms AngularJS Validation AngularJS AJAX AngularJS Animation Misc Angularjs Simple Datepicker directive Example Display Data from Json File in Angular Create Pagination using dirPagination directive in Angularjs Angular 7 Tutorial Angular 7 Tutorial Angular 7 Introduction Angular 7 Installation History & Versions Angular 7 First App Angular 7 Files Explanation Angular 7 with Bootstrap All CLI commands Angular 7 Libraries Angular 7 Architecture Angular 7 Components Angular 7 Directives Angular 7 Directives Angular 7 ngIf Directive Angular 7 ngStyle Directive Angular 7 Databinding Angular 7 Databinding Angular 7 String Interpolation Angular 7 Event Binding Angular 7 Property Binding Angular 7 Pipes Angular 7 Pipes Error Fixing Angular 7 Error Fixing Angular 7 Forms Angular 7 Forms Data Flow in Angular Forms Angular Reactive Forms Template-driven Forms Angular Misc Angular vs React Dynamically Add and Remove Form Fields in Angular Dropzone Image Upload in Angular 9/8 Angular 9/8 Select Dropdown Example Angular + Spring CRUD Example File Upload Example Login & Logout Example Search Field Example Interview Questions AngularJS Interview JavaScript Interview jQuery Interview Backbone.js Interview Ember.js Interview Neo4j Interview next ? ? prev Display Data from Json File in Angular In this section, we will learn the use angular 7/8/9 so that we can show data from the Json file. Also, we are going to understand how we can read json files in angular 9. In the below example, we are using angular 8 to show the data of json in html table. We will use angular to generate json file. Then we will use created json file to display the data. So we are going to use the angular app to read json file data. Suppose we need to use the json file to show our required data for the front end and also want to display it in a tabular format. In that case, we will use ngfor directives, which are used to display data in tabular. In our case, we also require to display data in angular applications. So we will use bootstrap. If we are using angular versions 6, 7, 8, 9, 10, and 11, we are able to easily show data from json file. In order to create the json file, we will follow some step by step process, which is described as follows: Step 1: Create New App In this step, we will use the following command in our terminal or command prompt to create our angular app. 
+ng new my-app
+ Step 2: Create JSON File In this step, we will add some records of students. src/app/students.json 
+[
+  {
+    "id": 1,
+    "name": "Jack",
+    "email": "jack@gmail.com",
+    "gender": "male"
+  },
+  {
+    "id": 2,
+    "name": "Peter",
+    "email": "peter@gmail.com",
+    "gender": "male"
+  },
+  {
+    "id": 3,
+    "name": "Mary",
+    "email": "mary@gmail.com",
+    "gender": "female"
+  },
+  {
+    "id": 4,
+    "name": "Smith",
+    "email": "smith@gmail.com",
+    "gender": "male"
+  },
+  {
+    "id": 5,
+    "name": "John",
+    "email": "john@gmail.com",
+    "gender": "male"
+  }
+]
+ Step 3: Update Ts file In this step, we will use the Student interface to create an array of student objects. For this, we will use the following file code: src/app/app.component.ts 
+import { Component } from '@angular/core';
+import studentsData from './students.json';
+  
+interface Student {
+    id: Number;
+    name: String;
+    email: String;
+    gender: String;
+}
+  
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: [ './app.component.css' ]
+})
+export class AppComponent  {
+  name = 'Angular';
+  
+  students: Student[] = studentsData;
+}
+ Step 4: Template code In this part, we will use ngfor directives to show students object array variable data. In the below example, a bootstrap class is going to be used. src/app/app.component.html 
+<div class="container">
+  
+  <h1> Display Data from Json File in Angular 9 </h1>
+  
+  <table class="table table-striped">
+    <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.gender }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ Now the above code is ready to run. We will use the following command to run our application: 
+ng serve
+ After executing the above command, we will see the following output: Next TopicCreate Pagination using dirPagination directive in Angularjs ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

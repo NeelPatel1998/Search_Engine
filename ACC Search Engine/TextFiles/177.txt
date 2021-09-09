@@ -1,0 +1,149 @@
+https://www.javatpoint.com/what-is-coreml
+What is CoreML - Javatpoint
+What is CoreML - Javatpoint ? Home Java Swift iOS Development OS C PHP HTML CSS Bootstrap JavaScript jQuery jQuery UI Projects Interview Q Comment Forum Training iOS Development iOS Development using Swift Introduction to XCode IDE iPhone History & Versions Views & View Controllers Storyboard & interface builder Creating First iOS Application iOS UI Controls iOS: Label iOS: Button iOS: TextField iOS: DatePicker iOS: Slider iOS: Stepper iOS: Switch iOS: Segment Control iOS Container Views iOS: UIView iOS: TableView iOS: CollectionView iOS: ScrollView iOS Content Views iOS: ActivityIndicatorView iOS: ImageView iOS: PickerView iOS: ProgressView iOS: WebView iOS: MapView iOS View Controllers iOS: UIViewController iOS: Table View Controller iOS: Collection View Controller iOS: PageViewController iOS: Split View Controller Tab Bar Interface iOS: Tab Bar Controller iOS: Tab Bar iOS: Tab Bar Item Navigation Interface Navigation Controller Navigation Bar Navigation Item Architecture Pattern Model View Controller Model View View-Model Model View Presenter Install Libraries Setting Up Cocoapods for XCode Projects Using Cocoapods for XCode Projects Web Request & Parsing Alamofire Library Fetching data through Get Request Parsing JSON Response Image Caching Pull to Refresh functionality iOS UserDefaults Saving Data in UserDefaults Getting Data from UserDefaults CoreData & Database CoreData Managed Object Model Persistent Object Coordinator Multithreading in Swift Multithreading in Swift Concurrency in swift Handling Background Tasks Misc Firebase Crashalytics iOS Swift IOS app lifecycle What is Jailbreaking in iOS Why is iOS better than Android Features of iOS 14 Getting user location in iOS Push Notifications in iOS Sign-in with Apple using swift SSL Pinning in Swift XCode 12 Features Facebook Login Integration in iOS Google Sign-in integration in iOS How to capture the image using the iOS app How to make a phone call in the iOS app Paytm SDK Integration in iOS Razorpay Integration in iOS UIAlertController in Swift Using SQLite in iOS app Creating a real-time chat application using Firebase Using Realm database in iOS app iOS: machine learning What is CoreML Using Advanced CoreML Access Control in Swift iOS Memory Management in iOS applications Protocol Oriented Programming in iOS Swift Initialization in Swift Parsing a Static JSON file in iOS application Sending Email using the iOS application Using AVAudioPlayer to play sounds in iOS applications next ? ? prev What is CoreML? Machine learning is a need of the hours in today's tech world, and so are iOS applications. CoreML allows us to integrate machine learning into iOS apps. It performs two main tasks. It facilitates us to load pre-trained machine learning models. CoreML helps us to convert our pretrained MLModels into classes that can be used with XCode. CoreML allows us to make predictions. We have the model loaded locally on the device once the user downloads the app. Our app will use this model to make predictions for image recognition, speech recognition, etc. We can go to https://developer.apple.com/machine-learning/ to get an overview of how we can use machine learning to incorporate it with iOS applications. It also provides ready-to-use (pretrained) models in the models section, I.e., https://developer.apple.com/machine-learning/models/. In this tutorial, we will use the MobileNetV2 model, which is being trained to classify the dominant object in a camera frame or image. We will use this to identify the photo taken by the user in the app. However, CoreML cannot use any of the app's generated data to train the model further. The pretrained model loaded in the app remains as the static model. We also need to understand that the CoreML being used in the app is not encrypted; I.e., If we need to use any model for the banking application like the stock market, we need to be aware that we should not use this with CoreML to incorporate it with iOS applications. The best part of CoreML is that, even if we don't know much about machine learning, we can still use this to incorporate our apps with machine learning. Creating a CoreML app Let's create an iOS app that will use CoreML to incorporate Machine Learning. As we have already stated in this tutorial, we will use the MobileNetV2 pre-trained model provided on https://developer.apple.com/machine-learning/models/. This will detect the dominant object in the camera frame. To create a new XCode project, go to File -> New -> Project in XCode and choose Single View App. Now, provide the app information like bundle id, app name, organization name as shown below. Once we are done with creating the iOS app, the first thing we need to do is to incorporate a pre-trained image recognition model into our new XCode project. For this purpose, navigate to https://developer.apple.com/machine-learning/models/ and select MobileNetV2 to download the .mlmodel file. Click the Download button to download the mlmodel file as shown below. Once we are done downloading the .mlmodel file, we need to add it to XCode. For this purpose, open the folder in which the .mlmodel file is downloaded and drag it into XCode to drop this. Once we do so, we will get the .mlmodel file added to XCode, as shown below. Once we open this file, we will see its information in XCode along with the model class that has been created by XCode. Let's set up the interface builder first. In the storyboard, we need to embed our View Controller in the navigation controller and add a bar button item to open the camera when it is tapped. We will also add an image view to the ViewController to show the image taken from the camera. Now, we need to incorporate our model into our View Controller. For this purpose, we need to import CoreML and Vision in our ViewController class. We will also conform our ViewController to UIImagePickerControllerDelegate and UINavigationControllerDelegate. Add the following code to implement the camera functionality to the app, where the camera will get opened when the user taps the camera bar button item. 
+import UIKit
+import CoreML
+import Vision
+
+
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+
+    @IBOutlet weak var imgView: UIImageView!
+    let imagePicker = UIImagePickerController()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = false
+    }
+
+
+    @IBAction func tappedCamera(_ sender: UIBarButtonItem) {
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+}
+We also need to add the following code to the info.plist file.
+
+<key>NSCameraUsageDescription</key>
+<string>App will use camera to take pictures </string>
+ Now, we need to send the captured image to the Machine Learning Model. For this purpose, first, we need to access the captured image in View Controller. Add the delegate method, i.e., imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) to the ViewController . 
+func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+       if let img = info[UIImagePickerController.InfoKey.originalImage] as?
+       UIImage {
+             self.imgView.image = img
+             self.dismiss(animated: true, completion: nil)
+          }
+          else {
+             print("error")
+          }
+       }
+ Now, we need to implement the detect function to detect the image we have captured. First, we need to convert our image to CIImage to use it with our MLModel. To convert the image into CIImage, add the following code after dismiss() is being called. 
+guard let ciImage = CIImage(image: img) else{
+            debugPrint("Can't convert image to CIImage")
+            return
+        }
+ We need to detect this ciImage by using the model. For this purpose, add the following code to the ViewController. 
+func detect(image:CIImage){
+        guard let model = try? VNCoreMLModel(for: MobileNetV2().model) else{
+            debugPrint("Can't convert model to VNCoreMLModel")
+            return
+        }
+        let request = VNCoreMLRequest(model: model) { (request, error) in
+            guard let result = request.results as? [VNClassificationObservation] else{
+                debugPrint("")
+                return
+            }
+            debugPrint(result)
+        }
+            let handler = VNImageRequestHandler(ciImage:image)
+            do{
+                try handler.perform([request])
+            }catch{
+                debugPrint(error)
+            }
+        
+    }
+ We also need to call the detect() method just after we are getting CIImage. We also need to pass the CIImage to this detect () method. Add the following code to call the detect() in the delegate method in which we are getting the object of CIImage. 
+detect(image: ciImage)
+ Now, build and run the project, capture any image and look at the results we are getting. Let's click a computer's image by browsing for it on the web. Once we take the photo and proceed with it, we will see the results printed on the console, as shown below. As we can see, the model has classified the image and produce the results that contain all the possible objects the image can be. Now, we can check the result's first object as it will be the most possible object the image will be. In this project, we capture a car object and see whether the results contain the Car as the first object. For this purpose, add the following code in the completion handler just after getting the result object. 
+if let firstResult = result.first{
+                if(firstResult.identifier.lowercased().contains("car")){
+                    self.navigationItem.title = "Car"
+                }else{
+                    self.navigationItem.title = "Not Car"
+                }
+            }
+ This will change the navigation bar title according to the object captured. Our ViewController.swift contains the following code. 
+import UIKit
+import CoreML
+import Vision
+
+
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+
+    @IBOutlet weak var imgView: UIImageView!
+    let imagePicker = UIImagePickerController()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = false
+    }
+
+
+    @IBAction func tappedCamera(_ sender: UIBarButtonItem) {
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+       if let img = info[UIImagePickerController.InfoKey.originalImage] as?
+       UIImage {
+             self.imgView.image = img
+             self.dismiss(animated: true, completion: nil)
+        guard let ciImage = CIImage(image: img) else{
+            debugPrint("Can't convert image to CIImage")
+            return
+        }
+        detect(image: ciImage)
+          }
+          else {
+             print("error")
+          }
+       }
+    func detect(image:CIImage){
+        guard let model = try? VNCoreMLModel(for: MobileNetV2().model) else{
+            debugPrint("Can't convert model to VNCoreMLModel")
+            return
+        }
+        let request = VNCoreMLRequest(model: model) { (request, error) in
+            guard let result = request.results as? [VNClassificationObservation] else{
+                debugPrint("")
+                return
+            }
+            debugPrint(result)
+            if let firstResult = result.first{
+                if(firstResult.identifier.lowercased().contains("car")){
+                    self.navigationItem.title = "Car"
+                }else{
+                    self.navigationItem.title = "Not Car"
+                }
+            }
+        }
+            let handler = VNImageRequestHandler(ciImage:image)
+            do{
+                try handler.perform([request])
+            }catch{
+                debugPrint(error)
+            }
+        
+    }
+}
+ Next TopicUsing Advanced CoreML ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

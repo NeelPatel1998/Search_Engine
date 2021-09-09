@@ -1,0 +1,112 @@
+https://www.javatpoint.com/protocol-oriented-programming-in-ios-swift
+Protocol Oriented Programming in iOS Swift - Javatpoint
+Protocol Oriented Programming in iOS Swift - Javatpoint ? Home Java Swift iOS Development OS C PHP HTML CSS Bootstrap JavaScript jQuery jQuery UI Projects Interview Q Comment Forum Training iOS Development iOS Development using Swift Introduction to XCode IDE iPhone History & Versions Views & View Controllers Storyboard & interface builder Creating First iOS Application iOS UI Controls iOS: Label iOS: Button iOS: TextField iOS: DatePicker iOS: Slider iOS: Stepper iOS: Switch iOS: Segment Control iOS Container Views iOS: UIView iOS: TableView iOS: CollectionView iOS: ScrollView iOS Content Views iOS: ActivityIndicatorView iOS: ImageView iOS: PickerView iOS: ProgressView iOS: WebView iOS: MapView iOS View Controllers iOS: UIViewController iOS: Table View Controller iOS: Collection View Controller iOS: PageViewController iOS: Split View Controller Tab Bar Interface iOS: Tab Bar Controller iOS: Tab Bar iOS: Tab Bar Item Navigation Interface Navigation Controller Navigation Bar Navigation Item Architecture Pattern Model View Controller Model View View-Model Model View Presenter Install Libraries Setting Up Cocoapods for XCode Projects Using Cocoapods for XCode Projects Web Request & Parsing Alamofire Library Fetching data through Get Request Parsing JSON Response Image Caching Pull to Refresh functionality iOS UserDefaults Saving Data in UserDefaults Getting Data from UserDefaults CoreData & Database CoreData Managed Object Model Persistent Object Coordinator Multithreading in Swift Multithreading in Swift Concurrency in swift Handling Background Tasks Misc Firebase Crashalytics iOS Swift IOS app lifecycle What is Jailbreaking in iOS Why is iOS better than Android Features of iOS 14 Getting user location in iOS Push Notifications in iOS Sign-in with Apple using swift SSL Pinning in Swift XCode 12 Features Facebook Login Integration in iOS Google Sign-in integration in iOS How to capture the image using the iOS app How to make a phone call in the iOS app Paytm SDK Integration in iOS Razorpay Integration in iOS UIAlertController in Swift Using SQLite in iOS app Creating a real-time chat application using Firebase Using Realm database in iOS app iOS: machine learning What is CoreML Using Advanced CoreML Access Control in Swift iOS Memory Management in iOS applications Protocol Oriented Programming in iOS Swift Initialization in Swift Parsing a Static JSON file in iOS application Sending Email using the iOS application Using AVAudioPlayer to play sounds in iOS applications next ? ? prev Protocol Oriented Programming in iOS Swift Swift supports protocol-oriented programming in iOS applications by using protocols that are a fundamental feature of the swift programming language. Protocol plays a vital role in the structure of Swift Standard Library. However, protocols are used to define the blueprint of methods, properties, and other main functionalities required to complete a particular task. It provides a way to achieve abstraction in the Swift programming language. In simple words, we can say that protocol is like an interface in some other programming languages. In this article, we will discuss one of the fundamental programming paradigms in swift, I.e., protocol-oriented programming. Here, we will discuss the differences between object-oriented and protocol-oriented programming, including the default implementations of protocols in swift. What is Protocol-Oriented Programming? By using protocol-oriented programming, we can group similar methods, functions, and properties. We can specify the protocols for class, Enum, and struct types. However, only class types can use inheritance functionality. Protocol-oriented programming comes into the picture when our class needs to inherit from two different courses, I.e., the class needs to have the properties of two different classes. Here, we can define protocols that provide an advantage that our class can conform to multiple protocols. This makes our code more modular as protocols can be seen as basic building blocks of functionality. If we need to add some new functionality in the application, instead of building a whole new class that implements the functionality, we can add different building blocks to our class and define the blocks in our main class accordingly. Let's create two protocols using the following code. 
+protocol Bank{
+    var name:String { get }
+    var rateOfInterest:Double {get}
+    var isRegistered:Bool { get }
+}
+
+
+
+protocol Company {
+    var workingHours:Int { get }
+    var policies:Array<String> { get }
+    var minSalary:Float { get }
+}
+ The above code defines the two protocols as Bank and Company. If we have used the Object-Oriented paradigm to implement this, we could have used Company as a base class and Bank as a child class. However, in a protocol-oriented paradigm, we use everything as a protocol. This allows us to encapsulate the functional concepts without using the base class. Protocol Conforming type Let's define the following struct that conforms to our protocols Bank and Company. 
+struct RBI : Bank, Company {
+    var name: String
+    var isRegistered: Bool
+    let rateOfInterest = 4.5
+    var workingHours: Int
+    var policies: Array<String>
+    var minSalary: Float
+}
+ This code defines a new struct as RBI that conforms to our protocols, i.e., Bank and Company. RBI has its specified rate of interest for the customers. Now, let's add the following struct, which is a company but doesn't contain the properties of a Bank. 
+struct JTP : Company{
+    var workingHours: Int
+    var policies: Array<String>
+    var minSalary: Float
+}
+ We can define functional components using protocols and use any relevant object which can conform to them. Now, let's try extending protocols that allow us to define a protocol's default behavior. 
+extension Bank {
+    var  rateOfInterest:Double{
+        return 4.5
+    }
+}
+ Now, we can remove the rateOfInterest from the RBI struct. If we build the playground again, we will notice that the playground will still build successfully since protocol extensions handle that requirement. Conforming Protocols with Enum Enums has more features than Enums from C and C++. It can also conform to the protocols as given below. 
+enum Banks : Bank{
+    case RBI
+    case SBI
+    case PNB
+    
+    var name:String{
+        switch self {
+        case .RBI:
+            return "Reserve Bank of India"
+        case .SBI:
+            return "State Bank of India"
+        case .PNB:
+            return "Punjab National Bank"
+        default:
+            debugPrint("default")
+        }
+    }
+    var rateOfInterest: Double {
+        switch self {
+        case .RBI:
+            return 4.5
+        case .SBI:
+            return 5
+        case .PNB:
+            return 5.2
+        default:
+            debugPrint("default")
+        }
+    }
+   
+}
+ Overriding Default Behavior Now, we must notice that the Enum Banks automatically receive an implementation for isRegistered property by conforming to the Bank protocol. We can override the default behavior of Bank protocol by using the following code. 
+extension Banks{
+    var isRegistered: Bool{
+        (self != .SBI && self != .PNB)
+    }
+}
+ Now, only .RBI will return true for isRegistered property if we print the isRegistered property for .SBI and .PNB, it will print false for both. 
+debugPrint(Banks.SBI.isRegistered)
+debugPrint(Banks.PNB.isRegistered)
+ This is the way to override properties and methods like we override virtual methods in object-oriented programming. Extending Protocols We can also conform our class to the protocols for using protocol functionalities and properties. In the following code, our protocol Drawable is able to draw something on the screen. Our protocol Circle has radius property where our Main class conforms to the Circle protocol to override the radius property for setting a new radius. Our class also conforms to the Drawable for providing the definition of the draw() method. 
+protocol Drawable{
+    func draw()
+}
+protocol Circle {
+    var radius:Double{get set}
+}
+
+class Main : Drawable,Circle{
+    var radius: Double = 10.2
+    func draw() {
+        debugPrint("Drawing Circle with 10.2 radius")
+    }
+}
+
+var m = Main()
+m.draw()
+ Output: 
+"Drawing Circle with 10.2 radius"
+ Protocol Comparators One of the features of Swift Protocols is how we can compare two objects for equality, greater or lesser values. Let's implement the following code to compare the protocol objects. 
+protocol Circle : Comparable{
+    var radius:Double{get set}
+}
+
+class Main : Drawable,Circle{
+    static func < (lhs: Main, rhs: Main) -> Bool {
+        lhs.radius < rhs.radius
+    }
+    
+    static func == (lhs: Main, rhs: Main) -> Bool {
+        lhs.radius == rhs.radius
+    }
+}
+ Next TopicInitialization in Swift ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,57 @@
+https://www.javatpoint.com/sql-server-substring
+Sql Server substring - javatpoint
+Sql Server substring - javatpoint ? Home C# SQL Server SQL PL/SQL SQLite MongoDB Cassandra MySQL Oracle CouchDB Neo4j Projects Interview Q Comment Forum Training SQL Server Tutorials SQL Server Tutorials What is SQL Server Install Visual Studio Install SQL Server SS Management Studio SS Datatypes DB Operations SS Login Database SS Create Database SS Select Database SQL Server Database SS Create Table SS Delete Table SS Insert Data SS Update Data SS Delete Data SS Delete TOP Aggregate Function SS MIN Function SS MAX Function SS SUM Function SS AVG Function SS COUNT Function SQL Server Operators SS Comparison Operator SS UNION Operator SS INTERSECT Operator IN Operator NOT Operator BETWEEN Operator IS NULL Operator IS NOT NULL Operator LIKE Operator EXIST Operator SQL Server Clauses DISTINCT Clause GROUP BY Clause SQL Server Keys SS Primary Keys Enable Primary Key DIsable Primary Key Drop Primary Key SS Foreign Keys Enable Foreign Key Disable Foreign Key Drop Foreign Key SQL Server Advance Create View Backup Database Restore Database Miscellaneous SQL Server Substring CTE in SQL Server Services SSIS Tutorial SSRS Tutorial Interview Questions SQL Server Interview next ? ? prev SQL Server Substring SUBSTRING is a SQL Server built-in function that allows us to extract a specific substring from any given string set based on our requirements. Database developers widely use this function in queries to extract any number of substrings from an input string. Substring extracts a string of a specified length from an input string beginning at a specified position. This function's main objective is to return a particular portion of a string. Syntax for Substring The following is the basic syntax of substring function in SQL Server: 
+SUBSTRING(Expression, Position, Length)
+ Parameters The parameter description of this function is here: Expression: It's an input string from which we will extract a portion of the string (substrings) as required. It can be any character, text, ntext, binary, or image. Position: It's an integer value that determines the starting location from which the specific portion of a string in the given expression can be extracted. An expression's first position is always 1, not zero. It also supports negative integer value as the starting position. Length: It's a positive integer value that specifies how many characters we can retrieve from the given expression. If the length is negative, it returns an error. If the start + length is greater than the length of an input string, the substring will start at the beginning and end with the input string's remaining characters. Return Types If the input expression is one of the supported character data types, it returns character data. If it is of binary data types, this function returns binary data. We will get the extracted substring the same type as the specified expression with the exceptions mentioned in the below table: Input expression Return Type char/varchar/text varchar nchar/nvarchar/ntext nvarchar binary/varbinary/image varbinary Points to remember The following rules must be considered for using the substring function: The substring function always needs all three arguments. Nothing is returned by the substring function if the starting position is greater than the input string's maximum number of characters. The total length of the string may be longer than the input string's maximum character length. In this case, the resulting substring would be the whole string from the expressions starting position to the last letter. Supported Versions The following SQL Server versions can use the SUBSTRING function: SQL Server 2019, SQL Server 2018, SQL Server 2017, SQL Server 2016, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008, SQL Server 2005, Azure SQL Database, Azure SQL Data Warehouse, Parallel Data Warehouse Example Let us understand how the SUBSTRING function works in SQL Server through various examples: 1. Substring function with literal strings The following statement retrieves a portion of the string (substring) with the length of 13, which starts from the fifth character in the input string. 
+SELECT SUBSTRING('SUBSTRING IN SQL Server', 4, 13) AS result;
+ It will display the below output: The following statement retrieves an entire string. It's because when the total length of the string is longer than the input string's maximum character length, the resulting substring would be the entire string from the expressions. 
+SELECT SUBSTRING('javatpoint', 1, 50) AS ExtractString;
+ It will display the below output: 2. ubstring function on Tables To understand the substring function's use on a table, we first need to create a table. The below statement creates a "persons" table in the selected database: 
+CREATE TABLE persons (    
+  id int PRIMARY KEY,    
+  person_name nvarchar(45) NOT NULL,    
+  email nvarchar(45) NOT NULL,    
+  state nvarchar(25) NOT NULL    
+);
+ Next, we will insert some values into this table as follows: 
+INSERT INTO persons (id, person_name, email, state)     
+VALUES (1,'Steffen', 'steffen@javatpoint.com', 'Texas'),     
+(2, 'Joseph', 'joseph@example.com', 'Alaska'),     
+(3, 'Peter', 'peter@javatpoint.com', 'California'),  
+(4, 'Donald', 'donald@example.com', 'New York'),     
+(5, 'Kevin', 'kevin@example.com', 'Florida'),
+(6, 'Marielia', 'marielia@javatpoint.com', 'Arizona'),  
+(7, 'Antonio', 'antonio@example.com', 'New York'),     
+(8, 'Thompson', 'thompson@javatpoint.com', 'California'),
+(9, 'Matthew', 'matthew@example.com', 'Florida'),     
+(10, 'Robert', 'robert@javatpoint.com', 'Alaska');
+ We can verify the values using the SELECT statement: 
+SELECT * FROM persons;
+ It will display the below output: This statement uses the SQL Server substring function on both the person_name and the email columns from the "persons" table. The person's name starts at the first position and returns four characters. The email starts at the fifth position and returns eight characters. 
+SELECT person_name, SUBSTRING(person_name, 1, 4) AS p_name
+      ,email, SUBSTRING(email, 5, 8) AS sub_mail
+FROM persons; 
+ We will get the below output where we can observe that p_name and sub_mail are the substring columns: 3. Substring function with Charindex If we want to find the domain names present in the email column using the substring function, we can execute the statement as follows: 
+SELECT person_name, email, 
+	SUBSTRING(email, CHARINDEX('@', email) + 1, LEN(email)) AS DomainName
+FROM persons; 
+ It will display the below output where we can observe that DomainName is the substring column that returns the portion of the string after @ symbol: In the above query, we can observe the below function: 
+CHARINDEX('@', email) + 1, LEN(email)
+ This function finds the index position of the @ symbol in each record, adds one to the index position because the domain name starts in the next position, and then uses the LEN Function to find the email length. Finally, the substring function extracts a portion of the string and terminates when the string is finished. It is another substring example by using the charindex where we will find the string before @ symbol in the email column: 
+SELECT person_name, email,
+	SUBSTRING(email, 1, CHARINDEX('@', email) - 1) AS EmailString
+FROM persons;
+ It will display the below output where we can observe that EmailString is the substring email column that returns the portion of the string before @ symbol: 4. Substring in WHERE Clause The substring function in SQL Server can also work with a WHERE Clause. The below statement extracts all the records from the 'persons' table whose state name ends with a: 
+SELECT id, person_name, email, state
+FROM persons WHERE SUBSTRING(state, LEN(state), 1) = 'a'
+ We will get the below output where all records have state name ends with a: 5. Substring with LIKE Operator The LIKE operator is used to restrict from returning all records from the table. This operator is being used to limit the substring function, which extracts all records whose state name ends in York: 
+SELECT id, person_name, email, SUBSTRING(state, 1, 10) AS state
+FROM persons WHERE state LIKE '%York'
+ We will get the below output where all records have state name ends with York: 6. Substring in ORDER BY Clause The substring function in SQL Server can also work with an ORDER BY Clause. We use the substring function inside this clause for sorting the records using the substring result set. The below query will sort the data using the substring of the state column: 
+SELECT id, person_name, email, SUBSTRING(state, 1, 10) AS us_state
+FROM persons ORDER BY SUBSTRING(state, 1, 10)
+ We will get the below output where all records have state name ends with York: 7. Substring Negative Index Example We can also use a negative index with the SQL Server substring function, but it might not make sense. For example, we take the substring index as (-2, 3). It means the index begins with position -2 and returns 3 characters from there. The function would return characters from 1 to 3 because we don't have any records from -2 to 0 (3 records). 
+SELECT person_name, email,
+	SUBSTRING(email, LEN(Email) - 2, 3) AS EmailString
+FROM persons;
+ Executing the statement, we will see the below output: Next TopicCommon Table Expression (CTE) in SQL Server ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

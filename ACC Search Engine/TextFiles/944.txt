@@ -1,0 +1,180 @@
+https://www.javatpoint.com/angular-material-list
+Angular Material List - Javatpoint
+Angular Material List - Javatpoint ? Home Angular Material AngularJS Angular 8 Angular 7 AWS IoT Control System HTML CSS Aptitude Selenium Kotlin JavaScript Projects Interview Q Comment Forum Angular Material Angular Material Tutorial Angular Material Installation Angular Material Icons Angular Material Inputs Angular Material Widgets Angular Material Buttons Angular Material Checkbox Angular Material Sort Header Angular Material Divider Angular Material List Angular Material Tree Angular Material Dialog next ? ? prev Angular Material List <Mat-list> is an angular directive used to create a container for carrying and formatting various objects. <Mat-list> is a container component that wraps the line items. It provides material design styling but has no behavior. Angular Content is a UI component library developed by the Angular to build design components for mobile or desktop applications. Enter the command in the command prompt and download it. The <mat-list> tag is used to display a list of objects or records. Syntax: 
+ng add @angular/material
+ Installation Steps Install the Angular Material by using the command mentioned above. After installation, import 'MatListModule' from '@angular/material/list' in the module.ts file. After importing the 'MatListModule' we need to use <mat-list> tag. Inside the <mat-list> tag we need to use <mat-list-item> tag for every item or labels. We need to include property for both <mat-list> tag and <mat-list-item>. For <mat-list>, we assign the role property with the "list" string, and for <mat-list-item>, we have to assign the role property with the "listitem" string value. Once done with the steps, then start the project. Simple lists The <mat-list> element contains many <mat-list-item> elements. 
+<mat-list>
+ <mat-list-item> Pepper </mat-list-item>
+ <mat-list-item> Salt </mat-list-item>
+ <mat-list-item> Paprika </mat-list-item>
+</mat-list>
+ Navigation lists Use mat-nav-list tags for navigation lists (i.e. lists that have anchor tags). 
+<mat-nav-list>
+   <a mat-list-item href="..." *ngFor="let link of links"> {{link}} </a>
+</mat-nav-list>
+ For more complex navigation lists (more than one target per item), wrap the anchor element in <mat-list-item>. 
+<mat-nav-list>
+  <mat-list-item *ngFor="let link of links">
+     <a matLine href="...">{{ link }}</a>
+     <button mat-icon-button (click)="showInfo(link)">
+        <mat-icon>info</mat-icon>
+     </button>
+  </mat-list-item>
+</mat-nav-list>
+ Action lists When each item in the list performs some action, use the <mat-action-list> element. Each item in the list is the <button> element. Simple action lists will use the mat-list-item attribute on button tag elements: 
+<mat-action-list>
+  <button mat-list-item (click)="save()"> Save </button>
+  <button mat-list-item (click)="undo()"> Undo </button>
+</mat-action-list>
+ Selection lists It provides an interface to select values, where every list item is an option. app.component.html 
+<mat-selection-list #shoes>
+  <mat-list-option *ngFor="let shoe of typesOfShoes">
+    {{shoe}}
+  </mat-list-option>
+</mat-selection-list>
+<p>
+  Options selected: {{shoes.selectedOptions.selected.length}}
+</p>
+ app.component.ts 
+import {Component} from '@angular/core';
+
+/**
+ * @title List with selection
+ */
+@Component({
+  selector: 'list-selection-example',
+  styleUrls: ['list-selection-example.css'],
+  templateUrl: 'list-selection-example.html',
+})
+export class ListSelectionExample {
+  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
+}
+ Output: Options selected: 0 Select-list options may not have further interactive controls, such as buttons and anchors. Multi-line List Lists that require multiple lines per item, annotate each line with a matlin attribute. 
+<mat-list>
+  <mat-list-item *ngFor="let message of messages">
+    <h3 matLine> {{message.from}} </h3>
+    <p matLine>
+      <span> {{message.subject}} </span>
+      <span class="demo-2"> -- {{message.content}} </span>
+    </p>
+  </mat-list-item>
+</mat-list>
+<!-- three line list -->
+<mat-list>
+  <mat-list-item *ngFor="let message of messages">
+    <h3 matLine> {{message.from}} </h3>
+    <p matLine> {{message.subject}} </p>
+    <p matLine class="demo-2"> {{message.content}} </p>
+  </mat-list-item>
+</mat-list>
+ Lists with Icons Use the matListIcon attribute for adding an icon to the list item. 
+<mat-list>
+  <mat-list-item *ngFor="let message of messages">
+    <mat-icon matListIcon>folder</mat-icon>
+    <h3 matLine> {{message.from}} </h3>
+    <p matLine>
+      <span> {{message.subject}} </span>
+      <span class="demo-2"> -- {{message.content}} </span>
+    </p>
+  </mat-list-item>
+</mat-list>
+ Lists with Avatars Add an image tag with the matListAvatar attribute for include an avatar image. 
+<mat-list>
+  <mat-list-item *ngFor="let message of messages">
+    <img matListAvatar src="..." alt="...">
+    <h3 matLine> {{message.from}} </h3>
+    <p matLine>
+      <span> {{message.subject}} </span>
+      <span class="demo-2"> -- {{message.content}} </span>
+    </p>
+  </mat-list-item>
+</mat-list>
+ Dense Lists To enable Dense list mode, add a dense attribute mat-list tag. 
+<mat-list dense>
+ <mat-list-item> Pepper </mat-list-item>
+ <mat-list-item> Salt </mat-list-item>
+ <mat-list-item> Paprika </mat-list-item>
+</mat-list>
+ Lists with Multiple Sections Sub-header will be added to a list by a heading tag with a matSubheader attribute. Use <mat-divider> to add a divider. 
+<mat-list>
+   <h3 matSubheader>Folders</h3>
+   <mat-list-item *ngFor="let folder of folders">
+      <mat-icon matListIcon>folder</mat-icon>
+      <h4 matLine>{{folder.name}}</h4>
+      <p matLine class="demo-2"> {{folder.updated}} </p>
+   </mat-list-item>
+   <mat-divider></mat-divider>
+   <h3 matSubheader>Notes</h3>
+   <mat-list-item *ngFor="let note of notes">
+      <mat-icon matListIcon>note</mat-icon>
+      <h4 matLine>{{note.name}}</h4>
+      <p matLine class="demo-2"> {{note.updated}} </p>
+   </mat-list-item>
+</mat-list>
+ Accessibility The type of list used in any situation depends on the end-user who interacts with it. Navigation When list-items navigate somewhere, <mat-nav-list> should be used as a list item with the elements <mat-list-item>. The neo-list will be rendered using role = "navigation" and can be given an area-label to reference the set of presented navigation options. Additional interactive Content, Like buttons, is not be added inside the anchor. Example 1: Below is the content of the modified module descriptor app.module.ts. 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatListModule} from '@angular/material'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+@NgModule({
+   declarations: [
+      AppComponent
+   ],
+   imports: [
+      BrowserModule,
+      BrowserAnimationsModule,
+      MatListModule,
+      FormsModule,
+      ReactiveFormsModule
+   ],
+   providers: [],
+   bootstrap: [AppComponent]
+})
+export class AppModule { }
+ Following is the content of the modified HTML host file app.component.html. 
+<mat-list role = "list">
+   <mat-list-item role = "listitem">One</mat-list-item>
+   <mat-list-item role = "listitem">Two</mat-list-item>
+   <mat-list-item role = "listitem">Three</mat-list-item>
+</mat-list>
+ Output: Explanation: Previously, we have created the list using mat-list. Then, we have added Content using mat-list-item. Example 2: app.module.ts 
+import { CommonModule } from '@angular/common'; 
+import { NgModule } from '@angular/core'; 
+import { FormsModule } from '@angular/forms'; 
+import { MatListModule } from '@angular/material'; 
+import { AppComponent } from './example.component'; 
+@NgModule({ 
+  declarations: [AppComponent], 
+  exports: [AppComponent], 
+  imports: [ 
+    CommonModule, 
+    FormsModule, 
+    MatListModule
+  ], 
+}) 
+export class AppModule {}
+ app.component.html 
+<mat-list role="list">
+  <mat-list-item role="listitem">HTML</mat-list-item>
+  <mat-list-item role="listitem">CSS</mat-list-item>
+  <mat-list-item role="listitem">Javascript</mat-list-item>
+</mat-list>
+ Output: Example 3: app.component.html 
+<mat-list role="list">
+  <mat-list-item role="listitem">Item 1</mat-list-item>
+  <mat-list-item role="listitem">Item 2</mat-list-item>
+  <mat-list-item role="listitem">Item 3</mat-list-item>
+</mat-list>
+ app.module.ts 
+import {Component} from '@angular/core';
+/**
+ * @title Basic list
+ */
+@Component({
+  selector: 'list-overview-example',
+  templateUrl: 'list-overview-example.html',
+})
+export class ListOverviewExample {}
+ Output: Next TopicAngular Material-Tree ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

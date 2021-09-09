@@ -1,0 +1,77 @@
+https://www.javatpoint.com/inorder-traversal
+Inorder Traversal - javatpoint
+Inorder Traversal - javatpoint ? Home Data Structure C C++ C# Java SQL HTML CSS JavaScript Ajax Android Cloud Design Pattern Quiz Projects Interview Q Comment Forum DS Tutorial DS Tutorial DS Introduction DS Algorithm Asymptotic Analysis DS Pointer DS Structure DS Array DS Array 2D Array DS Linked List Linked List Types of Linked List Singly Linked List Doubly Linked List Circular Linked List Circular Doubly List Skip list in DS DS Stack DS Stack Array Implementation Linked List Implementation DS Queue DS Queue Types of Queues Array Representation Linked List Representation Circular Queue Deque Priority Queue DS Tree DS Tree Binary Tree Binary Search Tree AVL Tree B Tree B+ Tree DS Graph DS Graph Graph Implementation BFS Algorithm DFS Algorithm Spanning Tree DS Searching Linear Search Binary Search DS Sorting Bubble Sort Bucket Sort Comb Sort Counting Sort Heap Sort Insertion Sort Merge Sort Quick Sort Radix Sort Selection Sort Shell Sort Bitonic Sort Cocktail Sort Cycle Sort Tim Sort Differences Linear vs non-linear Array vs linked list Stack vs queue Linear vs Circular Queue Linear Search vs Binary Search Singly Linked List vs Doubly Linked List Binary vs Binary Search Tree Tree vs Graph Binary Search tree vs AVL tree Red Black Tree vs AVL tree B tree vs B+ tree Quick Sort vs Merge Sort BFS vs DFS Stack vs Heap Bubble sort vs. Selection sort Misc Trie Data Structure Heap Data Structure Splay Tree Fundamental of the DS Hash Table Preorder Traversal Tree Traversal Implementation of Queue using Stacks Implementation of Stack using Queue Binomial Heap Postorder Traversal Sparse Matrix Detect loop in a Linked list Inorder Traversal Convert Infix to Postfix notation Convert infix to prefix notation Conversion of Prefix to Postfix expression Conversion of Postfix to Prefix expression DS MCQ Data Structure MCQ next ? ? prev Inorder Traversal Here, we will see how to traverse the node in an inorder fashion in a Binary search tree. In a binary search tree, the left subtree consists of nodes having a smaller value than the root node, while the right subtree consists of nodes having a greater value than the root node. If we want to traverse the nodes in ascending order, then we use the inorder traversal. The following are the steps required for the inorder traversal: Visit all the nodes in the left subtree Visit the root node Visit all the nodes in the right subtree There are two approaches used for the inorder traversal: Inorder traversal using Recursion Inorder traversal using an Iterative method Inorder Traversal using Recursion First, we look at the inorder traversal using recursion. Recursion means the function calls itself. In order to access each node, we first need to define the structure of the node. 
+struct BinaryTreeNode
+{
+     int info;
+     struct BinaryTreeNode *left;
+     struct BinaryTreeNode *right;
+}
+ The above code defines the structure of the node. The name of the structure is BinaryTreeNode that contains three fields, i.e., info, left pointer, and right pointer. The info field contains the value of the node, the left pointer contains the address of the left node, and the right pointer contains the address of the right node. Recursive approach of Inorder traversal 
+void inorder_traversal(struct BinaryTreeNode *root)
+{
+    if(root)
+{
+    inorder_traversal(root->left);
+    printf("%d", root->info);
+    inorder_traversal(root->right);
+}
+}
+ The above approach is the recursive approach. Inside the parenthesis of inorder_traversal function, we have passed the root pointer of type struct BinaryTreeNode, which is pointing to the root node of the tree. First, we will check whether the root is NULL or not. If the root is null means that the tree is empty. If the root is not empty, then the inorder_traversal(root_left) function will be called recursively to print all the left subtree nodes and then the root node. Once the left subtree is traversed, and the root node, the inorder_traversal(root_right) will be called recursively to print all the right subtree nodes. Implementation of Inorder traversal in C. 
+#include<stdio.h>  
+// Creating a node structure
+      struct BinaryTreeNode  
+     {  
+          int info;  
+          struct BinaryTreeNode *left;
+          struct BinaryTreeNode *right;  
+      };
+  
+  // Creating a tree..  
+struct BinaryTreeNode* create()  
+{  
+   struct BinaryTreeNode *temp;  
+   int data;  
+  temp = (struct BinaryTreeNode *)malloc(sizeof(struct BinaryTreeNode));  // creating a new node
+   printf("\nEnter the data: ");  
+   scanf("%d", &data);   
+   
+   if(data==-1)  
+{  
+return NULL;  
+}  
+  temp->info = data;  
+   printf("\nEnter the left child of %d", data);  
+   temp->left = create();  // creating a left child
+printf("\nEnter the right child of %d", data);  
+temp->right = create();  // creating a right child
+return temp;   
+ }
+ 
+ //inorder traversal
+void inorder(struct BinaryTreeNode *root)
+{
+    if(root==NULL)
+    return;
+    else
+    
+    inorder(root->left);
+    printf("%d ", root->info);
+    inorder(root->right);
+}
+  void main()  
+    {  
+       struct BinaryTreeNode *root;  
+       root = create();  // calling create function.
+       inorder(root);   // calling inorder function
+    }
+ Output Iterative Inorder Traversal The second approach is the iterative approach for the inorder traversal. When we were using the recursive approach, we used the system stack for the inorder traversal. For the iterative approach, we will use the external stack. Let's understand through an example. Consider the below tree: Now we have to perform the inorder traversal using an external stack. The following are the steps required to perform the inorder traversal: Step 1: First we push the root node, i.e., 10, into the stack: Stack: 10 Step 2: Node 10 has a left child, i.e., 11, so we will push node 11 into the stack. Stack: 10, 11 Step 3: Node 11 has a left child, i.e., 2, so we will push element 2 into the stack. Stack: 10, 11, 2 Step 4: Since node 2 does not have a left child, we will pop node 2 from the stack and get printed in the output. Set the root node as NULL. Stack: 10, 11 Output: 2 Step 5: Since the root node is NULL, so pop node 11 from the stack. Stack: 10 Output: 2, 11 Step 6: Node 11 has a right child, i.e., -1, so set the root as -1. Push -1 into the stack. Stack: 10, -1 Step 7: Since node -1 does not have a left or a right child, so set the root as NULL. Pop -1 from the stack. Stack: 10 Output: 2, 11, -1 Step 8: Since the root is NULL, pop 10 from the stack. Node 10 has a right child, i.e., 16, so set root to 16. Stack: empty Output: 2, 11, -1, 10 Step 9: The root is 16, so push 16 into the stack. Stack: 16 Step 10: Node 16 has also left child, i.e., 10, so push 10 into the stack. Set root to 10. Stack: 16, 10. Step 11: The node 10 has a left child, i.e., 9, so push 9 into the stack. Set root to 9. Stack: 16, 10, 9 Step 12: Since the node 9 has no left and right child so set root as NULL. Pop element 9 from the stack. Stack: 16, 10 Output: 2, 11, -1, 10, 9 Step 13: The root is set to node 9 and the topmost element is 10, so pop element 10 from the stack. The node 10 has a right child, i.e., node 11. Set root to node 11. Stack: 16 Output: 2, 11, -1, 10, 9, 10 Step 14: The root is set to 11 so push element 11 into the stack. Stack: 16, 11 Step 14: Since the root is set to 11 and it does not have any left and right child, pop element 11 from the stack. Set root to NULL. Stack: 16 Output: 2, 11, -1, 10, 9, 10, 11 Step 15: The root is set to NULL, so pop element 16 from the stack. Since the node 16 does not have a right child, set root node to NULL. Stack: empty Output: 2, 11, -1, 10, 9, 10, 11, 16 Algorithm of iterative inorder traversal 
+Step 1: Create an empty stack named as 'S'.
+Step 2: Initialize current node to root.
+Step 3: Push current node to the stack 'S' and then set current = current->left until the current node is NULL.
+Step 4: If current node is NULL and stack 'S' is not empty:
+     i) Pop topmost item of stack and print it.
+     ii) Set current= popped item->right
+     iii) Repeat step 3
+Step 5: If both current node and stack are empty means that the inorder traversal is completed.
+ Next TopicConvert Infix to Postfix notation ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

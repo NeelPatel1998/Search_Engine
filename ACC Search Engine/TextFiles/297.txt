@@ -1,0 +1,76 @@
+https://www.javatpoint.com/javascript-scrollintoview
+JavaScript scrollIntoView - javatpoint
+JavaScript scrollIntoView - javatpoint ? Home JavaScript C C++ Java PHP HTML CSS Bootstrap jQuery \ Node.js SQL Android Quiz Projects Interview Q Comment Forum Training JavaScript Tutorial JavaScript Introduction JavaScript Example External JavaScript JavaScript Basics JS Comment JS Variable JS Global Variable JS Data Types JS Operators JS If Statement JS Switch JS Loop JS Function JavaScript Objects JS Object JS Array JS String JS Date JS Math JS Number JS Boolean JavaScript BOM Browser Objects 1) Window Object 2) History Object 3) Navigator Object 4) Screen Object JavaScript DOM 5) Document Object getElementById GetElementsByClassName() getElementsByName getElementsByTagName JS innerHTML property JS innerText property JavaScript Validation JS form validation JS email validation JavaScript OOPs JS Class JS Object JS Prototype JS constructor Method JS static Method JS Encapsulation JS Inheritance JS Polymorphism JS Abstraction JavaScript Cookies JS Cookies Cookie Attributes Cookie with multiple Name Deleting Cookies JavaScript Events JavaScript Events JavaScript addEventListener() JS onclick event JS dblclick event JS onload event JS onresize event Exception Handling JS Exception Handling JavaScript try-catch JavaScript Misc JS this Keyword JS Debugging JS Hoisting JS Strict Mode JavaScript Promise JS Compare dates JavaScript array.length JavaScript alert() JavaScript eval() function JavaScript closest() JavaScript continue statement JS getAttribute() method JS hide elements JavaScript prompt() removeAttribute() method JavaScript reset JavaScript return JS String split() JS typeof operator JS ternary operator JS reload() method JS setAttribute() method JS setInterval() method JS setTimeout() method JS string includes() method Calculate current week number in JavaScript Calculate days between two dates in JavaScript JavaScript String trim() JavaScript timer Remove elements from array JavaScript localStorage JavaScript offsetHeight Confirm password validation Static vs Const How to Convert Comma Separated String into an Array in JavaScript Calculate age using JavaScript JavaScript label statement JavaScript String with quotes How to create dropdown list using JavaScript How to disable radio button using JavaScript JavaScript Advance JS TypedArray JS Set JS Map JS WeakSet JS WeakMap JavaScript callback JavaScript closures JavaScript date difference JavaScript date format JS date parse() method JavaScript defer JavaScript redirect JavaScript scope JavaScript scroll JavaScript sleep JavaScript void JavaScript Form Differences jQuery vs JavaScript JavaScript vs PHP Questions How to add JavaScript to html How to enable JavaScript in my browser difference between Java and JavaScript How to call JavaScript function in html How to write a function in JavaScript Is JavaScript case sensitive How does JavaScript Work How to debug JavaScript How to Enable JavaScript on Android What is a promise in JavaScript What is hoisting in JavaScript What is Vanilla JavaScript How to add a class to an element using JavaScript How to calculate the perimeter and area of a circle using JavaScript How to create an image map in JavaScript How to find factorial of a number in JavaScript How to get the value of PI using JavaScript How to make a text italic using JavaScript What are the uses of JavaScript How to get all checked checkbox value in JavaScript How to open JSON file Random image generator in JavaScript How to add object in array using JavaScript JavaScript Window open method JavaScript Window close method How to check a radio button using JavaScript JavaScript Const JavaScript function to check array is empty or not JavaScript multi-line String JavaScript Anonymous Functions Implementing JavaScript Stack Using Array JavaScript classList JavaScript Code Editors JavaScript let keyword Random String Generator using JavaScript JavaScript Queue Event Bubbling and Capturing in JavaScript How to select all checkboxes using JavaScript JavaScript change Event JavaScript focusout event Traverse array object using JavaScript JavaScript create and download CSV file How to make beep sound in JavaScript How to add a WhatsApp share button in a website using JavaScript JavaScript Execution Context JavaScript querySelector Shallow Copy in JavaScript How to Toggle Password Visibility in JavaScript Removing Duplicate From Arrays JavaScript insertBefore JavaScript Select Option Get and Set Scroll Position of an Element Getting Child Elements of a Node in JavaScript JavaScript scrollIntoView JavaScript String startsWith JS First Class Function JavaScript Default Parameters JavaScript Recursion in Real Life JavaScript removeChild Remove options from select list in JavaScript JavaScript Calculator Palindrome in JavaScript JavaScript Call Stack MCQ JavaScript MCQ Interview Questions JavaScript I/Q next ? ? prev JavaScript scrollIntoView JavaScript scrollIntoView () is a method of Element class that lets us scroll an element into the viewing portion of the window. Here, in this section, we will learn how we can use the scrollIntoView () method for scrolling the elements into the view. We will also implement an example through which we can understand the working and use of the function. JavaScript scrollIntoView () Method The scrollIntoView () method is used for scrolling the elements on the viewport. Syntax: 
+1) element.scrollIntoView (alignToTop);
+2) Element.scrollIntoView (options);
+ In the above-described syntaxes, the specified parameters are: alignToTop: The parameter alignToTop contains the Boolean value that can be either true or false, and by default, its value is set to true. For a particular code, if this parameter finds it true, as a result, the top of the element gets aligned either to the top of the visible area or to the top of the viewport area. However, in case the value is set to false; as a result, the bottom of the element gets aligned either to the bottom of the viewport or to the bottom of the visible area of the scroll bar. options: It is an object-type argument, and the browser support may vary. This parameter provides more control for the alignment of the element in the view. It has the following properties: The first property is the behavior that defines the transition animation. The property can have any of the two values, i.e., auto or smooth, where the default value is auto. The block property is another which defines the vertical alignment of the elements and can have any of the four value, i.e., start, center, end or nearest. Here, the default value is start. The last property is the inline property which defines the horizontal alignment and can have any of the four values, i.e., start, center, end, or nearest. Here, the default value is nearest. Now, let's take an example of the scrollIntoView () method. JavaScript scrollIntoView() Example Let's take an example to understand the working of the JavaScript scrollIntoView () method: 
+<!DOCTYPE html>
+<html>
+<body>
+  <button onclick="funcClick()">Click it</button>
+    <div>
+      <p>JavaTpoint: The Best Learning Portal</p>
+      <ul>
+      <li><b>JavaScript</b></li>
+      <li><b>Java</b></li>
+      <li><b>PHP</b></li>
+      <li><b>C</b></li>
+      <li><b>C++</b></li>
+      <li><b>Python</b></li>
+      <li><b>R</b></li>
+      <li><b>GO</b></li>
+      <li><b>DOT NET</b></li>
+      <li id="id_test"><b>Angular</b></li>
+      <li><b>Django</b></li>
+      <li><b>HTML</b></li>
+      <li><b>CSS</b></li>
+      <li><b>Bootstrap</b></li>
+      <li><b>C#</b></li>
+      <li><b>Android</b></li>
+      <li><b>SQL</b></li>
+      <li><b>DBMS</b></li>
+      <li><b>Data Structure</b></li>
+      <li><b>RPA</b></li>
+      <li><b>PostgreSQL</b></li>
+      <li><b>Artificial Intelligence</b></li>
+      <li><b>Machine Learning</b></li>
+      <li><b>AWS</b></li>
+      <li><b>Data Science</b></li>
+      <li><b>Blockchain</b></li>
+      <li><b>Git</b></li>
+      <li><b>DevOps</b></li>
+      <li><b>ReactJS</b></li>
+      <li><b>Hadoop</b></li>
+      <li><b>Cloud</b></li>
+      <li><b>Data Mining</b></li>
+      <li><b>Oracle</b></li>
+      <li><b>MYSQL</b></li>
+      <li><b>SQLite</b></li>
+      <li><b>jQuery</b></li>
+      <li><b>Node js</b></li>
+      <li><b>JSON</b></li>
+      <li><b>Laravel</b></li>
+      <li><b>Wordpress</b></li>
+      <li><b>JSP</b></li>
+      <li><b>JSF</b></li>
+      <li><b>Spring Boot</b></li>
+      <li><b>Rest API</b></li>
+      <li><b>MicroServices</b></li>
+      <li><b>IntelliJ</b></li>
+      <li><b>Apache Kafka</b></li>
+      <li><b>Cassandra</b></li>
+      <li><b>Selenium</b></li>
+      <li><b>SO on...</b></li>
+
+    </ul>
+  </div>
+<script>
+    function funcClick()
+    {
+      var e = document.getElementById("id_test");
+      e.scrollIntoView();
+    }
+  </script>
+</body>
+</html>
+ Test it Now On clicking the button once, we got the following output: In the output, you can see that we are not able to see the list items in the viewport without scrolling. We are able to see these list items only after pressing the button where on the button click, the list item gets scrolled into the visible area. Code Explanation: The above code is an html file that consists of both html and JavaScript code. We have created a list of items, and in between the items, we have created an id =id_test so that we can get our scrolling point from where the window will get scrolled. Next, we have created a button 'Click it' on which we have invoked the function when the user makes a click. As the function is the JS function, so as per the function definition, the particular list of items will be fetched, and it will be stored in the specified variable. When we use the scrolIntoView property, the windows get scrolled to the particular list item. Finally, the item will be visible in the viewport. So, the scrollIntoView () method of JavaScript is used for making the invisible part visible just by scrolling the scroll bar. You can also try the JavaScript scrollIntoView () method in alternative manners. Next TopicJavaScript String startsWith ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

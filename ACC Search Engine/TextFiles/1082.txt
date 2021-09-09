@@ -1,0 +1,259 @@
+https://www.javatpoint.com/remove-options-from-select-list-in-javascript
+Remove options from select list in JavaScript - javatpoint
+Remove options from select list in JavaScript - javatpoint ? Home JavaScript C C++ Java PHP HTML CSS Bootstrap jQuery \ Node.js SQL Android Quiz Projects Interview Q Comment Forum Training JavaScript Tutorial JavaScript Introduction JavaScript Example External JavaScript JavaScript Basics JS Comment JS Variable JS Global Variable JS Data Types JS Operators JS If Statement JS Switch JS Loop JS Function JavaScript Objects JS Object JS Array JS String JS Date JS Math JS Number JS Boolean JavaScript BOM Browser Objects 1) Window Object 2) History Object 3) Navigator Object 4) Screen Object JavaScript DOM 5) Document Object getElementById GetElementsByClassName() getElementsByName getElementsByTagName JS innerHTML property JS innerText property JavaScript Validation JS form validation JS email validation JavaScript OOPs JS Class JS Object JS Prototype JS constructor Method JS static Method JS Encapsulation JS Inheritance JS Polymorphism JS Abstraction JavaScript Cookies JS Cookies Cookie Attributes Cookie with multiple Name Deleting Cookies JavaScript Events JavaScript Events JavaScript addEventListener() JS onclick event JS dblclick event JS onload event JS onresize event Exception Handling JS Exception Handling JavaScript try-catch JavaScript Misc JS this Keyword JS Debugging JS Hoisting JS Strict Mode JavaScript Promise JS Compare dates JavaScript array.length JavaScript alert() JavaScript eval() function JavaScript closest() JavaScript continue statement JS getAttribute() method JS hide elements JavaScript prompt() removeAttribute() method JavaScript reset JavaScript return JS String split() JS typeof operator JS ternary operator JS reload() method JS setAttribute() method JS setInterval() method JS setTimeout() method JS string includes() method Calculate current week number in JavaScript Calculate days between two dates in JavaScript JavaScript String trim() JavaScript timer Remove elements from array JavaScript localStorage JavaScript offsetHeight Confirm password validation Static vs Const How to Convert Comma Separated String into an Array in JavaScript Calculate age using JavaScript JavaScript label statement JavaScript String with quotes How to create dropdown list using JavaScript How to disable radio button using JavaScript JavaScript Advance JS TypedArray JS Set JS Map JS WeakSet JS WeakMap JavaScript callback JavaScript closures JavaScript date difference JavaScript date format JS date parse() method JavaScript defer JavaScript redirect JavaScript scope JavaScript scroll JavaScript sleep JavaScript void JavaScript Form Differences jQuery vs JavaScript JavaScript vs PHP Questions How to add JavaScript to html How to enable JavaScript in my browser difference between Java and JavaScript How to call JavaScript function in html How to write a function in JavaScript Is JavaScript case sensitive How does JavaScript Work How to debug JavaScript How to Enable JavaScript on Android What is a promise in JavaScript What is hoisting in JavaScript What is Vanilla JavaScript How to add a class to an element using JavaScript How to calculate the perimeter and area of a circle using JavaScript How to create an image map in JavaScript How to find factorial of a number in JavaScript How to get the value of PI using JavaScript How to make a text italic using JavaScript What are the uses of JavaScript How to get all checked checkbox value in JavaScript How to open JSON file Random image generator in JavaScript How to add object in array using JavaScript JavaScript Window open method JavaScript Window close method How to check a radio button using JavaScript JavaScript Const JavaScript function to check array is empty or not JavaScript multi-line String JavaScript Anonymous Functions Implementing JavaScript Stack Using Array JavaScript classList JavaScript Code Editors JavaScript let keyword Random String Generator using JavaScript JavaScript Queue Event Bubbling and Capturing in JavaScript How to select all checkboxes using JavaScript JavaScript change Event JavaScript focusout event Traverse array object using JavaScript JavaScript create and download CSV file How to make beep sound in JavaScript How to add a WhatsApp share button in a website using JavaScript JavaScript Execution Context JavaScript querySelector Shallow Copy in JavaScript How to Toggle Password Visibility in JavaScript Removing Duplicate From Arrays JavaScript insertBefore JavaScript Select Option Get and Set Scroll Position of an Element Getting Child Elements of a Node in JavaScript JavaScript scrollIntoView JavaScript String startsWith JS First Class Function JavaScript Default Parameters JavaScript Recursion in Real Life JavaScript removeChild Remove options from select list in JavaScript JavaScript Calculator Palindrome in JavaScript JavaScript Call Stack MCQ JavaScript MCQ Interview Questions JavaScript I/Q next ? ? prev Remove options from select list in JavaScript In this article, we will understand how to remove an option from the select list with the help of JavaScript. At the beginning of this article, we will learn some fundamental aspects of JavaScript, <select> tag, and remove method in JavaScript. After that, we will understand some examples of this article. What do you mean by JavaScript? JavaScript is an object-based, high-level language as it can access various HTML objects that are contained in the web page. remove() method The remove () method is used in JavaScript to remove the selected elements from the select list. Syntax 1: 
+$(selector).remove (selector)
+ Example: $("p").remove(); Syntax 2: 
+$("#FIELDID option[value='X']").remove();
+ Example: $("#select1 option[value='hello']").remove(); What do you mean by <select> tag? The <select> tag is similar in functionality to unordered list <ul> or ordered list <ol> used in HTML to define a list. And <option> tag is similar to the list item <li> which specifies the list item in a list. The select and option tags are used to create drop-down menus. It is also called a pull-down list and drop-down list. Syntax: 
+<select name = "select_list_name" size ="n" multiple>
+<option value ="choice-name 1" selected> Text Label-1 </option>
+<option value ="choice-name 2" selected> Text Label-2 </option>
+..............................................................
+..............................................................
+</select>
+ The <select> tag specifies that the text that follows is a list, and the <option> tag is used to determine the items of the list. The following examples are used to remove option from the select list with the help of JavaScript. Example 1: 
+<! DOCTYPE html>
+<html>
+<title>
+Remove option from select list using JavaScript
+</title>
+<head>
+<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+<style>
+h2 {
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  color: #aaa;
+  align: center;
+  font-size: 30px;
+  margin-top: 1.5rem;
+  font-weight: 1000;
+}
+p {
+font-weight: bold;
+  margin-bottom: 2.5rem;
+  color: #aaa;
+  align: center;
+  font-size: 20px;
+  margin-top: 1.5rem;
+  font-weight: 1000;
+}
+h3 {
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  color: #aaa;
+  align: center;
+  font-size: 30px;
+  margin-top: 1.5rem;
+  font-weight: 1000;
+}
+body {
+  background: #191828;
+ color: #aaa;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.6em;
+  margin-top: 30;
+   }
+   ::placeholder { 
+   color: #aaa;
+   font-weight: bold;
+  opacity: 1; 
+}
+input[type='button'] {
+  box-sizing: border-box;
+  height: 35px;
+  display: inline-block;
+  border: 3px solid #2F96EF;
+  border-radius: 5px;
+  padding: 0 15px;
+  margin: 10px 0;
+  transition: .2s;
+}
+#selectNow {
+ box-sizing: border-box;
+  height: 35px;
+  display: inline-block;
+  border: 3px solid #2F96EF;
+  border-radius: 5px;
+  padding: 0 15px;
+  margin: 10px 0;
+  transition: .2s;
+}
+#selectNow:hover {
+	color: #FFFFFF;
+	background-color: #aaa;
+	font-weight: bold;
+  opacity: 1; 
+}
+em {
+  font-family: Georgia, serif;
+  line-height: 1.6;
+}
+input[type='button']:hover {
+	color: #FFFFFF;
+	background-color: #3494e6;
+}
+</style>
+   <body>
+   <h3 align="center"> Example: </h3> 		   
+               <h2 align="center"> Remove option from select JavaScript </h2>                                
+                  <form id = "myForm" align = "center">
+         <select id = "selectNow">
+            <option value = "one"> One </option>
+            <option value ="two" > Two </option>
+           <option value ="three" > Three </option>
+    <option value ="apple" > Apple </option>
+    <option value ="pear" > Pear </option>
+    <option value ="ban" > Banana </option>
+    <option value="orange" > Orange </option>
+         </select>
+         <input type = "button" onclick = "remove()" value = "Click to Remove" >
+      </form>
+      <p align="center"> <em> Select and click the button to remove the selected option. </em> </p>
+     <script>
+         function remove() {
+            var x = document.getElementById("selectNow");
+            x.remove(x.selectedIndex);
+         }
+      </script>
+     </body>
+</html>
+ Test it Now Explanation: In this example, we can choose any desired option from the list to remove the element from it. When we click the button then the selected element is removed from the select list. Following JS code is used to remove element from the select list. 
+<script>
+         function remove() {
+            var x = document.getElementById("selectNow");
+            x.remove(x.selectedIndex);
+         }
+      </script>
+ Output: Below is the output of this example: In this example, we have selected the "three" option value from the select list and after removing this element, the output is shown below: Example 2: 
+<! DOCTYPE html>
+<html>
+<title>
+Remove option from select list using JavaScript
+</title>
+<head>
+<meta name = "viewport" content = "width = device-width, initial-scale = 1">
+<style>
+#select1:hover {
+color: #FFFFFF;
+background-color: #aaa;
+font-weight: bold;
+ opacity: 1; 
+}
+button:hover {
+color: #FFFFFF;
+background-color: #3494e6;
+}
+ h2 {
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  color: #aaa;
+  align: center;
+  font-size: 30px;
+  margin-top: 1.5rem;
+  font-weight: 1000;
+}
+p {
+font-weight: bold;
+  margin-bottom: 2.5rem;
+  color: #aaa;
+  align: center;
+  font-size: 20px;
+  margin-top: 1.5rem;
+  font-weight: 1000;
+}
+h3 {
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  color: #aaa;
+  align: center;
+  font-size: 30px;
+  margin-top: 1.5rem;
+  font-weight: 1000;
+}
+body {
+  background: #191828;
+ color: #aaa;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.6em;
+  margin-top: 30;
+   }
+   ::placeholder { 
+   color: #aaa;
+   font-weight: bold;
+  opacity: 1; 
+}
+button {
+  box-sizing: border-box;
+  height: 35px;
+  display: inline-block;
+  border: 3px solid #2F96EF;
+  border-radius: 5px;
+  padding: 0 15px;
+  margin: 10px 0;
+  transition: .2s;
+}
+#select1 {
+ box-sizing: border-box;
+  height: 35px;
+  display: inline-block;
+  border: 3px solid #2F96EF;
+  border-radius: 5px;
+  padding: 0 15px;
+  margin: 10px 0;
+  transition: .2s;
+}
+em {
+  font-family: Georgia, serif;
+  line-height: 1.6;
+}
+</style>
+</head> 
+<body align="center"> 
+<h1 style="color: green"> 
+ <h3 align="center"> Example: </h3> 		   
+      <h2 align="center"> Remove defined option from select JavaScript </h2>          
+	<p align="center"> <em>
+	Select any one option from the given options in select list.		<select id="select1"> 
+			<option value="free"> 
+			Free 
+		</option> 
+			<option value="basic"> 
+			Basic 
+		</option> 
+			<option value="premium"> 
+			Premium 
+		</option> 
+		 <option value= "one"> One </option>
+            <option value="two"> Two </option>
+            <option value="three"> Three </option>		
+</select> 
+	</em> </p>
+	<p align = "center"> <em> Click the button below to 
+	Remove one option from the select box. </em> </p>
+	<button onclick="removeOption()"> 
+	Remove option 
+</button> 
+<script src= 
+"https://code.jquery.com/jquery-3.3.1.min.js"> 
+</script> 
+<script type = "text/javascript"> 
+function removeOption() { 
+$("#select1 option[value='basic']").remove(); 
+} 
+	</script> 
+</body> 
+</html>
+ Test it Now Explanation: In this example, you can select or define any option from the select list to remove. When we click the button then the defined element is removed from the select list. Following JS code is used to remove element from the select list. 
+<script type="text/javascript"> 
+		function removeOption() { 
+			$("#select1 option[value='basic']").remove(); 
+		} 
+	</script>
+ Output: Below is the output of this example: The "basic" option value from the select list is predefined to remove from the list in this example. When we click on the button, then the basic option value is removed from the select list. Below is the output of the select list after removing the basic option value from the select list. Next TopicJavaScript Calculator ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

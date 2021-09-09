@@ -1,0 +1,167 @@
+https://www.javatpoint.com/bootstrap-4-badges
+Bootstrap 4 Badges - Javatpoint
+Bootstrap 4 Badges - Javatpoint ? Home Bootstrap 4 Bootstrap HTML JavaScript jQuery jQuery UI CSS XML JSON C Java PHP Ajax Quiz Projects Interview Q Bootstrap 4 Tutorial Bootstrap 4 Tutorial Environment setup Bootstrap 4 Layout Bootstrap 4 Buttons Bootstrap 4 Dropdown Bootstrap 4 Spinners Bootstrap 4 Badges Bootstrap 4 Progress Bars Bootstrap 4 Jumbotron Bootstrap 4 Text Bootstrap 4 Pagination Bootstrap 4 Carousel Bootstrap 4 Scrollspy next ? ? prev Bootstrap 4 - Badges The badges in Bootstrap 4 can be used to give additional information about the content. For example, a website that is associated to some number of notifications to the link. The notification number is seen when logged in to a particular website which tells the numbers of news or notifications to see by clicking it. Badges are somewhat similar to labels; the primary difference is that the corners are more rounded. Badges are mainly used for the purpose of highlighting or putting more emphasis on the new or unread items in a list in a web page. The users can implement Badges in their website in order to enhance the whole look of the website as well. In Bootstrap 4, there are 4 types of badges that can be implemented: Basic Badges Contextual Badges Pill Badges Badge which is inside an element Basic Badges: In Basic Badges, the user has to use the .badge class in order to create rectangular badges. A basic badge has a basic layout. The Example for Basic Badges in Bootstrap 4 is given below: 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<title>Bootstrap Badges</title> 
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 	
+<script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+</script> 
+<script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> 
+</script> 
+<script src= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> 
+</script> 
+</head> 
+<body> 
+<h1 style="color:red;text-align:center;"> 
+Welcome to JavaTpoint
+</h1> 
+<div class="container"> 
+<h4>Notification pending
+<span class="badge badge-secondary">19</span> 
+</h4> 	
+<h4>Unread Messages
+<span class="badge badge-secondary">1</span> 
+</h4> 	
+<h4>Read Messages 
+<span class="badge badge-secondary">9</span> 
+</h4> 
+<h4>New Posts
+<span class="badge badge-secondary">0</span> 
+</h4> 
+</div> 
+</body> 
+</html>
+ Test it Now The Output for Basic Badges will be: Contextual Badges: The contextual classes can be used to change the color of the badges. Badges can be used as part of links or button so as to provide a counter. It mainly depends on how they used; badges must be confusing for the users. For this purpose, different color of variations is used so that the user may not get confused. The Example for Contextual Badges in Bootstrap 4 is given below: 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<title>Bootstrap Badges</title> 	
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 	
+<script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+</script> 
+<script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> 
+</script> 
+<script src= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> 
+</script> 
+</head> 
+<body> 
+<h1 style="color:red;text-align:center;"> 
+Welcome to JavaTpoint
+</h1> 		
+<div class="container"> 
+<h4>Notification pending
+<span class="badge badge-primary">19</span> 
+</h4> 		
+<h4>Unread Messages
+<span class="badge badge-warning">1</span> 
+</h4> 		
+<h4>Read Messages 
+<span class="badge badge-success">9</span> 
+</h4> 
+<h4>New Posts 
+<span class="badge badge-danger">0</span> 
+</h4> 
+</div> 
+</body> 
+</html>
+ Test it Now The Output for Contextual Badges will be: Pill Badges: The Pill Badges can be used to create a badge that has more rounded corners. The. badge-pill class can be used to make badges corner more rounded which means the badge will contain larger border radius and will also contain additional border padding. The Example for Pill Badges in Bootstrap 4 is given below: 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<title>Bootstrap Badges</title> 
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 	
+<script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+</script> 	
+<script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> 
+</script> 	
+<script src= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> 
+</script> 
+</head> 
+<body> 
+<h1 style="color:red;text-align:center;"> 
+Welcome to JavaTpoint
+</h1> 		
+<div class="container"> 
+<h4>Notification pending 
+<span class="badge badge-primary badge-pill">19</span> 
+</h4> 
+<h4>Unread Messages
+<span class="badge badge-warning badge-pill">1</span> 
+</h4> 
+<h4>Read Messages 
+<span class="badge badge-success badge-pill">9</span> 
+</h4> 
+<h4>New Posts 
+<span class="badge badge-danger badge-pill">0</span> 
+</h4> 
+</div> 
+</body> 
+</html>
+ Test it Now The Output for Pill Badges will be: Badge which is inside an element: In Bootstrap 4, a badge can also be created in such a way that it is situated inside an element. For this, a user has to nest the badges inside <button> elements. The Example for Badge which is inside an element in Bootstrap 4 is given below: 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<title>Bootstrap Badges</title> 
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 	
+<script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+</script> 	
+<script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> 
+</script> 
+<script src= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> 
+</script> 
+</head> 
+<body> 
+<h1 style="color:red;text-align:center;"> 
+Welcome to JavaTpoint
+</h1> 	
+<div class="container"> 
+<button type="button" class="btn btn-primary"> 
+<h4>Notification Pending
+<span class="badge badge-primary badge-danger">19</span> 
+</h4> 
+</button><br><br> 		
+<button type="button" class="btn btn-warning"> 
+<h4>Unread Messages
+<span class="badge badge-light">9</span> 
+</h4> 
+</button><br><br> 		
+<button type="button" class="btn btn-primary"> 
+<h4>Read Messages 
+<span class="badge badge-success">1</span> 
+</h4> 
+</button><br><br> 	
+<button type="button" class="btn btn-danger"> 
+<h4>New Posts
+<span class="badge badge-primary">0</span> 
+</h4> 
+</button> 
+</div> 
+</body> 
+</html>
+ Test it Now The Output for Badge which is inside an element will be: Next TopicBootstrap 4 Progress Bars ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

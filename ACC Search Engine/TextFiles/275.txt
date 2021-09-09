@@ -1,0 +1,148 @@
+https://www.javatpoint.com/label-encoding-in-python
+Label Encoding in Python - Javatpoint
+Label Encoding in Python - Javatpoint ? Home Python If Else For Loop Function Array String Regex List Set Tuple Dictionary Lambda Function Modules Programs Tkinter Numpy Interview Questions Python Tutorial Python Tutorial Python Features Python History Python Applications Python Install Python Example Python Variables Python Data Types Python Keywords Python Literals Python Operators Python Comments Python If else Python Loops Python For Loop Python While Loop Python Break Python Continue Python Pass Python Strings Python Lists Python Tuples Python List Vs Tuple Python Sets Python Dictionary Python Functions Python Built-in Functions Python Lambda Functions Python Files I/O Python Modules Python Exceptions Python Date Python Regex Python Sending Email Read CSV File Write CSV File Read Excel File Write Excel File Python Assert Python List Comprehension Python Collection Module Python Math Module Python OS Module Python Random Module Python Statistics Module Python Sys Module Python IDEs Python Arrays Command Line Arguments Python Magic Method Python Stack & Queue PySpark MLlib Python Decorator Python Generators Web Scraping Using Python Python JSON Python Itertools Python Multiprocessing Python OOPs Python OOPs Concepts Python Object Class Python Constructors Python Inheritance Abstraction in Python Python MySQL Environment Setup Database Connection Creating New Database Creating Tables Insert Operation Read Operation Update Operation Join Operation Performing Transactions Python MongoDB Python MongoDB Python SQLite Python SQLite Python Questions How to install Python in Windows How to reverse a string in Python How to read CSV file in Python How to run Python Program How to take input in Python How to convert list to string in Python How to append element in the list How to compare two lists in Python How to convert int to string in Python How to create a dictionary in Python How to create a virtual environment in Python How to declare a variable in Python How to install matplotlib in Python How to install OpenCV in Python How to print in same line in Python How to read JSON file in Python How to read a text file in Python How to use for loop in Python Is Python scripting language How long does it take to learn Python How to concatenate two strings in Python How to connect Database in Python How to convert list to dictionary in Python How to declare a global variable in Python How to reverse a number in Python What is an object in Python Which is the fastest implementation of Python How to clear Python shell How to create a DataFrames in Python How to develop a game in Python How to install Tkinter in Python How to plot a graph in Python How to print pattern in Python How to remove an element from a list in Python How to Round number in Python How to sort a dictionary in Python Strong Number in Python How to Convert Text to Speech in Python Bubble Sort in Python Logging in Python Insertion Sort in Python Binary Search in Python Linear Search in Python Python vs Scala Queue in Python Stack in Python Heap Sort in Python Palindrome program in python Program of Cumulative sum in python Merge Sort in Python Python Matrix Python Unit Testing Forensics & Virtualization Best Books to Learn Python Best Books to Learn Django GCD of two number in python Python Program to generate a Random String How to One Hot Encode Sequence Data in Python How to write square root in Python Pointer in Python Python 2D array Python Memory Management Python Libraries for Data Visualization How to call a function in Python Git Modules in Python Top Python Frameworks for Gaming Python Audio Modules Wikipedia Module in Python Python random randrange() Permutation and Combination in Python Getopt module in Python Merge two Dictionaries in Python Multithreading in Python 3 Static in Python How to get the current date in Python argparse in Python Python tqdm Module Caesar Cipher in Python Tokenizer in Python How to add two lists in Python Shallow Copy and Deep Copy in Python Atom Python Contains in Python Label Encoding in Python Django vs. Node JS Python Frameworks How to create a vector in Python using NumPy Pickle Module of Python How to convert Bytes to string in Python Python Program to Find Anagram How to convert List to Set Python vs JavaScript Python Holidays Module FuzzyWuzzy Python Library Dask Python Python Tkinter (GUI) Python Tkinter Tkinter Button Tkinter Canvas Tkinter Checkbutton Tkinter Entry Tkinter Frame Tkinter Label Tkinter Listbox Tkinter Menubutton Tkinter Menu Tkinter Message Tkinter Radiobutton Tkinter Scale Tkinter Scrollbar Tkinter Text Tkinter Toplevel Tkinter Spinbox Tkinter PanedWindow Tkinter LabelFrame Tkinter MessageBox Python Web Blocker Introduction Building Python Script Script Deployment on Linux Script Deployment on Windows Python MCQ Python MCQ Related Tutorials NumPy Tutorial Django Tutorial Flask Tutorial Pandas Tutorial Pytorch Tutorial Pygame Tutorial Matplotlib Tutorial OpenCV Tutorial Openpyxl Tutorial Python CGI Python Design Pattern Python Programs Python Programs next ? ? prev Label Encoding in Python An Introduction Before we begin learning the categorical variable encoding, let us understand the basics of data types and their scales at first. It becomes essential for the learners to understand these topics in order to proceed to work with categorical variable encoding. As we all know, Data is a distinct type of information usually formatted in a specific manner. We can categorize Data into three types, called, structured data, semi-structured data, and unstructured data. The data embodied in the form of matrix with rows and columns are denoted as structured data. These data can be stored as a table in SQL database, rows and columns in excel sheet, or delimiter separated in CSV. The Data which is not embodied in the form of matrix is said to be semi-structured data and unstructured data. We can generally store the Semi-Structured data in XML files, JSON format and a lot more, whereas the unstructured data in form of images, e-mails, videos, log data, and textual data. Let us consider a provided business problem based on machine learning or data science. If we deal with structured data only and the data gathered is a combination of continuous variables and categorical variables, most of the algorithms in Machine Learning will not understand or not be able to work with categorical variables. This statement means that algorithms in machine learning perform considerably better in accuracy and other performance metrics when data is represented in numeric form instead of categorical to a model for training and testing. Hence, the categorical data must be encoded into numbers before using it to fit and evaluate a model. Some Algorithms of Machine Learning, like Tree-based (such as Decision Tree, Random Forest) algorithms, perform better in handling categorical variables. The best training in any project associated with data science is to convert categorical data to a numerical data. Since the objective is now clear, let us understand several types of categorical data before we start building any statistical models, deep learning models, or machine learning models and start encoding or transforming categorical data to numerical forms. Understanding Nominal Scale Nominal Scale is defined as the variables that are names only. They are used to label variables. Nominal scales never overlap with each other, and do not have any numerical significance. Note: Nominal Scale refers only to those variables that just name. Here are some examples that represent data for the nominal Scale. Once we collect the data, we have to assign a numerical code representing a nominal variable generally. What is person's Gender? What is person's Marital Status? In which city does the person reside? Male Single Delhi Female Married Mumbai Divorced Chennai Widowed Bangalore City where Person live Assigned Numerical Code Delhi 1 Mumbai 2 Chennai 3 Bangalore 4 For instance, we can assign a numerical code 1 to address Delhi, 2 to address Mumbai, 3 to address Chennai, and 4 to address Bangalore for a categorical variable - In which city does the person reside. Important Note: The assigned numerical value does not have any attached mathematical value. Above statement implies that basic mathematical operations like division, multiplication, subtraction, or addition are pointless. As a result, operations like Delhi/Mumbai or Chennai + Bangalore make no sense at all. Understanding Ordinal Scale An Ordinal Scale refers to a variable in which the data value is stored from an ordered set. For instance, data utilizes Likert scale for representing customer feedback survey that is finite, as shown in the table below: Customer Feedback: 5-Points Likert Scale Feedback Assigned Numerical Code Very Poor 1 Poor 2 Satisfactory 3 Good 4 Very Good 5 In the above case, we have collected the feedback data with the help of a five-point Likert scale. We assigned the numerical code 1 to Very Poor, 2 for Poor, 3 for Satisfactory, 4 for Good, and 5 for Very Good. We can also observe that 5 is better than 4 and much better than 3. However, it will not make any sense if we subtract very good from satisfactory. As we already know, most machine learning algorithms function exclusively with numerical values or data. This is the reason behind encoding the categorical features into a representation compatible using the models. Thus, there are several well-known approaches available for encoding, including: Label Encoding One-hot Encoding Ordinal Encoding However, we will be covering Label Encoding only throughout this tutorial: Understanding Label Encoding In Python Label Encoding, we need to replace the categorical value using a numerical value ranging between zero and the total number of classes minus one. For instance, if the value of the categorical variable has six different classes, we will use 0, 1, 2, 3, 4, and 5. Now, let us understand label encoding with the data of COVID-19 cases in India across states as an example. While observing the following data frame, we will find out that the State column consists of a categorical value that is not pretty machine-friendly. The other columns consist of numerical values. Now, let us try label encoding for State Column. Covid-19 cases in India across states State Confirmed Deaths Recovered Maharashtra 284281 11194 158140 Tamil Nadu 156369 2236 107416 Delhi 118645 3545 97693 Karnataka 51422 2089 19729 Gujarat 45481 2089 32103 Uttar Pradesh 43441 1046 26675 As we can observe, after performing label encoding, we have assigned the numerical value to each and every categorical value. Some of us might wonder why the numbering is unordered (Top-Down). The reason is that we have assigned the numbers in alphabetical order which implies that Delhi is assigned to 0, Gujarat to 1, Karnataka to 2 and so on. State (Nominal Scale) State (Label Encoding) Maharashtra 3 Tamil Nadu 4 Delhi 0 Karnataka 2 Gujarat 1 Uttar Pradesh 5 Label Encoding using Python The sklearn library of Python offers users pre-defined functions in order to work with Label Encoding on the dataset. Syntax: 
+from sklearn import preprocessing 
+obj = preprocessing.LabelEncoder()
+ As we can observe, we have created an object of the LabelEncoder class and then use the object to apply the label encoding to the data. There are primarily two ways available for Label Encoding: LabelEncoder class with the help of scikit-learn library Category Codes Label Encoding using the scikit-learn library Let us begin with the process of Label Encoding. The primary step for dataset encoding is to have a dataset. So, we have created a simple dataset here. Example: Creating the dataset 
+import pandas as pd 
+my_data = {
+    "Gender" : ['F', 'M', 'M', 'F', 'M', 'F', 'M', 'F', 'F', 'M'],
+    "Name" : ['Cindy', 'Carl', 'Johnny', 'Stacey', 'Andy', 'Sara', 'Victor', 'Martha', 'Mindy', 'Max']
+        }
+blk = pd.DataFrame(my_data)
+print("Geniune Data Frame:\n")
+print(blk)
+ As we can observe, we have created a dictionary 'data' and transformed it into a Data Frame with the help of the DataFrame() function of pandas. Output: 
+Geniune Data Frame:
+
+  Gender    Name
+0      F   Cindy
+1      M    Carl
+2      M  Johnny
+3      F  Stacey
+4      M    Andy
+5      F    Sara
+6      M  Victor
+7      F  Martha
+8      F   Mindy
+9      M     Max
+ As we can observe from the above dataset, we have the variable called 'Gender' that has labels as 'F' and 'M', respectively. Moving ahead, let us try importing the LabelEncoder class. We will then apply the class on the 'Gender' variable of the dataset. Example: 
+import pandas as pd
+from sklearn import preprocessing 
+
+my_data = {
+    "Gender" : ['F', 'M', 'M', 'F', 'M', 'F', 'M', 'F', 'F', 'M'],
+    "Name" : ['Cindy', 'Carl', 'Johnny', 'Stacey', 'Andy', 'Sara', 'Victor', 'Martha', 'Mindy', 'Max']
+        }
+blk = pd.DataFrame( my_data )
+print("Geniune Data Frame:\n")
+print( blk )
+
+my_label = preprocessing.LabelEncoder() 
+ 
+blk[ 'Gender' ]= my_label.fit_transform(blk[ 'Gender' ]) 
+print(blk[ 'Gender' ].unique())
+print("Data Frame after Label Encoding:\n")
+print( blk )
+ Output: 
+Geniune Data Frame:
+
+
+  Gender    Name
+0      F   Cindy
+1      M    Carl
+2      M  Johnny
+3      F  Stacey
+4      M    Andy
+5      F    Sara
+6      M  Victor
+7      F  Martha
+8      F   Mindy
+9      M     Max
+[0 1]
+Data Frame after Label Encoding:
+
+   Gender    Name
+0       0   Cindy
+1       1    Carl
+2       1  Johnny
+3       0  Stacey
+4       1    Andy
+5       0    Sara
+6       1  Victor
+7       0  Martha
+8       0   Mindy
+9       1     Max
+ Explanation: In the above example, we have imported pandas and preprocessing modules of the scikit-learn library. We have then defined the data as a dictionary and printed a data frame for reference. Later on, we have used the fit_transform() method in order to add label encoder functionality pointed by the object to the data variable. We have printed the unique code with respect to the Gender and the final Data Frame after performing label encoding. Moving ahead, let us discuss another method of Label Encoding that is with the help of Category codes. Label Encoding using Category codes Before we get into the process of label encoding using Category codes, let us check the data types of the variables of the dataset. We can check the data type using the dtypes function as shown below: 
+import pandas as pd
+
+my_data = {
+    "Gender" : ['F', 'M', 'M', 'F', 'M', 'F', 'M', 'F', 'F', 'M'],
+    "Name" : ['Cindy', 'Carl', 'Johnny', 'Stacey', 'Andy', 'Sara', 'Victor', 'Martha', 'Mindy', 'Max']
+        }
+blk = pd.DataFrame( my_data )
+print( blk.dtypes )
+ Output: 
+Gender    object
+Name      object
+dtype: object
+ Once we have checked the data type of the variable 'Gender', we will transform and convert it to category type. This can be seen in the following snippet of code: 
+import pandas as pd
+
+my_data = {
+    "Gender" : ['F', 'M', 'M', 'F', 'M', 'F', 'M', 'F', 'F', 'M'],
+    "Name" : ['Cindy', 'Carl', 'Johnny', 'Stacey', 'Andy', 'Sara', 'Victor', 'Martha', 'Mindy', 'Max']
+        }
+blk = pd.DataFrame( my_data )
+blk[ 'Gender' ] = blk[ 'Gender' ].astype( 'category' )
+
+print( blk.dtypes )
+ Output: 
+Gender    category
+Name        object
+dtype: object
+ Now, let us try transforming the labels into integer types with the pandas.DataFrame.cat.codes function. Here is a complete example based on label encoding using the category codes: Example: 
+import pandas as pd
+
+my_data = {
+    "Gender" : ['F', 'M', 'M', 'F', 'M', 'F', 'M', 'F', 'F', 'M'],
+    "Name" : ['Cindy', 'Carl', 'Johnny', 'Stacey', 'Andy', 'Sara', 'Victor', 'Martha', 'Mindy', 'Max']
+        }
+blk = pd.DataFrame( my_data )
+print("Genuine Data Frame:\n")
+print( blk )
+
+blk[ 'Gender' ] = blk[ 'Gender' ].astype( 'category' )
+print("\nData Frame after Label Encoding using Category codes:\n")
+blk[ 'Gender' ] = blk[ 'Gender' ].cat.codes
+
+print( blk )
+ Output: 
+Genuine Data Frame:
+
+  Gender    Name
+0      F   Cindy
+1      M    Carl
+2      M  Johnny
+3      F  Stacey
+4      M    Andy
+5      F    Sara
+6      M  Victor
+7      F  Martha
+8      F   Mindy
+9      M     Max
+
+Data Frame after Label Encoding using Category codes:
+
+   Gender    Name
+0       0   Cindy
+1       1    Carl
+2       1  Johnny
+3       0  Stacey
+4       1    Andy
+5       0    Sara
+6       1  Victor
+7       0  Martha
+8       0   Mindy
+9       1     Max
+ Explanation: In the above example, we have imported the pandas library and defined data as a dictionary. We have then printed the original data frame for reference. After that, we have converted the data type of the variable 'Gender' into a category and used the pandas.DataFrame.cat.codes function to transform it into category codes. At last, we have printed the result after label encoding using Category codes. Next TopicDjango vs. Node JS ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

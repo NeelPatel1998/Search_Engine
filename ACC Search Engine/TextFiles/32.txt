@@ -1,0 +1,107 @@
+https://www.javatpoint.com/how-to-get-the-current-date-in-python
+How to get the current date in Python - Javatpoint
+How to get the current date in Python - Javatpoint ? Home Python If Else For Loop Function Array String Regex List Set Tuple Dictionary Lambda Function Modules Programs Tkinter Numpy Interview Questions Python Tutorial Python Tutorial Python Features Python History Python Applications Python Install Python Example Python Variables Python Data Types Python Keywords Python Literals Python Operators Python Comments Python If else Python Loops Python For Loop Python While Loop Python Break Python Continue Python Pass Python Strings Python Lists Python Tuples Python List Vs Tuple Python Sets Python Dictionary Python Functions Python Built-in Functions Python Lambda Functions Python Files I/O Python Modules Python Exceptions Python Date Python Regex Python Sending Email Read CSV File Write CSV File Read Excel File Write Excel File Python Assert Python List Comprehension Python Collection Module Python Math Module Python OS Module Python Random Module Python Statistics Module Python Sys Module Python IDEs Python Arrays Command Line Arguments Python Magic Method Python Stack & Queue PySpark MLlib Python Decorator Python Generators Web Scraping Using Python Python JSON Python Itertools Python Multiprocessing Python OOPs Python OOPs Concepts Python Object Class Python Constructors Python Inheritance Abstraction in Python Python MySQL Environment Setup Database Connection Creating New Database Creating Tables Insert Operation Read Operation Update Operation Join Operation Performing Transactions Python MongoDB Python MongoDB Python SQLite Python SQLite Python Questions How to install Python in Windows How to reverse a string in Python How to read CSV file in Python How to run Python Program How to take input in Python How to convert list to string in Python How to append element in the list How to compare two lists in Python How to convert int to string in Python How to create a dictionary in Python How to create a virtual environment in Python How to declare a variable in Python How to install matplotlib in Python How to install OpenCV in Python How to print in same line in Python How to read JSON file in Python How to read a text file in Python How to use for loop in Python Is Python scripting language How long does it take to learn Python How to concatenate two strings in Python How to connect Database in Python How to convert list to dictionary in Python How to declare a global variable in Python How to reverse a number in Python What is an object in Python Which is the fastest implementation of Python How to clear Python shell How to create a DataFrames in Python How to develop a game in Python How to install Tkinter in Python How to plot a graph in Python How to print pattern in Python How to remove an element from a list in Python How to Round number in Python How to sort a dictionary in Python Strong Number in Python How to Convert Text to Speech in Python Bubble Sort in Python Logging in Python Insertion Sort in Python Binary Search in Python Linear Search in Python Python vs Scala Queue in Python Stack in Python Heap Sort in Python Palindrome program in python Program of Cumulative sum in python Merge Sort in Python Python Matrix Python Unit Testing Forensics & Virtualization Best Books to Learn Python Best Books to Learn Django GCD of two number in python Python Program to generate a Random String How to One Hot Encode Sequence Data in Python How to write square root in Python Pointer in Python Python 2D array Python Memory Management Python Libraries for Data Visualization How to call a function in Python Git Modules in Python Top Python Frameworks for Gaming Python Audio Modules Wikipedia Module in Python Python random randrange() Permutation and Combination in Python Getopt module in Python Merge two Dictionaries in Python Multithreading in Python 3 Static in Python How to get the current date in Python argparse in Python Python tqdm Module Caesar Cipher in Python Tokenizer in Python How to add two lists in Python Shallow Copy and Deep Copy in Python Atom Python Contains in Python Label Encoding in Python Django vs. Node JS Python Frameworks How to create a vector in Python using NumPy Pickle Module of Python How to convert Bytes to string in Python Python Program to Find Anagram How to convert List to Set Python vs JavaScript Python Holidays Module FuzzyWuzzy Python Library Dask Python Python Tkinter (GUI) Python Tkinter Tkinter Button Tkinter Canvas Tkinter Checkbutton Tkinter Entry Tkinter Frame Tkinter Label Tkinter Listbox Tkinter Menubutton Tkinter Menu Tkinter Message Tkinter Radiobutton Tkinter Scale Tkinter Scrollbar Tkinter Text Tkinter Toplevel Tkinter Spinbox Tkinter PanedWindow Tkinter LabelFrame Tkinter MessageBox Python Web Blocker Introduction Building Python Script Script Deployment on Linux Script Deployment on Windows Python MCQ Python MCQ Related Tutorials NumPy Tutorial Django Tutorial Flask Tutorial Pandas Tutorial Pytorch Tutorial Pygame Tutorial Matplotlib Tutorial OpenCV Tutorial Openpyxl Tutorial Python CGI Python Design Pattern Python Programs Python Programs next ? ? prev How to get the current date in Python? In this section, we will understand how we can retrieve Python's current date using various methods. A date is an important part of an application or website, or database server that indicates the day and time the software has been created, stored website records, app version, etc. For example, when a user uses the applications or website for certain work, the software stores the user's information with a certain date and time. Furthermore, we can say when we visit any social media site such as Twitter, Facebook, WhatsApp, etc. they store the user's information on which date the particular user's post, share or send the message, etc. So, we can define the importance of the date and time in the software application. In the Python programming language, the datetime module contains a datetime class used to access the computer's current date and time. Using the datetime.now() Method Python datetime.now() method used to display the system's current date and time. It defines the function inside the datetime module of the Python library. Syntax: 
+datetime.now()
+ Consider a program to access the current date and time of the system using the datetime.now() method in Python. program.py 
+import datetime 
+dt = datetime.datetime.now() # use now() method in datetime
+print( "Display the current date of the system: ") # current date 
+print (str (dt) ) # call the dt variable to print the system date.
+ Output: 
+Display the current date of the system:
+2021-02-28 18:56:52.799555
+ Using the now() Method now() method: Python now() method is used to display the current date of the system. Syntax: 
+now() # fetch the current date 
+ Consider a program to access the current date and time of the system using the now() method in Python. Program.py 
+# import the datetime class or module from the datetime module.
+from datetime import datetime
+now = datetime.now() # Use now() to access the current date and time 
+print("Current date and time is ", now)
+ Output: 
+Current date and time is 2021-02-28 18:58:33.237779
+ Note: It returns the current date of the system in string format by importing the datetime module in Python programming. Attributes of the now() Method Python now() method has various attributes similar to the time attributes such as year, month, date, hour, minute, and second. Let's create a program to demonstrate the different attributes of the now() method to print the date in Python. Program2.py 
+# importing the datetime module for now() method
+import datetime
+# Use datetime.now() method to get the current date into the variable current_date
+current_date = datetime.datetime.now()
+# print the message for now() attributes in Python
+print (" Following are the attributes of now() function are : ")
+
+# print the current year of the system
+print(" The current year is : ", end = "" )
+print (current_date.year)
+# print the current month of the system
+print( " The current month is : ", end = "" )
+print (current_date.month)
+# print the current date of the system
+print( " The current date is : ", end = "" )
+print (current_date.day)
+ Output: 
+Following are the attributes of now() function are :
+ The current year is: 2021
+ The current month is: 2
+ The current date is: 28
+ Using date.today() Method A date module class present in the datetime module to return a date object that contains the value of today's date. Where a today() method is used to get the today date in the Python program. Syntax: 
+date.today()
+ Let's consider a program to display the system's current date using the today() method of date class. Prog.py 
+from datetime import date
+td = date.today() # Use the today method and assign it to the td variable.
+print(" Get the today date in Python is: ", td)
+ Output: 
+Get the today date in Python is:  2021-02-28
+ Using the now().date() Function A now().date() method used to access the local or current date of the system by importing the datetime module in Python. Syntax: 
+Current_date = datetime.now().date()
+ Lets' write a program to print the system's current date using the datetime.now().date() method in Python. Program3.py 
+from datetime import datetime
+#  Return the current date of the system 
+Current_date = datetime. now(). date() 
+print("The current date is :", Current_date)
+ Output: 
+The current date is : 2021-02-28
+ Using the now().time() Function A now().time() method used to access the local or current time of the system by importing the time() method from the datetime module in Python. Syntax: 
+Current_date = datetime.now().time()
+ Lets' write a program to print the system's current time using the datetime.now().time() method in Python. Prog2.py 
+from datetime import datetime
+# Return the current date and time of the system 
+Current_time = datetime.now().time() 
+print("Current time is :", Current_time)
+ Output: 
+Current time is: 19:07:45.787512
+ Date and Time Formats in Python Following are the various format of date and time to get the desired representation of datetime in Python by passing the parameters to the strftime () function. Directive Description Example %a Display the abbreviate weekday name. Sun, Mon, … %A Display the full weekday name. Sunday, Monday, .. %b Display the abbreviate month name. Jan, Feb, …, Dec %B Display the full month's name. January, February, … December %c It is used to position the appropriate date and time representation. Sun Feb 21 07:05: 28 2021 %d Display the day of the month in the zero-padded decimal format. 01, 02, …, 28, 30, 31 %H Display the hour (24-hour clock) in the format of a zero-padded decimal number. 00, 01, …, 23 %I It represents the hour (12-hour clock) as a decimal number. 01, 02, …, 12 %j Display the day of the year in the form of a zero-padded decimal number. 001, 002, …, 999 %m Display the month in the form of a zero-padded decimal number. 01, 02, …, 12 %M Display the Minute in the form of a zero-padded decimal number. 00, 01, .., 59 %p It is used to position the equivalent of either AM or PM. AM, PM %S Display the second in the form of a zero-padded decimal number. 00, 01, …, 59 %U Count the Sunday as the first day of the week number in the year, and it displays the day in the decimal number. 00, 01, …, 53 %w It is used to locate the weekday as a decimal number where Sunday starts with 0. 00, 01, …, 53 %W Count the Monday as the first day of the week number in the year, and it displays the day in the decimal number. 00, 01, …, 53 %x It is used to locate the appropriate representation of the date. 19- 02 - 2021 %X It is used to locate the appropriate representation of the time. 07 : 41: 29 %y Display the year format without containing century in the form of a decimal number. 0, 1, .., 99 %Y Display the year containing century in the form of a decimal number. 2014, 2019, etc. %z It represents the UTC offset in the form +HHMM or - HHMM. %Z It is basically used to represent the time zone name (It does not contain any characters if no time zone exists). %% It just represents a literal "%" character. % Let's create a Python program and use the above described formats. Prog1.py 
+import datetime
+dt = datetime.datetime.now()
+print ("Current date and time is = %s" % dt)
+print ("Date and time in ISO Format = %s" % dt.isoformat())
+print ("Current year = %s" %dt.year)
+print ("Current month is = %s" %dt.month)
+print ("Current date (day) = %s" %dt.day )
+print ("represent Date in dd/mm/yyyy format = %s / %s/ %s" % (dt.day, dt.month, dt.year))
+print ("Current hour is = %s" %dt.hour)
+print (" Current minute is = %s" %dt.minute)
+print ("Current Second is = %s" %dt.second)
+print ("Representation of time in hh: mm: ss format = %s: %s: %s" % (dt.hour, dt.minute, dt.second))
+ Output: 
+Current date and time is = 2021-02-28 19:09:03.739466
+Date and time in ISO Format = 2021-02-28T19:09:03.739466
+Current year = 2021
+Current month is = 2
+Current date (day) = 28
+Represent Date in dd/mm/yyyy format = 28 / 2/ 2021
+Current hour is = 19
+ Current minute is = 9
+Current Second is = 3
+Representation of time in hh: mm: ss format = 19: 9: 3
+ Using the strftime() Function Let's create a program to display current date and time using the strftime() function. Strftime.py 
+import datetime
+dt  = datetime.datetime.now()
+print (dt.strftime ("%Y - %m - %d %H: %M: %S " )) # represents the date YYYY- MM - DD
+# HH: MM: SS
+print (dt.strftime ("%d / %m / %Y ")) # represents the date in DD/ MM/ YYYY
+print (dt.strftime (" %I: %M: %S %p ")) # represents the time in HH: MM: SS AM/ PM
+print (dt.strftime ("%a, %b %d, %Y ")) # represents the day, month date and year
+ Output: 
+2021 - 02 - 28 19: 12: 06
+28 / 02 / 2021
+ 07: 12: 06 PM
+Sun, Feb 28, 2021
+ Next Topicargparse in Python ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,100 @@
+https://www.javatpoint.com/what-is-the-function-call-in-c
+What is the function call in C - javatpoint
+What is the function call in C - javatpoint ? Home C C++ C# Java SQL HTML CSS JavaScript XML Ajax Android Cloud Design Pattern Quiz Projects Interview Q Comment Forum C/C++ Training C Tutorial What is C Language History of C Features of C How to install C First C Program Compilation Process in C printf scanf Variables in C Data Types in c Keywords in c C Identifiers C Operators C Comments C Format Specifier C Escape Sequence ASCII value in C Constants in C Literals in C Tokens in C C Boolean Static in C Programming Errors in C Compile time vs Runtime Conditional Operator in C Bitwise Operator in C 2s complement in C C Fundamental Test C Control Statements C if-else C switch if-else vs switch C Loops C do-while loop C while loop C for loop Nested Loops in C Infinite Loop in C C break C continue C goto Type Casting C Control Statement Test C Functions What is function Call: Value & Reference Recursion in c Storage Classes C Functions Test C Array 1-D Array 2-D Array Return an Array in C Array to Function C Array Test C Pointers C Pointers C Pointer to Pointer C Pointer Arithmetic Dangling Pointers in C sizeof() operator in C const Pointer in C void pointer in C C Dereference Pointer Null Pointer in C C Function Pointer Function pointer as argument in C C Pointers Test C Dynamic Memory Dynamic memory C Strings String in C C gets() & puts() C String Functions C strlen() C strcpy() C strcat() C strcmp() C strrev() C strlwr() C strupr() C strstr() C String Test C Math C Math Functions C Structure Union C Structure typedef in C C Array of Structures C Nested Structure Structure Padding in C C Union C Structure Test C File Handling C File Handling C fprintf() fscanf() C fputc() fgetc() C fputs() fgets() C fseek() C rewind() C ftell() C Preprocessor C Preprocessor C Macros C #include C #define C #undef C #ifdef C #ifndef C #if C #else C #error C #pragma C Preprocessor Test C Command Line Command Line Arguments C Misc C Expressions Data Segments Flow of C Program Classification of Programming Languages Enum in C What is getch() in C What is the function call in C typedef vs define in C C Programming Test C Programming Test C Programs Top 10+ C Programs Fibonacci Series Prime Number Palindrome Number C program to compare the two strings Strings Concatenation in C Factorial Armstrong Number Sum of digits Count the number of digits in C Reverse Number Swap Number Print "Hello" without ; Assembly code in C C program without main Matrix Multiplication Decimal to Binary Number in Characters Alphabet Triangle Number Triangle Fibonacci Triangle Hexadecimal to Binary Hexadecimal to Decimal Octal to Hexadecimal in C Strong number in C Star Program in C itoa Function in C Extra Long Factorials in C Leap year program in C Perfect Number Program in C Variables vs Constants Round Robin Program in C with Output C Program to find the roots of quadratic equation Type Casting vs Type Conversion How to run a C program in Visual Studio Code Modulus Operator in C/C++ Sum of first N natural numbers in C MCQ C language MCQ Math Prime Numbers List Composite Numbers List Square Numbers List Binary Numbers List Fibonacci Numbers List Ounces in a Cup Ounces in a Pound Ounces in a Gallon Ounces in a Liter Ounces in a Pint Ounces in a Quart Ounces in a Tablespoon C Interview C Interview Questions next ? ? prev What is the function call in C? Before jumping to the function call, we need to understand the function in the C programming language. A function is a group of tasks used to execute the predefined operations and returns a value. A large program can be divided into small blocks of code that help to understand the logic, debug, and modified it. In the C programming language, the function is divided into two parts: the built-in/ library function and the user-defined function. Library/ Built-in Function A library function is predefined functions, and its tasks are also defined in the C header files. So, it does not require writing the code of the particular function; instead, it can be called directly in a program whenever it is required. Example: printf(), scanf(), getch(), etc., are the predefined function in the C library, and the meaning of these functions cannot be changed. Let's write a program to define the library function in C. Predefined.c 
+# include <stdio.h> //  Contains the printf, scanf() built-in function
+#include <conio.h> 
+void main() 
+{
+printf( " Welcome to the JavaTpoint.com "); 
+printf("\n It is the library or built-in function in C "); 
+getch(); // built-in function
+}
+ Output: 
+Welcome to the JavaTpoint.com
+It is the library function or built-in function in C
+ User-defined Function It is a user-defined function in the C programming language to execute some specific actions according to the programmer's requirement. A user-defined function is divided into three types such as function declaration, function definition, and function call. Function Declaration A function declaration defines the name and return type of a function in a program. Before using the function, we need to declare it outside of a main() function in a program. Syntax: 
+return_data_type function_name ( data_type arguments) ;
+ Example of function declaration: 
+int add ( int num1, int num2 );
+ In the above example, int is a return data type of the function name add function that contains two integer parameters as num1 and num2. Furthermore, we can write the above function declaration is as follows: 
+int add (int, int);
+ Function Definition It defines the actual body of a function inside a program for executing their tasks in C. Syntax: 
+return_data_type function_name (argument list ) {
+// Statement to be executed in a function;
+}
+ In the above syntax, a function definition contains the three parts as follow: Return Data_Type: It defines the return data type of a value in the function. The return data type can be integer, float, character, etc. Function Name: It defines the actual name of a function that contains some parameters. Parameters/ Arguments: It is a parameter that passed inside the function name of a program. Parameters can be any type, order, and the number of parameters. Function Body: It is the collection of the statements to be executed for performing the specific tasks in a function. Consider an example to demonstrate the function definition: 
+int min (int n1, int n2); // min() is the name of a function that contains n1 and n2 parameters
+{
+// declaration of the local variable.
+int out;
+if ( n1 > n2) 
+out = n1; // return n1 when n1 is greater than n2.
+else
+out = n2; // return n2 when n2 is greater than n1.
+return out;
+}
+ Function Calling: A function call is an important part of the C programming language. It is called inside a program whenever it is required to call a function. It is only called by its name in the main() function of a program. We can pass the parameters to a function calling in the main() function. Syntax: 
+Add(a, b) // a and b are the parameters
+ Let's consider a program to call a function in C programming languages. Add.c 
+#include <stdio.h>
+int add(int a, int b); 
+void main()
+{
+
+int sum;
+int a, b;
+printf(" Enter the first and second number \n");
+scanf("%d %d", &a, &b);
+sum = add(a, b); // call add() function
+printf( "The sum of the two number is %d", sum);
+}
+int add(int n1, int n2) // pass n1 and n2 parameter
+{
+int c;
+c = n1 + n2;
+return c;
+}
+ Output: 
+Enter the first and second number
+5
+6
+The sum of the two number is 11
+ Call by Value: When single or multiple values of an actual argument are copied into the formal parameter of a function, the method is called the Call by Value. Hence, it does not alter the function's actual parameter using the formal parameter. Consider a program to demonstrate the Call by Value in C programming. Call_Value.c 
+#include <stdio.h>
+int main()
+{
+int x = 10, y = 20;
+printf (" x = %d, y = %d from main before calling the function", x, y);
+CallValue(x, y);
+printf( "\n x = %d, y = %d from main after calling the function", x, y);
+}
+int CallValue( int x, int y)
+{
+x = x + 5;
+y = y + 5;
+printf (" \nx = %d, y = %d from modular function", x, y);
+} 
+ Output: 
+x = 10, y = 20 from main before calling the function
+x = 15, y = 25 from modular function
+ x = 10, y = 20 from main after calling the function
+ Call by Reference: In this method, the address of the actual argument is copied into the function call's formal parameter; the method is known as Call by Reference. If we make some changes in the formal parameters, it shows the effect in the value of the actual parameter. Consider a program to demonstrate the Call by Reference in C programming. Call_Ref.c 
+#include <stdio.h>
+int main()
+{
+int x = 10, y = 20;
+printf (" x = %d, y = %d from main before calling the function", x, y);
+CallValue (&x, &y);
+printf( "\n x = %d, y = %d from main after calling the function", x, y);
+}
+int CallRef( int *a, int *b)
+{
+*a = *a + 5;
+*b = *b + 5;
+printf (" \nx = %d, y = %d from modular function", *a, *b);
+}
+ Output: 
+x = 10, y = 20 from main before calling the function
+x = 15, y = 25 from modular function
+ x = 15, y = 25 from main after calling the function
+ Next Topictypedef vs define in C ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

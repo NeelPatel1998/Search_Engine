@@ -1,0 +1,48 @@
+https://www.geeksforgeeks.org/css-tutorials/
+CSS Tutorials - GeeksforGeeks
+CSS Tutorials - GeeksforGeeks Skip to content Tutorials Algorithms Analysis of Algorithms Asymptotic Analysis Worst, Average and Best Cases Asymptotic Notations Little o and little omega notations Lower and Upper Bound Theory Analysis of Loops Solving Recurrences Amortized Analysis What does 'Space Complexity' mean ? Pseudo-polynomial Algorithms Polynomial Time Approximation Scheme A Time Complexity Question Searching Algorithms Sorting Algorithms Graph Algorithms Pattern Searching Geometric Algorithms Mathematical Randomized Algorithms Greedy Algorithms Dynamic Programming Divide and Conquer Backtracking Branch and Bound All Algorithms Data Structures Arrays Linked List Stack Queue Binary Tree Binary Search Tree Heap Hashing Graph Advanced Data Structure Matrix Strings All Data Structures Languages C C++ Java Python C# Javascript jQuery SQL PHP Scala Perl Go Language HTML CSS Kotlin Interview Corner Company Preparation Top Topics Practice Company Questions Interview Experiences Experienced Interviews Internship Interviews Competititve Programming Design Patterns Multiple Choice Quizzes GATE GATE CS Notes 2021 Last Minute Notes GATE CS Solved Papers GATE CS Original Papers and Official Keys GATE 2021 Dates GATE CS 2021 Syllabus Important Topics for GATE CS Sudo GATE 2021 ISRO CS ISRO CS Solved Papers ISRO CS Original Papers and Official Keys ISRO CS Syllabus for Scientist/Engineer Exam UGC NET CS UGC NET CS Notes Paper II UGC NET CS Notes Paper III UGC NET CS Solved Papers CS Subjects Mathematics Operating System DBMS Computer Networks Computer Organization and Architecture Theory of Computation Compiler Design Digital Logic Software Engineering Web Technologies HTML CSS Javascript AngularJS ReactJS NodeJS Bootstrap jQuery PHP Student Campus Ambassador Program Project Geek of the Month Campus Geek of the Month Placement Course Competititve Programming Testimonials Geek on the Top Careers Internship Jobs Apply for Jobs Post a Job Courses Write Come write articles for us and get featured Practice Learn and code with the best industry experts Premium Get access to ad-free content, doubt assistance and more! Jobs Come and find your dream job with us Geeks Digest Quizzes Campus Mantri Geeks Campus Gblog Articles IDE Home Courses GBlog Puzzles What's New ? Data Structures Algorithms Interview Preparation Topic-wise Practice C++ Java Python Competitive Programming Machine Learning Web Development Puzzles Project Ideas School Learning ? Web Development HTML Tutorials CSS Tutorials JavaScript Tutorial Bootstrap Tutorials jQuery Tutorials AngularJS Tutorials ReactJS Tutorials PHP Tutorials NodeJS Tutorials SQL Tutorial CSS Tutorials Last Updated : 19 Mar, 2021 CSS (Cascading Style Sheets) is a stylesheet language used to design the webpage to make it attractive. The reason of using CSS is to simplify the process of making web pages presentable. CSS allows you to apply styles to web pages. More importantly, CSS enables you to do this independent of the HTML that makes up each web page. There are three types of CSS which are given below: Inline CSS Internal or Embedded CSS External CSS Why we learn CSS? Styling has been an essential property for any website since many decades. It increases the standards and overall look of the website which makes it easier for the user to interact with it. A website cannot be made without CSS, as styling is MUST since no user would want to interact with a dull and shabby website. So for knowing Web Development, learning CSS is must. Base for web development: HTML and CSS is the basic skill that every web developer should know. It is the basic skill that is required for building a website. Makes your website look attractive: A website that’s dull and plain will not attract the user most probably, so adding some style would surely make your website presentable to the user. Makes the design come live: A web developer is responsible in making the design given to him as a live product. CSS is used for styling to develop the design of the website. Increases user experience of website: A website with a simple yet beautiful UI would help the users to go through the website easily. CSS is used to make the user interface better. More career opportunities: Since CSS is a basic requirement while learning Web Development, therefor there are abundant career opportunities for it. As a freelancer too you can land up to many projects. Basic Format: It is the basic structure of HTML webpage and we use CSS style inside webpage. In a web page, we use internal CSS (i.e. adding CSS code inside <head> tag of HTML code). 
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <!-- Head section of web page -->
+    <title></title>
+ 
+    <!-- Stylesheet of web page --> 
+    <style></style>
+</head>
+ 
+<body>
+    <!-- Body section of web page -->
+</body>
+ 
+</html>
+ Example: Let’s see a small example of HTML webpage with CSS styles. Here, we use CSS styles to set the alignment and text color in a webpage. 
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Simple HTML webpage with CSS style
+    </title>
+
+    <!-- Stylesheet of web page -->
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to GeeksforGeeks</h1>
+
+    <p>A computer science portal for geeks</p>
+</body>
+
+</html>
+ Output: Learn more about HTML: CSS Introduction CSS Website Layout CSS Complete References: CSS Basics Complete Reference CSS Properties Complete Reference CSS Selectors Complete Reference CSS Functions Complete Reference CSS Questions Complete Reference Recent Articles on CSS Please write comments if you find anything incorrect, or you want to share more information about the topic discussed above. My Personal Notes arrow_drop_up Save Writing code in comment? Please use ide.geeksforgeeks.org, generate link and share the link here. Load Comments What’s New Data Structures and Algorithms – Self Paced Course View Details Ad-Free Experience – GeeksforGeeks Premium View Details Most Popular Articles Must Do Coding Questions for Companies like Amazon, Microsoft, Adobe, ... Must Do Coding Questions Company-wise 5 Reasons Why Learning Coding is Beneficial For Students Puzzle | Find the Culprit Generate all distinct subsequences of array using backtracking Most Visited Articles Difference between Half adder and full adder String Comparison in Python Java Basic Syntax Python List Slicing Introduction to Java 5th Floor, A-118, Sector-136, Noida, Uttar Pradesh - 201305 feedback@geeksforgeeks.org Company About Us Careers Privacy Policy Contact Us Copyright Policy Learn Algorithms Data Structures Languages CS Subjects Video Tutorials Practice Courses Company-wise Topic-wise How to begin? Contribute Write an Article Write Interview Experience Internships Videos @geeksforgeeks , Some rights reserved We use cookies to ensure you have the best browsing experience on our website. By using our site, you acknowledge that you have read and understood our Cookie Policy & Privacy Policy Got It !

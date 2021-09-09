@@ -1,0 +1,142 @@
+https://www.javatpoint.com/angular-9-or-8-select-dropdown-example
+Angular 9 or 8 Select Dropdown Example - javatpoint
+Angular 9 or 8 Select Dropdown Example - javatpoint ? Home AngularJS Angular 7 C Java HTML CSS JavaScript jQuery Bootstrap PHP SQL PL/SQL Python Quiz Projects Interview Q Comment Forum Training AngularJS Tutorial AngularJS Tutorial What is AngularJS AngularJS MVC AngularJS First App AngularJS Data Binding AngularJS Expressions AngularJS Directives AngularJS Controllers AngularJS Modules AngularJS Scopes AngularJS Dependency AngularJS Filters AngularJS Tables AngularJS Select AngularJS DOM AngularJS Forms AngularJS Validation AngularJS AJAX AngularJS Animation Misc Angularjs Simple Datepicker directive Example Display Data from Json File in Angular Create Pagination using dirPagination directive in Angularjs Angular 7 Tutorial Angular 7 Tutorial Angular 7 Introduction Angular 7 Installation History & Versions Angular 7 First App Angular 7 Files Explanation Angular 7 with Bootstrap All CLI commands Angular 7 Libraries Angular 7 Architecture Angular 7 Components Angular 7 Directives Angular 7 Directives Angular 7 ngIf Directive Angular 7 ngStyle Directive Angular 7 Databinding Angular 7 Databinding Angular 7 String Interpolation Angular 7 Event Binding Angular 7 Property Binding Angular 7 Pipes Angular 7 Pipes Error Fixing Angular 7 Error Fixing Angular 7 Forms Angular 7 Forms Data Flow in Angular Forms Angular Reactive Forms Template-driven Forms Angular Misc Angular vs React Dynamically Add and Remove Form Fields in Angular Dropzone Image Upload in Angular 9/8 Angular 9/8 Select Dropdown Example Angular + Spring CRUD Example File Upload Example Login & Logout Example Search Field Example Interview Questions AngularJS Interview JavaScript Interview jQuery Interview Backbone.js Interview Ember.js Interview Neo4j Interview next ? ? prev Angular 9/8 Select Dropdown Example In this section, we will learn how to select dropdown in Angular 8 or Angular 9. For this, we will provide a very simple example to select dropdown in Angular 8 or Angular 9. The Angular 9/8 contains a list of bind select dropdowns. We will start by change event of dropdown selection. In order to create a reactive form that will contain a dropdown box, we will use the loop. In this section, we will provide two examples to select dropdown. In the first example, when we click on the submit button, we are able to get the value of selected dropdown box. In the second example, when the change event has occurred, we are able to get the value of selected dropdown box. In our both example, we will create dropdown by using the "websiteList" variable. Both the examples to get dropdown are described below. For this, firstly, we have to add from validation, and for that, we will follow some step in Angular 9, which is described as follows: Example 1: Get Selected DropDown value on Form Submit Step 1: In this step, we will Import FormsModule. If we are trying to use the Angular app to create form, we require to import FormsModule. We will import this from @angular/forms library. So we will use the app.module.ts file and add the following code: src/app/app.module.ts: 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+  
+import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+  
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+ Step 2: In the second step, we will perform Form with ngModel. For this, we will use html form and write code into it with ngModel. So we will use the file app.component.html to add the below code. In our form, we will use the bootstrap class. src/app/app.component.html: 
+<div class="container">
+    <h1> Example of Select Dropdown in Angular </h1>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+           
+        <div class="form-group">
+            <label for="website">Website:</label>
+            <select formControlName="website" class="form-control">
+                <option disabled>Select Website</option>
+                <option>Choose Website</option>
+                <option *ngFor="let web of websiteList">{{web}}</option>
+            </select>
+            <div *ngIf="f.website.touched && f.website.invalid" class="alert alert-danger">
+                <div *ngIf="f.website.errors.required">Name is required.</div>
+            </div>
+        </div>
+       
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
+ Step 3: In this step, we will Update Ts file. For this, we will write a function named submit(), and after that, we are able to get all the values of input fields. So we will use the app.component.ts file to add the below code: src/app/app.component.ts: 
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+  
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  websiteList: any = ['Javatpoint.com', 'HDTuto.com', 'Tutorialandexample.com]
+  
+  form = new FormGroup({
+    website: new FormControl('', Validators.required)
+  });
+  
+  get f(){
+    return this.form.controls;
+  }
+  
+  submit(){
+    console.log(this.form.value);
+  }
+  
+}
+ Now, we will use the following command to run the above example: 
+ng serve
+ Example 2: Get Selected DropDown value on Change Event Step 1: In this step, we will Import FormsModule. If we are trying to use the Angular app to create form, we require to import FormsModule. We will import this from @angular/forms library. So we will use the app.module.ts file and add the following code: src/app/app.module.ts: 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+  
+import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+  
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+ Step 2: In the second step, we will perform Form with ngModel. For this, we will use html form and write code into it with ngModel. So we will use the file app.component.html to add the below code. In our form, we will use the bootstrap classes. src/app/app.component.html: 
+<div class="container">
+    <h1> Example of Select Dropdown in Angular </h1>
+      
+    <form [formGroup]="form" (ngSubmit)="submit()">
+          
+        <div class="form-group">
+            <label for="website">Website:</label>
+            <select formControlName="website" class="form-control" (change)="changeWebsite($event)">
+                <option disabled>Select Website</option>
+                <option>Choose Website</option>
+                <option *ngFor="let web of websiteList">{{web}}</option>
+            </select>
+            <div *ngIf="f.website.touched && f.website.invalid" class="alert alert-danger">
+                <div *ngIf="f.website.errors.required">Name is required.</div>
+            </div>
+        </div>
+      
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
+ Step 3: In this step, we will Update Ts file. For this, we will write a function named submit(), and after that, we are able to get all the values of input fields. So we will use the app.component.ts file to add the below code: src/app/app.component.ts 
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+  
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  websiteList: any = ['Javatpoint.com', 'HDTuto.com', 'Tutorialandexample.com]
+  
+  form = new FormGroup({
+    website: new FormControl('', Validators.required)
+  });
+  
+  get f(){
+    return this.form.controls;
+  }
+  
+  submit(){
+    console.log(this.form.value);
+  }
+  changeWebsite(e) {
+    console.log(e.target.value);
+  }
+  
+}
+ Now we will use the following command to run the above example: 
+ng serve
+ After running the above command, we will see the following output: Next Topic# ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

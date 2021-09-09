@@ -1,0 +1,513 @@
+https://www.javatpoint.com/jquery-validation
+JQuery Validation - javatpoint
+JQuery Validation - javatpoint ? Home jQuery jQuery UI JavaScript C Java PHP HTML CSS XML JSON Node.js SQL Interview Q Training jQuery Tutorial jQuery Introduction What is jQuery jQuery History jQuery Example jQuery Selectors jQuery Effects jQuery Effects jQuery hide() jQuery show() jQuery toggle() jQuery fadeIn() jQuery fadeOut() jQuery fadeToggle() jQuery fadeTo() jQuery slideDown() jQuery slideUp() jQuery slideToggle() jQuery animate() jQuery delay() jQuery HTML/CSS jQuery html() jQuery text() jQuery val() jQuery css() jQuery before() jQuery prepend() jQuery after() jQuery insertAfter() jQuery append() jQuery appendTo() jQuery clone() jQuery remove() jQuery empty() jQuery detach() jQuery scrollTop() jQuery attr() jQuery prop() jQuery offset() jQuery position() jQuery addClass() jQuery hasClass() jQuery toggleClass() jQuery width() jQuery height() jQuery innerWidth() jQuery innerHeight() jQuery outerWidth() jQuery outerHeight() jQuery wrap() jQuery wrapInner() jQuery wrapAll() jQuery unwrap() jQuery Form jQuery serialize() jQuery serializeArray() jQuery Events jQuery Events jQuery click() jQuery bind() jQuery unbind() method jQuery blur() jQuery focus() jQuery select() jQuery change() jQuery submit() jQuery keydown() jQuery keypress() jQuery keyup() jQuery mouseenter() jQuery mouseleave() jQuery hover() jQuery mousedown() jQuery mouseup() jQuery mouseover() jQuery mouseout() jQuery load() jQuery unload() jQuery delegate() jQuery Misc jQuery ajax() method jQuery children() method jQuery data() method jQuery each() method jQuery eq() method jQuery extend() method jQuery filter() method jQuery find() method jQuery get() method jQuery grep() method jQuery length property jQuery is() method jQuery not() method jQuery param() method jQuery radio button jQuery read more/read less jQuery star rating :enabled selector :disabled selector noConflict() method :nth-child selector parent() method post() method ready() function removeAttr() method replaceWith() method resize() method siblings() method stop() method trigger() method trim() method jQuery getJSON() method jQuery replaceAll() method jQuery on() method jQuery off() method jQuery first() method jQuery last() method jQuery isNumeric() method jQuery :reset selector jQuery size() method jQuery contains() method jQuery ajaxSend() method jQuery ajaxError() method jQuery :lang() selector jQuery :lt() selector jQuery :gt() selector jQuery map() function jQuery next() method jQuery nextUntil() method jQuery error() method jQuery now() method jQuery parseJSON() method jQuery inArray() method jQuery dblclick() method jQuery $.proxy() method jQuery has() method jQuery index() method jQuery insertBefore() method jQuery merge() method jQuery nth-of-type() selector jQuery prev() method jQuery prevAll() method jQuery scroll() method jQuery scrollLeft() method jQuery slice() method jQuery contents() method jQuery nextAll() method jQuery offsetParent() method jQuery parents() method jQuery parentsUntil() method globalEval() method undelegate() method triggerHandler() method toArray() method removeProp() method removeData() method queue() method prependTo() method noop() method makeArray() method keypress() method isPlainObject() method isFunction() method isEmptyObject() method isArray() method focusout() method focusin() method event.preventDefault() method clearQueue() method andSelf() method andBack() method jQuery dequeue() method jQuery end() method jQuery even() method jQuery :file selector jQuery :hidden selector jQuery isWindow() method jQuery odd() method jQuery parseXML() method jQuery :password selector jQuery.unique() method jQuery.uniqueSort() method jQuery :visible selector jQuery.isXMLDoc() method jQuery add() method jQuery closest() method jQuery Questions How to change the background image using jQuery How to Detect a Mobile Device offset vs position in jQuery Checkbox validation in jQuery Use of moment JS to change date format in jquery jQuery Redirect to Another Page After 5 Seconds JQuery Validation jQuery get Difference between two Dates in days Dynamic Drag and Drop table rows using JQuery Ajax Miscellaneous jQuery vs AngularJS jQuery MCQ jQuery MCQ jQuery UI 50+ jQuery UI Interview Questions jQuery Questions next ? ? prev JQuery Validation In this article, we will learn how to validate the form and add validations in form using jQuery. First of all, we will understand some basic meaning of jQuery and validation. After this, we can understand this topic with the help of various examples of validation of form with jQuery. JQuery: JQuery is a fast, lightweight, small, and feature-rich JavaScript library. For adding jQuery in the form we can use the <script> tag. <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"> </script> In this, the src attribute is used to add a link to jQuery. You can also download the jQuery and add the source of jQuery in the src attribute of the <script> tag. Validation in JQuery: Using JQuery, a form is validated on the client-side before it is submitted to the server, hence saves the time and reduce the load on the server. Form Validation means to validate or check whether all the values are filled correctly or not. It is a very good idea to validate a form before submitting it. Earlier file validations were done on the server-side, which results in server processor cycles and increases users' waiting time. They wait for confirmation that data has been entered properly in the form. Thus, client-side form validation guarantees that only correct data is passed to the webserver. Let's take some examples of the jQuery validation Form. Example 1: 
+<! DOCTYPE html>
+<html>
+<head>
+<title>
+JQuery validation example 1
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<style>
+body {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-size: 1.25rem;
+  }
+body {
+  font-family: "Poiret One", cursive;
+  background: #3494e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient (
+    to right,
+    #ec6ead,
+    #3494e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient (
+    to right,
+    #ec6ead,
+    #3494e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+h4 {
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+ font-family: 'Lato';
+  align: center;
+  font-size: 2rem;
+}
+form {
+margin-top: 20px;
+  margin-left: 100px;
+}
+p {
+  margin-top: 20px;
+  margin-left: 100px;
+}
+h4 {
+  margin-top: 20px;
+  margin-left: 100px;
+}
+p.note {
+  font-size: 1rem;
+  color: red;
+}
+input {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 4px;
+  font-family: 'Lato';
+  width: 300px;
+  margin-top: 10px;
+}
+label {
+  width: 300px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 20px;
+}
+label span {
+  font-size: 1rem;
+}
+label.error {
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+}
+input.error {
+    border: 1px dashed red;
+    font-weight: 300;
+    color: red;
+}
+[type="reset"], html [type="button"] {
+    margin-left: 0;
+    border-radius: 0;
+    background: black;
+    color: white;
+    border: none;
+    font-weight: 300;
+    padding: 10px 0;
+    line-height: 1;
+}
+button { 
+margin-left: 0;
+    border-radius: 0;
+    background: black;
+    color: white;
+    border: none;
+    font-weight: 300;
+    padding: 10px 0;
+    line-height: 1;
+}
+[type="submit"] {
+	display: inline-block;
+	padding: 0.35em 1.2em;
+	border: 0.1em solid #3494e6;
+	margin: 0 0.3em 0.3em 0;
+	border-radius: 0.12em;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: 'Roboto',sans-serif;
+	font-size: 1rem;
+	text-align: center;
+	transition: all 0.2s;
+	}
+[type="submit"]:hover {
+	color: #FFFFFF;
+	background-color: #3494e6;
+}
+</style>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"> </script>
+<script>
+$(document).ready (function () {
+  $("#basic-form").validate ();
+});
+</script>
+<body>
+<center>
+<h4> jQuery Validation Form Example </h4>
+<form id = "basic-form" action="" method="post">
+<p>
+<label for= "name"> First Name <span> (required, at least 8 characters) </span> </label>
+<input id="name" name="name" minlength="8" type="text" required>
+</p>
+<p>
+<label for = "name"> Last Name <span> </span> </label>
+<input type = "text" id="name" name="name" minlength="8" required>
+</p>
+<p>
+<label for="email"> E-Mail <span> (required) </span> </label>
+<input id="email" type="email" name="email" required>
+</p>
+<p>
+<label for="password"> Password </label>
+<input type="password" name="password" id="password" required >
+</p>
+<p>
+<input class="submit" type="submit" value="SUBMIT">
+</p>
+</form>
+</center>
+</body>
+</html>
+ Output: The output of JQuery validation form example 1 is given below: Example 2: 
+<! DOCTYPE html> 
+<html> 
+<head> 
+<title>
+JQuery validation example 2
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  background: #191828;
+  color: #efedef;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.6em;
+  margin: 0;
+  padding: 80px; 
+  }
+h4 {
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+ font-family: 'Lato';
+  align: center;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+form  {
+  margin-top: 20px;
+  margin-left: 100px;
+  }
+p  {
+  margin-top: 20px;
+  margin-left: 100px;
+  }
+p.note {
+  font-size: 1rem;
+  color: red;
+}
+
+input {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 4px;
+  font-family: 'Lato';
+  width: 300px;
+  margin-top: 10px;
+}
+
+label {
+  width: 300px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+label span {
+  font-size: 1rem;
+}
+
+label.error {
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+}
+
+input.error  {
+    border: 1px dashed red;
+    font-weight: 300;
+    color: red;
+}
+
+ [type="reset"],  html [type="button"] {
+    margin-left: 0;
+    border-radius: 0;
+    background: black;
+    color: white;
+    border: none;
+    font-weight: 300;
+    padding: 10px 0;
+    line-height: 1;
+}
+button {
+margin-left: 0;
+    border-radius: 0;
+    background: black;
+    color: white;
+    border: none;
+    font-weight: 300;
+    padding: 10px 0;
+    line-height: 1;
+}
+[type="submit"] {
+	display: inline-block;
+	padding: 0.35em 1.2em;
+	border: 0.1em solid #3494e6;
+	margin: 0 0.3em 0.3em 0;
+	border-radius: 0.12em;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: 'Roboto',sans-serif;
+	font-size: 1rem;
+	text-align: center;
+	transition: all 0.2s;
+	}
+[type="submit"]:hover {
+	color: #FFFFFF;
+	background-color: #3494e6;
+}
+</style>
+<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href= 
+	"https://maxcdn.bootstrapcdn.com/bootstrap/ 
+	4.0.0/css/bootstrap.min.css"> 
+	<!-- jQuery library -->
+<script src= 
+	"https://ajax.googleapis.com/ajax/libs/ 
+	jquery/3.3.1/jquery.min.js"> 
+	</script> 
+	<!-- Popper JS -->
+	<script src= 
+	"https://cdnjs.cloudflare.com/ajax/libs/ 
+	popper.js/1.12.9/umd/popper.min.js"> 
+	</script> 
+	<!-- Latest compiled JavaScript -->
+	<script src= 
+	"https://maxcdn.bootstrapcdn.com/bootstrap/ 
+	4.0.0/js/bootstrap.min.js"> 
+	</script> 
+</head> 
+<body>
+<br> 
+	<h1 class="text-center text-success"> 
+	FORM VALIDATION USING JQUERY 
+	</h1>  
+<div class="container"> 
+	<div class="col-lg-8 
+		m-auto d-block"> 
+		<form> 
+		<div class="form-group"> 
+			<label for ="user"> 
+				Enter username: 
+			</label> 
+			<input type="text"
+					name="username" id="usernames"
+					class="form-control"> 
+			<h5 id="usercheck" style="color: red;" > 
+					**Username is missing 
+			</h5> 
+		</div> 
+<div class="form-group"> 
+			<label for="user"> 
+					Enter Email: 
+			</label> 
+			<input type="email" name="email"
+				id="email" required 
+				class="form-control"> 
+			<small id="emailvalid" class="form-text 
+				text-muted invalid-feedback"> 
+					Your email must be a valid email 
+			</small> 
+		</div> 
+
+		<div class="form-group"> 
+			<label for="password"> 
+					Enter Password: 
+			</label> 
+			<input type="password" name="pass"
+				id="password" class="form-control"> 
+			<h5 id="passcheck" style="color: red;"> 
+				**Please Fill the password 
+			</h5> 
+		</div> 
+
+		<div class="form-group"> 
+			<label for="conpassword"> 
+					Confirm Password: 
+			</label> 
+			<input type="password" name="username"
+					id="conpassword" class="form-control"> 
+			<h5 id="conpasscheck" style="color: red;"> 
+				**Password didn't match 
+			</h5> 
+		</div> 
+
+		<input type="submit" id="submitbtn"
+			value ="Submit" class="btn btn-primary" > 
+		</form> 
+	</div> 
+	</div> 	
+<!-- Including app.js jQuery Script -->
+	<script src="app.js"></script> 
+</body> 
+</html>
+ Output: The output of JQuery validation form example 2 are given below: Example 3: 
+<html>
+<head>
+<title>
+JQuery validation Example 3
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<style>
+form div {
+  margin-bottom: 10px;
+}
+.error {
+  color: red;
+  margin-left: 5px;
+}
+h2 {
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  color: #fff;
+  align: center;
+  font-size: 30px;
+  margin-top: 2.5rem;
+}
+[type="submit"] {
+	display: inline-block;
+	padding: 0.35em 1.2em;
+	border: 0.1em solid #3494e6;
+	margin: 0 0.3em 0.3em 0;
+	border-radius: 0.12em;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: 'Roboto',sans-serif;
+	font-size: 1rem;
+	text-align: center;
+	transition: all 0.2s;
+	}
+	[type="submit"]:hover {
+	color: #FFFFFF;
+	background-color: #3494e6;
+}
+label.error {
+  display: inline;
+}
+body {
+align: center;
+  font-family: "Poiret One", cursive;
+  background: #3494e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ec6ead,
+    #3494e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ec6ead,
+    #3494e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+</style>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+$(document).ready (function () {
+ $('#first_form').submit (function (e) {
+    e.preventDefault();
+    var first_name = $('#first_name').val();
+    var last_name = $('#last_name').val();
+    var email = $('#email').val();
+    var password = $('#password').val();
+var number = $('#number').val();
+  $(".error").remove();
+if (first_name.length < 1) {
+      $('#first_name').after('<span class="error">This field is required</span>');
+    }
+if (number.length < 1) {
+      $('#number').after('<span class="error">This field is required</span>');
+    }
+    if (last_name.length < 1) {
+      $('#last_name').after('<span class="error">This field is required</span>');
+    }
+    if (email.length < 1) {
+      $('#email').after('<span class="error">This field is required</span>');
+    } else {
+      var regEx = /^[A-Z0-9][A-Z0-9._%+-]{0,63}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/;
+      var validEmail = regEx.test(email);
+      if (!validEmail) {
+        $('#email').after('<span class="error">Enter a valid email</span>');
+      }
+    }
+    if (password.length < 8) {
+      $('#password').after('<span class="error">Password must be at least 8 characters long</span>');
+    }
+  });
+
+  $('form[id="second_form"]').validate({
+    rules: {
+      fname: 'required',
+      lname: 'required',
+      user_email: {
+        required: true,
+        email: true,
+      },
+      psword: {
+        required: true,
+        minlength: 8,
+      }
+    },
+    messages: {
+      fname: 'This field is required',
+      lname: 'This field is required',
+      user_email: 'Enter a valid email',
+      psword: {
+        minlength: 'Password must be at least 8 characters long'
+      }
+    },
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+</script>
+<body>
+<center>
+<!-- First Form -->
+<h2> FORM VALIDATION USING JQUERY </h2>
+<form id="first_form" method="post" action="">
+  <div>
+    <label for="first_name"> Enter First Name: </label>
+    <input type="text" id="first_name" name="first_name"></input>
+  </div>
+  <div>
+    <label for="last_name"> Enter Last Name: </label>
+    <input type="text" id="last_name" name="last_name"></input>
+  </div>
+  <div>
+   <label for="last_name"> Enter Number: </label>
+  <input type="text"  id="number" name="number">
+  </div>
+  <div>
+    <label for="email"> Enter Email: </label>
+    <input type="email" id="email" name="email"></input>
+  </div>
+
+  <div>
+    <label for="password"> Enter Password: </label>
+    <input type="password" id="password" name="password"></input>
+  </div>
+  <div>
+    <label for="password"> Confirm Password: </label>
+    <input type="password" id="password" name="password"></input>
+  </div>
+  <div>
+    <input type="submit" value="Submit" />
+  </div>
+</form>
+</center>
+</body>
+</html>
+ Output: The output of JQuery validation form example 3 is given below: Next TopicjQuery get Difference between two Dates in days ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

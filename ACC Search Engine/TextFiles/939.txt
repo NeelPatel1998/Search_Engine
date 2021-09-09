@@ -1,0 +1,107 @@
+https://www.javatpoint.com/create-pagination-using-dirpagination-directive-in-angularjs
+Create Pagination using DirPagination Directive in AngularJS - javatpoint
+Create Pagination using DirPagination Directive in AngularJS - javatpoint ? Home AngularJS Angular 7 C Java HTML CSS JavaScript jQuery Bootstrap PHP SQL PL/SQL Python Quiz Projects Interview Q Comment Forum Training AngularJS Tutorial AngularJS Tutorial What is AngularJS AngularJS MVC AngularJS First App AngularJS Data Binding AngularJS Expressions AngularJS Directives AngularJS Controllers AngularJS Modules AngularJS Scopes AngularJS Dependency AngularJS Filters AngularJS Tables AngularJS Select AngularJS DOM AngularJS Forms AngularJS Validation AngularJS AJAX AngularJS Animation Misc Angularjs Simple Datepicker directive Example Display Data from Json File in Angular Create Pagination using dirPagination directive in Angularjs Angular 7 Tutorial Angular 7 Tutorial Angular 7 Introduction Angular 7 Installation History & Versions Angular 7 First App Angular 7 Files Explanation Angular 7 with Bootstrap All CLI commands Angular 7 Libraries Angular 7 Architecture Angular 7 Components Angular 7 Directives Angular 7 Directives Angular 7 ngIf Directive Angular 7 ngStyle Directive Angular 7 Databinding Angular 7 Databinding Angular 7 String Interpolation Angular 7 Event Binding Angular 7 Property Binding Angular 7 Pipes Angular 7 Pipes Error Fixing Angular 7 Error Fixing Angular 7 Forms Angular 7 Forms Data Flow in Angular Forms Angular Reactive Forms Template-driven Forms Angular Misc Angular vs React Dynamically Add and Remove Form Fields in Angular Dropzone Image Upload in Angular 9/8 Angular 9/8 Select Dropdown Example Angular + Spring CRUD Example File Upload Example Login & Logout Example Search Field Example Interview Questions AngularJS Interview JavaScript Interview jQuery Interview Backbone.js Interview Ember.js Interview Neo4j Interview next ? ? prev Create Pagination using dirPagination directive in Angularjs In this section, we will use AngularJS to create pagination with the help of dirPagination directives. It is not simple to implement angularjs pagination, just like code php, laravel, etc. Because it is a little bit difficult to manage it with JS. In our below example, we will use AngularJS application to simply build the pagination. AngularJS is a type of JavaScript framework that can be used to build web applications. It is mostly used in the project, which has Single page application. It has the capability to respond very quickly to the user actions by extending additional attributes of HTML DOM. Thousands of developers used it around the world because it is completely free and open source. In our example, we will add paginate by using the dirPagination directive. We will simply create paginate as dir-paginate-controls, set itemPerPage, and many more by using the paginate directive. In our previous project, we were doing listing and pagination by using the angular database. In this case, if we try to enter 200 records, it will become very slow. So in this project, we will use very famous library for pagination, which is very fast and has excellent performance. When we work on our angularjs controller, the dirPagination directive does not require any type of logic and setup because it is a truly plug n play library. It has the capability that it is also compatible with Bootstrap 3. We can simply perform it no matter we have the knowledge of AngularJS or not. For this, we will first create one html file. After that, we will create another file for json data. In our index.html path, we create one html file and then add the following code. We will also create json file and then add the following code: index.html 
+<html lang="en-US" >
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"> </script>
+<script src="https://raw.githubusercontent.com/michaelbromley/angularUtils/master/src/directives/pagination/dirPagination.js"> </script>
+
+<body>
+
+<div ng-app="myApp">
+
+	<h2 class="text-center"> Example of Pagination in Angularjs</h2>
+
+    <div class="container" ng-controller="categoryCtrl">
+		<table class="table table-bordered">
+		    <thead>
+				<tr>
+					<th>Category</th>
+				</tr>
+		    </thead>
+			<tbody>
+				<tr dir-paginate="value in data | itemsPerPage: 5">
+					<td>{{ value.category }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<dir-pagination-controls 
+			boundary-links="true" 
+			direction-links="true" >
+			</dir-pagination-controls>
+	</div>
+
+</div>
+
+<script>
+var app = angular.module('myApp',['angularUtils.directives.dirPagination']);
+
+app.controller('categoryCtrl', ['$scope','$http', function($scope, $http){
+    $scope.data = [];
+    $http.get("category.json").success(function(response){ 
+        $scope.data = response;
+    });
+}]);
+</script>
+
+</body>
+</html>
+ category.json: 
+[
+	{
+		"category"	: 	"PHP"
+	},
+	{
+		"category"	: 	"Laravel"
+	},
+	{
+		"category"	: 	"Bootstrap"
+	},
+	{
+		"category"	: 	"JQuery"
+	},
+	{
+		"category"	: 	"Javascript"
+	},
+	{
+		"category"	: 	"HTML"
+	},
+	{
+		"category"	: 	"CSS"
+	},
+	{
+		"category"	: 	"Facebook API"
+	},
+	{
+		"category"	: 	"Packages"
+	},
+	{
+		"category"	: 	"AngularJS"
+	},
+	{
+		"category"	: 	"JS"
+	},
+	{
+		"category"	: 	"Examples"
+	},
+	{
+		"category"	: 	"API"
+	},
+	{
+		"category"	: 	"Bootbox"
+	},
+	{
+		"category"	: 	"Plugin"
+	},
+	{
+		"category"	: 	"Node JS"
+	},
+	{
+		"category"	: 	"Mailchimp API"
+	},
+	{
+		"category"	: 	"Google API"
+	}
+]
+ Next TopicDynamically Add and Remove Form Fields in Angular ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

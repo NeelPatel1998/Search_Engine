@@ -1,0 +1,165 @@
+https://www.javatpoint.com/angular-material-sort-header
+Angular Material Sort Header - Javatpoint
+Angular Material Sort Header - Javatpoint ? Home Angular Material AngularJS Angular 8 Angular 7 AWS IoT Control System HTML CSS Aptitude Selenium Kotlin JavaScript Projects Interview Q Comment Forum Angular Material Angular Material Tutorial Angular Material Installation Angular Material Icons Angular Material Inputs Angular Material Widgets Angular Material Buttons Angular Material Checkbox Angular Material Sort Header Angular Material Divider Angular Material List Angular Material Tree Angular Material Dialog next ? ? prev Angular Material Sort Header The <mat-sort-header> is used to add sorting state and display the data in tabular data. Adding sort to table headers Adding sorting behavior and styling a set of table headers adds the <mat-sort-header> component to every heading and provides an ID that will recognize it. These headers can be included with the parent element along with the parent element directive, which triggers a truncation on any user header when a matSortChange event will emit. Users can trigger sort headers by a single mouse click or a single keyboard action. When this happens, matSort will emit a matSortChange event having the (ID ascending or descending order) direction for sorting the ID and mat of the header. Changing the sort order By default, the sort header starts sorting on asc and then desc. Set matSortStart to descending on the matSort directive to reverse the sort order of all headers. Instead of changing the order for the particular header, set the start input to the header only. Disabling sorting If we want to prevent the user from changing the order of any column, then we have to use the matSortDizable bindings when disabled on mat-sort or on the mat-sort-header. Accessibility The aria-label for the sort button will be set in MatSortHeaderIntl. Example 1: app.component.html 
+<table matSort (matSortChange)="sortData($event)">
+  <tr>
+    <th mat-sort-header="name">Dessert (100g)</th>
+    <th mat-sort-header="calories">Calories</th>
+    <th mat-sort-header="fat">Fat (g)</th>
+    <th mat-sort-header="carbs">Carbs (g)</th>
+    <th mat-sort-header="protein">Protein (g)</th>
+  </tr>
+
+  <tr *ngFor="let dessert of sortedData">
+    <td>{{dessert.name}}</td>
+    <td>{{dessert.calories}}</td>
+    <td>{{dessert.fat}}</td>
+    <td>{{dessert.carbs}}</td>
+    <td>{{dessert.protein}}</td>
+  </tr>
+</table>
+ app.module.ts 
+import {Component} from '@angular/core';
+import {Sort} from '@angular/material/sort';
+
+export interface Dessert {
+  calories: number;
+  carbs: number;
+  fat: number;
+  name: string;
+  protein: number;
+}
+
+/**
+ * @title Sorting overview
+ */
+@Component({
+  selector: 'sort-overview-example',
+  templateUrl: 'sort-overview-example.html',
+  styleUrls: ['sort-overview-example.css'],
+})
+export class SortOverviewExample {
+  desserts: Dessert[] = [
+    {name: 'Frozen yogurt', calories: 159, fat: 6, carbs: 24, protein: 4},
+    {name: 'Ice cream sandwich', calories: 237, fat: 9, carbs: 37, protein: 4},
+    {name: 'Eclair', calories: 262, fat: 16, carbs: 24, protein: 6},
+    {name: 'Cupcake', calories: 305, fat: 4, carbs: 67, protein: 4},
+    {name: 'Gingerbread', calories: 356, fat: 16, carbs: 49, protein: 4},
+  ];
+
+  sortedData: Dessert[];
+
+  constructor() {
+    this.sortedData = this.desserts.slice();
+  }
+
+  sortData(sort: Sort) {
+    const data = this.desserts.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedData = data;
+      return;
+    }
+
+    this.sortedData = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'name': return compare(a.name, b.name, isAsc);
+        case 'calories': return compare(a.calories, b.calories, isAsc);
+        case 'fat': return compare(a.fat, b.fat, isAsc);
+        case 'carbs': return compare(a.carbs, b.carbs, isAsc);
+        case 'protein': return compare(a.protein, b.protein, isAsc);
+        default: return 0;
+      }
+    });
+  }
+}
+
+function compare(a: number | string, b: number | string, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
+ app.component.css 
+.mat-sort-header-container {
+  align-items: center;
+}
+ Output: Using sort with the mat-table It is not required to set a mat-sort-header id because it will use the column's id. app.component.html 
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
+    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+ app.component.ts 
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
+  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
+  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
+  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
+  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
+  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
+  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
+  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
+  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+];
+
+/**
+ * @title Table with sorting
+ */
+@Component({
+  selector: 'table-sorting-example',
+  styleUrls: ['table-sorting-example.css'],
+  templateUrl: 'table-sorting-example.html',
+})
+export class TableSortingExample implements AfterViewInit {
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  @ViewChild(MatSort) sort: MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
+}
+ app.component.css 
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+ Output: Next TopicAngular Material Divider ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

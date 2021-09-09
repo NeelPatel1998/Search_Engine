@@ -1,0 +1,211 @@
+https://www.javatpoint.com/python-tqdm-module
+Python tqdm Module | How to create a terminal progress bar - Javatpoint
+Python tqdm Module | How to create a terminal progress bar - Javatpoint ? Home Python If Else For Loop Function Array String Regex List Set Tuple Dictionary Lambda Function Modules Programs Tkinter Numpy Interview Questions Python Tutorial Python Tutorial Python Features Python History Python Applications Python Install Python Example Python Variables Python Data Types Python Keywords Python Literals Python Operators Python Comments Python If else Python Loops Python For Loop Python While Loop Python Break Python Continue Python Pass Python Strings Python Lists Python Tuples Python List Vs Tuple Python Sets Python Dictionary Python Functions Python Built-in Functions Python Lambda Functions Python Files I/O Python Modules Python Exceptions Python Date Python Regex Python Sending Email Read CSV File Write CSV File Read Excel File Write Excel File Python Assert Python List Comprehension Python Collection Module Python Math Module Python OS Module Python Random Module Python Statistics Module Python Sys Module Python IDEs Python Arrays Command Line Arguments Python Magic Method Python Stack & Queue PySpark MLlib Python Decorator Python Generators Web Scraping Using Python Python JSON Python Itertools Python Multiprocessing Python OOPs Python OOPs Concepts Python Object Class Python Constructors Python Inheritance Abstraction in Python Python MySQL Environment Setup Database Connection Creating New Database Creating Tables Insert Operation Read Operation Update Operation Join Operation Performing Transactions Python MongoDB Python MongoDB Python SQLite Python SQLite Python Questions How to install Python in Windows How to reverse a string in Python How to read CSV file in Python How to run Python Program How to take input in Python How to convert list to string in Python How to append element in the list How to compare two lists in Python How to convert int to string in Python How to create a dictionary in Python How to create a virtual environment in Python How to declare a variable in Python How to install matplotlib in Python How to install OpenCV in Python How to print in same line in Python How to read JSON file in Python How to read a text file in Python How to use for loop in Python Is Python scripting language How long does it take to learn Python How to concatenate two strings in Python How to connect Database in Python How to convert list to dictionary in Python How to declare a global variable in Python How to reverse a number in Python What is an object in Python Which is the fastest implementation of Python How to clear Python shell How to create a DataFrames in Python How to develop a game in Python How to install Tkinter in Python How to plot a graph in Python How to print pattern in Python How to remove an element from a list in Python How to Round number in Python How to sort a dictionary in Python Strong Number in Python How to Convert Text to Speech in Python Bubble Sort in Python Logging in Python Insertion Sort in Python Binary Search in Python Linear Search in Python Python vs Scala Queue in Python Stack in Python Heap Sort in Python Palindrome program in python Program of Cumulative sum in python Merge Sort in Python Python Matrix Python Unit Testing Forensics & Virtualization Best Books to Learn Python Best Books to Learn Django GCD of two number in python Python Program to generate a Random String How to One Hot Encode Sequence Data in Python How to write square root in Python Pointer in Python Python 2D array Python Memory Management Python Libraries for Data Visualization How to call a function in Python Git Modules in Python Top Python Frameworks for Gaming Python Audio Modules Wikipedia Module in Python Python random randrange() Permutation and Combination in Python Getopt module in Python Merge two Dictionaries in Python Multithreading in Python 3 Static in Python How to get the current date in Python argparse in Python Python tqdm Module Caesar Cipher in Python Tokenizer in Python How to add two lists in Python Shallow Copy and Deep Copy in Python Atom Python Contains in Python Label Encoding in Python Django vs. Node JS Python Frameworks How to create a vector in Python using NumPy Pickle Module of Python How to convert Bytes to string in Python Python Program to Find Anagram How to convert List to Set Python vs JavaScript Python Holidays Module FuzzyWuzzy Python Library Dask Python Python Tkinter (GUI) Python Tkinter Tkinter Button Tkinter Canvas Tkinter Checkbutton Tkinter Entry Tkinter Frame Tkinter Label Tkinter Listbox Tkinter Menubutton Tkinter Menu Tkinter Message Tkinter Radiobutton Tkinter Scale Tkinter Scrollbar Tkinter Text Tkinter Toplevel Tkinter Spinbox Tkinter PanedWindow Tkinter LabelFrame Tkinter MessageBox Python Web Blocker Introduction Building Python Script Script Deployment on Linux Script Deployment on Windows Python MCQ Python MCQ Related Tutorials NumPy Tutorial Django Tutorial Flask Tutorial Pandas Tutorial Pytorch Tutorial Pygame Tutorial Matplotlib Tutorial OpenCV Tutorial Openpyxl Tutorial Python CGI Python Design Pattern Python Programs Python Programs next ? ? prev Python tqdm Module | How to create a terminal progress bar Whenever we install any Python library, module, or installing software, we see the progress bar to screen, which denotes the small progress bar that estimates how long the process would take to complete or render. It gives us an impression of activity and can calm the nerves. We all are familiar with the various progress bar. Some of them are attractive and some of them boring. In this article, we will create the progress bar without involving Python's code core logging library. Progress bars are filled up according to the percentage of progress made in accomplishing a task. The progress can be calculated by dividing number_of_item_processed by total_input_item. Various factors affect the progress bar, such as network speed, latency, and if persisting data into local storage to derive a more accurate ETA (Estimated Time of Arrival). We can create simple and hassle-free progress bars using the Python external library named tqdm. We can add it to the code and make it look lovely. The tqdm stands for taqadum in Arabic, which means progress. Python tqdm module works on various platform such Linux, Window, Mac, etc. and it is also compatible with the IPython/Jupyter notebooks. Need for Progress Bar If we are working with the smaller data set, the progress will not bother in our workflow. However, the progress bar can be used for iterating over a dataset, training a model, or encoding a large information set. The progress bar provides us an estimation of the process that has been given the approximation of the time it might take more. It gives us information that the progress is still running and has not been terminated rudely. Prerequisites Python 3 must be installed in the system and we can also create a virtual environment to install the tqdm library. Installation Open the command-line terminal and type the following. 
+pip install tqdm
+ Or 
+pip3 install tqdm
+ The above command will successfully install in the system. We can verify it using the following statement. 
+import tqdm
+ If there is no error which means this library is successfully installed. Adding Progress Bars to for Loops Program 
+import time
+import sys
+from tqdm import trange
+
+
+def do_something():
+    time.sleep(1)
+
+def do_another_something():
+    time.sleep(1)
+
+
+for i in trange(10, file=sys.stdout, desc='outer loop'):
+    do_something()
+
+    for j in trange(100,file=sys.stdout, leave=False, unit_scale=True, desc='inner loop'):
+        do_another_something()
+ Output: 
+outer loop:   0%|          | 0/10 [00:00<?, ?it/s]
+inner loop:   0%|          | 0.00/100 [00:00<?, ?it/s]
+inner loop:   1%|          | 1.00/100 [00:01<01:40, 1.02s/it]
+inner loop:   2%|?         | 2.00/100 [00:02<01:39, 1.02s/it]
+inner loop:   3%|?         | 3.00/100 [00:03<01:38, 1.01s/it]
+inner loop:   4%|?         | 4.00/100 [00:04<01:37, 1.01s/it]
+inner loop:   5%|?         | 5.00/100 [00:05<01:35, 1.01s/it]
+inner loop:   6%|?         | 6.00/100 [00:06<01:34, 1.01s/it]
+inner loop:   7%|?         | 7.00/100 [00:07<01:34, 1.01s/it]
+inner loop:   8%|?         | 8.00/100 [00:08<01:33, 1.02s/it]
+inner loop:   9%|?         | 9.00/100 [00:09<01:32, 1.02s/it]
+inner loop:  10%|?         | 10.0/100 [00:10<01:31, 1.02s/it]
+inner loop:  11%|?         | 11.0/100 [00:11<01:30, 1.01s/it]
+inner loop:  12%|??        | 12.0/100 [00:12<01:29, 1.01s/it]
+inner loop:  13%|??        | 13.0/100 [00:13<01:28, 1.01s/it]
+inner loop:  14%|??        | 14.0/100 [00:14<01:29, 1.04s/it]
+inner loop:  15%|??        | 15.0/100 [00:15<01:27, 1.03s/it]
+inner loop:  16%|??        | 16.0/100 [00:16<01:26, 1.02s/it]
+inner loop:  17%|??        | 17.0/100 [00:17<01:24, 1.02s/it]
+inner loop:  18%|??        | 18.0/100 [00:18<01:23, 1.02s/it]
+inner loop:  19%|??        | 19.0/100 [00:19<01:22, 1.02s/it]
+…………………………………………………………………………………………….
+……………………………………………………………………………………………..
+It will go till it reached at 100%.
+ Let's understand another example. Example - 1 
+# importing modules
+from tqdm import trange
+from time import sleep
+
+# creating loop
+for i in trange(10, desc="loop "):
+    # slowing the for loop
+    sleep(0.1) 
+ Output: 
+ loop : 100%|??????????| 10/10 [00:01<00:00, 9.08it/s] 
+ Example - 
+# importing modules
+from tqdm import tnrange
+from time import sleep
+
+# creating loop
+for i in tnrange(2, dec="loop 1"):
+
+    # creating nested loop
+    for j in tnrange(5, dec="loop 2"):
+        # slowing the for loop
+        sleep(0.3)
+ Output: 
+outer loop:   0%|          | 0/10 [00:00<?, ?it/s]
+inner loop:   0%|          | 0.00/100 [00:00<?, ?it/s]
+inner loop:   1%|          | 1.00/100 [00:01<01:39, 1.00s/it]
+inner loop:   2%|?         | 2.00/100 [00:02<01:38, 1.00s/it]
+inner loop:   3%|?         | 3.00/100 [00:03<01:37, 1.00s/it]
+inner loop:   4%|?         | 4.00/100 [00:04<01:36, 1.00s/it]
+inner loop:   5%|?         | 5.00/100 [00:05<01:35, 1.00s/it]
+inner loop:   6%|?         | 6.00/100 [00:06<01:34, 1.01s/it]
+inner loop:   7%|?         | 7.00/100 [00:07<01:33, 1.01s/it]
+inner loop:   8%|?         | 8.00/100 [00:08<01:32, 1.01s/it]
+inner loop:   9%|?         | 9.00/100 [00:09<01:31, 1.00s/it]
+inner loop:  10%|?         | 10.0/100 [00:10<01:30, 1.01s/it]
+ Example -3 
+# importing modules
+import time
+import sys
+from tqdm import trange
+
+
+# creating random function
+def random_function():
+    time.sleep(0.5)
+
+
+# another random function
+def another_random_function():
+    time.sleep(0.2)
+
+
+# defining outer loop
+for i in trange(3, file=sys.stdout, desc='Outer loop'):
+    random_function()
+
+    # inner loop
+    for j in trange(5, file=sys.stdout, desc='Inner loop'):
+        another_random_function()
+ Output: 
+Outer loop:   0%|          | 0/3 [00:00<?, ?it/s]
+Inner loop:   0%|          | 0/5 [00:00<?, ?it/s]
+Inner loop:  20%|??        | 1/5 [00:00<00:00,  4.62it/s]
+Inner loop:  40%|????      | 2/5 [00:00<00:00,  4.64it/s]
+Inner loop:  60%|??????    | 3/5 [00:00<00:00,  4.63it/s]
+Inner loop:  80%|????????  | 4/5 [00:00<00:00,  4.65it/s]
+Outer loop:  33%|????      | 1/3 [00:01<00:03,  1.58s/it]
+Inner loop:   0%|          | 0/5 [00:00<?, ?it/s]
+Inner loop:  20%|??        | 1/5 [00:00<00:00,  4.91it/s]
+Inner loop:  40%|????      | 2/5 [00:00<00:00,  4.85it/s]
+Inner loop:  60%|??????    | 3/5 [00:00<00:00,  4.79it/s]
+Inner loop:  80%|????????  | 4/5 [00:00<00:00,  4.77it/s]
+Outer loop:  67%|???????   | 2/3 [00:03<00:01,  1.58s/it]
+Inner loop:   0%|          | 0/5 [00:00<?, ?it/s]
+Inner loop:  20%|??        | 1/5 [00:00<00:00,  4.43it/s]
+Inner loop:  40%|????      | 2/5 [00:00<00:00,  4.56it/s]
+Inner loop:  60%|??????    | 3/5 [00:00<00:00,  4.65it/s]
+Inner loop:  80%|????????  | 4/5 [00:00<00:00,  4.72it/s]
+Outer loop: 100%|??????????| 3/3 [00:04<00:00,  1.57s/it]
+ Predictive Manual Updates of Progress Bar The tqdm module provides a facility to update the progress bar at certain intervals manually. When we download a multi-part file in chunks or streaming data, we can manually update the process bar function. Let's understand the following example. Example - 
+# importing modules
+import time
+import sys
+from tqdm import tqdm
+
+
+def task():
+    time.sleep(1)
+
+
+with tqdm(total=100, file=sys.stdout) as pbar:
+    for i in range(10):
+        task()
+        # Here we are updating progress bar manually, useful for streams such as reading files.
+        pbar.update(10)
+        # Updates in increments of 10 stops at 100
+ Output: 
+100%|??????????| 100/100 [00:10<00:00, 9.93it/s]
+ Explanation - In the above code, we have set attribute as 100. The called function incremented by ten in each iteration until 100% is achieved. We can pass any value to the update() method. Threaded Progress Bar We can also trap the Python tqdm package into Python threads. Multiprocessing is the best way to use the total number of cores. The tqdm position argument allows us to specify the line offset to print this bar. It is set on automatic by default in case of unscripted. Let's understand the following example. The value must be specified to manage the multiple bars at once. If we ignore this argument, our bar will be overridden by different threads. Example - 
+import time
+
+from random import randrange
+from multiprocessing.pool import ThreadPool
+
+from tqdm import tqdm
+
+
+def func_call(position, total):
+    text = 'progressbar #{position}'.format(position=position)
+    with  tqdm(total=total, position=position, desc=text) as progress:
+        for _ in range(0, total, 5):
+            progress.update(5)
+            time.sleep(randrange(3))
+
+
+pool = ThreadPool(10)
+tasks = range(5)
+for i, url in enumerate(tasks, 1):
+    pool.apply_async(func_call, args=(i, 100))
+pool.close()
+pool.join()
+ Output: 
+progressbar #5:   0%|          | 0/100 [00:00<?, ?it/s]
+progressbar #2:   0%|          | 0/100 [00:00<?, ?it/s]
+progressbar #1:   0%|          | 0/100 [00:00<?, ?it/s]
+progressbar #4:   0%|          | 0/100 [00:00<?, ?it/s]
+progressbar #3:   0%|          | 0/100 [00:00<?, ?it/s]
+progressbar #3:  10%|?         | 10/100 [00:01<00:09,  9.91it/s]
+progressbar #5:  10%|?         | 10/100 [00:01<00:09,  9.91it/s]
+progressbar #1:  10%|?         | 10/100 [00:02<00:18,  4.97it/s]
+progressbar #2:  10%|?         | 10/100 [00:02<00:18,  4.96it/s]
+progressbar #4:  10%|?         | 10/100 [00:02<00:18,  4.96it/s]
+progressbar #5:  15%|??        | 15/100 [00:02<00:11,  7.64it/s]
+progressbar #3:  15%|??        | 15/100 [00:02<00:11,  7.64it/s]
+progressbar #4:  15%|??        | 15/100 [00:03<00:17,  4.96it/s]
+progressbar #2:  15%|??        | 15/100 [00:03<00:17,  4.95it/s]
+progressbar #3:  20%|??        | 20/100 [00:04<00:16,  4.71it/s]
+progressbar #5:  25%|???       | 25/100 [00:04<00:11,  6.58it/s]
+progressbar #1:  20%|??        | 20/100 [00:04<00:16,  4.97it/s]
+progressbar #2:  20%|??        | 20/100 [00:04<00:16,  4.96it/s]
+ Add Color in Tqdm Progress Bar Color can make the progress bar very attractive. However, it doesn't add any new functionality to the working of the bar. The tqdm can work with Colorama, a simple cross-platform color terminal text in Python. Let's understand the following example. Example - 
+from tqdm import trange
+from colorama import Fore
+
+# Cross-platform colored terminal text.
+color_bars = [Fore.BLACK,
+    Fore.RED,
+    Fore.GREEN,
+    Fore.YELLOW,
+    Fore.BLUE,
+    Fore.MAGENTA,
+    Fore.CYAN,
+    Fore.WHITE]
+
+for color in color_bars:
+    for i in trange(int(7e7),
+                    bar_format="{l_bar}%s{bar}%s{r_bar}" % (color, Fore.RESET)):
+        pass
+ Output: Conclusion We have discussed all basic concepts related to the progress bar. Python comes with the tqdm module that helps us to design manually. We have defined suitable examples for important operation that we can perform in tqdm module. The tqdm module can collaborate with the subprocess and threads where we can run the multiple process bars at the same time. Next TopicCaesar Cipher in Python ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,53 @@
+https://www.javatpoint.com/java-static-constructor
+Java Static Constructor - Javatpoint
+Java Static Constructor - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Java Static Constructor In Java, a constructor is not allowed to be abstract, final, static, native, or strictfp. So, there is no static constructor in Java. A static constructor used to initialize static data means the specified task will execute only once throughout the program. Usually, a static constructor is automatically called when the first instance is generated, or any static member is referenced. The static constructor is explicitly declared by using a static keyword. However, the static constructor is not allowed in Java. Some key features of the static constructor are as follows: It will not take parameters or access modifiers. A specific class can have only one static constructor. It does not allow inheritance or overloading. It is invoked automatically, can not be called directly or explicitly. If the value of static fields is not initialized, it will initialize to default values. Let's understand why the static constructor is not allowed in Java: What if We Declare a Static Constructor? A static constructor is not allowed in Java programming. It is illegal and against the Java standards to use a static constructor. So, the Java program will not be compiled and throw a compile-time error. Let's understand it with an example. Consider the below example: StaticConstructorDemo.java: 
+public class StaticConstructorDemo
+{
+     //Declaring a static constructor
+     public static StaticConstructorDemo()
+     {
+         System.out.println("Static Constructor of the class");
+     }
+     public static void main(String args[])
+     {
+         // Creating a constructor object to invoke it
+         StaticConstructorDemo obj = new StaticConstructorDemo();
+     }
+}
+ Output: 
+Exception in thread "main" java.lang.Error: Unresolved compilation problem: 
+	Illegal modifier for the constructor in type StaticConstructorDemo; only public, protected & private are permitted.
+
+	at StaticConstructorDemo.(StaticConstructorDemo.java:4)
+	at StaticConstructorDemo.main(StaticConstructorDemo.java:13)
+ From the above example, we can see, it is throwing an exception "Illegal modifier for the constructor type". And it is clearly written that public, protected, & private are permitted. Why does Java not Support a Static Constructor? When we mark anything with a static keyword, it belongs to class only, for example, static method, static variable, etc. Static methods can not be inherited from their subclasses because they belong to the class in which they are declared. Similarly, we can not use a static variable in its subclasses. In the case of a constructor, a constructor is a reusable block of code, which means we can call it from its subclasses during the creation of the objects. But, when we declare it as static, it can not be used by its subclasses other than the declaring classes. So, it is illegal to declare a constructor as static. Thus, it will violate the whole motive of the inheritance concept. If we declare a constructor as static, then it can not be accessed by its subclasses and will belong to a class level only. The program will not be compiled and throw a compile-time error. Let's understand it with an example: StaticConstructorExample.java: 
+public class StaticConstructorExample
+{
+     public StaticConstructorExample()
+     {
+         /*Constructor of this class*/
+         System.out.println("In StaticConstructorExample Class");
+     }
+}
+ StaticConstrutorChild.java: 
+public class StaticConstructorChild extends StaticConstructorExample
+{
+     public StaticConstructorChild()
+     {
+          System.out.println("In StaticConstructorChild class");
+     }
+     public void display()
+     {
+          System.out.println("Method of StaticConstructorChild class");
+     }
+     public static void main(String args[])
+     {
+          StaticConstructorChild obj = new StaticConstructorChild();
+          obj.display();
+     }
+}
+ Output: 
+In StaticConstructorExample Class
+In StaticConstructorChild class
+Method of StaticConstructorChild class
+ From the above example, we can notice that when the child class object is created, first it invokes the parent class constructor, then its own class constructor. It is happening because the new keyword is creating the object then invoking the constructor for initializing the values. Every child class has a super() constructor as the first statement to inherit the properties from the parent class. This is the reason why we can not create a static constructor in Java. Conclusion: The constructors in Java can not be static because if the constructors are marked as static, they can not be called from the child class; thus, the child class's object will not be created. The program will not be compiled and throw a compile-time error. Next TopicHow to prepare for Java Interview ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

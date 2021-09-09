@@ -1,0 +1,124 @@
+https://www.javatpoint.com/sending-email-using-ios-application
+Sending Email using the iOS application - Javatpoint
+Sending Email using the iOS application - Javatpoint ? Home Java Swift iOS Development OS C PHP HTML CSS Bootstrap JavaScript jQuery jQuery UI Projects Interview Q Comment Forum Training iOS Development iOS Development using Swift Introduction to XCode IDE iPhone History & Versions Views & View Controllers Storyboard & interface builder Creating First iOS Application iOS UI Controls iOS: Label iOS: Button iOS: TextField iOS: DatePicker iOS: Slider iOS: Stepper iOS: Switch iOS: Segment Control iOS Container Views iOS: UIView iOS: TableView iOS: CollectionView iOS: ScrollView iOS Content Views iOS: ActivityIndicatorView iOS: ImageView iOS: PickerView iOS: ProgressView iOS: WebView iOS: MapView iOS View Controllers iOS: UIViewController iOS: Table View Controller iOS: Collection View Controller iOS: PageViewController iOS: Split View Controller Tab Bar Interface iOS: Tab Bar Controller iOS: Tab Bar iOS: Tab Bar Item Navigation Interface Navigation Controller Navigation Bar Navigation Item Architecture Pattern Model View Controller Model View View-Model Model View Presenter Install Libraries Setting Up Cocoapods for XCode Projects Using Cocoapods for XCode Projects Web Request & Parsing Alamofire Library Fetching data through Get Request Parsing JSON Response Image Caching Pull to Refresh functionality iOS UserDefaults Saving Data in UserDefaults Getting Data from UserDefaults CoreData & Database CoreData Managed Object Model Persistent Object Coordinator Multithreading in Swift Multithreading in Swift Concurrency in swift Handling Background Tasks Misc Firebase Crashalytics iOS Swift IOS app lifecycle What is Jailbreaking in iOS Why is iOS better than Android Features of iOS 14 Getting user location in iOS Push Notifications in iOS Sign-in with Apple using swift SSL Pinning in Swift XCode 12 Features Facebook Login Integration in iOS Google Sign-in integration in iOS How to capture the image using the iOS app How to make a phone call in the iOS app Paytm SDK Integration in iOS Razorpay Integration in iOS UIAlertController in Swift Using SQLite in iOS app Creating a real-time chat application using Firebase Using Realm database in iOS app iOS: machine learning What is CoreML Using Advanced CoreML Access Control in Swift iOS Memory Management in iOS applications Protocol Oriented Programming in iOS Swift Initialization in Swift Parsing a Static JSON file in iOS application Sending Email using the iOS application Using AVAudioPlayer to play sounds in iOS applications next ? ? prev Sending Email using the iOS application While developing mobile applications, there are requirements where we have to allow users to send emails using our iOS app. In this article, we will discuss how we can send emails using the iOS application. Allowing users to send emails using our application can be very useful for customer support. We can also take direct feedback from the users if we provide an email send button in the application. Here, we will build an application that provides the button to the users to send emails. Let's create the XCode project as MailerProject, as shown below. Let's import the MessageUI framework, which will be used to present email composer in the app. 
+import MessageUI
+ Now, let's set up a button that will be used by the users to send the mail. The following code will set up the button placed in the center of the ViewController. We will also add a target function for the button called when the button gets tapped by the user. 
+import UIKit
+import MessageUI
+class ViewController: UIViewController {
+    let messageButton = UIButton()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        setUpMessageButton()
+    }
+
+
+    func setUpMessageButton(){
+        view.addSubview(messageButton)
+        messageButton.backgroundColor = .systemBlue
+        messageButton.addTarget(self, action: #selector(showMailUI), for: .touchUpInside)
+        messageButton.setTitle(NSLocalizedString("Send Email", comment: ""), for: .normal)
+        messageButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
+
+
+        messageButton.translatesAutoresizingMaskIntoConstraints = false
+        messageButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        messageButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        messageButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        messageButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
+    }
+    
+    @objc func showMailUI(){
+        
+    }
+}
+ We need to add the MFMailComposeViewControllerDelegate method, which calls the mail ViewController delegate directly from the app. It allows us to show email composer, which is an actual UI that will be used by the user to send the email. The delegate method also contains the MFMailComposeResult object, which is the Enum that includes all the scenarios the user can come across while sending an email. 
+extension ViewController : MFMailComposeViewControllerDelegate{
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        if error != nil{
+            controller.dismiss(animated: true, completion: nil)
+            return
+        }
+        switch result {
+        case .cancelled, .failed, .saved, .sent:
+            break
+        default:
+            debugPrint("default")
+        }
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+ Now, we will code the showMailUI() to present the email composer. In the following code, we set the mail attributes like recipient, the subject, and the body. We can also add the attachments to the email using the addAttachmentData() method. 
+@objc func showMailUI(){
+        guard MFMailComposeViewController.canSendMail() else {
+            return
+        }
+        let mailComposer = MFMailComposeViewController()
+        mailComposer.mailComposeDelegate = self
+        mailComposer.setToRecipients(["david@gmail.com"])
+        mailComposer.setSubject("Hey david!")
+        mailComposer.setMessageBody("Hi, how's you ", isHTML: false)
+        present(mailComposer, animated: true)
+    }
+ We must notice that the MFMailComposeViewController is linked to Apple's mail app. To run the application and send an email, we need to run the app on the physical device. We should see the mail composer on the device with an email ready to be sent. The ViewController.swift contains the following code. 
+import UIKit
+import MessageUI
+class ViewController: UIViewController {
+    let messageButton = UIButton()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        setUpMessageButton()
+    }
+
+
+    func setUpMessageButton(){
+        view.addSubview(messageButton)
+        messageButton.backgroundColor = .systemBlue
+        messageButton.addTarget(self, action: #selector(showMailUI), for: .touchUpInside)
+        messageButton.setTitle(NSLocalizedString("Email me", comment: ""), for: .normal)
+        messageButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
+
+
+        messageButton.translatesAutoresizingMaskIntoConstraints = false
+        messageButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        messageButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        messageButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        messageButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
+    }
+    
+    @objc func showMailUI(){
+        guard MFMailComposeViewController.canSendMail() else {
+            return
+        }
+        let mailComposer = MFMailComposeViewController()
+        mailComposer.mailComposeDelegate = self
+        mailComposer.setToRecipients(["david@gmail.com"])
+        mailComposer.setSubject("Hey david!")
+        mailComposer.setMessageBody("Hi, how's you ", isHTML: false)
+        present(mailComposer, animated: true)
+    }
+
+
+}
+
+
+extension ViewController : MFMailComposeViewControllerDelegate{
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        if error != nil{
+            controller.dismiss(animated: true, completion: nil)
+            return
+        }
+        switch result {
+        case .cancelled, .failed, .saved, .sent:
+            break
+        default:
+            debugPrint("default")
+        }
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+ Next TopicUsing AVAudioPlayer to play sounds in iOS applications ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

@@ -1,0 +1,73 @@
+https://www.javatpoint.com/fizzbuzz-program-in-java
+FizzBuzz Program in Java - Javatpoint
+FizzBuzz Program in Java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev FizzBuzz Program in Java FizzBuzz is a game that is popular among kids. By playing this, kids learn the division. Now, the FizzBuzz game has become a popular programming question that is frequently asked in Java programming interviews. In this section, we will learn how to create a FizzBuzz program in Java. Rules of the FizzBuzz Game The rules of the FizzBuzz game are very simple. Say Fizz if the number is divisible by 3. Say Buzz if the number is divisible by 5. Say FizzBuzz if the number is divisible by both 3 and 5. Return the number itself, if the number is not divisible by 3 and 5. Note: Instead of 3 and 5, you can use different divisors (like 5 and 7, etc.) and string (Fizz and Buzz) also. Let's implement the above rules in a Java program. Java FizzBuzz Program There are two ways to create FizzBuzz program in Java: Using else-if Statement Using Java 8 Using else-if statement In the following program, we read an integer (n) from the user that is the upper limit to print the Fizz or Buzz or FizzBuzz. The for loop starts from 1 and executes until the condition i<=n becomes false. The else-if statement to check the number is multiple of 3 and 5 or not. FizzBuzzExample1.java 
+import java.util.Scanner;
+public class FizzBuzzExample1 
+{
+public static void main(String args[]) 
+{
+//constructor of the scanner class
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter the number: ");
+//reads an integer from the user
+int n = sc.nextInt();
+System.out.println("The Fizz, Buzz, and FizzBuzz numbers are: ");
+//for loop executes until the condition i<=n becomes false
+for (int i = 1; i <= n; i++) 
+{
+//returns true if both the conditions return true
+if (i%3==0 && i%5==0) 
+{ 
+//prints if the number is multiple of 3 and 5
+System.out.print("FizzBuzz");
+} 
+//executes if the condition returns true
+else if (i%3==0) 
+{
+//prints if the number is multiple of 3
+System.out.print("Fizz");
+} 
+//executes if the condition returns true
+else if (i%5==0) 
+{ 
+//prints if the number is multiple of 5
+System.out.print("Buzz");
+} 
+else 
+{
+//prints the number itself if the number is not divisible by both 3 and 5 	
+System.out.print(i);
+}
+//prints space
+System.out.print(","+" ");
+}
+//close the Scanner
+sc.close();
+}
+}
+ Output: Using Java 8 Java 8 provides the IntStream interface. We have used the following two methods of the IntStream interface. rangeClosed() Method: It is the static method of the IntStream interface. It returns a sequential IntStream for the specified range. Syntax: 
+static IntStream rangeClosed(int startInclusive, int endInclusive)
+ The method parses two parameters: startInclusive: It is the initial value. endInclusive: The inclusive upper bound. Using mapToObj() Method The method performs an intermediate operation and returns an object-valued Stream consisting of the results of applying the given function to the elements of this stream. Syntax: 
+<U> Stream<U> mapToObj(IntFunction<? extends U> mapper)
+ The method parses a parameter mapper (of element type of new stream). It returns the new stream. FizzBuzzExample2.java 
+import java.util.*;
+import java.util.stream.IntStream;
+public class FizzBuzzExample2
+{
+public static void main(String args[]) 
+{
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter the number:");
+//reads an integer from the user
+int num = sc.nextInt();
+//the rangeClosed() method returns a sequential IntStream for the specified range of int elements
+//for-each iterate over the Stream and prints the elements 
+IntStream.rangeClosed(1, num).mapToObj(i->i%3==0?(i%5==0? "FizzBuzz ":"Fizz "):(i%5==0? "Buzz ": i+" ")).forEach(System.out::print);
+//close the Scanner
+sc.close();
+}
+}
+ Output: 
+Enter the number: 40
+1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz Fizz 22 23 Fizz Buzz 26 Fizz 28 29 FizzBuzz 31 32 Fizz 34 Buzz Fizz 37 38 Fizz Buzz
+ Note that, in the above program the logic for FizzBuzz is adjusted into one line by using the ternary operator. It reduces the line of code. We have printed Fizz if the number is multiple of 3, prints Buzz if the number is multiple of 5, prints FizzBuzz if the number is multiple of 3 and 5, else prints the number itself. Next TopicJava Graph ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

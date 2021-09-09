@@ -1,0 +1,148 @@
+https://www.javatpoint.com/fail-fast-and-fail-safe-in-java
+Fail-fast and Fail-safe in Java - Javatpoint
+Fail-fast and Fail-safe in Java - Javatpoint ? Home Java Programs OOPs String Regex Exception Multithreading Collections JDBC Swing JavaFX Servlet JSP Spring Spring Boot Projects Interview Questions Java Training Java Tutorial What is Java History of Java Features of Java C++ vs Java Hello Java Program Program Internal How to set path? JDK, JRE and JVM JVM: Java Virtual Machine Java Variables Java Data Types Unicode System Operators Keywords Control Statements Java If-else Java Switch Java For Loop Java While Loop Java Do While Loop Java Break Java Continue Java Comments Java Programs Java Object Class Java OOPs Concepts Naming Convention Object and Class Method Constructor static keyword this keyword Java Inheritance Inheritance(IS-A) Aggregation(HAS-A) Java Polymorphism Method Overloading Method Overriding Covariant Return Type super keyword Instance Initializer block final keyword Runtime Polymorphism Dynamic Binding instanceof operator Java Abstraction Abstract class Interface Abstract vs Interface Java Encapsulation Package Access Modifiers Encapsulation Java Array Java Array Java OOPs Misc Object class Object Cloning Math class Wrapper Class Java Recursion Call By Value strictfp keyword javadoc tool Command Line Arg Object vs Class Overloading vs Overriding Java String Java Regex Exception Handling Java Inner classes Java Multithreading Java I/O Java Networking Java AWT & Events Java Swing JavaFX Java Applet Java Reflection Java Date Java Conversion Java Collection Java JDBC Java Misc Java New Features RMI Internationalization Interview Questions Java MCQ next ? ? prev Fail-fast and Fail-safe in Java Fail-fast and Fail-safe are the iterators or collections in Java. Java SE specification doesn't use the Fail-safe term. We use the Fail-safe to segregate between the Non-Fail-fast and Fail-fast iterators. The Fail-Fast system terminates the operation as-fast-as-possible that are exposing failures and stop the entire operation. Whereas, Fail-Safe system doesn't terminate the operation that are exposing failures. The Fail-safe system tries to avoid raising Failures as much as possible. Fail-fast and Fail-safe are the concepts of concurrent modification. Concurrent modification is a process in which an object is modified concurrently when a different task is running over it. Fail-fast and Fail-safe are the iterators to iterate over the Collection objects. Let's dive into detail about Fail-fast and Fail-safe one by one: Fail-fast Iterator When we use the Fail-fast iterator, it immediately throws ConcurrentModificationException when an element is added or removed from the collection while the thread is iterating over the collection. Examples: Iterator in HashMap, Iterator on ArrayList, etc. The Fail-fast iterators use modCount, i.e., an internal flag to check whether the collection is structurally modified or not. When the Fail-fast iterator gets the next value using the next() method, it checks the modCount flag's value. When the iterator finds the modified modCount value, it throws the ConcurrentModificationException. Let's take an example of Fail-fast iterator to understand how it works in Java. FailFastIterator.java 
+//importing classes
+import java.util.HashMap; 
+import java.util.Iterator; 
+import java.util.Map; 
+
+//creating FailFastIterator.java class 
+public class FailFastIterator {
+	
+	//main() method starts
+    public static void main(String[] args) 
+    {
+		//creating map
+        Map<Integer, String> students = new HashMap<Integer, String>(); 
+        students.put(101, "Emma"); 
+        students.put(102, "Paul"); 
+        students.put(103, "Walker"); 
+		
+		//creating an instance of the Iterator class
+        Iterator itr = students.keySet().iterator(); 
+		
+		//iterating map using Iterator 
+        while (itr.hasNext()) {
+			//printing elements of Map
+            System.out.println(students.get(itr.next())); 
+  
+            // adding an element to Map 
+            students.put(104, "Rubby"); // on the next call of next() method, exception will be thrown.
+        } 
+    } 
+}
+ Output Let's take another example of a Fail-fast iterator in which we will use the iterator on the ArrayList. FailFastIterator2.java 
+//importing classes
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.Iterator;
+import java.util.ArrayList;
+
+
+//creating FailFastIterator2.java class 
+public class FailFastIterator2 {
+	
+	//main() method starts
+    public static void main(String[] args) 
+    {
+		//creating ArrayList
+        ArrayList<String> students = new ArrayList<String>(); 
+        students.add("Emma"); 
+        students.add("Paul"); 
+        students.add("Walker");
+		students.add("Elanie");
+		students.add("Amara");
+		
+		
+		//creating an instance of the Iterator class
+        Iterator itr = students.iterator(); 
+		
+		//iterating ArrayList using Iterator 
+        while (itr.hasNext()) {
+            if ((String)itr.next() == "Paul") 
+				// It will not throw an exception 
+                students.remove("Amara");
+		}
+		
+		System.out.println(students);
+		
+		itr = students.iterator(); 
+		
+		//iterating ArrayList using Iterator 
+        while (itr.hasNext()) {
+            if ((String)itr.next() == "Walker") 
+				// It will throw an exception on next call of next() method
+                students.remove("Walker");
+		}
+    } 
+}
+ Output Fail-safe Iterator The Java SE specification doesn't use the Fail-safe term. It is better to call it a Non-Fail-fast Iterator. The Fail-safe iterator doesn't throw the ConcurrentModificationException, and it tries to avoid raising the exception. The Fail-safe iterator creates a copy of the original collection or object array and iterates over that copied collection. Any structural modification made in the iterator affects the copied collection, not the original collection. Therefore, the original collection remains structurally unchanged. Below are some key points related to the Fail-safe: We can modify the collection at the time when the thread is iterate iterating over it by using the Fail-safe iterator. The Fail-safe iterator doesn't throw an exception when a collection is modified while iterating over it. In order to traverse the collection's element, it creates a copy of that collection object. Extra space is required to create a copy of the collection object. Ex : Iterator on ConcurrentHashMap, Iterator on CopyOnWriteArrayList and etc. Let's take an example Fail-safe iterator to understand how it actually works in Java. FailSafeIterator.java 
+//importing classes
+import java.util.concurrent.ConcurrentHashMap; 
+import java.util.Iterator; 
+import java.util.Map;
+import java.util.HashMap;
+
+//creating FailSafeIterator.java class 
+public class FailSafeIterator {
+	
+	//main() method starts
+    public static void main(String[] args) 
+    {
+		//creating map
+        Map<Integer, String> students = new HashMap<Integer, String>(); 
+        students.put(101, "Emma"); 
+        students.put(102, "Paul"); 
+        students.put(103, "Walker");
+		
+		//creating ConcurrentHashMap by copy students map 
+        ConcurrentHashMap<Integer, String> copyStudents = new ConcurrentHashMap<Integer, String>(students); 
+		
+		//creating an instance of the Iterator class
+        Iterator itr = copyStudents.keySet().iterator(); 
+		
+		//iterating map using Iterator 
+        while (itr.hasNext()) {
+			//printing elements of copyStudents
+            System.out.println(copyStudents.get(itr.next())); 
+  
+            // adding an element to copyStudents 
+            copyStudents.put(104, "Rubby"); // on the next call of next() method, exception will be thrown.
+        } 
+    } 
+}
+ Output Let's take another example of a Fail-safe iterator in which we will use the Iterator on CopyOnWriteArrayList. FailSafeIterator2.java 
+//importing classes
+import java.util.concurrent. CopyOnWriteArrayList;
+import java.util.Iterator;
+import java.util.ArrayList;
+
+
+//creating FailSafeIterator2.java class 
+public class FailSafeIterator2 {
+	
+	//main() method starts
+    public static void main(String[] args) 
+    {
+		//creating ArrayList
+        ArrayList<String> students = new ArrayList<String>(); 
+        students.add("Emma"); 
+        students.add("Paul"); 
+        students.add("Walker");
+		
+		//creating CopyOnWriteArrayList by copy students ArrayList 
+        CopyOnWriteArrayList<String> copyStudents = new CopyOnWriteArrayList<String>(students); 
+		
+		//creating an instance of the Iterator class
+        Iterator itr = copyStudents.iterator(); 
+		
+		//iterating CopyOnWriteArrayList using Iterator 
+        while (itr.hasNext()) {
+			String name = (String)itr.next(); 
+            System.out.println(name); 
+            if (name == "Paul") 
+				// The Rubby name will not print but it has created separate copy 
+                copyStudents.add("Rubby");
+		} 
+    } 
+}
+ Output Difference between Fail-safe and Fail-fast We define some main difference between Fail-safe and Fail-fast iterators based on some key factors: Sr. No. Key Fail-Fast Fail-Safe 1. Exception If we add, remove or update the collection elements at the time when a thread is iterating them, the Fail fast throw concurrent modification exception. The fail-safe iterator tries to avoid raising failure and doesn't throw an exception. 2. Performance and Memory It doesn't require more memory while iterating over it because it iterates over the original collection, and all the modifications are done in the original collection. It requires more memory due to working with copy collection. All the modifications are done in the copy collection, not in the original one. 3. Modifications We cannot make changes in the collection while the iterator iterates over it. We can make changes in the collection while the iterator iterates over it. 4. Examples Iterator on ArrayList and Iterator on HashMap. Iterator on CopyOnWriteArrayList and Iterator on ConcurrentHashMap. Next TopicFind unique elements in array Java ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

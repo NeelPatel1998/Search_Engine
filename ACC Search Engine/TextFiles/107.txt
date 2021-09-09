@@ -1,0 +1,67 @@
+https://www.javatpoint.com/bootstrap-4-environment-setup
+Bootstrap 4 Environment setup - Javatpoint
+Bootstrap 4 Environment setup - Javatpoint ? Home Bootstrap 4 Bootstrap HTML JavaScript jQuery jQuery UI CSS XML JSON C Java PHP Ajax Quiz Projects Interview Q Bootstrap 4 Tutorial Bootstrap 4 Tutorial Environment setup Bootstrap 4 Layout Bootstrap 4 Buttons Bootstrap 4 Dropdown Bootstrap 4 Spinners Bootstrap 4 Badges Bootstrap 4 Progress Bars Bootstrap 4 Jumbotron Bootstrap 4 Text Bootstrap 4 Pagination Bootstrap 4 Carousel Bootstrap 4 Scrollspy next ? ? prev Bootstrap 4 - Environment Setup Bootstrap 4 is the latest version of Bootstrap. In this section, it is shown how to download and setup Bootstrap 4. There are two ways of using Bootstrap 4 in the Website: The first method that can be used is to start using Bootstrap 4 by inserting it from the CDN which stands for Content Delivery Network. And the second method is to download it from getbootstrap.com. Using CDN The Bootstrap 4 can be used in the website by inserting it from the CDN which is short for - Content Delivery Network. The code given below can be used to compile the Bootstrap's CDN of CSS and JS in the project. 
+<!-- Compiled and Minified Bootstrap CSS --><link rel = "stylesheet"    href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"   integrity = "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"    crossorigin = "anonymous"><!-- jQuery Library --><script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js"    integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"    crossorigin = "anonymous"></script><!-- Popper --><script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"    integrity = "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"    crossorigin = "anonymous"></script><!-- Compiled and Minified Bootstrap JavaScript --><script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"    integrity = "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"    crossorigin = "anonymous"></script>
+ In this process, also insert the CDN versions of jQuery and Popper.js which is used for the purpose of using the different JavaScript components, for example - modals, tooltips, popovers, and so on. This needs to be before the minified Bootstrap JavaScript, if the compiled version of JavaScript is being used. There are some components that extensively require the jQuery. Following are some of these components - For using the closable alerts For toggling the states with the help of the buttons and the checkboxes or radio buttons and using the collapse for toggling content For the purpose of carousel for slides, controls, and indicators For using Dropdowns (the Popper.js can be used for perfect positioning) For opening and closing the Modals For collapsing the Navbar For using the tooltips and popovers (the Popper.js can be used for perfect positioning) For using various other components Downloading Bootstrap 4: The Bootstrap 4 can be downloaded from this link given below: https://getbootstrap.com/docs/4.0/getting-started/download/. Once the link has been opened, a window will open: In this window, there are two given options, one is download ready to use compiled code for Bootstrap v4.0.0 and the other option is downloading the source files that compiles Bootstrap with a person's own asset pipeline by downloading Bootstrap 4's source Sass, JavaScript, and documentation files. Download - By choosing this option, a user can download the pre-compiled and minified versions of Bootstrap's CSS and JavaScript. No documentation or original source code files are included. However, this does not consist of the documentation, the source files, or any other optional JavaScript dependencies such as jQuery and Popper.js. Download Source - By choosing this option, a person can get the latest Bootstrap SCSS, JavaScript source code and documentation files. Moreover, this option also needs some additional tooling such as: Sass compiler like Libsass or Ruby Sass is supported for compiling the CSS in the website. Autoprefixer for CSS vendor prefixing. Precompiled Bootstrap 4 Once the compiled version Bootstrap 4 is downloaded, extract the ZIP file, and you will see the following file/directory structure - 
+bootstrap/
+??? css/
+?   ??? bootstrap.css
+?   ??? bootstrap.css.map
+?   ??? bootstrap.min.css
+?   ??? bootstrap.min.css.map
+?   ??? bootstrap-theme.css
+?   ??? bootstrap-theme.css.map
+?   ??? bootstrap-theme.min.css
+?   ??? bootstrap-theme.min.css.map
+??? js/
+?   ??? bootstrap.js
+?   ??? bootstrap.min.js
+??? fonts/
+          ??? glyphicons-halflings-regular.eot
+          ??? glyphicons-halflings-regular.svg
+          ??? glyphicons-halflings-regular.ttf
+          ??? glyphicons-halflings-regular.woff
+          ??? glyphicons-halflings-regular.woff2
+ There are compiled CSS and JS (bootstrap.*), as well as compiled and minified CSS and JS (bootstrap.min.*). Bootstrap 4 Source Code The Bootstrap source code download includes the precompiled CSS, JavaScript, and font assets, along with source Less, JavaScript, and documentation. More specifically, it includes the following and more - 
+bootstrap/
+??? less/
+??? js/
+??? fonts/
+??? dist/
+?      ??? css/
+?      ??? js/
+?      ??? fonts/
+??? docs/    
+         ??? examples/
+ The files under the js/ and scss/ are the source code responsible for Bootstrap, CSS and JavaScript. The dist/ folder consists of everything that is listed in the pre-compiled download section that is given above. The docs/examples/ only consists of the source code for Bootstrap documentation and examples of Bootstrap usage respectively. The less/ in the source code given above is basically responsible for the source code for the icon fonts in Bootstrap 4. Apart from that, the other included files provide support for other important components such as the packages, the information about the license, and anything related to development. Creating the First Web Page with the help of Bootstrap 4: The example given below can be used to create a very simple and easy to understand web page for Bootstrap 4 - Example: 
+<html lang = "en"> 
+<head> 
+<!-- Meta tags --> 
+<meta charset = "utf-8"> 
+<meta name = "viewport" content = "width=device-width, initial-scale = 1, shrink-to-fit = no"> 
+<!-- Bootstrap CSS --> 
+<link rel = "stylesheet"  
+href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+integrity =" sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"  
+crossorigin = "anonymous"> 
+<title>Bootstrap 4 Example</title> 
+</head> 
+<body> 
+<h1>This is the sample for Bootstrap 4</h1> 
+<h2>Welcome to JavaTpoint</h2>
+<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+<script src = "https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+integrity = "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"  
+crossorigin = "anonymous"> 
+</script> 
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
+integrity = "sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"  
+crossorigin = "anonymous"> 
+</script> 
+<script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"  
+integrity = "sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"  
+crossorigin = "anonymous"> 
+</script> 
+</body> 
+</html> 
+ Test it Now The following output will be visible, after compiling this code: Output: Next TopicBootstrap 4 Layouts ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

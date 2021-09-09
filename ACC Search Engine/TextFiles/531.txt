@@ -1,0 +1,85 @@
+https://www.javatpoint.com/postorder-traversal
+Postorder Traversal - javatpoint
+Postorder Traversal - javatpoint ? Home Data Structure C C++ C# Java SQL HTML CSS JavaScript Ajax Android Cloud Design Pattern Quiz Projects Interview Q Comment Forum DS Tutorial DS Tutorial DS Introduction DS Algorithm Asymptotic Analysis DS Pointer DS Structure DS Array DS Array 2D Array DS Linked List Linked List Types of Linked List Singly Linked List Doubly Linked List Circular Linked List Circular Doubly List Skip list in DS DS Stack DS Stack Array Implementation Linked List Implementation DS Queue DS Queue Types of Queues Array Representation Linked List Representation Circular Queue Deque Priority Queue DS Tree DS Tree Binary Tree Binary Search Tree AVL Tree B Tree B+ Tree DS Graph DS Graph Graph Implementation BFS Algorithm DFS Algorithm Spanning Tree DS Searching Linear Search Binary Search DS Sorting Bubble Sort Bucket Sort Comb Sort Counting Sort Heap Sort Insertion Sort Merge Sort Quick Sort Radix Sort Selection Sort Shell Sort Bitonic Sort Cocktail Sort Cycle Sort Tim Sort Differences Linear vs non-linear Array vs linked list Stack vs queue Linear vs Circular Queue Linear Search vs Binary Search Singly Linked List vs Doubly Linked List Binary vs Binary Search Tree Tree vs Graph Binary Search tree vs AVL tree Red Black Tree vs AVL tree B tree vs B+ tree Quick Sort vs Merge Sort BFS vs DFS Stack vs Heap Bubble sort vs. Selection sort Misc Trie Data Structure Heap Data Structure Splay Tree Fundamental of the DS Hash Table Preorder Traversal Tree Traversal Implementation of Queue using Stacks Implementation of Stack using Queue Binomial Heap Postorder Traversal Sparse Matrix Detect loop in a Linked list Inorder Traversal Convert Infix to Postfix notation Convert infix to prefix notation Conversion of Prefix to Postfix expression Conversion of Postfix to Prefix expression DS MCQ Data Structure MCQ next ? ? prev Postorder Traversal The postorder traversal is one of the traversing techniques used for visiting the node in the tree. It follows the principle LRN (Left-right-node). The following are the steps used for the postorder traversal: Traverse the left subtree by calling the postorder function recursively. Traverse the right subtree by calling the postorder function recursively. Access the data part of the current node. Pseudocode of postorder traversal. 
+void postorder(root *r)
+{
+ if(r== NULL)
+then return;
+else
+postorder(r->left);
+postorder(r->right);
+print r->data;
+ In the above pseudo-code, we have defined a postorder function in which we added the logic of postorder traversal. As we already know that in postorder traversal, we first traverse the left subtree, then the right subtree and finally visit the root node. In the above code, we first have checked whether the value of root is NULL or not. If the value of root is NULL, then the control comes out of the function using the return statement. The 'if' condition is not satisfied, then the else part will be executed. Implementation of Postorder traversal in C. 
+#include<stdio.h>  
+// Creating a node structure
+      struct node  
+     {  
+          int data;  
+          struct node *left, *right;  
+      };
+  
+  // Creating a tree..  
+struct node* create()  
+{  
+   struct node *temp;  
+   int data;  
+  temp = (struct node *)malloc(sizeof(struct node));  // creating a new node
+   printf("\nEnter the data: ");  
+   scanf("%d", &data);   
+   
+   if(data==-1)  
+{  
+return NULL;  
+}  
+  temp->data = data;  
+   printf("\nEnter the left child of %d", data);  
+   temp->left = create();  // creating a left child
+printf("\nEnter the right child of %d", data);  
+temp->right = create();  // creating a right child
+return temp;   
+ }
+ 
+ //Postorder traversal
+void postorder(struct node *root)
+{
+    if(root==NULL)
+    return;
+    else
+    
+    postorder(root->left);
+    postorder(root->right);
+    printf("%d ", root->data);
+}
+  void main()  
+    {  
+       struct node *root;  
+       root = create();  // calling create function.
+       postorder(root);   // calling postorder function
+    }
+ Output Iterative Postorder traversal The above method that we have used for the Postorder traversal was the Recursion method. As we know that the recursion relies on the system stack, and if we want to convert the recursion into an iterative method, we need to use the external stack. There are two ways of iterative postorder traversal: Iterative postorder traversal using two stacks. Iterative postorder traversal using one stack Iterative Postorder traversal using two stacks We can also implement the Postorder traversal using two stacks. The idea behind this is to obtain the reversed postorder elements in the stack and then we pop the element one by one from the stack as the stack follows the LIFO principle. The question arises that how can we obtain the reversed order of the postorder elements. The solution to this problem can be obtained by using two stacks. The second stack is used to get the reversed order of the postorder elements. The following are the steps used to implement postorder using two stacks: First, we will push the root to the stack. Secondly, we will create a while loop that runs till the first stack is not empty We pop a node from the first stack and push it into the second stack. We push the left and right child of a popped node to the first stack. We will print the data of the second stack. Let's understand the postorder traversal using two stacks through an example. Consider the below tree for the Postorder traversal. Steps to be followed: Step 1: First, we push 10 into stack1. Stack1: 10 Stack2: empty Step 2: Now we pop element 10 from stack1 and push it into stack2. We will push the left and right child of element 10 into stack1. Stack1: 20, 30 Stack2: 10 Step 3: Now, we pop element 30 from stack1 and push it into stack2. We will push the left and right child of element 30 into stack1: Stack 1: 20, 60, 70 Stack 2: 10, 30 Step 4: Now we pop the element 70 from the stack1 and push it into the stack2. We will push the left and right child of element 70 into the stack1. Since there is no left and right child of element 70, so we will not push the element into Stack1. Stack1: 20, 60 Stack2: 10, 30, 70 Step 5: Now we pop the element 60 from the Stack1 and push it into Stack2. Since there is no left and right of element 60, so we will not push any element into Stack1. Stack1: 20 Stack2: 10, 30, 70, 60 Step 6: Now, we pop the element 20 from Stack1 and push it into Stack2. We will push the left and right child of element 20 into the Stack1. Stack1: 40, 50 Stack2: 10, 30, 70, 60, 20 Step 7: Now, we pop the element 50 from Stack1 and push it into Stack2. Stack1: 40 Stack2: 10, 30, 70, 60, 20, 50 Step 8: Now, we pop element 40 from the Stack1 and push it into Stack2. Stack1: Empty Stack2: 10, 30, 70, 60, 20, 50, 40 Since there is no element left in the Stack1 to be popped out and all the elements in Stack2 are in postorder fashion, so we will print them. Algorithm of iterative postorder traversal (two stacks) 
+Step 1: Create two empty stacks named stack1 and stack2.
+Step 2: Push the root node on stack1.
+Step 3: TreeNode* current = NULL
+Step 4: while(!stack1.empty())
+            current = top of stack1
+            pop current from stack1
+       Push current on stack1
+       if (current->left!= Null)
+      Push current->left on stack1
+      if(current->right!=NULL)
+      Push current->right on stack1 
+Step 5: while(!stack2.empty())
+     current = top of stack2
+     print current->value
+     pop current from the stack2
+ Iterative Postorder Traversal using one stack In order to implement the Postorder traversal using one stack, first we need to move down till we reach the leftmost node. While moving down to the tree, we need to push the root and then right child of the root into the stack. When we reach the leftmost node having no right child, we need to print the node. If the leftmost node has a right child, we have to update the root so that the right child can be traversed before. We have to perform three operations: If we are moving down the tree, push operation is performed. If we are coming up from the left-side, peek operation is performed If we are coming from the right-side, pop operation is performed Let's understand through an example. Step 1: The right child of node 1 exists. Push node 3 to the stack and then 1 to the stack. Stack: 3, 1 Step 2: The right child of node 2 exists. Push node 5 to the stack and then 2 to the stack. Stack: 3, 1, 5, 2 Step 3: The node 4 has no right child, so it gets printed and the current node is set to Null. Stack: 3, 1, 5, 2 Output: 4 Step 4: Now, peek operation will be performed on the node 2. Since the right child of node 2 is topmost element in the stack, i.e., 5. So, pop the element 5 from the stack. Stack: 3, 1, 2 Step 5: The right child of node 2 is 5, so we push 5 into the stack. Stack: 3, 1, 2, 5 Step 6: Since node 5 does not have a right child so pop 5 from the stack and print 5. The current node is now set to NULL. Stack: 3, 1, 2 Output: 4, 5 Step 7: The current node is NULL. Since the right child of node 2 is not the topmost element in the stack, so we will pop element 2 from the stack and print 2. The current node is now set to NULL. Stack: 3, 1 Output: 4, 5, 2 Step 8: The current node is NULL. Since the right child of node 1 is 3 so we will perform the peek operation on node 1 and pop 3 from the stack. Stack: 1 Step 9: The right child of 1 is 3 so we will push element 3 in the stack. Stack: 1, 3 Step 10: The node 3 has a left child, i.e., 6, so it gets printed and the right child of node 3, i.e., 7 is pushed into the stack. Stack: 1, 3, 7 Output: 4, 5, 2, 6 Step 11: Since there is no right child of node 7, so pop 7 from the stack. Stack: 1, 3 Output: 4, 5, 2, 6, 7 Step 12: Since the right child of node 3 is not the topmost element in the stack, so pop 3 from the stack. Stack: 1 Output: 4, 5, 2, 6, 7, 3 Step 12: Since the right child of node 1 is not the topmost element in the stack, so Pop 1 from the stack. Stack: empty Output: 4, 5, 2, 6, 7, 3, 1 The above output generated is the Postorder traversal. Algorithm of iterative postorder traversal (one stack) 
+Step 1: Create one empty stack.
+Step 2: Set current_node = root
+Step 3: while(current_node!=NULL)
+           Push current_node->right into the stack
+           Push current_node into the stack
+Step 4: Pop an element from the stack and set it as a current node.
+If the popped element has a right child and the right child is top element then remove the right child from the stack. Push the current node back to the stack.
+Otherwise print the current node's data and set the current node as NULL.
+Step 5: Repeat step 3 and step 4 till the stack is not empty.
+ Next TopicSparse Matrix ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

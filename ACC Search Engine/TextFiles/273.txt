@@ -1,0 +1,206 @@
+https://www.javatpoint.com/implementation-of-queue-using-stacks
+Implementation of Queue using Stacks - javatpoint
+Implementation of Queue using Stacks - javatpoint ? Home Data Structure C C++ C# Java SQL HTML CSS JavaScript Ajax Android Cloud Design Pattern Quiz Projects Interview Q Comment Forum DS Tutorial DS Tutorial DS Introduction DS Algorithm Asymptotic Analysis DS Pointer DS Structure DS Array DS Array 2D Array DS Linked List Linked List Types of Linked List Singly Linked List Doubly Linked List Circular Linked List Circular Doubly List Skip list in DS DS Stack DS Stack Array Implementation Linked List Implementation DS Queue DS Queue Types of Queues Array Representation Linked List Representation Circular Queue Deque Priority Queue DS Tree DS Tree Binary Tree Binary Search Tree AVL Tree B Tree B+ Tree DS Graph DS Graph Graph Implementation BFS Algorithm DFS Algorithm Spanning Tree DS Searching Linear Search Binary Search DS Sorting Bubble Sort Bucket Sort Comb Sort Counting Sort Heap Sort Insertion Sort Merge Sort Quick Sort Radix Sort Selection Sort Shell Sort Bitonic Sort Cocktail Sort Cycle Sort Tim Sort Differences Linear vs non-linear Array vs linked list Stack vs queue Linear vs Circular Queue Linear Search vs Binary Search Singly Linked List vs Doubly Linked List Binary vs Binary Search Tree Tree vs Graph Binary Search tree vs AVL tree Red Black Tree vs AVL tree B tree vs B+ tree Quick Sort vs Merge Sort BFS vs DFS Stack vs Heap Bubble sort vs. Selection sort Misc Trie Data Structure Heap Data Structure Splay Tree Fundamental of the DS Hash Table Preorder Traversal Tree Traversal Implementation of Queue using Stacks Implementation of Stack using Queue Binomial Heap Postorder Traversal Sparse Matrix Detect loop in a Linked list Inorder Traversal Convert Infix to Postfix notation Convert infix to prefix notation Conversion of Prefix to Postfix expression Conversion of Postfix to Prefix expression DS MCQ Data Structure MCQ next ? ? prev Implementation of Queue using Stacks Queue is a linear data structure that follows FIFO (First In First Out) principle in which insertion is performed from the rear end and the deletion is done from the front end. Stack is a linear data structure that follows LIFO (Last In First Out) principle in which both insertion and deletion are performed from the top of the stack. Let's understand the implementation of Queue using stacks. Suppose we have a queue shown as below: Now we will perform three enqueue operations shown as below: enqueue(5); enqueue(2); enqueue(3); After performing the above three enqueue operations, the queue would look like: In the above stack, we can observe that the topmost element is 3. If we perform the delete operation in the above stack, then the element 3 would be deleted from the stack. On the other hand, the deletion in Queue is performed from the front end and the front element is 5. In order to implement the Queue using Stack, we need to consider two stacks. Suppose we have two stacks named as Stack1 and Stack2 shown as below: As we can observe that above stacks are empty. Now, we will perform push operations on the Stack1. First, we will push 5, then 2 and finally we will push element 3 shown as below: Now we will pop the elements from the Stack1 one by one and push them into the Stack2 as shown as below: Once the elements are inserted into the Stack2, the topmost element is 5 so it would be popped out from the Stack 2 shown as below: Once the topmost element is popped out from the Stack2, all the elements are moved back from Stack2 to Stack 1 shown as below: There are two approaches to implement Queue using Stack: Making a dequeue operation costly Making a enqueue operation costly First approach: Making a dequeue operation costly If we implement the Queue using Stack by making a dequeue operation costly means that time complexity in enqueue operation would be O(1) and the time complexity in dequeue operation would be O(n). In this case, when we insert the elements in the stack then the elements are added on the top of the stack so it takes O(1) time. In case of dequeue operation, we need to consider two stacks named as Stack1 and Stack2. First, we insert the elements in the Stack1 and then we remove all the elements from the Stack1. Once all the elements are popped from the Stack1 then they are added in the Stack2. The topmost element would be popped out from the Stack2 and then all the elements from the Stack2 are moved back to Stack1. Here, dequeue operation is performed two times on the data so time complexity is O(n). Implementation in C 
+// Program to implement Queue using Stack in C.
+#include<stdio.h>
+#define N 5
+int stack1[5], stack2[5]; // declaration of two stacks
+// declaration of top variables.
+int top1=-1, top2=-1; 
+int count=0;
+// inserting the elements in stack1.
+void push1(int data)
+{
+// Condition to check whether the stack1 is full or not.  
+ if(top1==N-1)
+{
+   printf("\n Stack is overflow...");
+}
+else
+{
+   top1++;   // Incrementing the value of top1
+   stack1[top1]=data;  // pushing the data into stack1
+}
+}
+// Removing the elements from the stack1.
+int pop1()
+{
+// Condition to check whether the stack1 is empty or not.  
+if(top1==-1)
+{
+   printf("\nStack is empty..");
+}
+else
+{
+   int a=stack1[top1];  // Assigning the topmost value of stack1 to 'a' variable. 
+   top1--;  // decrementing the value of top1.
+   return a; 
+}
+} 
+// pushing the data into the stack2.
+void push2(int x)
+{
+//  Condition to check whether the stack2 is full or not
+if(top2==N-1)
+{
+   printf("\nStack is full..");
+}
+else
+{
+    top2++;   // incrementing the value of top2.
+    stack2[top2]=x;  // assigning the 'x' value to the Stack2
+
+}
+} 
+// Removing the elements from the Stack2
+int pop2()
+{
+   int element = stack2[top2];  // assigning the topmost value to element
+   top2--;  // decrement the value of top2
+   return element;
+} 
+void enqueue(int x)
+{
+    push1(x);
+    count++;
+}
+void dequeue()
+{
+   if((top1==-1) && (top2==-1))
+{
+   printf("\nQueue is empty");
+}
+else
+{
+  for(int i=0;i<count;i++)
+  {
+     int element = pop1();
+     push2(element);
+  }
+int b= pop2();
+printf("\nThe dequeued element is %d", b);
+printf("\n");
+count--;
+for(int i=0;i<count;i++)
+{
+   int a = pop2();
+   push1(a); 
+}
+}} 
+void display()
+{
+   for(int i=0;i<=top1;i++)
+  {
+     printf("%d , ", stack1[i]);
+  }
+}
+void main()
+{
+   enqueue(10);
+   enqueue(20);
+   enqueue(30);
+   dequeue();
+   enqueue(40);
+   display();
+}
+ Output Second Approach: Making an enqueue operation costly. If we implement the Queue using Stack by making a enqueue operation costly means that time complexity in enqueue operation would be O(n) and the time complexity in dequeue operation would be O(1). First, we will consider two stacks named as stack1 and stack2. In case of enqueue operation, first all the elements will be popped from the stack1 and push it into the stack2. Once all the elements from the stack1 are pushed into the stack2, then the new element is added in the stack1. After adding the new element in the stack1, all the element are moved back from stack1 to stack2. Here, the time complexity of enqueue operation would be O(n). In stack1, the oldest element would be at the top of the stack, so time taken to perform a dequeue operation would be O(1). Implementation in C 
+#include<stdio.h>
+#define N 5
+int stack1[5], stack2[5]; // declaration of two stacks
+// declaration of top variables.
+int top1=-1, top2=-1; 
+int count=0;
+// inserting the elements in stack1.
+void push1(int data)
+{
+// Condition to check whether the stack1 is full or not.  
+ if(top1==N-1)
+{
+   printf("\n Stack is overflow...");
+}
+else
+{
+   top1++;   // Incrementing the value of top1
+   stack1[top1]=data;  // pushing the data into stack1
+}
+}
+// Removing the elements from the stack1.
+int pop1()
+{
+// Condition to check whether the stack1 is empty or not.  
+if(top1==-1)
+{
+   printf("\nStack is empty..");
+}
+else
+{
+   int a=stack1[top1];  // Assigning the topmost value of stack1 to 'a' variable. 
+   top1--;  // decrementing the value of top1.
+   return a; 
+}
+} 
+// pushing the data into the stack2.
+void push2(int x)
+{
+//  Condition to check whether the stack2 is full or not
+if(top2==N-1)
+{
+   printf("\nStack is full..");
+}
+else
+{
+    top2++;   // incrementing the value of top2.
+    stack2[top2]=x;  // assigning the 'x' value to the Stack2
+
+}
+} 
+// Removing the elements from the Stack2
+int pop2()
+{
+   int element = stack2[top2];  // assigning the topmost value to element
+   top2--;  // decrement the value of top2
+   return element;
+} 
+// inserting the data into the Queue
+void enqueue(int x)
+{
+
+        while(top1!=-1)
+        {
+            push2(pop1());
+        }
+        push1(x);
+         while(top2!=-1)
+        {
+            push1(pop2());
+        }
+       
+}
+// deleting the data from the Queue
+int dequeue()
+{
+    int element = stack1[top1];
+    top1--;
+    return element;
+ } 
+// displaying the data of the Queue
+void display()
+{
+    printf("\n");
+   for(int i=top1; i>=0;i--)
+  {
+     printf("%d , ", stack1[i]);
+  }
+}
+void main()
+{
+   enqueue(1);
+enqueue(2);
+   enqueue(3);
+   int d  = dequeue();
+   printf("\nThe deleted element is %d", d);
+   enqueue(4);
+  enqueue(5);
+  display();
+}
+ Output Next TopicImplementation of Stack using Queue ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

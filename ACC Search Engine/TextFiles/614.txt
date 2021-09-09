@@ -1,0 +1,334 @@
+https://www.javatpoint.com/proc
+Pro*C Tutorial - Javatpoint
+Pro*C Tutorial - Javatpoint ? Home Java Pro*C SQL PL/SQL SQLite MongoDB Cassandra MySQL Oracle CouchDB Neo4j C Quiz Projects Interview Q Forum Pro*C Tutorial Pro*C Pro*C tutorial In this tutorial, we are going to cover the following topics: What is Pro*C Compiling the Pro*C program Need of Pro*C compiler Requirements Directory Structure Restrictions Embedded SQL statements Pro*C Syntax Host Variables Datatype Equivalencing Dynamic vs Static SQL statements Transactions Error Handling Program What is Pro*C? Pro*C means creating a program that is embedded with SQL statements. We can access the Oracle database with the help of Pro*C. The C programming language provides the flexibility for data processing by manipulating or retrieving the data from the Oracle database. Therefore, we can say that Pro*C allows C programming language to connect the C program with the Oracle database and do the manipulations according to our requirements. How can we compile the Pro*C program? Oracle software provides the PROC compiler (Oracle Precompiler), and this compiler takes the C program having embedded SQL statements. What is Oracle precompiler? An oracle precompiler is a programming tool that allows the user to embed the SQL statements in a high-level source program. This compiler takes the source program as input, replacing the embedded SQL statements with the oracle runtime library calls, and this modified program can now compile, link, and execute. The whole process of compilation of Pro*C program is given below: First, we create a C program, which contains the SQL statements, and then we save this file with an extension '.PC'. Here, '.PC' means that the program is a Pro*C program. After creating a program, we compile the program by using the PROC compiler, which is provided by the Oracle. The PROC compiler generates .c file with all the SQL statements replaced by the functions which are already pre-defined in the Oracle runtime library. The file created by the PROC compiler will be compiled again by the C compiler, which is supported by Pro*C. In Windows, the PROC compiler supports Microsoft Visual C++ compiler. The C compiler will create a .exe file. Now, finally, we run the .exe file. Why do we need the Pro*C compiler? The Pro*C compiler allows you to embed the SQL statements in the C program, and it also provides the required user interface. Unlike many other development tools, the Pro*C allows you to customize applications. It creates user interfaces that incorporate the latest windowing and mouse technology. Sometimes it is possible that we cannot generate the reports from other development tools, but we can achieve this by retrieving the data from the oracle database. Requirements The main requirement of Pro*C is to install the Pro*C software. When we are installing the Oracle database, then we have to make sure that we have selected the Pro*C components. If we have to check whether the installation of oracle contains the Pro*C components is by checking the PRECOMP directory of Oracle. Directory Structure When we install the Oracle, a directory structure is created on our hard drive for the Oracle products. The main oracle directory will contain the subdirectories and files which are required for the Pro*C. When we install the Pro*C in Oracle, then Oracle Universal installer creates a directory known as precomp in the ORACLE_BASE\ORACLE_HOME directory. This subdirectory, i.e., precomp contains the executable files, library files, and some sample programs which is given below: precomp Directory Structure Directory Description \admin It contains the configuration files. \demo\proc It contains the sample programs for Pro*C. \demo\sql It contains sql scripts for sample programs. \doc\proc It contains the documentation files for pro*c. \help\proc It contains help files for Pro*C. \lib\msvc It contains library files for Pro*C \mesg It contains message files. \misc\proc It contains miscellaneous files for Pro*C. \public It contains the header files having .h extension. Restrictions All the Windows operating systems can contain the spaces in the files and directory names, but Oracle Pro*C precompiler does not precompile the files, which include space in the file name. For example, if the file name is the first program.pc, then this file name will be invalid. Embedded SQL statements Here, embedded SQL means placing the SQL statements inside the source program. As we house the statements inside the C program, so C program is also known as the host program, and the language we use is known as the host language. The Pro*C provides the ability to embed the SQL statements inside the program. Embedded SQL statements are of two types: Executable statements Directives Executable statements Executable statements are the SQL statements that allow you to manipulate the data in the Oracle database. These statements call the Oracle runtime library. It also allows your program to connect to the Oracle database, to define the query, to manipulate the data, and process the transactions. These statements are written where C executable statements can be placed. Directives Directives or declarative statements are the SQL statements that neither call the Oracle runtime libraries nor operate on the Oracle data. It is used to declare the Oracle objects, SQL objects. These statements can be written where the C variables can be declared. Pro*C Syntax In the C program, all the SQL statements must start with EXEC SQL, and should end with the semicolon ;.We can write the SQL statement anywhere in the program but with one restriction that declarative statements should not come after the executable statements. Suppose we want to retrieve the student marks from the database based on their id, then its program would be written as: 
+{ 
+int marks;
+EXEC SQL select marks INTO : marks from student where student_id=6;
+printf("The marks of the student is : %d", marks);
+}
+ Preprocessor directives The preprocessor directives that we can use when we are dealing with Pro*C in C are #include and #if. But, Pro*C does not know about the #define directive. Let's understand this through a simple scenario which is given below: 
+#define employee_id
+int salary;
+EXEC SQL select salary into : salary from employee where employee_id=5;
+ The above code is invalid, as Pro*C does not work with a #define directive. Host Variables Host variables are the variables of the host language that are used with the SQL embedded statements. Host variables are a key of communication between the Oracle and C program. These variables are declared similarly as we make the declaration in the C program, and it can be referenced by both our program and Oracle. The host variables can be placed where the SQL expressions are used, and these variables are declared between the BEGIN DECLARE SECTION and END DECLARE SECTION. When we write the SQL statements, then the host variables are prefixed with a ':' colon. The following is the list of the C data types that are supported by Oracle: char char[n] int short long float double VARCHAR[n] Pointers A pointer variable can also be used as a host variable in SQL statements. Let's understand through a simple example. 
+int *age;
+EXEC SQL SELECT age into :age from student; 
+ In the above code, we declare a pointer variable of integer type, i.e., *age. After declaration, we are executing a SELECT statement in which we are retrieving the value of age from the student table, and then we are storing the value of age in a host variable, i.e., age. The result will be stored in the *age, not in age. Structures C structures are also used in Pro*C. The member variables of the structure can be treated as the host variables in the host program. When we provide the name of the structure in the SQL statement, then each host variable must be prefixed with a: colon. 
+struct student
+{
+int student_id;
+char name[20]; 
+}s1;
+EXEC SQL INSERT INTO stud(student id, name) values(:s1);
+ In the above code, we have created a structure named as a student, which contains two variables, i.e., student_id and name. After creating structure, we declare the variable, i.e., s1 of type student. Then, we insert the value of these two variables in a database by using the insert command. Arrays Arrays can be used as a host variable in SQL embedded statements. Let's understand this through a simple example: 
+int student_number[10];
+EXEC SQL INSERT INTO student(student id) VALUES(:student_number);
+ In the above code, we have created a single-dimensional array of integer type. We implement the SQL INSERT command, which will insert all the 10 tuples in one go. Let's look at the other example in which we use the two-dimensional array. 
+char student_name[10][7];
+EXEC SQL INSERT INTO student(student nme) VALUES(:student_name);
+ In Pro*C, arrays can only be single-dimensional. But, Pro*C precompiles the above code successfully as it considers the two-dimensional as a single-dimensional array of characters instead of a two-dimensional array of characters. 
+short indicator_variable;
+EXEC SQL SELECT column_name INTO : host_variable:indicator_variable from table_name;
+ As we have shown in the above example that we can use the indicator variable in a SELECT statement to determine whether the output host variable contains the NULLs or truncated value. The following table shows the possible values of the indicator variable that can be given by the Oracle with its description: Value returned by Oracle Description -1 It means that the value of column is NULL, then the value of the host variable will be indeterminate. 0 An intact column value is assigned to the host variable. >0 Truncated value is assigned to the host variable. -2 Truncated value is assigned to the host variable. If we want to create the indicator variable of a host variable in a struct, we can simply do that by creating an indicator variable of each host variable in a struct. To add the name of an indicator variable in a SQL statement, we need to write the name of the indicator variable of a structure that must be prefixed with a ':' colon, and must immediately follow the host variable. Datatype Equivalencing It is a very important feature as it adds flexibility to your application. It means that you can customize according to the requirements based on how Oracle interprets the input data and formats the output data. Oracle contains two types of data types: Internal datatypes External datatypes internal datatype: These data types are used by Oracle to define how data is going to be stored in a column. External datatype: These data types are used by Oracle to format the output data, and then this output data will be stored in a host variable. Let's see how we can equivalence the data type. On a variable-by-variable basis, we use the var statement for equivalencing. The syntax of the var statement is given below: 
+EXEC SQL VAR <host_variable> IS <data_type> [(<length>)]; 
+ For example, we want to retrieve the student names from the student table; then, we need to pass these student names to the function that accepts the C style strings (the last character must be a termination character '\0'). To equivalence the host variable with a String external datatype, we use the following code: 
+char names[12];
+EXEC SQL VAR names IS STRING(12);
+ The column, i.e., student name, contains 11 characters. As the column student name contains the 11 characters, so we need to allot the 12 characters (11 characters of student name plus terminator character (\0)). We use the STRING data type that provides the interface with the C style strings. Oracle will automatically add the '\0' character. Till now, we equivalence the built-in data types, i.e., in the above example, we equivalence the char array to the Oracle external datatype (String). We can also equivalence the user-defined data types by using the TYPE command. The syntax of the type statement is given below: 
+EXEC SQL TYPE <user-defined_datatype> IS <type_name> [<length>][Reference]
+ Dynamic vs Static SQL statements Mainly, static SQL statements are used for fixed applications, but sometimes it is required for a program to create the SQL statements dynamically. To create the dynamic SQL statement, first, we need to store the SQL statement in a string variable. After storing the statement, we use the PREPARE statement to convert the character string into a SQL statement. Finally, we execute the statement by using the EXECUTE statement. Let's understand this scenario through an example. 
+char *s = "INSERT INTO student VALUES(12, 'Peter', 3)";
+EXEC SQL PREPARE q FROM :s;
+EXEC SQL EXECUTE q;
+ Transactions Oracle Pro*C also follows the concept of the transaction as defined by the SQL standard. A transaction is a series of statements that Oracle uses to either made all the changes permanent or undo all the changes done since the transaction began. We use two statements, i.e., EXEC SQL COMMIT and EXEC SQL ROLLBACK. The EXEC SQL COMMIT statement is used to make all the changes permanent since the transaction began. The EXEC SQL ROLLBACK is used to undo all the changes since the transaction began. If we start the next transaction without writing the statement EXEC SQL COMMIT, then all the changes made during this transaction will be discarded. Error Handling C programming provides the in-built error handling mechanism which we use in our source program. Error handling is a mechanism that provides the status of our source program. We need some mechanism that handles the error, so Pro*C contains the two error handling concepts which are given below: SQLCA (SQL Communication Area) Whenever statement SQLCA SQLCA (SQL Communication Area) is a data structure or an area used by our program to check for errors. This data structure contains some pre-defined variables used by Oracle. These variables contain the status information of the program, which is passed at the runtime. The structure of sqlca is given below: 
+struct sqlca {
+char sqlcaid[8];
+long sqlabc;
+long sqlcode;
+struct {
+unsigned short sqlerrml;
+char sqlerrmc[70];
+} sqlerrm;
+char sqlerrp[8];
+long sqlerrd[6];
+char sqlwarn[8];
+char sqlext[8];
+};
+ SQLCA Components The following are the components of SQLCA: sqlcaid: It is an array of char character which is initialized to "SQLCA", and used to determine the SQL Communication area. sqlcabc: It is declared as an integer type to hold the length of the SQLCA structure in bytes. sqlcode: It is declared as an integer type that stores the status code of the most recently executed SQL statement. The status determines the outcome of the SQL statement, and the outcome can come in the following ways: Outcome Description 0 The statement has been executed successfully with no error. >0 Some error occurs while executing the statement. For example, when we are using SELECT command with Where clause, then no such row found mentioned in the Where clause condition. <0 In this case, statement is not executed due to the database, system, application or network error. sqlerrm: It is defined as a structure inside the sqlca. This field contains two components: sqlerrml: It is declared as an integer type that holds the length of the text message stored in sqlerrmc. sqlerrmc: It is declared as a string that holds the text message with respect to the error code stored in a sqlcode. sqlerrp: It is declared as a string but reserved for future use. sqlerrd: It is declared as an array of integers that holds six elements. Fields Description sqlerrp[0] It is reserved for future use. sqlerrp[1] It is reserved for future use. sqlerrp[2] It contains the no. of rows which are processed by the SQL statement. sqlerrp[3] It is reserved for the future use. sqlerrp[4] It contains the character position at which the error begins in the most recently executed statement. sqlerrp[5] It is reserved for the future use. sqlwarn: It is declared as an array of characters having eight elements. These elements are used as a warning flag in sqlca. If the flag is set, then Oracle assigns 'W' to the element. Fields Description sqlwarn[0] It is set only when the value of another flag is set. sqlwarn[1] It is set when the Oracle assigns a truncated value to the output host variable. sqlwarn[2] It is set when the NULL column value is not considered while computing the SQL aggregate such MAX, MIN, AVG or SUM. sqlwarn[3] It is set when the no of columns retrieved by using the SELECT statement is not equal to the no. of host variables specified in a INTO clause. sqlext: It is declared as a string which is reserved for future use. Whenever statement The whenever statement is used for error handling. It performs implicit error checking and handling. The syntax of the whenever statement is given below: 
+EXEC SQL WHENEVER <condition> <action>;
+ When the Whenever statement is executed, then the Oracle will automatically check the SQLCA for the condition mentioned in the whenever statement. If such condition is found in the sqlca, then the action given in the whenever statement will be performed. The condition can be NOT FOUND, SQLERROR, SQLWARNING, and the action can be CONTINUE, GOTO label, STOP, DO routine. The condition can be of following types: SQLWARNING: If the oracle returns a warning, then the sqlwarn[0] will be set. SQLERROR: If the oracle returns an error, then the value of sqlcode will be negative. NOT FOUND: If the Oracle is not able to find the row based on the condition mentioned in the WHERE clause of the SELECT statement, then the value of the sqlcode will be positive. If the Oracle finds any of the above condition, then the following actions can be taken: CONTINUE: The program will continue execution with its next statement if possible. DO: In this action, the control will be transferred to the error handling function in the program. When the control is reached at the end of the error handling function, then the control will be transferred to the statement that comes after the failed SQL statement. DO BREAK: This break statement is mainly used in our program, and can be used as an action in loops. When the condition present inside a WHENEVER statement is satisfied, then our program exits from the loop. DO CONTINUE: This continue statement is mainly used in our program, and can be used as action in loops. When the condition inside a WHENEVER statement is satisfied, then our program continue with the next iteration inside the loop. GOTO: The program control transfers to the labeled statement. STOP: Our program stops running. When the WHENEVER condition is satisfied, then exit() function is called to stop the execution of the program. Steps to create a program The following are the steps required to create and run the program: First, we need to install the Oracle database, and Microsoft Visual C++. In Visual C++, we will create our C program that contains the embedded SQL statements. This program will connect with a oracle database. The oracle database contains the in-built PROC components. To check whether the PROC has been installed successfully, open the cmd and type the 'proc' command. After entering the proc command in command prompt, we press enter: The above screen shows that the proc has been installed successfully. Now, we will create a C program in Visual C++. Open Visual C++. When we open the Visual C++, the image shown below will appear: Click on the File appearing at the top menu. Move the mouse over the New, and then click on the Project. When we click on the project, the screen appears shown below: In the above screen, click on the General appearing at the left-side under the Visual C++ category, and then click on the Empty Project. Now, we need to provide the name to this empty project. In the above screen, we can observe that we have given the name of our project as Demo. After providing the name to our project, we click on the OK button. In the above screen, we can see that the workspace of our project has been created. At the leftmost side, we can see the hierarchy of our project which contains External Dependencies, Header Files, Resource files, and Source files. Now, we have to add the library files of Oracle, so right-click on the header files, then keep the mouse cursor over the Add and then click on the Existing-item. Move to the oracle folder which contains precomp as a subdirectory. Click on the precomp. When we click on the precomp folder, the screen shown below will appear: Click on the lib folder, which is shown in the above screen. Now add the two object library files, i.e., orasql19, and another one is orasqx19, which is present in the msvc folder. When we add the above two library files, our Solution Explorer window would look like: In the above screen, the highlighted area shows that both the library files have been added successfully in our project. Now, we add source code in our project. To do so, right-click on the source files, keep the mouse cursor over the Add and then click on the New item. After clicking on the New item, the screen appears as shown below: In the above screen, click on the Code that appears at the leftmost side, and then click on the C++ File. We also have provided the file name as first with a .pc extension. After providing the name to the source file, we click on the Add button. In the above screen, we can observe that the workspace for the file that we have added has been created. The following is the code of pc file: 
+exec sql begin declare section;
+char user_name[20],password[20];
+exec sql end declare section;
+exec sql include sqlca;
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+void main()
+{
+printf("Enter the user name");
+scanf("%s",user_name);
+printf("Enter the password");
+scanf("%s",password);
+exec sql connect :user_name identified by :password;
+if(sqlca.sqlcode==0)
+printf("Success");
+else
+printf("Error code:%d\n Error message:%s",sqlca.sqlcode,sqlca.sqlerrm.sqlerrmc);
+getch();
+}
+ Open the cmd, and move to that folder, i.e., E:\Demo\Demo where first.pc file is stored. Now, we use the proc compiler to precompile the first.pc program as shown in the below screenshot: In the above screen, we can observe that first.c has been created after compilation of first.pc by Oracle precompiler. Now, we add the first.c file in Visual C++. To add this file, right-click on the Source files, then keep the mouse cursor on Add and then click on the Existing item. The below screen shows that first.c file has been added in Visual C++. After the compilation of first.pc, the code of first.c would be: 
+/* Result Sets Interface */
+#ifndef SQL_CRSR
+# define SQL_CRSR
+struct sql_cursor
+{
+unsigned int curocn;
+void *ptr1;
+void *ptr2;
+unsigned int magic;
+};
+typedef struct sql_cursor sql_cursor;
+typedef struct sql_cursor SQL_CURSOR;
+#endif /* SQL_CRSR */
+
+/* Thread Safety */
+typedef void * sql_context;
+typedef void * SQL_CONTEXT;
+
+/* Object support */
+struct sqltvn
+{
+unsigned char *tvnvsn; 
+unsigned short tvnvsnl; 
+unsigned char *tvnnm;
+unsigned short tvnnml; 
+unsigned char *tvnsnm;
+unsigned short tvnsnml;
+};
+typedef struct sqltvn sqltvn;
+
+struct sqladts
+{
+unsigned int adtvsn; 
+unsigned short adtmode; 
+unsigned short adtnum; 
+sqltvn adttvn[1]; 
+};
+typedef struct sqladts sqladts;
+
+static struct sqladts sqladt = {
+1,1,0,
+};
+
+/* Binding to PL/SQL Records */
+struct sqltdss
+{
+unsigned int tdsvsn; 
+unsigned short tdsnum; 
+unsigned char *tdsval[1]; 
+};
+typedef struct sqltdss sqltdss;
+static struct sqltdss sqltds =
+{
+1,
+0,
+};
+
+/* File name & Package Name */
+struct sqlcxp
+{
+unsigned short fillen;
+char filnam[9];
+};
+static const struct sqlcxp sqlfpn =
+{
+8,
+"first.pc"
+};
+
+
+static unsigned int sqlctx = 18667;
+
+
+static struct sqlexd {
+unsigned int sqlvsn;
+unsigned int arrsiz;
+unsigned int iters;
+unsigned int offset;
+unsigned short selerr;
+unsigned short sqlety;
+unsigned int occurs;
+const short *cud;
+unsigned char *sqlest;
+const char *stmt;
+sqladts *sqladtp;
+sqltdss *sqltdsp;
+void **sqphsv;
+unsigned int *sqphsl;
+int *sqphss;
+void **sqpind;
+int *sqpins;
+unsigned int *sqparm;
+unsigned int **sqparc;
+unsigned short *sqpadto;
+unsigned short *sqptdso;
+unsigned int sqlcmax;
+unsigned int sqlcmin;
+unsigned int sqlcincr;
+unsigned int sqlctimeout;
+unsigned int sqlcnowait;
+int sqfoff;
+unsigned int sqcmod;
+unsigned int sqfmod;
+void *sqhstv[4];
+unsigned int sqhstl[4];
+int sqhsts[4];
+void *sqindv[4];
+int sqinds[4];
+unsigned int sqharm[4];
+unsigned int *sqharc[4];
+unsigned short sqadto[4];
+unsigned short sqtdso[4];
+} sqlstm = {12,4};
+
+/* SQLLIB Prototypes */
+extern void sqlcxt (void **, unsigned int *,
+struct sqlexd *, const struct sqlcxp *);
+extern void sqlcx2t(void **, unsigned int *,
+struct sqlexd *, const struct sqlcxp *);
+extern void sqlbuft(void **, char *);
+extern void sqlgs2t(void **, char *);
+extern void sqlorat(void **, unsigned int *, void *);
+
+/* Forms Interface */
+static const int IAPSUCC = 0;
+static const int IAPFAIL = 1403;
+static const int IAPFTL = 535;
+extern void sqliem(unsigned char *, signed int *);
+
+typedef struct { unsigned short len; unsigned char arr[1]; } VARCHAR;
+typedef struct { unsigned short len; unsigned char arr[1]; } varchar;
+
+/* cud (compilation unit data) array */
+static const short sqlcud0[] =
+{12,4130,178,0,0,
+5,0,0,0,0,0,27,14,0,0,4,4,0,1,0,1,97,0,0,1,97,0,0,1,10,0,0,1,10,0,0,
+};
+
+
+/* exec sql begin declare section; */ 
+
+char user_name[20],password[20];
+/* exec sql end declare section; */ 
+
+/* exec sql include sqlca;
+*/ 
+#ifndef SQLCA
+#define SQLCA 1
+struct sqlca
+{
+/* ub1 */ char sqlcaid[8];
+/* b4 */ int sqlabc;
+/* b4 */ int sqlcode;
+struct
+{
+/* ub2 */ unsigned short sqlerrml;
+/* ub1 */ char 
+sqlerrmc[70];
+} sqlerrm;
+/* ub1 */ char sqlerrp[8];
+/* b4 */ int 
+sqlerrd[6];
+/* ub1 */ char sqlwarn[8];
+/* ub1 */ char sqlext[8];
+};
+
+#ifndef SQLCA_NONE 
+#ifdef 
+SQLCA_STORAGE_CLASS
+SQLCA_STORAGE_CLASS struct sqlca sqlca
+#else
+struct sqlca sqlca
+#endif
+#ifdef SQLCA_INIT
+= {
+{'S', 'Q', 'L', 'C', 'A', ' ', ' ', ' '},
+sizeof(struct sqlca),
+0,
+{ 0, {0}},
+{'N', 'O', 'T', ' ', 'S', 'E', 'T', ' '},
+{0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0, 0, 0},
+{0, 0, 0, 0, 0, 0, 0, 0}
+}
+#endif
+;
+#endif
+#endif
+/* end SQLCA */
+
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+void main()
+{
+printf("Enter the user name");
+scanf("%s",user_name);
+printf("Enter the password");
+scanf("%s",password);
+/* exec sql connect :user_name identified by :password; */ 
+
+{
+struct sqlexd sqlstm;
+sqlstm.sqlvsn = 12;
+sqlstm.arrsiz = 4;
+sqlstm.sqladtp = &sqladt;
+sqlstm.sqltdsp = &sqltds;
+sqlstm.iters = (unsigned int )10;
+sqlstm.offset = (unsigned int )5;
+sqlstm.cud = sqlcud0;
+sqlstm.sqlest = (unsigned char *)&sqlca;
+sqlstm.sqlety = (unsigned short)4352;
+sqlstm.occurs = (unsigned int )0;
+sqlstm.sqhstv[0] = ( void *)user_name;
+sqlstm.sqhstl[0] = (unsigned int )20;
+sqlstm.sqhsts[0] = ( int )20;
+sqlstm.sqindv[0] = ( void *)0;
+sqlstm.sqinds[0] = ( int )0;
+sqlstm.sqharm[0] = (unsigned int )0;
+sqlstm.sqadto[0] = (unsigned short )0;
+sqlstm.sqtdso[0] = (unsigned short )0;
+sqlstm.sqhstv[1] = ( void *)password;
+sqlstm.sqhstl[1] = (unsigned int )20;
+sqlstm.sqhsts[1] = ( int )20;
+sqlstm.sqindv[1] = ( void *)0;
+sqlstm.sqinds[1] = ( int )0;
+sqlstm.sqharm[1] = (unsigned int )0;
+sqlstm.sqadto[1] = (unsigned short )0;
+sqlstm.sqtdso[1] = (unsigned short )0;
+sqlstm.sqphsv = sqlstm.sqhstv;
+sqlstm.sqphsl = sqlstm.sqhstl;
+sqlstm.sqphss = sqlstm.sqhsts;
+sqlstm.sqpind = sqlstm.sqindv;
+sqlstm.sqpins = sqlstm.sqinds;
+sqlstm.sqparm = sqlstm.sqharm;
+sqlstm.sqparc = sqlstm.sqharc;
+sqlstm.sqpadto = sqlstm.sqadto;
+sqlstm.sqptdso = sqlstm.sqtdso;
+sqlstm.sqlcmax = (unsigned int )100;
+sqlstm.sqlcmin = (unsigned int )2;
+sqlstm.sqlcincr = (unsigned int )1;
+sqlstm.sqlctimeout = (unsigned int )0;
+sqlstm.sqlcnowait = (unsigned int )0;
+sqlcxt((void **)0, &sqlctx, &sqlstm, &sqlfpn);
+}
+
+
+if(sqlca.sqlcode==0)
+printf("Success");
+else
+printf("Error code:%d\n Error message:%s",sqlca.sqlcode,sqlca.sqlerrm.sqlerrmc);
+getch();
+}
+ Run We can run our program by simply clicking on the Debug that appears at the top menu, and then click on the Start Debugging. For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.

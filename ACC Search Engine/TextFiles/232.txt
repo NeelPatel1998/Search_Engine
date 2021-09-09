@@ -1,0 +1,188 @@
+https://www.javatpoint.com/using-realm-database-in-ios-app
+Using Realm database in iOS app - Javatpoint
+Using Realm database in iOS app - Javatpoint ? Home Java Swift iOS Development OS C PHP HTML CSS Bootstrap JavaScript jQuery jQuery UI Projects Interview Q Comment Forum Training iOS Development iOS Development using Swift Introduction to XCode IDE iPhone History & Versions Views & View Controllers Storyboard & interface builder Creating First iOS Application iOS UI Controls iOS: Label iOS: Button iOS: TextField iOS: DatePicker iOS: Slider iOS: Stepper iOS: Switch iOS: Segment Control iOS Container Views iOS: UIView iOS: TableView iOS: CollectionView iOS: ScrollView iOS Content Views iOS: ActivityIndicatorView iOS: ImageView iOS: PickerView iOS: ProgressView iOS: WebView iOS: MapView iOS View Controllers iOS: UIViewController iOS: Table View Controller iOS: Collection View Controller iOS: PageViewController iOS: Split View Controller Tab Bar Interface iOS: Tab Bar Controller iOS: Tab Bar iOS: Tab Bar Item Navigation Interface Navigation Controller Navigation Bar Navigation Item Architecture Pattern Model View Controller Model View View-Model Model View Presenter Install Libraries Setting Up Cocoapods for XCode Projects Using Cocoapods for XCode Projects Web Request & Parsing Alamofire Library Fetching data through Get Request Parsing JSON Response Image Caching Pull to Refresh functionality iOS UserDefaults Saving Data in UserDefaults Getting Data from UserDefaults CoreData & Database CoreData Managed Object Model Persistent Object Coordinator Multithreading in Swift Multithreading in Swift Concurrency in swift Handling Background Tasks Misc Firebase Crashalytics iOS Swift IOS app lifecycle What is Jailbreaking in iOS Why is iOS better than Android Features of iOS 14 Getting user location in iOS Push Notifications in iOS Sign-in with Apple using swift SSL Pinning in Swift XCode 12 Features Facebook Login Integration in iOS Google Sign-in integration in iOS How to capture the image using the iOS app How to make a phone call in the iOS app Paytm SDK Integration in iOS Razorpay Integration in iOS UIAlertController in Swift Using SQLite in iOS app Creating a real-time chat application using Firebase Using Realm database in iOS app iOS: machine learning What is CoreML Using Advanced CoreML Access Control in Swift iOS Memory Management in iOS applications Protocol Oriented Programming in iOS Swift Initialization in Swift Parsing a Static JSON file in iOS application Sending Email using the iOS application Using AVAudioPlayer to play sounds in iOS applications next ? ? prev Using Realm database in iOS app We have used SQLite and CoreData to persist the data in iOS applications. The realm is an alternative to Apple's CoreData. It is faster and easier to use than CoreData and SQLite. It is free of charge for unlimited use until we take advantage of Realm's Cloud features. In this tutorial, we will create a new iOS project to use Realm to store the data. We will discuss the basic CRUD (create, read, update, delete) operations with the database. What is Realm Realm is a database that is built to target mobile applications for iOS and Android. It works better and faster than SQLite and CoreData for iOS applications. It's easier to use and requires less code to store and retrieve data. It is free to use for iOS and Android apps without any limits. Realm is an alternative for the mobile databases as currently, we don't have many options other than SQLite or any wrapper that works on the top of SQLite, such as CoreData. It is mainly designed to be easy to use as it not an ORM as it uses its persistence engine to provide speed and performance. Why use Realm Realm is superior to other mobile databases in terms of speed. It is easier to use and also requires less code to retrieve and store the data. In this section of the tutorial, we will discuss the advantages and disadvantages of the Realm database. Easy to install: in iOS, it is very simple to install Realm in applications. We can easily install Realm in iOS applications just by using the Cocoapods. Works faster than other databases: It is faster to save, retrieve, or performing any database operations in Realm. Realm works faster than SQLite and CoreData for iOS applications. Cross-Platform: Realm database is cross-platform and therefore can easily work on iOS and android regardless of the technology we are working upon. Scalability: It is very important to consider the database's scalability while developing applications that deal with a large number of users and their records. We can use Realm to deal with a huge amount of data in a lesser time. We will also get speed and smoothness while using Realm in the application. Good documentation & Support: Realm team provides rich documentation about installing and using the Realm database in our applications. Free: Realm is free with all the benefits it has provided. Concepts Overview To understand the proper functioning of the Realm database, we need to know about the classes that we are going to use in this tutorial. Realm: Realm instances are the basic building block of the framework. It works as the access point to the underlying database like a Core Data managed object context. The instances can be created using the Realm() initializer. Object: This is the Realm model. We need to create the model to define the database schema. To create the model, we need to subclass Object and define the fields we want to persist as properties. Relationships: we can create one-to-many relationships between objects by declaring a property of the Object's type to which we want to refer. We can create many-to-one and many-to-many relationships via a property of type List. Write Transactions: Any operations in the database, like creating, editing, or deleting objects, must be performed within writes by calling write(_:) on Realm instances. Queries: To retrieve objects from the database, you use queries. The simplest form of a query is calling objects() on a Realm instance and passing in the class of the object you're looking for. If your data retrieval needs are more complex, you can use predicates, chain your queries and order your results. Results: Results is an auto-updating container type that you get back from object queries. They have many similarities with regular Arrays, including the subscript syntax. Getting Started First, we need to create a new XCode project. Create a single-view iOS application with swift, as shown below. In this tutorial, to add the Realm database to our project, we will use Cocoapods. For this purpose, open the terminal, navigate to the project directory, and run the following command. 
+$ pod init
+ It will generate the Podfile in the project directory; we need to open it and add the pod to download Realm. The Podfile will contain the following code. 
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+ 
+target 'RealmDemo' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+ 
+  # Pods for RealmDemo
+pod 'RealmSwift'
+ 
+end
+ Now, run the following command in the terminal to install the pod. 
+$ pod install
+ Once we are done installing the pods for Realm, we need to close all XCode instances and open the .xcworkspace file. Using Realm Database for data persistence First, we need to create an object to use in Realm. For this purpose, add a swift file Employee.swift with the following code. 
+import Foundation
+import RealmSwift
+
+
+class Employee: Object {
+    @objc dynamic var age = 0
+    @objc dynamic var id = 0
+    @objc dynamic var name = ""
+}
+ Now, we need to save and retrieve employees from Realm. Let's create a class as EmployeeDAO and write the following code into it. 
+import Foundation
+
+import RealmSwift
+
+
+class EmployeeDAO {
+    var realm: Realm = try! Realm()
+}
+ In EmployeeDAO, we have created the Realm database as a class member. Now, we need to add methods to save and retrieve the objects of type Employee. 
+func saveEmployees(_ emp:Employee){
+        try! realm.write {
+            realm.add(emp)
+        }
+    }
+ Here, Realm.write starts a write transaction. A write transaction can fail, so we need to mark it as throwing. Now we need to look at the code to retrieve the objects. 
+public func findEmployeesByName(_ title: String) -> Results<Employee>
+    {
+        let predicate = NSPredicate(format: "name = %@", title)
+        return realm.objects(Employee.self).filter(predicate)
+    }
+ Let's add a method to add a new employee in Employees Database. We will place this method inside EmployeeDAO class. Add the following Code to EmployeeDAO class. 
+    public func addNewEmployee(_ age: Int, name: String, id: Int ) -> Employee
+    {
+        let emp = Employee()
+        emp.age = age
+        emp.name = name
+        emp.id = id
+        return emp
+    }
+ Now, we will try to save and retrieve the employees in the ViewController class. For this purpose, add the following code in ViewController. 
+import UIKit
+
+class ViewController: UIViewController {
+
+    let empDb = EmployeeDAO()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        saveAndGetEmployees()
+    }
+    
+    func saveAndGetEmployees() {
+        let emp = empDb.addNewEmployee(24, "john",1001)
+        empDb.saveEmployees(emp)
+
+
+        let foundEmp = empDb.findEmployeesByName("john")
+      debugPrint(foundEmp)
+
+
+    }
+    
+}
+ Output It prints the retrieved employee in the XCode console. 
+Results <0x7f9aca60e5b0> (
+[0] Employee {
+age = 24;
+id = 1001;
+name = john;
+}
+)
+ Now, let's try to delete the object from the database. For this purpose, add the following method in EmployeeDAO class. 
+ public func deleteEmployee(_ emp: Employee) {
+        if (realm != nil) {
+            try! realm.write {
+                realm.delete(emp)
+            }
+        }
+    }
+ To test the delete method implementation, let's add a new employee with the name Mike into the Database, delete that, and then retrieve the employee with the name Mike. For this purpose, let's add the following code in the saveAndGetEmployees method of ViewController. 
+let newEmp = empDb.addNewEmployee(30, "Mike", 1002)
+     empDb.saveEmployees(newEmp)
+     var foundEmp = empDb.findEmployeesByName("Mike")
+     debugPrint(foundEmp)
+     empDb.deleteEmployee(newEmp)
+     foundEmp = empDb.findEmployeesByName("Mike")
+     debugPrint(foundEmp)
+ This will print the following output in Console. 
+Results <0x7fc1c1f6d040> (
+[0] Employee {
+age = 30;
+id = 1002;
+name = Mike;
+}
+)
+Results <0x7fc1c1c11bb0> (
+
+
+)
+ Now, our ViewController will contain the following code. 
+import UIKit
+
+
+class ViewController: UIViewController {
+
+
+    let empDb = EmployeeDAO()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        saveAndGetEmployees()
+    }
+    
+    func saveAndGetEmployees() {
+        let emp = empDb.addNewEmployee(24, "john",1001)
+        empDb.saveEmployees(emp)
+        
+        let newEmp = empDb.addNewEmployee(30, "Mike", 1002)
+        empDb.saveEmployees(newEmp)
+        var foundEmp = empDb.findEmployeesByName("Mike")
+        debugPrint(foundEmp)
+        empDb.deleteEmployee(newEmp)
+      
+        foundEmp = empDb.findEmployeesByName("Mike")
+      debugPrint(foundEmp)
+        
+
+
+    }
+    
+}
+ Our EmployeeDAO class will contain the following code. 
+import Foundation
+
+import RealmSwift
+
+class EmployeeDAO {
+    var realm: Realm = try! Realm()
+    
+    func saveEmployees(_ emp:Employee){
+        try! realm.write {
+            realm.add(emp)
+        }
+    }
+    public func findEmployeesByName(_ title: String) -> Results<Employee>
+    {
+        let predicate = NSPredicate(format: "name = %@", title)
+        return realm.objects(Employee.self).filter(predicate)
+    }
+    public func addNewEmployee(_ age: Int, _ name: String, _ id: Int ) -> Employee
+    {
+        let emp = Employee()
+        emp.age = age
+        emp.name = name
+        emp.id = id
+        return emp
+    }
+    public func deleteEmployee(_ emp: Employee) {
+
+        if (realm != nil) {
+            try! realm.write {
+                realm.delete(emp)
+            }
+        }
+    }
+}
+ Next TopicIntroduction to machine learning ? prev next ? For Videos Join Our Youtube Channel: Join Now Help Others, Please Share Learn Latest Tutorials SoapUI RPA Manual T. Cucumber Appium PostgreSQL Solr MongoDB Gimp Verilog Teradata PhoneGap Preparation Aptitude Reasoning Verbal A. Interview Company Trending Technologies AI AWS Selenium Cloud Hadoop ReactJS D. Science Angular 7 Blockchain Git ML DevOps B.Tech / MCA DBMS DS DAA OS C. Network Compiler D. COA D. Math. E. Hacking C. Graphics Software E. Web Tech. Cyber Sec. Automata C C++ Java .Net Python Programs Control S. Data Mining Javatpoint Services JavaTpoint offers too many high quality services. Mail us on hr@javatpoint.com, to get more information about given services. Website Designing Website Development Java Development PHP Development WordPress Graphic Designing Logo Digital Marketing On Page and Off Page SEO PPC Content Development Corporate Training Classroom and Online Training Data Entry Training For College Campus JavaTpoint offers college campus training on Core Java, Advance Java, .Net, Android, Hadoop, PHP, Web Technology and Python. Please mail your requirement at hr@javatpoint.com. Duration: 1 week to 2 week Like/Subscribe us for latest updates or newsletter Learn TutorialsLearn JavaLearn Data StructuresLearn C ProgrammingLearn C++ TutorialLearn C# TutorialLearn PHP TutorialLearn HTML TutorialLearn JavaScript TutorialLearn jQuery TutorialLearn Spring Tutorial Our WebsitesJavatpoint.comHindi100.comLyricsia.comQuoteperson.comJobandplacement.com Our Services Website Development Android Development Website Designing Digital Marketing Summer Training Industrial Training College Campus Training Contact Address: G-13, 2nd Floor, Sec-3 Noida, UP, 201301, India Contact No: 0120-4256464, 9990449935Contact Us Subscribe Us Privacy PolicySitemap About Me © Copyright 2011-2018 www.javatpoint.com. All rights reserved. Developed by JavaTpoint.
